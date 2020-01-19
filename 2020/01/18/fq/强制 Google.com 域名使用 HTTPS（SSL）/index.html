@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="翻墙,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>强制 Google.com 域名使用 HTTPS（SSL） [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        强制 Google.com 域名使用 HTTPS（SSL）
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻墙/">翻墙</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 1 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p><a href="http://laod.cn/hosts/suggestions-for-google-hosts-https-ssl.html" target="_blank" rel="noopener">http://laod.cn/hosts/suggestions-for-google-hosts-https-ssl.html</a></p>
+<p>配合 Google Hosts 的推荐操作<br>最近发现好多人说谷歌学术访问不了了，而我发现他们绝大多数都使用的是http访问，而不是https（SSL加密），如 <a href="http://scholar.google.com" target="_blank" rel="noopener">http://scholar.google.com</a> 肯定打不开，而 <a href="https://scholar.google.com" target="_blank" rel="noopener">https://scholar.google.com</a> 却正常，为了保证您能更顺利的使用 Google 在线服务，我们推荐您按照以下的步骤进行一些设置。</p>
+<p>以下的步骤将以 Chrome 浏览器为例。</p>
+<p>强制 Google.com 域名使用 HTTPS（SSL）-老D</p>
+<p>虽然您可以随时自行添加 HTTPS 的前缀，但是在某些情况下网页总是会自动跳到没有加密的状态，这些状态可能出现在 Google 各个网页之间的跳转，以及搜索结果链接点击之后，这会影响您的正常使用体验，因此我们建议您强制 HTTPS 连接。</p>
+<p>在 Chrome 浏览器上输入链接 chrome://net-internals/#hsts （可复制此地址粘贴到地址栏），回车。</p>
+<p>在 Domain 栏里，输入 google.com ，并勾选下面的两个复选框，点击 “Add” 按钮即可。</p>
+<p>强制 Google.com 域名使用 HTTPS（SSL）-老D</p>
+<p>此时，您无需每次在因为跳回非加密连接中断后手动添加 HTTPS 前缀。</p>
+<p>强制 Google.com.hk 域名使用 HTTPS<br>考虑到国内用到最多的是 google.com.hk，您需要对此域名同样增加此规则。</p>
+<p>重复上面描述的操作，唯一的不同是，请在 Domain 栏里输入 google.com.hk 。</p>
+<p>同理，如果你喜欢用google.com就设置为：google.com</p>
+<p>强制 Google 网页快照使用 HTTPS<br>默认情况下，Google 网页快照是以非加密的 HTTP 连接打开的，这将导致它直接无法连接。要改变这一情况，请为此快照域名也添加强制 HTTPS 的规则。</p>
+<p>重复上面描述的操作，唯一的不同是，请在 Domain 栏里输入 googleusercontent.com 。</p>
+<p>强制 Google APIs 使用 HTTPS<br>某些网站加载 Google CDN 的方式可能是普通的 HTTP 连接。使用此方法强制转为 HTTPS 连接。</p>
+<p>重复上面描述的操作，唯一的不同是，请在 Domain 栏里输入 googleapis.com 。</p>
+<p>对于其他的浏览器<br>（个人推荐使用Chrome 浏览器）</p>
+<p>请在对应浏览器的插件目录中查找类似 “HTTPS Everywhere” 的插件，它将自动帮助您强制所有可能的 HTTPS 连接。</p>
+<p>如何撤销上述更改<br>倘若您想要撤销上述变更，例如您想要取消对 Google.com 的强制 HTTPS 连接，请同样前往 chrome://net-internals/#hsts，这一次，在下方的 “Delete Domain” 区域里，在 Domain 栏里输入您想要撤销规则的域名（例如 google.com），并点击 “Delete” 按钮即可。</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/Ember-Teach教程目录/" rel="next" title="Ember-Teach教程目录">
+          Ember-Teach教程目录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/design-pattern/Builder模式——设计模式/" rel="prev" title="Builder模式——设计模式">
+            Builder模式——设计模式
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '强制 Google.com 域名使用 HTTPS（SSL）', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

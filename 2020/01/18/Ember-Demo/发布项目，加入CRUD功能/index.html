@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Demo,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>发布项目，加入CRUD功能 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        发布项目，加入CRUD功能
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Demo/">Ember-Demo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 9 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>来源：<a href="http://yoember.com/" target="_blank" rel="noopener">yoember.com</a><br>作者：<a href="http://Zoltan.nz" target="_blank" rel="noopener">Zoltan</a></p>
+<p><strong>声明</strong>：<em>本文的转载与翻译是经过作者认可的，再次感谢原作，如有侵权请给我留言，我会删除博文！！</em> 希望本系列教程能帮助更多学习Ember.js的初学者。</p>
+<p>接着前面三篇：</p>
+<ol>
+<li><a href="http://xcoding.tech/2016/03/30/Ember-Demo/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8Ember.js%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2/">环境搭建以及使用Ember.js创建第一个静态页面</a></li>
+<li><a href="http://xcoding.tech/2016/03/31/Ember-Demo/%E5%BC%95%E5%85%A5%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E3%80%81action%E3%80%81%E5%8A%A8%E6%80%81%E5%86%85%E5%AE%B9/">引入计算属性、action、动态内容</a></li>
+<li><a href="http://xcoding.tech/2016/03/31/Ember-Demo/%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93/">模型，保存数据到数据库</a></li>
+</ol>
+<h2 id="应用发布"><a href="#应用发布" class="headerlink" title="应用发布"></a>应用发布</h2><p><strong>发布方式一</strong></p>
+<p>发布的详细教程请看<a href="https://www.firebase.com/docs/web/libraries/ember/guide.html#section-ember-deploy" target="_blank" rel="noopener">guide on firebase</a>。执行如下命令发布项目。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g firebase-tools</span><br><span class="line">ember build --prod</span><br><span class="line">firebase login</span><br><span class="line">firebase init</span><br></pre></td></tr></table></figure></p>
+<p>执行命令过程需要输入一个public的目录，输入<code>dist</code>后按<code>enter</code>。更新<code>firebase.json</code>的内容。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"firebase"</span>: <span class="string">"YOUR-APP-NAME"</span>,</span><br><span class="line">  <span class="string">"public"</span>: <span class="string">"dist"</span>,</span><br><span class="line">  <span class="string">"rewrites"</span>: [&#123;</span><br><span class="line">    <span class="string">"source"</span>: <span class="string">"**"</span>,</span><br><span class="line">    <span class="string">"destination"</span>: <span class="string">"/index.html"</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>遗憾的是在我电脑上一直提示没有<code>firebase</code>命令，即使我已经安装了这个插件也不行。</p>
+<p><strong>发布方式二</strong></p>
+<p>由于上述方式无法发布想到到firebase，所以使用最原始的发布方式，使用<code>ember</code>命令打包项目。然后自己把项目部署到服务器上。</p>
+<ol>
+<li>打包项目<br>打包项目使用命令<code>ember build --prod</code>，等到命令执行完毕后再项目的<code>dist</code>目录下的所有文件即使打包后的项目文件。</li>
+<li>复制打包后的文件到服务器上<br>得到打包后的文件后可以直接把这些文件复制到服务器上运行，比如复制到tomcat的<code>webapps</code>目录下。</li>
+<li>运行项目<br>复制到服务器之后启动服务器，直接访问：<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></li>
+</ol>
+<h2 id="增加删除、修改功能"><a href="#增加删除、修改功能" class="headerlink" title="增加删除、修改功能"></a>增加删除、修改功能</h2><p>修改项目的library列表页面，增加删除和修改功能。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/libraries/index.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line">## List</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">  &#123;&#123;#each model as |library|&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-4"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel panel-default library-item"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-heading"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">### &#123;&#123;library.name&#125;&#125;</span><br><span class="line"></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-body"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">Address: &#123;&#123;library.address&#125;&#125;</span><br><span class="line"></span><br><span class="line">Phone: &#123;&#123;library.phone&#125;&#125;</span><br><span class="line"></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel-footer text-right"</span>&gt;</span></span><br><span class="line">              &#123;&#123;#link-to 'libraries.edit' library.id class='btn btn-success btn-xs'&#125;&#125;Edit&#123;&#123;/link-to&#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-danger btn-xs"</span> &#123;&#123;<span class="attr">action</span> '<span class="attr">deleteLibrary</span>' <span class="attr">library</span>&#125;&#125;&gt;</span>Delete<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;&#123;/each&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>相比原来的代码增加了一个连接和一个按钮，分别用于编辑和删除library信息。相对于需要增加一个路由<code>libraries/edit</code>和一个处理的动作<code>{{action 'deleteLibrary'}}</code>。<br>如果此时运行<a href="http://localhost:4200/libraries" target="_blank" rel="noopener">http://localhost:4200/libraries</a>会出现错误，因为还没定义路由<code>libraries/edit</code>和<code>action</code>。别急，先一步步来，下面先增加一些css样式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># app/styles/app.scss</span><br><span class="line">@import &apos;bootstrap&apos;;</span><br><span class="line"></span><br><span class="line">body &#123;</span><br><span class="line">  padding-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">  overflow-y: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.library-item &#123;</span><br><span class="line">  min-height: 150px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建路由libraries-edit和路由对应的模板"><a href="#创建路由libraries-edit和路由对应的模板" class="headerlink" title="创建路由libraries/edit和路由对应的模板"></a>创建路由<code>libraries/edit</code>和路由对应的模板</h2><p>简单起见直接使用<a href="http://ember-cli.com/user-guide" target="_blank" rel="noopener">Ember CLI</a>命令创建，就不手动创建了。执行命令：<code>ember g route libraries/edit</code>创建路由和路由对应的模板。<br>创建完成之后还需要手动修改<code>app/router.js</code>文件，内容如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">'./config/environment'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Router = Ember.Router.extend(&#123;</span><br><span class="line">  location: config.locationType</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Router.map(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.route(<span class="string">'about'</span>);</span><br><span class="line">  <span class="keyword">this</span>.route(<span class="string">'contact'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.route(<span class="string">'admin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.route(<span class="string">'invitation'</span>);</span><br><span class="line">    <span class="keyword">this</span>.route(<span class="string">'contact'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.route(<span class="string">'libraries'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.route(<span class="string">'new'</span>);</span><br><span class="line">    <span class="comment">// :library_id是一个动态段，会根据实际的URL变化</span></span><br><span class="line">    <span class="keyword">this</span>.route(<span class="string">'edit'</span>, &#123; <span class="attr">path</span>: <span class="string">'/:library_id/edit'</span> &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Router;</span><br></pre></td></tr></table></figure></p>
+<p>注意<code>this.route(&#39;edit&#39;, { path: &#39;/:library_id/edit&#39; });</code>这行代码的设置。与普通的路由稍有不同这里增加了一个参数，并且参数内使用<code>path</code>设定路由渲染之后<code>edit</code>会被<code>/:library_id/edit</code>替换。<br>编译、渲染之后的URL格式为<code>http://example.com/libraries/1234/edit</code>其中<code>:library_id</code>这是一个动态段，这个URL例子中动态段<code>library_id</code>的值就是<code>1234</code>，并且可以在路由类中获取这个动态段的值。<br>更多有关动态段的介绍请看<a href="http://blog.ddlisting.com/2016/03/22/ember-js-ru-men-zhi-nan-zhi-shi-san-link-to/" target="_blank" rel="noopener">Ember.js 入门指南之十三{{link-to}} 助手</a>或者<a href="https://guides.emberjs.com/v2.5.0/routing/defining-your-routes/#toc_dynamic-segments" target="_blank" rel="noopener">Dynamic Segments</a>。</p>
+<p>配置完路由之后修改路由<code>libraries/edit.js</code>的代码。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/routes/libraries/edit.js</span></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">  model(params) &#123;</span><br><span class="line">    <span class="comment">// 获取动态段library_id的值 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.store.findRecord(<span class="string">'library'</span>, params.library_id);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  actions: &#123;</span><br><span class="line"></span><br><span class="line">    saveLibrary(newLibrary) &#123;</span><br><span class="line">      newLibrary.save().then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.transitionTo(<span class="string">'libraries'</span>));</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    willTransition(transition) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> model = <span class="keyword">this</span>.controller.get(<span class="string">'model'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (model.get(<span class="string">'hasDirtyAttributes'</span>)) &#123;</span><br><span class="line">        <span class="keyword">let</span> confirmation = confirm(<span class="string">"Your changes haven't saved yet. Would you like to leave this form?"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (confirmation) &#123;</span><br><span class="line">          model.rollbackAttributes();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          transition.abort();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>代码<code>this.store.findRecord(&#39;library&#39;, params.library_id);</code>的意思是根据模型的<code>id</code>属性值查询某个记录，其中<code>library_id</code>就是动态段的值，这个值是Ember解析URL得到的。正如前面所说：<code>http://example.com/libraries/1234/edit</code>这个URL动态段的值就是<code>1234</code>。<br>Ember会自动根据URL的格式解析得到。并且可以在路由类中获取。默认情况下动态段的值是数据的<code>id</code>值。代码中的另外两个方法<code>saveLibrary()</code>和<code>willTransition()</code>在前一篇文章<a href="http://blog.ddlisting.com/2016/04/09/mo-xing-bao-cun-shu-ju-dao-shu-ju-ku/" target="_blank" rel="noopener">模型，保存数据到数据库</a>已经介绍过，在此不再赘述。<br>方法<code>willTransition()</code>的作用就是：当用户修改了数据之后没有点击保存就离开页面时会提示用户是否确认不保存就离开页面！通过控制器中的属性<code>hasDirtyAttributes</code>判断页面的值是否发生了变化。方法<code>rollbackAttributes()</code>会重置<code>model</code>中的值。方法<code>abourt()</code>可以阻止路由的跳转，有关路由的跳转请看<a href="http://blog.ddlisting.com/2016/03/25/ember-js-ru-men-zhi-nan-zhi-er-shi-si-zhong-yu-yu-zhong-shi-lu-you-zhuan-huan/" target="_blank" rel="noopener">Ember.js 入门指南之二十四终止与重试路由跳转</a>。从<code>new.hbs</code>复制代码到<code>edit.hbs</code>，然后在稍加修改。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/libraries/edit.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line">## Edit Library</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line">          &#123;&#123;input type="text" value=model.name class="form-control" placeholder="The name of the Library"&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Address<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line">          &#123;&#123;input type="text" value=model.address class="form-control" placeholder="The address of the Library"&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Phone<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line">          &#123;&#123;input type="text" value=model.phone class="form-control" placeholder="The phone number of the Library"&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-offset-2 col-sm-10"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span> &#123;&#123;<span class="attr">action</span> '<span class="attr">saveLibrary</span>' <span class="attr">model</span>&#125;&#125;&gt;</span>Save changes<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>等待项目重启完成，进入到修改界面，任意修改界面上的数据，不点击保存然后任意点击其他链接会弹出提示，询问你是否确认离开页面。操作步骤如下截图。</p>
+<p><img src="/image/blog-image/162.png" alt="library主页"></p>
+<p><img src="/image/blog-image/1.jpeg" alt="library修改页面"></p>
+<p><strong>注意</strong>：看浏览器的URL。首页模板代码<code>{{#link-to 'libraries.edit' library.id class='btn btn-success btn-xs'}}Edit{{/link-to}}</code>中的路由<code>libraries.edit</code>渲染之后会得到形如<code>libraries/xxx/edit</code>的URL，其中<code>xxx</code>就是动态段的值。</p>
+<p><img src="/image/blog-image/164.png" alt="修改name的值，然后点击菜单的Home"></p>
+<p><img src="/image/blog-image/165.png" alt="library未保存离开页面提示"></p>
+<p>弹出提示信息。如果点击取消会停留在当前页面，如果选中确定会跳转到首页（因为我点击的是菜单的Home）。</p>
+<p><img src="/image/blog-image/166.png" alt="修改后点击保存"></p>
+<p>成功保存了修改的内容。到此实现了修改功能。</p>
+<h2 id="实现删除功能"><a href="#实现删除功能" class="headerlink" title="实现删除功能"></a>实现删除功能</h2><p>删除功能比修改更加简单，直接在方法<code>deleteLibrary</code>里根据<code>id</code>属性值删除数据即可。<code>id</code>属性值已经在模板页面作为参数传递到方法中。直接获取即可。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/routes/libraries/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">  model() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.store.findAll(<span class="string">'library'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">      <span class="comment">// 删除一个library记录</span></span><br><span class="line">      deleteLibrary(library) &#123;  <span class="comment">//参数library已经在模板中传递过来</span></span><br><span class="line">      <span class="keyword">let</span> confirmation = confirm(<span class="string">'Are you sure?'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (confirmation) &#123;</span><br><span class="line">        library.destroyRecord();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>模板中是这样调用删除方法的<code><button class="btn btn-danger btn-xs" {{action 'deletelibrary' library}}>Delete</button></code>，看到参数<code>library</code>了吧，这个参数就是一个<code>library</code>模型对象。<br>可以直接调用方法<code>destroyRecord()</code>实现删除数据。</p>
+<p><img src="/image/blog-image/167.png" alt="点击删除按钮"></p>
+<p>选中确定之后删除就会立刻删除，列表上的数据也会动态更新。</p>
+<h2 id="家庭作业"><a href="#家庭作业" class="headerlink" title="家庭作业"></a>家庭作业</h2><p>参照library的功能实现contact的删除与修改。</p>
+<h4 id="新建路由和模板"><a href="#新建路由和模板" class="headerlink" title="新建路由和模板"></a>新建路由和模板</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ember g route admin/contact/edit</span><br><span class="line">ember g template admin/contact/index</span><br></pre></td></tr></table></figure>
+<h4 id="修改router-js，增加配置"><a href="#修改router-js，增加配置" class="headerlink" title="修改router.js，增加配置"></a>修改router.js，增加配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.route(<span class="string">'admin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.route(<span class="string">'invitation'</span>);</span><br><span class="line">  <span class="keyword">this</span>.route(<span class="string">'contact'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.route(<span class="string">'edit'</span>, &#123; <span class="attr">path</span>: <span class="string">'/:contact_id/edit'</span> &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>省略其他内容，仅仅列出修改部分。</p>
+<h4 id="复制admin-contact-hbs的内容到admin-contact-index-hbs，然后空admin-contact-hbs再在文件内添加-lt-￼19-gt"><a href="#复制admin-contact-hbs的内容到admin-contact-index-hbs，然后空admin-contact-hbs再在文件内添加-lt-￼19-gt" class="headerlink" title="复制admin/contact.hbs的内容到admin/contact/index.hbs，然后空admin/contact.hbs再在文件内添加{{outlet}}"></a>复制<code>admin/contact.hbs</code>的内容到<code>admin/contact/index.hbs</code>，然后空<code>admin/contact.hbs</code>再在文件内添加<code>{{outlet}}</code></h4><p><code>admin/contact.hbs</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/admin/contact.hbs --&gt;</span></span><br><span class="line">&#123;&#123;outlet&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>admin/contact/index.hbs</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;! app/templates/admin/contact/index.hbs&#125;&#125;</span><br><span class="line"></span><br><span class="line"># Contacts</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-bordered table-striped"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>E-mail<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>Message<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>Operation<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    &#123;&#123;#each model as |contact|&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>&#123;&#123;contact.id&#125;&#125;<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;contact.email&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;contact.message&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                &#123;&#123;#link-to 'admin.contact.edit' contact.id class='btn btn-success btn-xs'&#125;&#125;Edit&#123;&#123;/link-to&#125;&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-danger btn-xs"</span> &#123;&#123;<span class="attr">action</span> '<span class="attr">deleteContact</span>' <span class="attr">contact</span>&#125;&#125;&gt;</span>Delete<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;&#123;/each&#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>增加删除、修改按钮。</p>
+<h4 id="复制app-templates-contact-hbs到admin-contact-edit-hbs并做修改"><a href="#复制app-templates-contact-hbs到admin-contact-edit-hbs并做修改" class="headerlink" title="复制app/templates/contact.hbs到admin/contact/edit.hbs并做修改"></a>复制<code>app/templates/contact.hbs</code>到<code>admin/contact/edit.hbs</code>并做修改</h4><p>admin/contact/edit.hbs<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;! app/templates/admin/contact/edit.hbs&#125;&#125;</span><br><span class="line"></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"col-md-6 col-xs-6"</span>&gt;</span><br><span class="line">   &lt;form&gt;</span><br><span class="line">     &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"form-group"</span>&gt;</span><br><span class="line">         &lt;label <span class="keyword">for</span>=<span class="string">"exampleInputEmail1"</span>&gt;Email address&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">         &#123;&#123;input type="email" value=model.email class="form-control col-sm-6 col--6" placeholder="Please type your e-mail address." autofocus="autofocus"&#125;&#125;</span></span><br><span class="line"><span class="regexp">     &lt;/</span>div&gt;</span><br><span class="line">     &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"form-group"</span>&gt;</span><br><span class="line">         &lt;label <span class="keyword">for</span>=<span class="string">"exampleInputPassword1"</span>&gt;Your message&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">         &#123;&#123;textarea class="form-control" placeholder="Your message. (At least 5 characters.)" rows="7" value=model.message&#125;&#125;</span></span><br><span class="line"><span class="regexp">     &lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line">     &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn btn-primary"</span> disabled=&#123;&#123;model.isDisabled&#125;&#125; &#123;&#123;action <span class="string">'saveContact'</span> model&#125;&#125;&gt;Save&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">     &#123;&#123;#link-to 'admin.contact' class="btn btn-default"&#125;&#125;Return&#123;&#123;/</span>link-to&#125;&#125;</span><br><span class="line">   &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="修改routes-context-js"><a href="#修改routes-context-js" class="headerlink" title="修改routes/context.js"></a>修改<code>routes/context.js</code></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/routes/contact.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.store.findAll(<span class="string">'contact'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        deleteContact: <span class="function"><span class="keyword">function</span>(<span class="params">contact</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> confirmation = confirm(<span class="string">'Are you sure?'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (confirmation) &#123;</span><br><span class="line">              contact.destroyRecord();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="修改app-routes-admin-contact-edit-js"><a href="#修改app-routes-admin-contact-edit-js" class="headerlink" title="修改app/routes/admin/contact/edit.js"></a>修改<code>app/routes/admin/contact/edit.js</code></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/routes/admin/contact/edit.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">  model(params) &#123;</span><br><span class="line">    <span class="comment">// 获取动态段library_id的值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.store.findRecord(<span class="string">'contact'</span>, params.contact_id);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  actions: &#123;</span><br><span class="line"></span><br><span class="line">    saveContact(newContact) &#123;</span><br><span class="line">      newContact.save().then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.transitionTo(<span class="string">'admin.contact'</span>));</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    willTransition(transition) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> model = <span class="keyword">this</span>.controller.get(<span class="string">'model'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (model.get(<span class="string">'hasDirtyAttributes'</span>)) &#123;</span><br><span class="line">        <span class="keyword">let</span> confirmation = confirm(<span class="string">"Your changes haven't saved yet. Would you like to leave this form?"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (confirmation) &#123;</span><br><span class="line">          model.rollbackAttributes();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          transition.abort();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>运行结果不再截图列出，请读者自行试验。</p>
+<p>为了照顾懒人我把完整的代码放在<a href="https://github.com/ubuntuvim/library-app" target="_blank" rel="noopener">GitHub</a>上，可以拿来做参照。博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/Ember-Demo/引入计算属性、action、动态内容/" rel="next" title="引入计算属性、action、动态内容">
+          引入计算属性、action、动态内容
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/Ember-Demo/从服务器获取数据，引入组件/" rel="prev" title="从服务器获取数据，引入组件">
+            从服务器获取数据，引入组件
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用发布"><span class="toc-text">应用发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加删除、修改功能"><span class="toc-text">增加删除、修改功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建路由libraries-edit和路由对应的模板"><span class="toc-text">创建路由libraries/edit和路由对应的模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现删除功能"><span class="toc-text">实现删除功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#家庭作业"><span class="toc-text">家庭作业</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建路由和模板"><span class="toc-text">新建路由和模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改router-js，增加配置"><span class="toc-text">修改router.js，增加配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制admin-contact-hbs的内容到admin-contact-index-hbs，然后空admin-contact-hbs再在文件内添加-lt-￼19-gt"><span class="toc-text">复制admin/contact.hbs的内容到admin/contact/index.hbs，然后空admin/contact.hbs再在文件内添加{{outlet}}</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制app-templates-contact-hbs到admin-contact-edit-hbs并做修改"><span class="toc-text">复制app/templates/contact.hbs到admin/contact/edit.hbs并做修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改routes-context-js"><span class="toc-text">修改routes/context.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改app-routes-admin-contact-edit-js"><span class="toc-text">修改app/routes/admin/contact/edit.js</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '发布项目，加入CRUD功能', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

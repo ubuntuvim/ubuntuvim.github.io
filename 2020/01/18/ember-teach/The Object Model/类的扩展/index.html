@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Object,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>类的扩展 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        类的扩展
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Object/">Ember-Object</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 3 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h3 id="扩展一般属性"><a href="#扩展一般属性" class="headerlink" title="扩展一般属性"></a>扩展一般属性</h3><blockquote>
+<p><code>reopen</code>不知道怎么翻译好，如果按照<code>reopen</code>翻译过来应该是“重新打开”，但是总觉得不顺，所以就译成<code>扩展</code>了，如果有不妥请指正。</p>
+</blockquote>
+<p>当你想扩展一个类你可以直接使用<code>reopen()</code>方法为一个已经定义好的类添加属性、方法。如果是使用<code>extend()</code>方法你需要重新定义一个子类，然后在子类中添加新的属性、方法。<br>前一篇所过，调用<code>create()</code>方法时候不能传入计算属性并且不推荐在此方法中新定义、重写方法，但是使用<code>reopen()</code>方法可以弥补<code>create()</code>方法的补足。与<code>extend()</code>方法非常相似，下面的代码演示了它们的不同之处。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">Parent = Ember.Object.extend(&#123;</span><br><span class="line">    name: <span class="string">'ubuntuvim'</span>,</span><br><span class="line">    fun1() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"The name is "</span> + <span class="keyword">this</span>.name);</span><br><span class="line">    &#125;,</span><br><span class="line">    common() &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"common method..."</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;);   </span><br><span class="line"></span><br><span class="line"><span class="comment">//  使用extend()方法添加新的属性、方法</span></span><br><span class="line">Child1 = Parent.extend(&#123;</span><br><span class="line">    <span class="comment">//  给类Parent为新增一个属性</span></span><br><span class="line">    pwd: <span class="string">'12345'</span>,</span><br><span class="line">    <span class="comment">//  给类Parent为新增一个方法</span></span><br><span class="line">    fun2() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"The pwd is "</span> + <span class="keyword">this</span>.pwd);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//    重写父类的common()方法</span></span><br><span class="line">    common() &#123;</span><br><span class="line">        <span class="comment">//console.log("override common method of parent...");</span></span><br><span class="line">        <span class="keyword">this</span>._super();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> c1 = Child1.create();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"name = "</span> + c1.get(<span class="string">'name'</span>) + <span class="string">", pwd = "</span> + c1.get(<span class="string">'pwd'</span>));   </span><br><span class="line">c1.fun1();</span><br><span class="line">c1.fun2();     </span><br><span class="line">c1.common();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"-----------------------"</span>);    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//  使用reopen()方法添加新的属性、方法</span></span><br><span class="line">Parent.reopen(&#123;</span><br><span class="line">    <span class="comment">//  给类Parent为新增一个属性</span></span><br><span class="line">    pwd: <span class="string">'12345'</span>,</span><br><span class="line">    <span class="comment">//  给类Parent为新增一个方法</span></span><br><span class="line">    fun2() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"The pwd is "</span> + <span class="keyword">this</span>.pwd);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//  重写类本身common()方法</span></span><br><span class="line">    common() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"override common method by reopen method..."</span>);</span><br><span class="line">        <span class="comment">//this._super();</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//  新增一个计算属性</span></span><br><span class="line">    fullName: Ember.computed(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"compute method..."</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> p = Parent.create();    </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"name = "</span> + p.get(<span class="string">'name'</span>) + <span class="string">", pwd = "</span> + p.get(<span class="string">'pwd'</span>));   </span><br><span class="line">p.fun1();</span><br><span class="line">p.fun2();    </span><br><span class="line">p.common();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"---------------------------"</span>);    </span><br><span class="line">p.get(<span class="string">'fullName'</span>);  <span class="comment">//  获取计算属性值，这里是直接输出：compute method...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  使用extend()方法添加新的属性、方法</span></span><br><span class="line">Child2 = Parent.extend(&#123;</span><br><span class="line">    <span class="comment">//  给类Parent为新增一个属性</span></span><br><span class="line">    pwd: <span class="string">'12345'</span>,</span><br><span class="line">    <span class="comment">//  给类Parent为新增一个方法</span></span><br><span class="line">    fun2() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"The pwd is "</span> + <span class="keyword">this</span>.pwd);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//    重写父类的common()方法</span></span><br><span class="line">    common() &#123;</span><br><span class="line">        <span class="comment">//console.log("override common method of parent...");</span></span><br><span class="line">        <span class="keyword">this</span>._super();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);    </span><br><span class="line"><span class="keyword">var</span> c2 = Child2.create();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"name = "</span> + c2.get(<span class="string">'name'</span>) + <span class="string">", pwd = "</span> + c2.get(<span class="string">'pwd'</span>));   </span><br><span class="line">c2.fun1();</span><br><span class="line">c2.fun2(); </span><br><span class="line">c2.common();</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.oschina.net/uploads/img/201509/07145943_tsNb.png" alt="执行结果"></p>
+<p>从执行结果可以看到如下的差异:<br><br><strong>同点</strong>： 都可以用于扩展某个类。<br><br><strong>异点</strong>：<br></p>
+<ol>
+<li><code>extend</code>需要重新定义一个类并且要继承被扩展的类；</li>
+<li><code>reopen</code>是在被扩展的类本身上新增属性、方法，可以扩展计算属性（相比<code>create()</code>方法）； </li>
+</ol>
+<p>到底用那个方法有实际情况而定，<code>reopen</code>方法会改变了原类的行为（可以想象为修改了对象的原型对象的方法和属性），就如演示实例一样在<code>reopen</code>方法之后调用的<code>Child2</code>类的<code>common</code>方法的行为已经改改变了，在编码过程忘记之前已经调用过<code>reopen</code>方法就有可能出现自己都不知道怎么回事的问题！<br>如果是<code>extend</code>方法会导致类越来越多，继承树也会越来越深，对性能、调试也是一大挑战，但是<code>extend</code>不会改变被继承类的行为。</p>
+<h3 id="扩展静态属性"><a href="#扩展静态属性" class="headerlink" title="扩展静态属性"></a>扩展静态属性</h3><p>使用<code>reopenClass()</code>方法可以扩展<code>static</code>类型的属性、方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Parent = Ember.Object.extend();   </span><br><span class="line">    </span><br><span class="line"><span class="comment">//  使用reopenClass()方法添加新的static属性、方法</span></span><br><span class="line">Parent.reopenClass(&#123;</span><br><span class="line">    isPerson: <span class="literal">true</span>,</span><br><span class="line">    username: <span class="string">'blog.ddlisting.com'</span> </span><br><span class="line">    <span class="comment">//,name: 'test'  //这里有点奇怪，不知道为何不能使用名称为name定义属性，会提示这个是自读属性，使用username却没问题！！估计name是这个方法的保留关键字</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Parent.reopen(&#123;</span><br><span class="line">    isPerson: <span class="literal">false</span>,</span><br><span class="line">    name: <span class="string">'ubuntuvim'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(Parent.isPerson);</span><br><span class="line"><span class="built_in">console</span>.log(Parent.name);  <span class="comment">//  输出空</span></span><br><span class="line"><span class="built_in">console</span>.log(Parent.create().get(<span class="string">'isPerson'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(Parent.create().get(<span class="string">'name'</span>));    <span class="comment">//  输出 ubuntuvim</span></span><br></pre></td></tr></table></figure>
+<p>对于在<code>reopenClass</code>方法中使用属性<code>name</code>的问题下面的地址有解释</p>
+<ol>
+<li><a href="http://discuss.emberjs.com/t/reopenclass-method-can-not-pass-attribute-named-name-of-it/10189" target="_blank" rel="noopener">http://discuss.emberjs.com/t/reopenclass-method-can-not-pass-attribute-named-name-of-it/10189</a></li>
+<li><a href="http://stackoverflow.com/questions/36078464/reopenclass-method-can-not-pass-attribute-named-name-of-it" target="_blank" rel="noopener">http://stackoverflow.com/questions/36078464/reopenclass-method-can-not-pass-attribute-named-name-of-it</a></li>
+</ol>
+<p>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用在github项目上给我个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/The Object Model/第一章对象模型小结/" rel="next" title="第一章对象模型小结">
+          第一章对象模型小结
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/The Object Model/枚举（enumerables）/" rel="prev" title="枚举（enumerables）">
+            枚举（enumerables）
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展一般属性"><span class="toc-text">扩展一般属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展静态属性"><span class="toc-text">扩展静态属性</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '类的扩展', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Java,Jvm,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>虚拟机-系统与进程的通用平台 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        虚拟机-系统与进程的通用平台
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jvm/">Jvm</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 1 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h3 id="2-4-1-IA-32的解释"><a href="#2-4-1-IA-32的解释" class="headerlink" title="2.4.1 IA-32的解释"></a>2.4.1 IA-32的解释</h3><p>下图显示的是IA-32指令的一般格式。</p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>操作码</th>
+<th>操作码</th>
+<th>ModR/M</th>
+<th>SIB</th>
+<th>偏移量</th>
+<th>立即数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0到4</td>
+<td></td>
+<td>可选的</td>
+<td>可选的</td>
+<td>可选的</td>
+<td>0,1,2,4字节</td>
+<td>0,1,2,4字节</td>
+</tr>
+</tbody>
+</table>
+<p>它以0~4个前缀字节开头，指明是否有字符串指令的重复和/或者是否有对寻址段、地址大小和操作数大小的改写。</p>
+<p>在前缀字节（如果有）之后就是操作码字节，它的户名还可能有第二个操作码字节，这取决于第一个的值。</p>
+<p>接下来的是可选的寻址方式标识符ModR/M，该表示服是可选的，意味着它只针对某些操作而存在，通常指示一种寻址方式和寄存器。</p>
+<p>SIB字节只针对某种ModR/M编码而存在，它指示一个基址寄存器、一个索引寄存器和一个用于索引的比例因子。</p>
+<p>可选的、偏移量是针对某些内存寻址方式而存在的。</p>
+<p>如果操作码需要，最后一个域是一个边长的立即数。</p>
+<h3 id="第二章小节"><a href="#第二章小节" class="headerlink" title="第二章小节"></a>第二章小节</h3><p><img src="https://oscimg.oschina.net/oscnet/0aa1b59c277e0aeb22027bf1cb1678b4293.jpg" alt="无仿真\译码-分派解释\直接线索解释"></p>
+<p><img src="https://oscimg.oschina.net/oscnet/280ddba6e92545a4f5df8e558d4de42cfa8.jpg" alt="预译码和直接线索解释\二进制解释"></p>
+<h4 id="译码-分派解释"><a href="#译码-分派解释" class="headerlink" title="译码-分派解释"></a>译码-分派解释</h4><p><strong>内存需求：低</strong>——在目标ISA中对每条执行类型有一个解释过程。</p>
+<p><strong>启动性能：块</strong>——实质上有零启动时间，因为没有对源二进制代码预处理或者翻译的需要。</p>
+<p><strong>稳态性能：慢</strong>——一条源指令在被仿真时都必须被解析。此外，源代码必须通过数据cache被取得，这给cache带来了很多压力（并且导致了潜在的性能损失）。最好，这种方法会引起大量的控制转移（分支）。</p>
+<p><strong>代码可移植性：好</strong>——如果解释器用高级语言编写，那么它非常易于移植。</p>
+<h4 id="间接索引解释"><a href="#间接索引解释" class="headerlink" title="间接索引解释"></a>间接索引解释</h4><p><strong>内存需求：低</strong>——比译码-分派解释需要更多内存，因为在每个解释器例程中必须包含分派代码序列。额外内存数量依赖于译码的复杂性；对于RISC ISA它会相对低，而对于CISC它则要高得多。通过混合实现可以减轻内存代价。</p>
+<p><strong>启动性能：块</strong>——和译码-分派解释一样，实质上有零启动时间；没有预处理的需求。</p>
+<p><strong>稳态性能：慢</strong>——这会比译码-分派稍微好一些，因为消除了一些分支指令；和译码-分派解释器一样，有高数据cache利用率。</p>
+<p><strong>代码可移植性：好</strong>——解释器代码和译码-分派解释器一样易于移植。</p>
+<h4 id="带有预译码和直接线索解释"><a href="#带有预译码和直接线索解释" class="headerlink" title="带有预译码和直接线索解释"></a>带有预译码和直接线索解释</h4><p><strong>内存需求：高</strong>——预译码内存映像的大小与初始源代码映射是成比例的（并且可能大一些）。如果中间形式被缓存，从cache中删除很少使用的预译码指令块，那么内存需求可以稍微降低。</p>
+<p><strong>启动性能：慢</strong>——源内存映像必须首先被解释，以便发现控制流。同样，产生被译码的中间形式也要消耗时间。</p>
+<p><strong>稳态性能：中等</strong>——这要比间接线索好，因为每次执行各个指令时不必对它们解析（和译码）。如果预译码形式包含解释程序的目标地址，那么分派表查找就被消除。因为预译码指令仍然被解释器代码当作数据来处理，所以数据cache利用率高。</p>
+<p><strong>代码可移植性：中等</strong>——如果预译码版本包含解释器例程的具体位置，那么解释器就变得依赖于实现了。支持发现标号地址的编译器可以减少这个缺点。</p>
+<h4 id="二进制解释"><a href="#二进制解释" class="headerlink" title="二进制解释"></a>二进制解释</h4><p><strong>内存需求：高</strong>——预译码内存映像的大小与初始源内存映像是成正比的。如果翻译代码块被缓存，可以降低预译码的内存需求。</p>
+<p><strong>启动性能：非常慢</strong>——源内存映像必须首先被解释，以便发现控制流。然后必须产生翻译二进制代码。</p>
+<p><strong>稳态性能：快</strong>——翻译二进制代码直接在硬件上执行。如果翻译块直接链接起来，性能会提高甚至更多。此外，由于翻译代码被渠道指令cache中，这减轻了对出具cache的压力。</p>
+<p><strong>代码可移植性：差</strong>——代码被翻译成特性的目标ISA，对于每个目标ISA必须写一个新的翻译器（或者至少是代码生成部分）。</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/Ember.js/access token生成/" rel="next" title="access token生成">
+          access token生成
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/Ember.js/Ember.js适配器跨域请求问题/" rel="prev" title="Ember.js适配器跨域请求问题">
+            Ember.js适配器跨域请求问题
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-IA-32的解释"><span class="toc-text">2.4.1 IA-32的解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二章小节"><span class="toc-text">第二章小节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#译码-分派解释"><span class="toc-text">译码-分派解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#间接索引解释"><span class="toc-text">间接索引解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带有预译码和直接线索解释"><span class="toc-text">带有预译码和直接线索解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制解释"><span class="toc-text">二进制解释</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '虚拟机-系统与进程的通用平台', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

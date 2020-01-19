@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Object,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>绑定（bingding） [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        绑定（bingding）
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Object/">Ember-Object</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 2 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>正如其他的框架一样，<code>Ember</code>也有它特有的数据绑定方式，并且可以在任何一个对象上使用绑定。而然，数据绑定大多数情况都是使用在<code>Ember</code>框架本身，对于开发者最好还是使用计算属性更为简单方便。</p>
+<h3 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 双向绑定</span></span><br><span class="line">Wife = Ember.Object.extend(&#123;</span><br><span class="line">  householdIncome: <span class="number">800</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> wife = Wife.create();</span><br><span class="line"></span><br><span class="line">Hasband = Ember.Object.extend(&#123;</span><br><span class="line">  <span class="comment">//  使用 alias方法实现绑定</span></span><br><span class="line">  householdIncome: Ember.computed.alias(<span class="string">'wife.householdIncome'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">hasband = Hasband.create(&#123;</span><br><span class="line">  wife: wife</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'householdIncome = '</span> + hasband.get(<span class="string">'householdIncome'</span>));  <span class="comment">//  output &gt; 800</span></span><br><span class="line"><span class="comment">// 可以双向设置值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  在wife方设置值</span></span><br><span class="line">wife.set(<span class="string">'householdIncome'</span>, <span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'householdIncome = '</span> + hasband.get(<span class="string">'householdIncome'</span>));  <span class="comment">// output &gt; 1000</span></span><br><span class="line"><span class="comment">// 在hasband方设置值</span></span><br><span class="line">hasband.set(<span class="string">'householdIncome'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'wife householdIncome = '</span> + wife.get(<span class="string">'householdIncome'</span>));</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.oschina.net/uploads/img/201509/09095720_nTt7.png" alt="run result"></p>
+<p>需要注意的是绑定并不会立刻更新对应的值，<code>Ember</code>会等待直到程序代码完成运行完成并且是在同步改变之前，所以你可以多次改变计算属性的值。由于绑定是很短暂的所以也不需要担心开销问题。</p>
+<h3 id="单向绑定"><a href="#单向绑定" class="headerlink" title="单向绑定"></a>单向绑定</h3><p>单向绑定只会在一个方向上传播变化。相对双向绑定来说，单向绑定做了性能优化，对于双向绑定来说如果你只是在一个方向上设置关联其实就是一个单向绑定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = Ember.Object.create(&#123;</span><br><span class="line">  fullName: <span class="string">'Kara Gates'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">UserComponent = Ember.Component.extend(&#123;</span><br><span class="line">  userName: Ember.computed.oneWay(<span class="string">'user.fullName'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">userComponent = UserComponent.create(&#123;</span><br><span class="line">  user: user</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'fullName = '</span> + user.get(<span class="string">'fullName'</span>));</span><br><span class="line"><span class="comment">// 从user可以设置</span></span><br><span class="line">user.set(<span class="string">'fullName'</span>, <span class="string">"krang Gates"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'component&gt;&gt; '</span> + userComponent.get(<span class="string">'userName'</span>));</span><br><span class="line"><span class="comment">// UserComponent 设置值，user并不能获取，因为是单向的绑定</span></span><br><span class="line">userComponent.set(<span class="string">'fullName'</span>, <span class="string">"ubuntuvim"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'user &gt;&gt;&gt; '</span> + user.get(<span class="string">'fullName'</span>));</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.oschina.net/uploads/img/201509/09095720_L5ho.png" alt="run result"></p>
+<p>关于数据绑定的知识点不多，相对来说不是重点，毕竟对象之间的关联关系是越少、越简单越好。关联关系多了反而难以维护。<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用在github项目上给我个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/The Object Model/计算属性（compute properties）/" rel="next" title="计算属性（compute properties）">
+          计算属性（compute properties）
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/The Object Model/类的定义、初始化、继承/" rel="prev" title="类的定义、初始化、继承">
+            类的定义、初始化、继承
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#双向绑定"><span class="toc-text">双向绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单向绑定"><span class="toc-text">单向绑定</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '绑定（bingding）', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Object,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>枚举（enumerables） [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        枚举（enumerables）
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Object/">Ember-Object</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 5 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>在<code>Ember</code>中，枚举是包含多个子对象的对象，并且提供了丰富的API（<a href="http://emberjs.com/api/classes/Ember.Enumerable.html" target="_blank" rel="noopener">Ember.Enumerable API</a>）去获取所包含的子对象。<code>Ember</code>的枚举都是基于原生的<code>javascript</code>数组实现的，<code>Ember</code>扩展了其中的很多接口。<br><code>Ember</code>提供一个标准化接口处理枚举，并且允许开发者完全改变底层数据存储，而无需修改应用程序的数据访问代码。<br><code>Ember</code>的<code>Enumerable API</code>尽可能的遵照<code>ECMAScript</code>规范。为了减少与其他库不兼容，<code>Ember</code>允许你使用本地浏览器实现数组。</p>
+<p>下面是一些重要而常用的<code>API</code>列表；请注意左右两列的不同。</p>
+<table border="1"><br>  <tr bgcolor="#ccc"><br>      <td>标准方法</td><br>      <td>可被观察方法</td><br>      <td>说明</td><br>  </tr><br>  <tr><br>    <td>pop</td><br>    <td>popObject</td><br>    <td>该函数从从数组中删除最后项，并返回该删除项</td><br>  </tr><br>  <tr><br>    <td>push</td><br>    <td>pushObject</td><br>    <td>新增元素</td><br>  </tr><br> <tr><br>    <td>reverse</td><br>    <td>reverseObject</td><br>    <td>颠倒数组元素</td><br>  </tr><br><tr><br>    <td>shift</td><br>    <td>shiftObject</td><br>    <td>把数组的第一个元素从其中删除，并返回第一个元素的值</td><br>  </tr><br><tr><br>    <td>unshift</td><br>    <td>unshiftObject</td><br>    <td>可向数组的开头添加一个或更多元素，并返回新的长度</td><br>  </tr><br></table>
+
+<p>详细文档请看：<a href="http://emberjs.com/api/classes/Ember.Enumerable.html" target="_blank" rel="noopener">http://emberjs.com/api/classes/Ember.Enumerable.html</a></p>
+<p>在列表上右侧的方法是<code>Ember</code>重写标准的<code>JavaScript</code>方法而得的，他们最大的不同之处是使用普通的方法（左边部分）操作的数组不会在你的应用程序中自动更新（不会触发观察者），而使用<code>Ember</code>重写过的方法则可以触发观察者，只要你的数据有变化<code>Ember</code>就可以观察到，并且更新到模板上。</p>
+<h2 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h2><h4 id="1，数组迭代器"><a href="#1，数组迭代器" class="headerlink" title="1，数组迭代器"></a>1，数组迭代器</h4><p>遍历数组元素使用<code>forEach</code>方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'chen'</span>, <span class="string">'ubuntuvm'</span>, <span class="string">'1527254027@qq.com'</span>, <span class="string">'i2cao.xyz'</span>, <span class="string">'ubuntuvim.xyz'</span>];</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index+<span class="number">1</span> + <span class="string">", "</span> +item);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="2，获取数组首尾元素"><a href="#2，获取数组首尾元素" class="headerlink" title="2，获取数组首尾元素"></a>2，获取数组首尾元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  获取头尾的元素，直接调用Ember封装好的firstObject和lastObject方法即可</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'The firstItem is '</span> + arr.get(<span class="string">'firstObject'</span>));  <span class="comment">// output&gt; chen</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'The lastItem is '</span> + arr.get(<span class="string">'lastObject'</span>));  <span class="comment">//output&gt; ubuntuvim.xyz</span></span><br></pre></td></tr></table></figure>
+<h4 id="3，map方法"><a href="#3，map方法" class="headerlink" title="3，map方法"></a>3，map方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  map方法，转换数组，并且可以在回调函数里添加自己的逻辑</span></span><br><span class="line"><span class="comment">//  map方法会新建一个数组，并且返回被转换数组的元素</span></span><br><span class="line"><span class="keyword">var</span> arrMap = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'map: '</span> + item;  <span class="comment">//  增加自己的所需要的逻辑处理</span></span><br><span class="line">&#125;);</span><br><span class="line">arrMap.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-----------------------------------------------'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="4，mapBy方法"><a href="#4，mapBy方法" class="headerlink" title="4，mapBy方法"></a>4，mapBy方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mapBy 方法：返回对象属性的集合，</span></span><br><span class="line"><span class="comment">// 当你的数组元素是一个对象的时候，你可以根据对象的属性名获取对应值</span></span><br><span class="line"><span class="keyword">var</span> obj1 = Ember.Object.create(&#123;</span><br><span class="line">  username: <span class="string">'123'</span>,</span><br><span class="line">  age: <span class="number">25</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = Ember.Object.create(&#123;</span><br><span class="line">  username: <span class="string">'name'</span>,</span><br><span class="line">  age: <span class="number">35</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> obj3 = Ember.Object.create(&#123;</span><br><span class="line">  username: <span class="string">'user'</span>,</span><br><span class="line">  age: <span class="number">40</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj4 = Ember.Object.create(&#123;</span><br><span class="line">  age: <span class="number">40</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> arrObj = [obj1, obj2, obj3, obj4];  <span class="comment">//对象数组</span></span><br><span class="line"><span class="keyword">var</span> tmp = arrObj.mapBy(<span class="string">'username'</span>);  <span class="comment">// </span></span><br><span class="line"> </span><br><span class="line">tmp.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index+<span class="number">1</span>+<span class="string">", "</span>+item);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-----------------------------------------------'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="5，filter方法"><a href="#5，filter方法" class="headerlink" title="5，filter方法"></a>5，filter方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  filter 过滤器方法，过滤普通数组元素</span></span><br><span class="line"><span class="comment">//  filter方法可以跟你指定的条件过滤掉不匹配的数据，比如下面的代码：过滤了元素大于4的元素</span></span><br><span class="line"><span class="keyword">var</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="comment">//  参数self值数组本身</span></span><br><span class="line"><span class="keyword">var</span> numsTmp = nums.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, self</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item &lt; <span class="number">4</span>;</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">numsTmp.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'item = '</span> + item);  <span class="comment">//  1， 2， 3</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-----------------------------------------------'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>filter</code>方法会返回所有判断为<code>true</code>的元素，会把判断结果为<code>false</code>或者<code>undefined</code>的元素过滤掉。</p>
+<h4 id="6，filterBy方法"><a href="#6，filterBy方法" class="headerlink" title="6，filterBy方法"></a>6，filterBy方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  如果你想根据对象的某个属性过滤数组你需要用filterBy方法，比如下面的代码根据isDone这个对象属性过滤</span></span><br><span class="line"><span class="keyword">var</span> o1 = Ember.Object.create(&#123;</span><br><span class="line">  name: <span class="string">'u1'</span>,</span><br><span class="line">  isDone: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> o2 = Ember.Object.create(&#123;</span><br><span class="line">  name: <span class="string">'u2'</span>,</span><br><span class="line">  isDone: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> o3 = Ember.Object.create(&#123;</span><br><span class="line">  name: <span class="string">'u3'</span>,</span><br><span class="line">  isDone: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> o4 = Ember.Object.create(&#123;</span><br><span class="line">  name: <span class="string">'u4'</span>,</span><br><span class="line">  isDone: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> todos = [o1, o2, o3, o4];</span><br><span class="line"><span class="keyword">var</span> isDoneArr = todos.filterBy(<span class="string">'isDone'</span>, <span class="literal">true</span>);  <span class="comment">//会把o2过滤掉</span></span><br><span class="line">isDoneArr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'name = '</span> + item.get(<span class="string">'name'</span>) + <span class="string">', isDone = '</span> + item.get(<span class="string">'isDone'</span>));</span><br><span class="line">  <span class="comment">// console.log(item);</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'-----------------------------------------------'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>filter</code>和<code>filterBy</code>不同的地方是前者可以自定义过滤逻辑，后者可以直接使用。</p>
+<h4 id="7，every、some方法"><a href="#7，every、some方法" class="headerlink" title="7，every、some方法"></a>7，every、some方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// every、some 方法</span></span><br><span class="line"><span class="comment">// every 用于判断数组的所有元素是否符合条件，如果所有元素都符合指定的判断条件则返回true，否则返回false</span></span><br><span class="line"><span class="comment">// some 用于判断数组的所有元素只要有一个元素符合条件就返回true，否则返回false</span></span><br><span class="line">Person = Ember.Object.extend(&#123;</span><br><span class="line">  name: <span class="literal">null</span>,</span><br><span class="line">  isHappy: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> people = [</span><br><span class="line">  Person.create(&#123; <span class="attr">name</span>: <span class="string">'chen'</span>, <span class="attr">isHappy</span>: <span class="literal">true</span> &#125;),</span><br><span class="line">  Person.create(&#123; <span class="attr">name</span>: <span class="string">'ubuntuvim'</span>, <span class="attr">isHappy</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">  Person.create(&#123; <span class="attr">name</span>: <span class="string">'i2cao.xyz'</span>, <span class="attr">isHappy</span>: <span class="literal">true</span> &#125;),</span><br><span class="line">  Person.create(&#123; <span class="attr">name</span>: <span class="string">'123'</span>, <span class="attr">isHappy</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">  Person.create(&#123; <span class="attr">name</span>: <span class="string">'ibeginner.sinaapp.com'</span>, <span class="attr">isHappy</span>: <span class="literal">false</span> &#125;)</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> every = people.every(<span class="function"><span class="keyword">function</span>(<span class="params">person, index, self</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (person.get(<span class="string">'isHappy'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'every = '</span> + every);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> some = people.some(<span class="function"><span class="keyword">function</span>(<span class="params">person, index, self</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (person.get(<span class="string">'isHappy'</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'some = '</span> + some);</span><br></pre></td></tr></table></figure>
+<h4 id="8，isEvery、isAny方法"><a href="#8，isEvery、isAny方法" class="headerlink" title="8，isEvery、isAny方法"></a>8，isEvery、isAny方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  与every、some类似的方法还有isEvery、isAny </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'isEvery = '</span> + people.isEvery(<span class="string">'isHappy'</span>, <span class="literal">true</span>));  <span class="comment">//  全部都为true，返回结果才是true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'isAny = '</span> + people.isAny(<span class="string">'isHappy'</span>, <span class="literal">true</span>));  <span class="comment">//只要有一个为true，返回结果就是true</span></span><br></pre></td></tr></table></figure>
+<p>上述方法的使用与普通<code>JavaScript</code>提供的方法基本一致。学习难度不大⋯⋯自己敲两边就懂了！</p>
+<p>这些方法非常重要，请一定要学会如何使用！！！<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用在github项目上给我个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/The Object Model/类的扩展/" rel="next" title="类的扩展">
+          类的扩展
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/自定义MVC框架/自定义MVC框架之六ActionManager定义/" rel="prev" title="自定义MVC框架之四ActionMapping定义">
+            自定义MVC框架之四ActionMapping定义
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用API"><span class="toc-text">常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，数组迭代器"><span class="toc-text">1，数组迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2，获取数组首尾元素"><span class="toc-text">2，获取数组首尾元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3，map方法"><span class="toc-text">3，map方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4，mapBy方法"><span class="toc-text">4，mapBy方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5，filter方法"><span class="toc-text">5，filter方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6，filterBy方法"><span class="toc-text">6，filterBy方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7，every、some方法"><span class="toc-text">7，every、some方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8，isEvery、isAny方法"><span class="toc-text">8，isEvery、isAny方法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '枚举（enumerables）', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

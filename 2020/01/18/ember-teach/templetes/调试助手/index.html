@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Template,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>调试助手 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        调试助手
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Template/">Ember-Template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 2 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>Ember不仅提供了专门用于调试Ember程序的谷歌、火狐浏览器插件<a href="https://github.com/emberjs/ember-inspector" target="_blank" rel="noopener">Ember Inspector</a>( 安装插件可能需要翻墙，如果你也是一个程序员我想翻墙对于你来说应该不是什么难事！！！)，还提供了用于调试的<code>helper</code>。<br>按照惯例，先做好准备工作，分别执行<a href="http://ember-cli.com/user-guide" target="_blank" rel="noopener">Ember CLI</a>命令创建<code>controller</code>、<code>route</code>和模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ember generate controller dev-helper</span><br><span class="line">ember generate route dev-helper</span><br></pre></td></tr></table></figure></p>
+<h3 id="1，日志助手-lt-￼6-gt"><a href="#1，日志助手-lt-￼6-gt" class="headerlink" title="1，日志助手{{log}}"></a>1，日志助手<code>{{log}}</code></h3><p><code>{{log}}</code>可以把从<code>controller</code>、<code>route</code>类传递到页面上的值以日志的形式直接输出在浏览器的控制台上。下面代码在<code>controller</code>类添加测试数据。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controllers/dev-helper.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Controller.extend(&#123;</span><br><span class="line">    testName: <span class="string">'This is a testvalue...'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>我们可以在模板上直接显示字符串<code>testName</code>的值，也可以使用<code>{{log}}</code>助手以日志形式输出在控制台。当然你也可以直接使用<code>{{log 'xxx'}}</code>在控制台打印”xxxx”。第二点断点助手的示例中将为你演示<code>{{log 'xxx'}}</code>用法。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/dev-helper.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line">直接显示在页面上：&#123;&#123;testName&#125;&#125;</span><br><span class="line">&#123;&#123;log testName&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行<a href="http://localhost:4200/dev-helper" target="_blank" rel="noopener">http://localhost:4200/dev-helper</a>之后我们可以在页面上看到字符串<code>testName</code>的值。打开谷歌或者火狐的控制台（console标签下）可以看到也打印的字符的值。比较简单我就不再截图了⋯⋯</p>
+<h3 id="2，断点助手-lt-￼11-gt"><a href="#2，断点助手-lt-￼11-gt" class="headerlink" title="2，断点助手{{debugger}}"></a>2，断点助手<code>{{debugger}}</code></h3><p>当你需要调试的时候，你可以在模板上需要添加断点的地方添加这个助手，运行的时候会自动停在添加这个助手的地方。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;log '这句话在断点前面'&#125;&#125;</span><br><span class="line">&#123;&#123;debugger&#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">&#123;&#123;log '这句话在断点后面'&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不出意外程序会停在有<code>{{debugger}}</code>这一行。控制台应该会打印“这句话在断点前面”。然后通过点击下一步跳过断点，然后继续打印“这句话在断点后面”。<br><br>运行结果不好截图，请读者自己试试吧！！！<br><br>当你使用了<code>{{debugger}}</code>，并且程序停止进入debug状态的时候，你可以直接在浏览器控制台的命令行输入<code>get(&#39;key&#39;)</code>来获取<code>controller</code>设置的值。</p>
+<p><img src="/content/images/2016/03/43.png" alt="result"></p>
+<p>在箭头所指的位置输入<code>get(&#39;testName&#39;)</code>，然后按<code>enter</code>键执行。会得到如下结果：</p>
+<p><img src="/content/images/2016/03/44.png" alt="result"></p>
+<p>可以看到正确的获取到了前面在<code>controller</code>类里设置的值。<br>如果你不是在调试模式下输入<code>get(&#39;testName&#39;)</code>那么会提示如下错误。</p>
+<p><img src="/content/images/2016/03/45.png" alt="result"></p>
+<p>你还可以在遍历助手<code>{{each}}</code>中使用<code>{{debugger}}</code>，点击一次“下一步”就会执行一次循环。</p>
+<p>首先重写<code>route</code>类的<code>model</code>回调，在里面添加测试数据。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/dev-helper.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'chen'</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;,</span><br><span class="line">            &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'ibeginner.sinaapp.com'</span>, <span class="attr">age</span>: <span class="number">2</span> &#125;</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在模板的<code>each</code>助手中使用<code>{{debugger}}</code>助手。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;#each model as |item|&#125;&#125;</span><br><span class="line">    &#123;&#123;debugger&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行，浏览器自动进入debug模式（如果不能自动进入debug模式可以手动按<code>F12</code>进入debug）。此时你可以在浏览器控制台命令输入<code>get(&#39;item.name&#39;)</code>来获取本次循环对象的属性值。然后你几点“下一步”或者按<code>F8</code>，程序自动进入到下一次循环，然后你再输入<code>get(&#39;item.name&#39;)</code>，此时得到的是本次循环对象属性值。然后点击下一步或者按F8进入第三次循环，由于<code>route</code>类设置返回的数组只有2个元素，第三次已经没有元素。所以这次会自动退出debug模式。<br>如果运行正常你可会得到下图所示的输出信息。</p>
+<p><img src="/content/images/2016/03/46.png" alt="result"></p>
+<p>在调试状态下你还可以直接在浏览器控制台命令行输入<code>context</code>获取上下文信息。会输出本页面所包含的所有类和属性。</p>
+<p><img src="/content/images/2016/03/47.png" alt="result"></p>
+<p>上述介绍的就是Ember提供的调试助手的所有使用方法。在你开发Ember应用的时候应该是很有用的，特别是在<code>each</code>循环遍历的时候。<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/components/包裹内容/" rel="next" title="包裹内容">
+          包裹内容
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/templetes/表单元素/" rel="prev" title="表单元素">
+            表单元素
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，日志助手-lt-￼6-gt"><span class="toc-text">1，日志助手{{log}}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，断点助手-lt-￼11-gt"><span class="toc-text">2，断点助手{{debugger}}</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '调试助手', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

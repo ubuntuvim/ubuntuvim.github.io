@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Object,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>类的定义、初始化、继承 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        类的定义、初始化、继承
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Object/">Ember-Object</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 4 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p><a href="http://emberjs.com/" target="_blank" rel="noopener">Ember JS</a>提供一套自己的类系统，普通的<code>JavaScript</code>标准类不能自动更新属性值，Ember JS的类会自动触发观察者，自动更新属性值、自动刷新模板上的属性值。如果一个类是Ember JS提供的可以看到前缀命名空间是<code>Ember.Object</code>。<br><code>Ember</code>类定义使用<code>extend()</code>方法，创建类实例使用<code>create()</code>方法，可以在方法传入参数，但是参数要以<code>hash</code>列表方式传入。</p>
+<p>Ember JS重写了标准<code>JavaScript</code>的数组类<code>Array</code>，并且为了与标准<code>JavaScript</code>类区别命名为<code>Ember.Enumerable</code>（<a href="http://emberjs.com/api/classes/Ember.Enumerable.html" target="_blank" rel="noopener">API介绍</a>）</p>
+<p>Ember JS还扩展了<code>String</code>属性的特性，提供了一系列特有的处理方法，<a href="http://emberjs.com/api/classes/Ember.String.html" target="_blank" rel="noopener">API介绍</a>。</p>
+<p><em>关于类的命名规则在此不做介绍，自己网上找一份<code>Java</code>的命名规则的教材看看即可。</em></p>
+<p>开始之前先做好准备工作，首先创建一个HTML文件，并引入Ember JS所必须的文件（后面会介绍一种更加简单的方法去搭建<code>EmberJS</code>的项目方法，当然如果你有时间也可以提前去了解，这种方式是使用<a href="http://www.ember-cli.com/user-guide/" target="_blank" rel="noopener"><code>Ember CLI</code></a>搭建<code>EmberJS</code>的项目）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Ember.js • Guides<span class="tag">&lt;/<span class="name">title</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.bootcss.com/jquery/2.0.0/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--  &lt;script src="http://cdn.bootcss.com/ember.js/2.1.0-beta.2/ember.js"&gt;&lt;/script&gt;--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.bootcss.com/ember.js/2.1.0-beta.2/ember.debug.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.bootcss.com/ember.js/2.1.0-beta.2/ember.prod.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">//  在这里编写Ember代码</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面代码是一个简单的<code>HTML</code>文件，所需的<code>Ember</code>库直接使用<code>CDN</code>。</p>
+<h3 id="类定义"><a href="#类定义" class="headerlink" title="类定义"></a>类定义</h3><p>下面定义一个<code>Person</code>类，定义方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person = Ember.Object.extend(&#123;</span><br><span class="line">  say(thing) &#123;</span><br><span class="line">    alert(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码定义了一个<code>Person</code>类，并且在类里面还定义了一个方法<code>say</code>，方法传入一个参数<code>thing</code>。方法体仅仅是打印了传入的参数。</p>
+<h3 id="类继承"><a href="#类继承" class="headerlink" title="类继承"></a>类继承</h3><p>在子类重写父类的方法，并在方法里调用<code>_super()</code>方法来调用父类中对应的方法触发父类方法的行为。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Person = Ember.Object.extend(&#123;</span><br><span class="line">    </span><br><span class="line">  say(thing) &#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="keyword">this</span>.get(<span class="string">'name'</span>);</span><br><span class="line">    alert(name + <span class="string">" says: "</span> + thing);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Soldier = Person.extend(&#123;</span><br><span class="line">    </span><br><span class="line">  say(thing) &#123;</span><br><span class="line">    <span class="comment">// this will call the method in the parent class (Person#say), appending</span></span><br><span class="line">    <span class="comment">// the string ", sir!" to the variable `thing` passed in</span></span><br><span class="line">    <span class="keyword">this</span>._super(thing + <span class="string">", sir!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> yehuda = Soldier.create(&#123;</span><br><span class="line">  name: <span class="string">"Yehuda Katz"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">yehuda.say(<span class="string">"Yes"</span>); <span class="comment">// alerts "Yehuda Katz says: Yes, sir!"</span></span><br></pre></td></tr></table></figure>
+<p>运行代码，刷新浏览器，可以看到如下结果：</p>
+<p><img src="http://7xnrhh.com1.z0.glb.clouddn.com/1.png" alt="运行结果截图"></p>
+<p>结果正确了，但是我们还不知道类是怎么初始化的，它初始化的顺序又是怎么样的呢？其实每个类都有一个默认的初始化方法，555……别急，接着往下看。</p>
+<h3 id="类实例化"><a href="#类实例化" class="headerlink" title="类实例化"></a>类实例化</h3><p>要获取一个类的实例只需要调用类的<code>create()</code>方法即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Person = Ember.Object.extend(&#123;</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is "</span> + <span class="keyword">this</span>.get(<span class="string">'name'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> person = Person.create(&#123;</span><br><span class="line">    name: <span class="string">'ubuntuvim'</span></span><br><span class="line">&#125;);</span><br><span class="line">person.show();  <span class="comment">// My name is ubuntuvim</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> person2 = Person.create(&#123;</span><br><span class="line">    pwd: <span class="string">'ubuntuvim'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//  由于创建person2的时候没有设置name的值，默认是undefined</span></span><br><span class="line">person2.show();  <span class="comment">// My name is undefined</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xnrhh.com1.z0.glb.clouddn.com/2.png" alt="结果图"></p>
+<p><strong>注意</strong>：处于性能的考虑在使用<code>create()</code>方法创建实例的时候，不允许新定义、重写计算属性，也不推荐新定义、重写普通方法，<code>Ember</code>推荐在使用<code>create()</code>方法时只是传递简单的参数，比如上述代码的<code>{name: &#39;ubuntuvim&#39;}</code>。如果你需要新地定义、重写方法请新建一个子类来实现。</p>
+<p><strong>在<code>create()</code>方法内定义计算属性</strong>，运行后会直接报如下图的报错信息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person = Ember.Object.create(&#123;</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is "</span> + <span class="keyword">this</span>.get(<span class="string">'name'</span>));</span><br><span class="line">    &#125;,</span><br><span class="line">    fullName: Ember.computed(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"computed properties."</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://static.oschina.net/uploads/img/201509/07100717_uEV8.png" alt="报错信息"></p>
+<h3 id="类初始化"><a href="#类初始化" class="headerlink" title="类初始化"></a>类初始化</h3><p>前面提过，我们在类继承的时候到底类是怎么初始化，这节就介绍类的初始化，<code>Ember</code>定义了一个<code>init()</code>方法，此方法在类被实例化的时候自动调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Parent = Ember.Object.extend(&#123;</span><br><span class="line">    init() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"parent init..."</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is "</span> + <span class="keyword">this</span>.get(<span class="string">'name'</span>));</span><br><span class="line">    &#125;,</span><br><span class="line">    others() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"the method in parent class.."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//parent = Parent.create(&#123;</span></span><br><span class="line"><span class="comment">//    name: 'parent'</span></span><br><span class="line"><span class="comment">//&#125;);  </span></span><br><span class="line">    </span><br><span class="line">Child = Parent.extend(&#123;</span><br><span class="line">    init() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"child init..."</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    show() &#123;</span><br><span class="line">        <span class="keyword">this</span>._super();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">child = Child.create(&#123;</span><br><span class="line">    name: <span class="string">'child'</span></span><br><span class="line">&#125;);    </span><br><span class="line">child.show();</span><br><span class="line">child.others();</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：<code>init()</code>方法只有在类的<code>create()</code>方法被调用的时候才会被自动调用，上面的例子中，如果只是<code>child.others()</code>这个方法父类并不会调用<code>init()</code>方法，只有执行<code>Parent.create()</code>这个调用的时候才会执行<code>init()</code>方法。<br>上面代码如果把<code>Parent.create()</code>这几句代码注释掉得到的结果如下：</p>
+<p><img src="http://7xnrhh.com1.z0.glb.clouddn.com/3.png" alt="运行结果"></p>
+<p>可见父类的<code>init()</code>方法没有被调用，然后修改代码，注释掉<code>child.others()</code>这句，再把<code>Parent.create()</code>这几句的注释去掉。得到如下结果</p>
+<p><img src="http://7xnrhh.com1.z0.glb.clouddn.com/4.png" alt="去掉child.others()结果"></p>
+<p>可以看到父类的<code>init()</code>方法被调用了！由此可见<code>init()</code>方法是在调用<code>create()</code>方法的时候才调用的。<br>在项目中有可能你需要继承<code>Ember</code>提供的组件，比如继承<code>Ember.Component</code>类，此时你就要注意了，在你继承<code>Ember</code>的组件的时候你必须显式的调用父类方法<code>this._super()</code>否则你继承得到的类无法获取<code>Component</code>提供的行为或者得到无法预知的结果。</p>
+<h3 id="类属性的访问"><a href="#类属性的访问" class="headerlink" title="类属性的访问"></a>类属性的访问</h3><p><code>Ember</code>建议访问类的属性使用<code>get、set</code>方法。如果你直接使用<code>obj.prop</code>这种方式访问也是可以得到类的属性值，但是如果你不是使用访问器操作的就会导致很多问题：计算属性不能被重新计算、无法察觉对象属性的变化、模板也不能自动更新。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Person = Ember.Object.extend(&#123;</span><br><span class="line">    name: <span class="string">'ubuntuvim'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Ember 推荐的访问方式</span></span><br><span class="line"><span class="keyword">var</span> person = Person.create();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is "</span> + person.get(<span class="string">'name'</span>));</span><br><span class="line">person.set(<span class="string">'name'</span>, <span class="string">"Tobias Funke"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is "</span> + person.get(<span class="string">'name'</span>));   </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"---------------------------"</span>);</span><br><span class="line"><span class="comment">//  不推荐的方式</span></span><br><span class="line"><span class="keyword">var</span> person2 = Person.create();    </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is "</span> + person2.name);</span><br><span class="line">person2.name = <span class="string">"Tobias Funke"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is "</span> + person2.name);</span><br></pre></td></tr></table></figure>
+<p>Ember为我们封装了<code>get、set</code>实现细节，开发者直接使用即可。<br><br><br>最后感谢<a href="http://weibo.com/3265765111" target="_blank" rel="noopener">唯獨莪靑睐</a>的指正。<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用在github项目上给我个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/The Object Model/绑定（bingding）/" rel="next" title="绑定（bingding）">
+          绑定（bingding）
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/The Object Model/第一章对象模型小结/" rel="prev" title="第一章对象模型小结">
+            第一章对象模型小结
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类定义"><span class="toc-text">类定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类继承"><span class="toc-text">类继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类实例化"><span class="toc-text">类实例化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类初始化"><span class="toc-text">类初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类属性的访问"><span class="toc-text">类属性的访问</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '类的定义、初始化、继承', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

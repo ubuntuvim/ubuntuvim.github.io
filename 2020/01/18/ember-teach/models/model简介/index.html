@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Model,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>model简介 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        model简介
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Model/">Ember-Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 5 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p><a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>官网用了大篇幅来介绍<code>model</code>，相比之前的<code>controller</code>简直就是天壤之别啊！</p>
+<p>从本篇开始学习<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>的模型，这一章也是<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>基础部分的最后一章内容，非常的重要（不管你信不信反正我是信了）。</p>
+<p>在开始学习<code>model</code>之前先做好准备工作：<br>重新创建一个<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>项目，仍旧使用的是<a href="http://ember-cli.com/user-guide" target="_blank" rel="noopener">Ember CLI</a>命令创建。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ember new chapter6_models</span><br><span class="line">cd chapter6_models</span><br><span class="line">ember server</span><br></pre></td></tr></table></figure></p>
+<p>在浏览器执行项目，看到如下信息说明项目搭建成功。<br><strong>Welcome to Ember</strong></p>
+<p>本章演示所用到的代码都可以从<a href="https://github.com/ubuntuvim/my_emberjs_code/tree/master/chapter6_models" target="_blank" rel="noopener">https://github.com/ubuntuvim/my_emberjs_code/tree/master/chapter6_models</a>获取。</p>
+<p>在介绍<code>model</code>之前先在项目中引入<a href="https://www.firebase.com/" target="_blank" rel="noopener">firebase</a>。相关的配置教材请移步这里（如果无法加载页面请先在<a href="https://www.firebase.com/" target="_blank" rel="noopener">https://www.firebase.com/</a>注册用户）。firebase的官网提供了专门用于Ember的版本，还提供了非常简单的例子。从安装到整合都给出了非常详细代码教程。<br>下面是我的整合步骤（命令都是在项目目录下执行的）：</p>
+<ul>
+<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ember install emberfire</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>安装完成之后会自动创建<code>adapter（app/adapters/application.js）</code>，对于这个文件不需要做任何修改，官网提供的代码也许跟你的项目的代码不同，应该是官网的版本是旧版的。</p>
+<ul>
+<li>配置<code>config/environment.js</code><br>修改第八行<code>firebase: &#39;https://YOUR-FIREBASE-NAME.firebaseio.com/&#39;</code>。这个地址是你注册用户时候得到的。你可以从<a href="https://www.firebase.com/account/#/" target="_blank" rel="noopener">这里</a>查看你的地址。比如下图所示位置</li>
+</ul>
+<p><img src="http://static.oschina.net/uploads/img/201510/17021237_VucE.png" alt="截图"></p>
+<ul>
+<li>再在<code>config/enviroment.js</code>的<code>APP:{}</code>(大概第20行)后面新增如下代码<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">APP: &#123;</span><br><span class="line">      <span class="comment">// Here you can pass flags/options to your application instance</span></span><br><span class="line">      <span class="comment">// when it is created</span></span><br><span class="line">    &#125;,</span><br><span class="line">    contentSecurityPolicy: &#123;</span><br><span class="line">      <span class="string">'default-src'</span>: <span class="string">"'none'"</span>,</span><br><span class="line">      <span class="string">'script-src'</span>: <span class="string">"'self' 'unsafe-inline' 'unsafe-eval' *"</span>,</span><br><span class="line">      <span class="string">'font-src'</span>: <span class="string">"'self' *"</span>,</span><br><span class="line">      <span class="string">'connect-src'</span>: <span class="string">"'self' *"</span>,</span><br><span class="line">      <span class="string">'img-src'</span>: <span class="string">"'self' *"</span>,</span><br><span class="line">      <span class="string">'style-src'</span>: <span class="string">"'self' 'unsafe-inline' *"</span>,</span><br><span class="line">      <span class="string">'frame-src'</span>: <span class="string">"*"</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后再注释掉第7行原有属性（安装<code>firebase</code>自动生成的，但是配置不够完整）：<code>contentSecurityPolicy</code>。</p>
+<p>或者你可以参考我的配置文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* jshint node: true */</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">environment</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ENV = &#123;</span><br><span class="line">    modulePrefix: <span class="string">'chapter6-models'</span>,</span><br><span class="line">    environment: environment,</span><br><span class="line">    <span class="comment">// contentSecurityPolicy: &#123; 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" &#125;,</span></span><br><span class="line">    firebase: <span class="string">'你的firebase连接'</span>,</span><br><span class="line">    baseURL: <span class="string">'/'</span>,</span><br><span class="line">    locationType: <span class="string">'auto'</span>,</span><br><span class="line">    EmberENV: &#123;</span><br><span class="line">      FEATURES: &#123;</span><br><span class="line">        <span class="comment">// Here you can enable experimental features on an ember canary build</span></span><br><span class="line">        <span class="comment">// e.g. 'with-controller': true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    APP: &#123;</span><br><span class="line">      <span class="comment">// Here you can pass flags/options to your application instance</span></span><br><span class="line">      <span class="comment">// when it is created</span></span><br><span class="line">    &#125;,</span><br><span class="line">    contentSecurityPolicy: &#123;</span><br><span class="line">      <span class="string">'default-src'</span>: <span class="string">"'none'"</span>,</span><br><span class="line">      <span class="string">'script-src'</span>: <span class="string">"'self' 'unsafe-inline' 'unsafe-eval' *"</span>,</span><br><span class="line">      <span class="string">'font-src'</span>: <span class="string">"'self' *"</span>,</span><br><span class="line">      <span class="string">'connect-src'</span>: <span class="string">"'self' *"</span>,</span><br><span class="line">      <span class="string">'img-src'</span>: <span class="string">"'self' *"</span>,</span><br><span class="line">      <span class="string">'style-src'</span>: <span class="string">"'self' 'unsafe-inline' *"</span>,</span><br><span class="line">      <span class="string">'frame-src'</span>: <span class="string">"*"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 其他代码省略⋯⋯</span></span><br><span class="line">  <span class="keyword">return</span> ENV;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>如果不做这个配置启动项目之后浏览器会提示一堆的错误。主要是一些访问权限问题。配置完之后需要重启项目才能生效！</p>
+<h2 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h2><p><code>model</code>是一个用于向用户呈现底层数据的对象。不同的应用有不同的<code>model</code>，这取决于解决的问题需要什么样的<code>model</code>就定义什么样的<code>model</code>。</p>
+<p><br><br><code>model</code>通常是持久化的。这也就意味着用户关闭了浏览器窗口<code>model</code>数据不应该丢失。为了确保<code>model</code>数据不丢失，你需要存储<code>model</code>数据到你所指定的服务器或者是本地数据文件中。</p>
+<p><br><br>一种非常常见的情况是，<code>model</code>数据会以<code>JSON</code>的格式通过<code>HTTP</code>发送到服务器并保存在服务中。Ember还未开发者提供了一种更加简便的方式：使用<a href="w3c.github.io/IndexedDB/">IndexedDB</a>（使用在浏览器中的数据库）。这种方式是把<code>model</code>数据保存到本地。或者使用<a href="https://github.com/emberjs/data" target="_blank" rel="noopener">Ember Data</a>，又或者使用<a href="https://www.firebase.com/" target="_blank" rel="noopener">firebase</a>，把数据直接保存到远程服务器上，后续的文章我将引入<a href="https://www.firebase.com/" target="_blank" rel="noopener">firebase</a>，把数据保存到远程服务器上。</p>
+<p><br><br>Ember使用适配器模式连接数据库，可以适配不同类型的后端数据库而不需要修改任何的网络代码。你可以从<a href="http://emberobserver.com/categories/ember-data-adapters" target="_blank" rel="noopener">emberobserver</a>上看到几乎所有Ember支持的数据库。</p>
+<p><br><br>如果你想把你的Ember应用与你的远程服务器整合，几遍远程服务器<code>API</code>返回的数据不是规范的<code>JSON</code>数据也不要紧，<a href="https://github.com/emberjs/data" target="_blank" rel="noopener">Ember Data</a>可以配置任何服务器返回的数据。</p>
+<p><br><br><a href="https://github.com/emberjs/data" target="_blank" rel="noopener">Ember Data</a>还支持流媒体服务器，比如WebSocket。你可以打开一个socket连接远程服务器，获取最新的数据或者把变化的数据推送到远程服务器保存。</p>
+<p><br><br><a href="https://github.com/emberjs/data" target="_blank" rel="noopener">Ember Data</a>为你提供了更加简便的方式操作数据，统一管理数据的加载，降低程序复杂度。</p>
+<p><br><br>对于<code>model</code>与<a href="https://github.com/emberjs/data" target="_blank" rel="noopener">Ember Data</a>的介绍就到此为止吧，官网用了大量篇幅介绍Model，在此我就不一一写出来了！太长了，写出来也没人看的！！！如果有兴趣自己看吧！<a href="guides.emberjs.com/v2.0.0/models/#toc_the-store-and-a-single-source-of-truth">点击查看详细信息</a>。 </p>
+<p><br><br>下面先看一个简单的例子，由这个例子延伸出有关于<code>model</code>的核心概念。这些代码是旧版写法，仅仅是为了说明问题，本文也不会真正执行。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/components/list-of-drafts.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Component.extend(&#123;</span><br><span class="line">  willRender() &#123;</span><br><span class="line">    <span class="comment">// ECMAScript 6语法</span></span><br><span class="line">    $.getJSON(<span class="string">'/drafts'</span>).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.set(<span class="string">'drafts'</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>定义了一个组件类。并在组件类中获取<code>json</code>格式数据。<br>下面是组件对应的模板文件。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/components/list-of-drafts.hbs  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  &#123;&#123;#each drafts key="id" as |draft|&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;draft.title&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  &#123;&#123;/each&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>再定义另外一个组件类和模板<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/components/list-button.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Component.extend(&#123;</span><br><span class="line">  willRender() &#123;</span><br><span class="line">    <span class="comment">// ECMAScript 6语法</span></span><br><span class="line">    $.getJSON(<span class="string">'/drafts'</span>).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.set(<span class="string">'drafts'</span>, data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/components/ list-button.hbs  --&gt;</span></span><br><span class="line">&#123;&#123;#link-to ‘drafts’ tagName=’button’&#125;&#125;</span><br><span class="line">Drafts (&#123;&#123;drafts.length&#125;&#125;)</span><br><span class="line">&#123;&#123;/link-to&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>组件<code>list-of-drafts</code>类和组件<code>list-button</code>类是一样的，但是他们的对应的模板却不一样。但是都是从远程服务器获取同样的数据。如果没有<code>Store</code>（<code>model</code>核心内容之一）那么每次这两个模板渲染都会是组件类调用一次远程数据。并且返回的数据是一样的。这无形中增加了不必要的请求，暂用了不必要的宽带，用户体验也不好。但是有了<code>Store</code>就不一样了，你可以把<code>Store</code>理解为仓库，每次执行组件类时先到<code>Store</code>中获取数据，如果没有再去远程获取。当在其中一个组件中改变某些数据，数据的更改也能理解反应到另一个获取此数据的组件上（与计算属性自动更新一样），而这个组件不需要再去服务请求才能获取最新更改过的数据。</p>
+<p>下面的内容将为你一一介绍Ember Data最核心的几个东西：<code>models</code>、<code>records</code>、<code>adapters</code>、<code>store</code>。</p>
+<h2 id="2，核心概念"><a href="#2，核心概念" class="headerlink" title="2，核心概念"></a>2，核心概念</h2><p>声明：下面简介内摘抄至<a href="http://www.emberjs.cn/guides/models/#toc_" target="_blank" rel="noopener">http://www.emberjs.cn/guides/models/#toc_</a>。</p>
+<h4 id="1，store"><a href="#1，store" class="headerlink" title="1，store"></a>1，store</h4><p><code>store</code>是应用存放记录的中心仓库。你可以认为<code>store</code>是应用的所有数据的缓存。应用的控制器和路由都可以访问这个共享的<code>store</code>；当它们需要显示或者修改一个记录时，首先就需要访问<code>store</code>。</p>
+<p><code>DS.Store</code>的实例会被自动创建，并且该实例被应用中所有的对象所共享。</p>
+<p><code>store</code>可以看做是一个缓存。在下面的<code>cache</code>会结合<code>store</code>介绍。</p>
+<p>下面的例子结合firebase演示：<br>创建路由和<code>model</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ember g route store-example</span><br><span class="line">ember g model article</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//   app/models/article.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">'ember-data'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  title: DS.attr(<span class="string">'string'</span>),</span><br><span class="line">  body: DS.attr(<span class="string">'string'</span>),</span><br><span class="line">  timestamp: DS.attr(<span class="string">'number'</span>),</span><br><span class="line">  category: DS.attr(<span class="string">'string'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个就是<code>model</code>，本章要讲的内容就是它！为何没有定义id属性呢？<code>Ember</code>会默认生成<code>id</code>属性。</p>
+<p>我们在路由的<code>model</code>回调中获取远程的数据，并显示在模板上。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/store-example.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">  model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 从store中获取id为JzySrmbivaSSFG6WwOk的数据，这个数据是我在我的firebase中初始化好的</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.store.find(<span class="string">'article'</span>, <span class="string">'-JzySrmbivaSSFG6WwOk'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>find</code>方法的第一个参数是<code>model</code>类名，第二个参数对象的<code>id</code>属性值。记得id属性不需要在<code>model</code>类中手动定义，Ember会自动为你定义。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;model.title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"body"</span>&gt;</span></span><br><span class="line">&#123;&#123;model.body&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>页面加载之后可以看到获取到的数据。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/17022136_51O7.png" alt="加载得到的数据"></p>
+<p>下面是我的firebase上的部分数据截图。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/17022136_7wt1.png" alt="firebase数据"></p>
+<p>可以看到成功获取到<code>id</code>为<code>-JzySrmbivaSSFG6WwOk</code>的数据。更多关于数据的操作在后面会详细介绍。</p>
+<h4 id="2，model"><a href="#2，model" class="headerlink" title="2，model"></a>2，model</h4><p>有关<code>model</code>的概念前面的简介已经介绍了，这里不再赘述。<br><code>model</code>定义：</p>
+<p><code>model</code>是由若干个属性构成的。<code>attr</code>方法的参数指定属性的类型。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  title: DS.attr(<span class="string">'string'</span>),  <span class="comment">//  字符串类型</span></span><br><span class="line">  flag: DS.attr(<span class="string">'boolean'</span>), <span class="comment">//  布尔类型</span></span><br><span class="line">  timestamp: DS.attr(<span class="string">'number'</span>),  <span class="comment">//  数字类型</span></span><br><span class="line">  birth: DS.attr(‘date’)  <span class="comment">//日期类型</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>模型也声明了它与其他对象的关系。例如，一个<code>Order</code>可以有许多<code>LineItems</code>，一个<code>LineItem</code>可以属于一个特定的<code>Order</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">App.Order = DS.Model.extend(&#123;</span><br><span class="line">  lineItems: DS.hasMany(<span class="string">'lineItem'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">App.LineItem = DS.Model.extend(&#123;</span><br><span class="line">  order: DS.belongsTo(<span class="string">'order'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这个与数据的表之间的关系是一样的。</p>
+<h4 id="3，record"><a href="#3，record" class="headerlink" title="3，record"></a>3，record</h4><p><code>record</code>是<code>model</code>的实例，包含了从服务器端加载而来的数据。应用本身也可以创建新的记录，以及将新记录保存到服务器端。</p>
+<p>记录由以下两个属性来唯一标识：</p>
+<ol>
+<li>模型类型</li>
+<li>一个全局唯一的ID</li>
+</ol>
+<p>比如前面的实例<code>article</code>就是通过<code>find</code>方获取。获取到的结果就是一个<code>record</code>。</p>
+<h4 id="4，adapter"><a href="#4，adapter" class="headerlink" title="4，adapter"></a>4，adapter</h4><p>适配器是一个了解特定的服务器后端的对象，主要负责将对记录(<code>record</code>)的请求和变更转换为正确的向服务器端的请求调用。</p>
+<p>例如，如果应用需要一个<code>ID</code>为<code>1</code>的<code>person</code>记录，那么Ember Data是如何加载这个对象的呢？是通过HTTP，还是Websocket？如果是通过HTTP，那么URL会是<code>/person/1</code>，还是<code>/resources/people/1</code>呢？</p>
+<p>适配器负责处理所有类似的问题。无论何时，当应用需要从<code>store</code>中获取一个没有被缓存的记录时，应用就会访问适配器来获取这个记录。如果改变了一个记录并准备保存改变时，<code>store</code>会将记录传递给适配器，然后由适配器负责将数据发送给服务器端，并确认保存是否成功。</p>
+<h4 id="5，cache"><a href="#5，cache" class="headerlink" title="5，cache"></a>5，cache</h4><p><code>store</code>会自动缓存记录。如果一个记录已经被加载了，那么再次访问它的时候，会返回同一个对象实例。这样大大减少了与服务器端的往返通信，使得应用可以更快的为用户渲染所需的UI。</p>
+<p>例如，应用第一次从<code>store</code>中获取一个<code>ID</code>为<code>1</code>的<code>person</code>记录时，将会从服务器端获取对象的数据。</p>
+<p>但是，当应用再次需要<code>ID</code>为<code>1</code>的<code>person</code>记录时，<code>store</code>会发现这个记录已经获取到了，并且缓存了该记录。那么<code>store</code>就不会再向服务器端发送请求去获取记录的数据，而是直接返回第一次时候获取到并构造出来的记录。这个特性使得不论请求这个记录多少次，都会返回同一个记录对象，这也被称为<code>Identity Map</code>（标识符映射）。</p>
+<p>使用标识符映射非常重要，因为这样确保了在一个UI上对一个记录的修改会自动传播到UI其他使用到该记录的UI。同时这意味着你无须手动去保持对象的同步，只需要使用<code>ID</code>来获取应用已经获取到的记录就可以了。</p>
+<h2 id="3，架构简介"><a href="#3，架构简介" class="headerlink" title="3，架构简介"></a>3，架构简介</h2><p>应用第一次从<code>store</code>获取一个记录时，<code>store</code>会发现本地缓存并不存在一份被请求的记录的副本，这时会向适配器发请求。适配器将从持久层去获取记录；通常情况下，持久层都是一个HTTP服务，通过该服务可以获取到记录的一个<code>JSON</code>表示。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/17022136_qwjL.png" alt="架构图1"></p>
+<p>如上图所示，适配器有时不能立即返回请求的记录。这时适配器必须向服务器发起一个异步的请求，当请求完成加载后，才能通过返回的数据创建的记录。</p>
+<p>由于存在这样的异步性，<code>store</code>会从<code>find()</code>方法立即返回一个承诺（<code>promise</code>）。另外，所有请求需要<code>store</code>与适配器发生交互的话，都会返回承诺。<br>一旦发给服务器端的请求返回被请求记录的JSON数据时，适配器会履行承诺，并将<code>JSON</code>传递给<code>store</code>。<br><code>store</code>这时就获取到了<code>JSON</code>，并使用<code>JSON</code>数据完成记录的初始化，并使用新加载的记录来履行已经返回到应用的承诺。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/17022136_iwjw.png" alt="架构图2"></p>
+<p>下面将介绍一下当<code>store</code>已经缓存了请求的记录时会发生什么。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/17022136_Xy17.png" alt="架构图3"></p>
+<p>在这种情形下，<code>store</code>已经缓存了请求的记录，不过它也将返回一个承诺，不同的是，这个承诺将会立即使用缓存的记录来履行。此时，由于<code>store</code>已经有了一份拷贝，所以不需要向适配器去请求（没有与服务器发生交互）。</p>
+<p><code>models</code>、<code>records</code>、<code>adapters</code>、<code>store</code>是你必须要理解的概念。这是Ember Data最核心的东西。</p>
+<p>有关于上述的概念将会在后面的文章一一用代码演示。理解了本文<code>model</code>这一整章的内容都不是问题了！！！<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/models/查询记录/" rel="next" title="查询记录">
+          查询记录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/models/新建、更新、删除记录/" rel="prev" title="新建、更新、删除记录">
+            新建、更新、删除记录
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1，简介"><span class="toc-text">1，简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2，核心概念"><span class="toc-text">2，核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，store"><span class="toc-text">1，store</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2，model"><span class="toc-text">2，model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3，record"><span class="toc-text">3，record</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4，adapter"><span class="toc-text">4，adapter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5，cache"><span class="toc-text">5，cache</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3，架构简介"><span class="toc-text">3，架构简介</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'model简介', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

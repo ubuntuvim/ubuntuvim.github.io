@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Component,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>组件定义 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        组件定义
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Component/">Ember-Component</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 5 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>不得不说，<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>的更新是在是太快了！！本教程还没写到一半就又更新到<code>v2.1.0</code>了！！！！不过为了统一还是使用官方<code>v2.0.0</code>的参考文档！！</p>
+<p>从本篇开始进入新的一章——组件。这一章将用6篇文章介绍Ember的组件，从它的定义开始知道它的使用方式，我将为你一一解答！</p>
+<p><strong>准备工作</strong>：<br>    本章代码统一访问项目chapter4_components下，项目代码可以在以下网址上找到：<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">my_emberjs_code</a>。</p>
+<p>与之前的文章一样，项目仍然是使用<a href="http://www.ember-cli.com/user-guide" target="_blank" rel="noopener">Ember CLI</a>命令创建项目和各个组件文件。</p>
+<p>创建项目并测试运行，首先执行如下四条命令，最后在浏览器执行：<a href="http://localhost:4200/" target="_blank" rel="noopener">http://localhost:4200/</a>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ember new chapter4_components</span><br><span class="line">cd chapter4_components</span><br><span class="line">ember server</span><br></pre></td></tr></table></figure>
+<p>如果你能在页面上看到<strong>Welcome to Ember</strong>说明项目框架搭建成功！那么你可以继续往下看了，否则想搭建好项目再往下学习~~~</p>
+<h2 id="1，自定义组件及使用"><a href="#1，自定义组件及使用" class="headerlink" title="1，自定义组件及使用"></a>1，自定义组件及使用</h2><p>创建组件方法很简单：<code>ember generate component my-component-name</code>。一条命令即可，但是需要注意的是组件的名称必须要包含中划线<code>-</code>，比如<code>blog-post</code>、<code>test-component</code>、<code>audio-player-controls</code>这种格式的命名是合法，但是<code>post</code>、<code>test</code>这种方式的命名是不合法的！其一是为了防止用户自定义的组件名与W3C规定的元素标签名重复；其二是为了确保<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>能自动检测到用户自定义的组件。</p>
+<p>下面定义一个组件，<code>ember g component blog-post</code>。<a href="http://www.ember-cli.com/user-guide/" target="_blank" rel="noopener">Ember CLI</a>会自动为你创建组件对应的的模板，执行这条命令之后你可以在<code>app/components</code>和<code>app/templates/components</code>下看到创建的文件。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/templates/components/blog-post.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"blog-post"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;yield&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>Edit title: &#123;&#123;input type="text" value=title&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>为了演示组件的使用需要做些准备工作：<br><code>ember g route index</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">	</span><br><span class="line">	model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		 <span class="keyword">return</span> [</span><br><span class="line">	    	&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">'Bower: dependencies and resolutions new'</span>, <span class="attr">body</span>: <span class="string">"In the bower.json file, I see 2 keys dependencies and resolutionsWhy is that so? I understand Bower has a flat dependency structure. So has it got anything to do with that ?"</span>, <span class="attr">category</span>: <span class="string">'java'</span> &#125;,</span><br><span class="line">	    	&#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">title</span>: <span class="string">'Highly Nested JSON Payload - hasMany error'</span>, <span class="attr">body</span>: <span class="string">"Welcome to the Ember.js discussion forum. We're running on the open source, Ember.js-powered Discourse forum software. They are also providing the hosting for us. Thanks guys! Please use this space for discussion abo⋯ read more"</span>, <span class="attr">category</span>: <span class="string">'php'</span> &#125;,</span><br><span class="line">	    	&#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">title</span>: <span class="string">'Passing a jwt to my REST adapter new '</span>, <span class="attr">body</span>: <span class="string">"This sets up a binding between the category query param in the URL, and the category property on controller:articles. In other words, once the articles route has been entered, any changes to the category query param in the URL will update the category property on controller:articles, and vice versa."</span>, <span class="attr">category</span>: <span class="string">'java'</span>&#125;</span><br><span class="line">	    ];</span><br><span class="line">	   </span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/index.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;#each model as |item|&#125;&#125;</span><br><span class="line">	<span class="comment">&lt;!-- 使用自定义的组件blog-post --&gt;</span></span><br><span class="line">	&#123;&#123;#blog-post title=item.title&#125;&#125;</span><br><span class="line">		&#123;&#123;item.body&#125;&#125;</span><br><span class="line">	&#123;&#123;/blog-post&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，使用了自定义的组件来显示数据。最后页面显示如下：</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/09021213_Yt69.png" alt></p>
+<p>看看生成的HTML代码：</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/09021213_TO7v.png" alt></p>
+<p>自定义的组件被渲染到了模板<code>index.hbs</code>使用<code>blog-post</code>的地方。并且自定义组件的HTML标签没有变化。<br>到这里大概应该知道怎么去使用组件了，至于它是怎么就渲染到了使用组件的地方，以及它是怎么渲染上去的。别急~~后面的文章会为你一一解答。</p>
+<p><strong>说明</strong>：默认情况下，自定义的组件会被渲染到<code>div</code>标签内，当然这种默认情况也是可以修改的，比较简单在此不过多介绍，请自行学习，网址：<a href="http://guides.emberjs.com/v2.0.0/components/customizing-a-components-element/" target="_blank" rel="noopener">customizing-a-components-element</a>。</p>
+<h3 id="2，自定义组件类"><a href="#2，自定义组件类" class="headerlink" title="2，自定义组件类"></a>2，自定义组件类</h3><p>用户自定义的组件类都需要继承<code>Ember.Component</code>类。</p>
+<p>通常情况下我们会把经常使用的模板片段封装成组件，只需要定义一次就可以在项目任何一个模板中使用，而且不需要编写任何的javascript代码。比如上述第一点“自定义组件及使用”中描述的一样。</p>
+<p>但是如果你想你的组件有特殊的行为，并且这些行为是默认组件类无法提供的（比如：改变包裹组件的标签、响应组件模板初始化某个状态等），那么此时你可以自定义组件类，但是要继承<code>Ember.Component</code>，如果你自定义的组件类没有继承这个类，你自定义的组件就很有可能会出现一些不可预知的问题。</p>
+<p><a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>所能识别的自定义组件类的名称是有规范的。比如，你定义了一个名为<code>blog-post</code>的组件，那么你的组件类的名称应该是<code>app/components/blog-post.js</code>。如果组件名为<code>audio-player-controls</code>那么对应的组件类名为<code>app/components/audio-player-controls.js</code>。即：组件类名与组件同名，这个是<code>v2.0</code>的命名方法，请区别就版本的<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>，旧版本的组件命名规则是驼峰式的命名规则。</p>
+<p>举个简单的例子，在第一点“自定义组件及使用”中讲过，组件默认会被渲染到<code>div</code>标签内，你可以在组件类中修改这个默认标签。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/components/blog-post.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Component.extend(&#123;</span><br><span class="line">	tagName: <span class="string">'nav'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这段代码修改了包裹组件的标签名，页面刷新后HTML代码如下：</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/09021213_GSHQ.png" alt></p>
+<p>可以看到组件的HTML代码被包含在<code>nav</code>标签内。</p>
+<h2 id="3，动态渲染组件"><a href="#3，动态渲染组件" class="headerlink" title="3，动态渲染组件"></a>3，动态渲染组件</h2><p>组件的动态渲染与Java的多态有点相似。<code>{{component}}</code>助手会延迟到运行时才决定使用那个组件渲染页面。当程序需要根据数据不同渲染不同组件的时，这种动态渲染就显得特别有用。可以使你的逻辑和试图分离开。</p>
+<p>那么要怎么使用呢？非常简单，只需要把组件名作为参数传递过去即可，比如：使用<code>{{component 'blog-post'}}</code>与<code>{{blog-post}}</code>结果是一致的。我们可以修改第一点“自定义组件及使用”实例中模板<code>index.hbs</code>的代码。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/index.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;#each model as |item|&#125;&#125;</span><br><span class="line">	<span class="comment">&lt;!-- 使用自定义组件的另一种方式（动态渲染组件方式） --&gt;</span></span><br><span class="line">	&#123;&#123;component 'blog-post' title=item.title&#125;&#125;</span><br><span class="line">	&#123;&#123;item.body&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>页面刷新之后，可以看到结果是一样的。</p>
+<p>下面为读者演示如何根据数据不同渲染不同的组件。</p>
+<p>按照惯例，先做好准备工作，使用Ember CLI命令创建2个不同的组件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ember g component foo-component</span><br><span class="line">ember g component bar-component</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/components/bar-component.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello from bar<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;post.body&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>为何能用<code>post</code>获取数据，因为在使用组件的地方传递了参数。在模板<code>index.hbs</code>中可以看到。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/components/foo-component.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello from foo<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;post.body&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>修改显示的数据，注意数据的最后增加一个属性<code>pn</code>，<code>pn</code>的值就是组件的名称。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">	model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		 <span class="keyword">return</span> [</span><br><span class="line">	    	&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">'Bower: dependencies and resolutions new'</span>, <span class="attr">body</span>: <span class="string">"In the bower.json file, I see 2 keys dependencies and resolutionsWhy is that so? I understand Bower has a flat dependency structure. So has it got anything to do with that ?"</span>, <span class="attr">pn</span>: <span class="string">'bar-component'</span> &#125;,</span><br><span class="line">	    	&#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">title</span>: <span class="string">'Highly Nested JSON Payload - hasMany error'</span>, <span class="attr">body</span>: <span class="string">"Welcome to the Ember.js discussion forum. We're running on the open source, Ember.js-powered Discourse forum software. They are also providing the hosting for us. Thanks guys! Please use this space for discussion abo⋯ read more"</span>, <span class="attr">pn</span>: <span class="string">'foo-component'</span> &#125;,</span><br><span class="line">	    	&#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">title</span>: <span class="string">'Passing a jwt to my REST adapter new '</span>, <span class="attr">body</span>: <span class="string">"This sets up a binding between the category query param in the URL, and the category property on controller:articles. In other words, once the articles route has been entered, any changes to the category query param in the URL will update the category property on controller:articles, and vice versa."</span>, <span class="attr">pn</span>: <span class="string">'bar-component'</span>&#125;</span><br><span class="line">	    ];</span><br><span class="line">	   </span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>修改调用组件的模板<code>index.hbs</code>。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/index.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;#each model as |item|&#125;&#125;</span><br><span class="line">	<span class="comment">&lt;!-- 根据组件名渲染不同的组件，第一个参数是组件名，第二个参数为传递到组件上显示的数据 --&gt;</span></span><br><span class="line">	&#123;&#123;component item.pn post=item&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模板编译之后会得到形如<code>{{component foo-component post}}</code>的组件调用代码。</p>
+<p>相信你应该了解了动态渲染组件是怎么回事了！自己动手试试吧~~</p>
+<p>到此组件的定义与使用介绍完毕了，不知道你有没有学会呢？如果你有疑问请给我留言或者直接看官方教程学习。</p>
+<p><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对<br>我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/components/组件小节/" rel="next" title="组件小节">
+          组件小节
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/components/处理事件/" rel="prev" title="处理事件">
+            处理事件
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1，自定义组件及使用"><span class="toc-text">1，自定义组件及使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2，自定义组件类"><span class="toc-text">2，自定义组件类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3，动态渲染组件"><span class="toc-text">3，动态渲染组件</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '组件定义', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

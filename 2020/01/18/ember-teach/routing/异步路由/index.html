@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Route,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>异步路由 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        异步路由
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Route/">Ember-Route</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 5 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>本文将为你介绍路由的高级特性，这些高级特性可以用于处理项目复杂的异步逻辑。</p>
+<blockquote>
+<p>关于单词promises，直译是承诺，但是个人觉得还是使用原文吧。读起来顺畅点。</p>
+</blockquote>
+<h3 id="1，promises（承诺）"><a href="#1，promises（承诺）" class="headerlink" title="1，promises（承诺）"></a>1，promises（承诺）</h3><p><a href="http://emberjs.com/" target="_blank" rel="noopener">Ember</a>的路由处理异步逻辑的方式是使用<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>。简而言之，<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>就是一个表示最终结果的对象。这个对象可能是<code>fulfill</code>（成功获取最终结果）也可能是<code>reject</code>（获取结果失败）。为了获取这个最终值，或者是处理<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>失败的情况都可以使用<code>then</code>方法，这个方法接受两个可选的回调方法，一个是<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>获取结果成功时执行，一个是<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>获取结果失败时执行。如果promises获取结果成功那么获取到的结果将作为成功时执行的回调方法的参数。相反的，如果<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>获取结果失败，那么最终结果（失败的原因）将作为<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>失败时执行的回调方法的参数。比如下面的代码段，当<a href="http://liubin.org/promises-book/" target="_blank" rel="noopener">Promise</a>获取结果成功时执行<code>fulfill</code>回调，否则执行<code>reject</code>回调方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/promises.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">	beforeModel: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'execute model()'</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> promise = <span class="keyword">this</span>.fetchTheAnswer();</span><br><span class="line">		promise.then(<span class="keyword">this</span>.fulfill, <span class="keyword">this</span>.reject);</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">//  promises获取结果成功时执行</span></span><br><span class="line">	fulfill: <span class="function"><span class="keyword">function</span>(<span class="params">answer</span>) </span>&#123;</span><br><span class="line">	  <span class="built_in">console</span>.log(<span class="string">"The answer is "</span> + answer);</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="comment">//  promises获取结果失败时执行</span></span><br><span class="line">	reject: <span class="function"><span class="keyword">function</span>(<span class="params">reason</span>) </span>&#123;</span><br><span class="line">	  <span class="built_in">console</span>.log(<span class="string">"Couldn't get the answer! Reason: "</span> + reason);</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	fetchTheAnswer: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">fulfill, reject</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> fulfill(<span class="string">'success'</span>);  <span class="comment">//如果返回的是fulfill则表示promises执行成功</span></span><br><span class="line">			<span class="comment">//return reject('failure');  //如果返回的是reject则表示promises执行失败</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>上述这段代码就是promises的一个简单例子，promises的<code>then</code>方法会根据promises的获取到的最终结果执行不同的回调，如果promises获取结果成功则执行<code>fulfill</code>回调，否则执行<code>reject</code>回调。</p>
+<p>promises的强大之处不仅仅如此，promises还可以以链的形式执行多个<code>then</code>方法，每个then方法都会根据promises的结果执行<code>fulfill</code>或者<code>reject</code>回调。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/promises.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">	beforeModel() &#123;</span><br><span class="line">		<span class="comment">// 注意Jquery的Ajax方法返回的也是promises</span></span><br><span class="line">		<span class="keyword">var</span> promiese = Ember.$.getJSON(<span class="string">'https://api.github.com/repos/emberjs/ember.js/pulls'</span>);</span><br><span class="line">		promiese.then(<span class="keyword">this</span>.fetchPhotoOfUsers)</span><br><span class="line">				.then(<span class="keyword">this</span>.applyInstagramFilters)</span><br><span class="line">				.then(<span class="keyword">this</span>.uploadThrendyPhotAlbum)</span><br><span class="line">				.then(<span class="keyword">this</span>.displaySuccessMessage, <span class="keyword">this</span>.handleErrors);</span><br><span class="line"></span><br><span class="line">	&#125;,</span><br><span class="line">	fetchPhotoOfUsers: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'fetchPhotoOfUsers'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	applyInstagramFilters: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'applyInstagramFilters'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	uploadThrendyPhotAlbum: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'uploadThrendyPhotAlbum'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	displaySuccessMessage: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'displaySuccessMessage'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	handleErrors: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'handleErrors'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这种情况下会打印什么结果呢？？</p>
+<p>在前的文章已经使用过<code>Ember.$.getJSON(&#39;https://api.github.com/repos/emberjs/ember.js/pulls&#39;);</code>获取数据，是可以成功获取数据的。所以promises获取结果成功，应该执行的是获取成功对应的回调方法。浏览器控制台打印结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fetchPhotoOfUsers</span><br><span class="line">applyInstagramFilters</span><br><span class="line">uploadThrendyPhotAlbum</span><br><span class="line">displaySuccessMessage</span><br></pre></td></tr></table></figure></p>
+<p>但是如果我把<code>Ember.$.getJSON(&#39;https://api.github.com/repos/emberjs/ember.js/pulls&#39;);</code>改成一个不存在的URL，比如改成<code>Ember.$.getJSON(&#39;https://www.my-example.com&#39;);</code>执行代码之后控制台会提示出<code>404</code>错误，并且打印’handleErrors’。说明promises获取结果失败，执行了then里的reject回调。为了验证每个回调的<code>reject</code>方法再修改修改代码，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/promises.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">	beforeModel() &#123;</span><br><span class="line">		<span class="comment">// 注意Jquery的Ajax方法返回的也是promises</span></span><br><span class="line">		<span class="keyword">var</span> promiese = Ember.$.getJSON(<span class="string">' https://www.my-example.com '</span>);</span><br><span class="line">		promiese.then(<span class="keyword">this</span>.fetchPhotoOfUsers, <span class="keyword">this</span>.fetchPhotoOfUsersError)</span><br><span class="line">				.then(<span class="keyword">this</span>.applyInstagramFilters, <span class="keyword">this</span>.applyInstagramFiltersError)</span><br><span class="line">				.then(<span class="keyword">this</span>.uploadThrendyPhotAlbum, <span class="keyword">this</span>.uploadThrendyPhotAlbumError)</span><br><span class="line">				.then(<span class="keyword">this</span>.displaySuccessMessage, <span class="keyword">this</span>.handleErrors);</span><br><span class="line"></span><br><span class="line">	&#125;,</span><br><span class="line">	fetchPhotoOfUsers: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'fetchPhotoOfUsers'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	fetchPhotoOfUsersError: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'fetchPhotoOfUsersError'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	applyInstagramFilters: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'applyInstagramFilters'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	applyInstagramFiltersError: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'applyInstagramFiltersError'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	uploadThrendyPhotAlbum: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'uploadThrendyPhotAlbum'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	uploadThrendyPhotAlbumError: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'uploadThrendyPhotAlbumError'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	displaySuccessMessage: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'displaySuccessMessage'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	handleErrors: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'handleErrors'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><img src="/content/images/2016/03/77.png" alt="result"></p>
+<p>由于promises获取结果失败故执行其对应的失败处理回调。这种调用方式有点类似于<code>try⋯⋯catch⋯⋯</code>，但是本文的重点不是讲解promises，更多有关promises的教材请读者自行Google或者百度吧，在这里介绍一个js库<a href="https://github.com/tildeio/rsvp.js" target="_blank" rel="noopener">RSVP.js</a>，它可以让你更加简单的组织你的promises代码。<br>在附上几个promises的参考网站：</p>
+<ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></li>
+<li><a href="http://liubin.github.io/promises-book/" target="_blank" rel="noopener">http://liubin.github.io/promises-book/</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2014/02/es6-javascript-promise-%E6%84%9F%E6%80%A7%E8%AE%A4%E7%9F%A5/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2014/02/es6-javascript-promise-%E6%84%9F%E6%80%A7%E8%AE%A4%E7%9F%A5/</a></li>
+</ol>
+<p>极力推荐看第二个网站的教材，这个网站可以直接运行js代码。还有源码和PDF。非常棒！！！</p>
+<p>###2，promises中止路由</p>
+<p>当发生路由切换的时候，在<code>model</code>回调（或者是<code>beforeMode</code>、<code>afterModel</code>）中获取的数据集会在切换完成的时候传递到路由对应的<code>controller</code>上。如果model回调返回的是一个普通的对象（非promises对象）或者是数组，路由的切换会立即执行，但是如果model回调返回的是一个promises对象，路由的切换将会被中止直到promises执行完成（返回<code>fulfill</code>或者是<code>reject</code>）才切换。</p>
+<p><strong>路由器任务任何一个包含了then方法的对象都是一个promises。</strong></p>
+<p>如果promises获取结果成功则会从被中止的地方继续往下执行或者是执行路由链的下一个路由，如果promises返回的依然是一个promises，那么路由依然再次被中止，等待promises的返回结果，如果是<code>fulfill</code>则从被中止的地方开始往下执行，以此类推，一直到获取到<code>model</code>回调所需的结果。</p>
+<p>传递到每个路由的<code>setupController</code>回调的值都是promises返回<code>fulfill</code>时的值。如下代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/tardy.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">	model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Ember.RSVP.Promise(<span class="function"><span class="keyword">function</span>(<span class="params">resolver</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'start......'</span>);</span><br><span class="line">			Ember.run.later(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				resolver(&#123; <span class="attr">msg</span>: <span class="string">'Hold your horses!!'</span>&#125;);</span><br><span class="line">			&#125;, <span class="number">3000</span>);</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;,</span><br><span class="line">	setupController(controller, model) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'msg = '</span> + model.msg);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>一进入路由<code>tardy</code>，<code>model</code>回调就会被执行并且返回一个延迟3秒才执行的promises，在这期间路由会中止。当promises返回<code>fulfill</code>路由会继续执行，并将<code>model</code>返回的对象传递到<code>setupController</code>方法中。</p>
+<p>虽然这种中止的行为会影响响应速度但是这是非常必要的，特别是你需要保证<code>model</code>回调得到的数据是完整的数据的时候。</p>
+<h3 id="3，promises获取结果失败"><a href="#3，promises获取结果失败" class="headerlink" title="3，promises获取结果失败"></a>3，promises获取结果失败</h3><p>文章前面主要讲的是promises获取结果成功的情况，但是如果是获取结果失败的情况又是怎么处理呢？？</p>
+<p>默认情况下，如果<code>model</code>回调返回的是一个promises对象并且此promises返回的是<code>reject</code>，此时路由切换将被终止，也不会渲染对应的模板，并且会在浏览器控制台打印出错误日志信息，例子<code>promises-ret-reject.js</code>会演示。</p>
+<p>你可以自定义处理出错信息的逻辑，只要在<code>route</code>的<code>actions</code>哈希对象中配置即可。当promises获取结果失败的默认情况下会执行一个名为<code>error</code>的处理事件，否则会执行你自定义的处理事件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/promises-ret-reject.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">	model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//  为了测试效果直接返回reject</span></span><br><span class="line">		<span class="keyword">return</span> Ember.RSVP.reject(<span class="string">'FAIL'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	actions: &#123;</span><br><span class="line">		error: <span class="function"><span class="keyword">function</span>(<span class="params">reason</span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'reason = '</span> + reason);</span><br><span class="line"></span><br><span class="line">			<span class="comment">//  如果你想让这个事件冒泡到顶级路由application只需要返回true</span></span><br><span class="line">			<span class="comment">//  return true;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果没有不允许事件冒泡打印结果仅仅是<code>reason = FAIL</code>。并且页面上什么都不显示（不渲染模板）。</p>
+<p>如果去掉最后一行代码的注释，让事件冒泡到顶级路由<code>application</code>中的默认方法处理，那么结果又是什么呢？</p>
+<p><img src="/content/images/2016/03/78.png" alt="result"></p>
+<p>结果是先打印了处理结果，然后再打印出提示错误的日志信息。并且页面上什么都不显示（不渲染模板）。</p>
+<h3 id="4，恢复promises的reject状态"><a href="#4，恢复promises的reject状态" class="headerlink" title="4，恢复promises的reject状态"></a>4，恢复promises的reject状态</h3><p>在前面第3点介绍了promises获取结果失败时会终止路由转换，但是如果<code>model</code>返回是一个promises链呢？程序能到就这样死了！！！显然是不行的，做法是把model回调中返回的<code>reject</code>转换为<code>fulfill</code>。这样就可以继续执行或者切换到下一个路由了！<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/funky.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">	model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> promises = Ember.RSVP.reject(<span class="string">'FAIL'</span>);</span><br><span class="line">		<span class="comment">//  由于已经知道promises返回的是reject，所以fulfill回调直接写为null</span></span><br><span class="line">		<span class="keyword">return</span> promises.then(<span class="literal">null</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> &#123; <span class="attr">msg</span>: <span class="string">'恢复reject状态：其实就是在reject回调中继续执行fulfill状态下的代码。'</span> &#125;;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>为了验证<code>model</code>回调的结果，直接在模板上显示<code>msg</code>。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/templates/funky.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">funky模板</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">&#123;&#123;model.msg&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行URL：<a href="http://localhost:4200/funky" target="_blank" rel="noopener">http://localhost:4200/funky</a>，得到如下结果：</p>
+<p><img src="/content/images/2016/03/79.png" alt="result"></p>
+<p><em>说明model回调进入到reject回调中，并正确返回了预期结果。</em></p>
+<p>到本文为止有关路由这以整章的内容也全部介绍完毕了！！难点在<a href="http://blog.ddlisting.com/2016/03/29/ember-js-ru-men-zhi-nan-zhi-er-shi-liu-cha-xun-can-shu/" target="_blank" rel="noopener">Ember.js 入门指南之二十六查询参数</a>这一篇。能力有限没有把这篇的内容讲明白，暂时搁下待日后完善！</p>
+<p>总的来说路由主要职责是获取数据，根据逻辑处理数据。有点MVC架构的dao层，专门做数据的CRUD操作。当然另外一个重要职责就是路由的切换，以及切换的时候参数的设置问题。</p>
+<p>结束完这一章下一章接着介绍组件（Component）。</p>
+<p><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/routing/查询参数/" rel="next" title="查询参数">
+          查询参数
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/routing/指定与路由关联的模型/" rel="prev" title="指定与路由关联的模型">
+            指定与路由关联的模型
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，promises（承诺）"><span class="toc-text">1，promises（承诺）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，promises获取结果失败"><span class="toc-text">3，promises获取结果失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，恢复promises的reject状态"><span class="toc-text">4，恢复promises的reject状态</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '异步路由', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

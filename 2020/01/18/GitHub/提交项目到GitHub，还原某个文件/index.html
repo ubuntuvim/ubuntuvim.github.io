@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Git,Github,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>提交项目到GitHub，还原某个文件 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        提交项目到GitHub，还原某个文件
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 2 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>新创建到项目如何提交到<a href="http://github.com/ubuntuvim" target="_blank" rel="noopener">GitHub</a>呢？</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>本地需要安装<a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>。安装方法请参考官网文档，或者谷歌搜搜！！</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建本地项目</li>
+<li>执行git命令初始化项目为git项目，命令：<code>git init</code>。</li>
+<li>修改项目下到文件<code>.gitignore</code>，如果没用请自己创建，在文件内执行那些文件不需要提交到GitHub。比如<code>node_modules</code>已经项目独有到配置可以不提交。</li>
+<li>链接远程git地址，执行命令：<code>git remote add origin https://github.com/ubuntuvim/mongodb_proj.git</code>。</li>
+<li>更新，在提交之前最好先更新，命令为：<code>git fetch</code>和<code>git merge origin/master</code></li>
+<li>提交项目文件到本地git库，命令：<code>git add *</code>然后再执行<code>git commit -am &quot;备注信息&quot;</code>。<code>-a</code>表示提交所有，如果只是提交某个文件可以不加这个参数，但是要制定提交到文件是那个，比如：`git commit app.js -m “备注信息”</li>
+<li>同步到远程到GitHub，命令：<code>git push origin master</code>。如果是第一次提交需要配置用户名和邮箱，配置命令为：<code>git config --global user.name &quot;ubuntuvim&quot;</code>和<code>git config --global user.email &quot;1527254027@qq.com&quot;</code>，根据自己注册github账户的用户名和邮箱配置。</li>
+<li>指定用户名和邮箱之后再次执行<code>git push origin master</code>，过程中需要输入你在GitHub的账户和密码，请输入自己注册用户名和密码。 </li>
+<li>等待提交完成，然后到GitHub的响应项目下，可以查看到刚刚提交的内容。</li>
+</ol>
+<h2 id="提交到github方法二"><a href="#提交到github方法二" class="headerlink" title="提交到github方法二"></a>提交到github方法二</h2><h3 id="⋯or-create-a-new-repository-on-the-command-line"><a href="#⋯or-create-a-new-repository-on-the-command-line" class="headerlink" title="⋯or create a new repository on the command line"></a>⋯or create a new repository on the command line</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# ddlisting&quot; &gt;&gt; README.md</span><br><span class="line">git init  //如果是ember cli命令创建的项目不需要执行这步</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https://github.com/ubuntuvim/ddlisting.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="⋯or-push-an-existing-repository-from-the-command-line-强制提交，覆盖原有文件"><a href="#⋯or-push-an-existing-repository-from-the-command-line-强制提交，覆盖原有文件" class="headerlink" title="⋯or push an existing repository from the command line(强制提交，覆盖原有文件)"></a>⋯or push an existing repository from the command line(强制提交，覆盖原有文件)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/ubuntuvim/ddlisting.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="git还原文件"><a href="#git还原文件" class="headerlink" title="git还原文件"></a>git还原文件</h2><p>如果你想还原某个文件到最新版本可以使用如下命令实现。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout fileName</span><br></pre></td></tr></table></figure></p>
+<p>还原一个版本的修改，必须提供一个具体的Git版本号，例如’git revert bbaf6fb5060b4875b18ff9ff637ce118256d6f20’，可以先通过git log查询版本号的哈希值。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert 版本号</span><br></pre></td></tr></table></figure></p>
+<h2 id="强制更新覆盖本地文件"><a href="#强制更新覆盖本地文件" class="headerlink" title="强制更新覆盖本地文件"></a>强制更新覆盖本地文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all  </span><br><span class="line">git reset --hard origin/master </span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>如果出现问题可以使用下面的命令强制更新远程库到本地。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull https://github.com/ubuntuvim/ddlisting.git master</span><br></pre></td></tr></table></figure></p>
+<h2 id="克隆某个分支"><a href="#克隆某个分支" class="headerlink" title="克隆某个分支"></a>克隆某个分支</h2><p>下面的命令是克隆分支master<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b master http://xxxx/xx.git</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/GitHub/在github上同步一个分支(fork)/" rel="next" title="在github上同步一个分支(fork)">
+          在github上同步一个分支(fork)
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/GitHub/Git的错误error Failed connect to github.com443;解决办法/" rel="prev" title="Git的错误error Failed connect to github.com443;解决办法">
+            Git的错误error Failed connect to github.com443;解决办法
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前提"><span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交到github方法二"><span class="toc-text">提交到github方法二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#⋯or-create-a-new-repository-on-the-command-line"><span class="toc-text">⋯or create a new repository on the command line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⋯or-push-an-existing-repository-from-the-command-line-强制提交，覆盖原有文件"><span class="toc-text">⋯or push an existing repository from the command line(强制提交，覆盖原有文件)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git还原文件"><span class="toc-text">git还原文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强制更新覆盖本地文件"><span class="toc-text">强制更新覆盖本地文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#克隆某个分支"><span class="toc-text">克隆某个分支</span></a>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '提交项目到GitHub，还原某个文件', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="架构,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>架构漫谈学习笔记 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        架构漫谈学习笔记
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 1 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>摘抄出处：<a href="http://www.infoq.com/cn/articles/an-informal-discussion-on-architecture-part06?utm_campaign=rightbar_v2&amp;utm_source=infoq&amp;utm_medium=articles_link&amp;utm_content=link_text" target="_blank" rel="noopener">软件架构到底是要解决什么问题？</a></p>
+<h3 id="一、虚拟化业务需要完成这些事情："><a href="#一、虚拟化业务需要完成这些事情：" class="headerlink" title="一、虚拟化业务需要完成这些事情："></a>一、虚拟化业务需要完成这些事情：</h3><ol>
+<li>学习业务知识，认识业务所涉及的stakeholders的核心利益述求，以及业务是如何分拆满足这些利益述求，并通过怎样的组织架构完成整个组织的核心利益的，以及业务运作的流程，涉及到哪些概念，有哪些权利和责任等。</li>
+<li>通过对业务知识的学习，针对这些概念所对应的权利和责任以及组织架构，对业务进行建模，把并把建模的结果用编程语言实现。这是业务的模型，通常是现实生活中利益斗争的结果，是非常稳定的。</li>
+<li>学习业务所参与的stakeholder是如何和业务打交道，并完成每个人的权利和义务的，并通过编程语言，结合业务模型实现这些打交道的沟通通道。这部分是变化最频繁的，属于组合关系。明白了这一点，对后续的实现非常有帮助。</li>
+<li>如何把业务运行的结果，持久化，并通过合适的手段把持久化后的数据，在合适的时间合适的地点加载出来。这部分和基础设施有关，变化可能也会比较频繁。</li>
+</ol>
+<h3 id="二、代码如何运营，需要完成这些事情："><a href="#二、代码如何运营，需要完成这些事情：" class="headerlink" title="二、代码如何运营，需要完成这些事情："></a>二、代码如何运营，需要完成这些事情：</h3><ol>
+<li>需要多少硬件设备来满足访问的需求？</li>
+<li>代码要分成多少个组件部署到哪些硬件设备上？</li>
+<li>这些代码如何通过硬件设备互相连接在一起？</li>
+<li>当业务流量增大到超过一台机器的容量时，软件能否支持通过部署到新增机器上的方式，扩大对业务的支撑？</li>
+<li>当某台或某些硬件设备失效时，软件是否仍然能够不影响用户的访问。</li>
+<li>软件运行产生的数据，能否支持提取出来并加以分析，为下一轮的业务决策提供依据。</li>
+</ol>
+<h3 id="三、如果分成不同的角色来完成这些事情，就需要一个组织架构来组织代码的编写和运营，需要做哪些事情："><a href="#三、如果分成不同的角色来完成这些事情，就需要一个组织架构来组织代码的编写和运营，需要做哪些事情：" class="headerlink" title="三、如果分成不同的角色来完成这些事情，就需要一个组织架构来组织代码的编写和运营，需要做哪些事情："></a>三、如果分成不同的角色来完成这些事情，就需要一个组织架构来组织代码的编写和运营，需要做哪些事情：</h3><ol>
+<li>完成一和二所列的这些事情，需要哪些角色参与？</li>
+<li>这些事情基本都需要顺序的发生，如何保证信息在不同角色的传递过程中不会有损失？ </li>
+<li>或者说即使有损失，也能快速纠正？</li>
+<li>这些角色之间是如何协调，才能共同完成虚拟化业务的需求？</li>
+</ol>
+<h3 id="其他摘录"><a href="#其他摘录" class="headerlink" title="其他摘录"></a>其他摘录</h3><p>摘录文章<a href="http://www.infoq.com/cn/articles/an-informal-discussion-on-architecture-part09?utm_campaign=rightbar_v2&amp;utm_source=infoq&amp;utm_medium=articles_link&amp;utm_content=link_text" target="_blank" rel="noopener">理清技术、业务和架构的关系</a></p>
+<p>在软件设计开发的过程中经常会看到，很多所谓的架构讨论实际上只是在讨论某种技术。在很多人的概念里面，架构和技术实际上是等同的。<strong>学会了几种技术，就认为自己是架构师了，甚至是学习的技术越多，就觉得自己的水平越高。这样实际上是对自己很不负责任的。要知道任何技术都是为了解决某种问题而存在的，学会了技术，并不代表自己能够解决问题，这一点非常的重要。</strong>学会的技术的多少，所带来的差别只是自己解决问题的手段多了罢了。但是手段多了就一定是好事吗？ 很多时候，学习的技术越多，越不知道采用哪种技术好，所谓“乱花渐欲迷人眼”。</p>
+<p>还有另一种很普遍的观点：技术人普遍看不起业务，认为技术更高端，而业务太低端，并且业务往往喜欢给技术挖坑。业务则觉得技术眼光高，但是实际解决不了问题，总是理解有偏差，但是又无可奈何，因为自己不会。</p>
+<p>一般是先有技术，才会有架构。</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/junit-jacoco/spring-junit-jacoco代码覆盖测试/" rel="next" title="spring-junit-jacoco代码覆盖测试">
+          spring-junit-jacoco代码覆盖测试
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/架构/架构漫谈/" rel="prev" title="架构漫谈">
+            架构漫谈
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、虚拟化业务需要完成这些事情："><span class="toc-text">一、虚拟化业务需要完成这些事情：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、代码如何运营，需要完成这些事情："><span class="toc-text">二、代码如何运营，需要完成这些事情：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、如果分成不同的角色来完成这些事情，就需要一个组织架构来组织代码的编写和运营，需要做哪些事情："><span class="toc-text">三、如果分成不同的角色来完成这些事情，就需要一个组织架构来组织代码的编写和运营，需要做哪些事情：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他摘录"><span class="toc-text">其他摘录</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '架构漫谈学习笔记', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

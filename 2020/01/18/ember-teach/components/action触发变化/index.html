@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Component,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>action触发变化 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        action触发变化
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Component/">Ember-Component</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 2 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>组件就像一个相对独立的盒子。在前面的文章中介绍过组件是怎么通过属性传递参数，并且这个属性值你可以在模板或者js代码中获取。</p>
+<p>但是到目前为止还没介绍过子组件从父组件中获取数组，在<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>应用中组件之间的通信是通过<code>actions</code>实现的。</p>
+<p>跟着下面的步骤来，创建一个组件之间通信的示例。</p>
+<h4 id="1，创建组件"><a href="#1，创建组件" class="headerlink" title="1，创建组件"></a>1，创建组件</h4><p>创建组件的方法不用我多说，直接使用<a href="http://ember-cli.com/user-guide" target="_blank" rel="noopener">Ember CLI</a>命令创建即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ember g component button-with-confirmation</span><br><span class="line">ember g component user-profile</span><br><span class="line">ember g route button-with-confirmation-route</span><br></pre></td></tr></table></figure></p>
+<p>为了测试方便多增加了一个路由。</p>
+<p>下面是组件<code>user-profile</code>的定义，调用组件<code>button-with-confirmation</code>，那么此时<code>user-profile</code>作为父组件，<code>button-with-confirmation</code>作为子组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/temlates/components/user-profile.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;button-with-confirmation text="Click OK to delete your account"&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2，在组件类中添加action"><a href="#2，在组件类中添加action" class="headerlink" title="2，在组件类中添加action"></a>2，在组件类中添加action</h4><p>要想<code>action</code>能执行需要作如下两步：</p>
+<ul>
+<li>在父组件中定义好需要处理的动作（action）。在这个例子中父组件的动作是要删除用户账号并发送一个提示信息到另一个组件。</li>
+<li>在子组件中，判断发生什么事件并发出通知信息。在这个例子中当用户点击“确认”按钮之后触发一个外部的动作（删除账户或者发送提示信息）。</li>
+</ul>
+<p>下面是实现代码：</p>
+<p><strong>实现父组件动作（action）</strong></p>
+<p>在父组件中，定义好当用户点击“确认”之后触发的动作。在这个例子中的动作（<code>action</code>）是先找出用户账号再删除。</p>
+<p>在<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>应用中，每个组件都有一个名为<code>actions</code>的属性。这个属性值是函数，是可以被用户或者子组件执行的函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/components/user-profile.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Component.extend(&#123;</span><br><span class="line">	actions: &#123;</span><br><span class="line">		userDidDeleteAccount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(“userDidDeleteAccount⋯”);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>现在已经实现了父组件逻辑，但是并没有告诉Ember这个动作什么时候触发，下一步将实现这个功能。</p>
+<p><strong>实现子组件动作（action）</strong></p>
+<p>这一步我们将实现当用户点击“确定”之后触发事件的逻辑。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/components/button-with-confirmation.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Component.extend(&#123;</span><br><span class="line">	tagName: <span class="string">'button'</span>,</span><br><span class="line">	click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (confirm(<span class="keyword">this</span>.get(<span class="string">'text'</span>))) &#123;</span><br><span class="line">			<span class="comment">// 在这里获取父组件的事件（数据）并触发</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="3，传递action到组件中"><a href="#3，传递action到组件中" class="headerlink" title="3，传递action到组件中"></a>3，传递action到组件中</h4><p>现在我们在<code>user-profile</code>组件中使用<code>onConfirm()</code>方法触发组件<code>button-with-confirmation</code>类中的<code>userDidDeleteAccount</code>事件。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/temlates/components/user-profile.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;#button-with-confirmation text="Click OK to delete your account" onConfirm=(action 'userDidDeleteAccount')&#125;&#125;</span><br><span class="line">执行userDidDeleteAccount方法</span><br><span class="line">&#123;&#123;/button-with-confirmation&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码的意思是告诉父组件，<code>userDidDeleteAccount</code>方法会通过<code>onConfirm</code>方法执行。</p>
+<p>现在你可以在子组件中使用<code>onConfirm</code>方法执行父组件的动作。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/components/button-with-confirmation.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Component.extend(&#123;</span><br><span class="line">	tagName: <span class="string">'button'</span>,</span><br><span class="line">	click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (confirm(<span class="keyword">this</span>.get(<span class="string">'text'</span>))) &#123;</span><br><span class="line">			<span class="comment">// 在父组件中触发动作</span></span><br><span class="line">			<span class="keyword">this</span>.get(<span class="string">'onConfirm'</span>)();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><code>this.gete(“onConfirm”)</code>从父组件返回一个值<code>onConfirm</code>，然后与<code>()</code>组合成了一个个方法<code>onConfirm()</code>。</p>
+<p>在模板<code>button-with-confirmation-route.hbs</code>中调用组件。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/temlates/button-with-confirmation-route.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;user-profile&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://static.oschina.net/uploads/img/201510/14010229_OrI7.png" alt="结果"></p>
+<p>点击这个<code>button</code>，会触发事件。弹出对话框。再点击“确认”后执行方法<code>userDidDeleteAccount</code>，可以看到浏览器控制台输出了<strong>userDidDeleteAccount⋯</strong>，未点击“确认”前或者点击“取消”不会输出这个信息，说明不执行这个方法<code>userDidDeleteAccount</code>。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/14010230_bkQw.png" alt="结果截图"></p>
+<p><img src="http://static.oschina.net/uploads/img/201510/14010230_Cc6W.png" alt="结果截图"></p>
+<p>像普通属性，<code>actions</code>可以组件的一个属性，唯一的区别是，属性设置为一个函数，它知道如何触发的行为。</p>
+<p>在组件的<code>actions</code>属性中定义的方法，允许你决定怎么去处理一个事件，有助于模块化，提高组件重用率。</p>
+<p>到此，组件这一章节的内容全部介绍完毕了，不知道你看懂了多少？如果有疑问请给我留言一起交流学习，获取是直接去官网学习官方教程。</p>
+<p><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/components/处理事件/" rel="next" title="处理事件">
+          处理事件
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/components/包裹内容/" rel="prev" title="包裹内容">
+            包裹内容
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，创建组件"><span class="toc-text">1，创建组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2，在组件类中添加action"><span class="toc-text">2，在组件类中添加action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3，传递action到组件中"><span class="toc-text">3，传递action到组件中</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'action触发变化', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

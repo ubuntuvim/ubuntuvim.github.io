@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Object,">
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>第一章对象模型小结 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        第一章对象模型小结
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:37.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Object/">Ember-Object</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 1 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>本篇之前的6篇文章都是第一章的内容，这一章节主要介绍了<code>Ember</code>的对象模型。其中最重要的是计算属性和枚举这2章，非常之重要，一定要好好掌握！</p>
+<p>下一章节是第二章模板，<code>Ember</code>应用使用的模板库是<code>handlebar</code>（<a href="http://handlebarsjs.com/" target="_blank" rel="noopener">点我查看更多有关此模板的介绍</a>），这个模板库功能强大，有丰富的标签，包括判断标签<code>if</code>，<code>if else</code>,以及遍历标签<code>each</code>等等。</p>
+<p>另外，从下一章开始，我们不再自己手动搭建<code>Ember</code>项目，也不用手动引入<code>Ember</code>库文件，而是使用官方提供的一个非常棒的构建工具——<code>Ember CLI</code>，要使用这个构建工具首先安装并配置。下面两个地址是介绍安装与配置的（推荐第一个）：</p>
+<ol>
+<li><a href="http://www.ember-cli.com/user-guide/" target="_blank" rel="noopener">http://www.ember-cli.com/user-guide/</a></li>
+<li><a href="https://guides.emberjs.com/v2.4.0/getting-started/" target="_blank" rel="noopener">https://guides.emberjs.com/v2.4.0/getting-started/</a></li>
+</ol>
+<p><code>Ember CLI</code>是一个非常重要的构建工具，它可以为开发者创建文件并初始化部分固定的代码。它还可以运行、打包、测试<code>Ember</code>应用。</p>
+<p>下面使用这个工具创建一个新的<code>Ember</code>项目<code>chapter2_tempalte</code>。</p>
+<ol>
+<li>新建项目命令:<br><code>ember new chapter2_tempalte</code></li>
+<li>进入项目目录并启动服务器：<br><code>cd chapter2_template</code><br><br><code>ember server</code></li>
+<li>运行项目，浏览器打开这个链接：<a href="http://localhost:4200/" target="_blank" rel="noopener">http://localhost:4200/</a>，如果你能看到如下信息说明安装成功了。</li>
+</ol>
+<p><img src="/content/images/2016/03/14-1.png" alt="run proj"></p>
+<p>如果项目创建成功你可以继续往下看，如果项目创建不成功请重试，因为后面的代码都基于这个项目来演示的！！！对于创建项目后得到的每个文件和目录请你看官网文档，上面会有非常详细的说明。为了方便懒人在此就简单介绍其中几个很重要的文件和目录：</p>
+<p><table border="1" style="border: 1px solid #ccc !important;"><br>  <tr bgcolor="#ccc" style="border: 1px solid #ccc !important;"></tr></table></p>
+<p><td>目录</td> <td>说明</td><br></p>
+<p><tr></tr></p>
+<p><td>app </td>   <td>项目的主要代码都是放在这个目录下</td><br></p>
+<p><tr></tr></p>
+<p><td>app/controllers</td>    <td>存放C（MVC）层（controller）的代码文件</td><br></p>
+<p><tr></tr></p>
+<p><td>app/helpers</td>    <td>    存放自定义的helper代码文件</td><br></p>
+<p><tr></tr></p>
+<p><td>app/models  </td>   <td>存放M（MVC）层（model）代码文件</td><br></p>
+<p><tr></tr></p>
+<p><td>app/routes</td> <td>    存放项目路由设置代码文件</td><br></p>
+<p><tr></tr></p>
+<p><td>app/templates   </td>   <td>存放项目模板代码文件</td><br></p>
+<p><tr></tr></p>
+<p><td>bower_components</td>   <td>存放使用bower命令安装的第三方插件库</td><br></p>
+<p><tr></tr></p>
+<p><td>bower.json</td> <td>保存使用bower命令安装的第三方库的配置</td><br></p>
+<p><tr></tr></p>
+<p><td>package.json</td>   <td>保存使用npm命令安装的第三方库的配置</td><br></p>
+<p><tr></tr></p>
+<p><td>node_modules</td>   <td>存放使用npm命令安装的第三方插件库</td><br></p>
+<p><tr></tr></p>
+<p><td>ember-cli-build.js  </td>   <td>设置构建规范，引入第三方库</td><br></p>
+<p><tr></tr></p>
+<p><td>dist    </td>   <td>存放编译打包后的项目文件，可以直接复制到服务器中运行</td><br><br><br>上述这些文件或者目录是后面开发过程经常会用到，相对其他目录和文件来说这些目录和文件是很重要的，只要你是使用<code>ember new appName</code>命令生成的项目都会包括上述这些目录或者文件。其中最重要的就是<code>app</code>目录下的文件、目录了，从<code>app</code>里面的目录结果你就可以很清楚的看到这是个<code>MVC</code>框架的项目。<code>Ember</code>之所以能找到<code>controller</code>对应的<code>template</code>也是根据目录和文件的名称找到的，<code>Ember</code>是有自己的一套命名规则的，如果你想了解更多有关信息请移步<a href="http://ember-cli.com/user-guide/#folder-layout" target="_blank" rel="noopener">folder-layout</a>。</p>
+<p>搭好环境之后开始我们的<code>Ember</code>之旅吧！！！<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/01/18/ember-teach/The Object Model/类的定义、初始化、继承/" rel="next" title="类的定义、初始化、继承">
+          类的定义、初始化、继承
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2020/01/18/ember-teach/The Object Model/类的扩展/" rel="prev" title="类的扩展">
+            类的扩展
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: '第一章对象模型小结', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>
