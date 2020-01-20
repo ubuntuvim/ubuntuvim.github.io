@@ -30,6 +30,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -55,6 +57,12 @@
       <url>{$ (url + post.path) | uriencode $}</url>
       <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
       
+      
+        <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+        </tags>
       
     </entry>
     
@@ -84,8 +92,6 @@
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
-            
         </tags>
       
     </entry>
@@ -96,14 +102,6 @@
       <url>{$ (url + post.path) | uriencode $}</url>
       <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
       
-      
-        <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
-            
-        </tags>
       
     </entry>
     
@@ -115,8 +113,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -135,6 +131,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -147,6 +145,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -184,6 +184,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -248,7 +250,18 @@
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>{$ post.title $}</title>
+      <link href="{$ (url + post.path) | uriencode $}"/>
+      <url>{$ (url + post.path) | uriencode $}</url>
+      <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
+      
+      
+        <tags>
             
             <tag> {$ tag.name $} </tag>
             
@@ -264,9 +277,13 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -279,6 +296,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -303,6 +322,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -352,8 +373,6 @@
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
-            
         </tags>
       
     </entry>
@@ -499,8 +518,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -1729,6 +1746,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -1933,8 +1952,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -1986,10 +2003,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2007,6 +2020,10 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2024,6 +2041,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2054,8 +2073,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
