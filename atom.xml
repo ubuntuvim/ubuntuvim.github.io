@@ -233,8 +233,6 @@
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
-    
   </entry>
   
   <entry>
@@ -278,6 +276,8 @@
     
     </summary>
     
+    
+      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
