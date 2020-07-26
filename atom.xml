@@ -187,27 +187,6 @@
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-  </entry>
-  
-  <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
-    
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        {$ short_content $}
-      
-    
-    </summary>
-    
-    
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
   </entry>
@@ -279,8 +258,6 @@
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
-    
   </entry>
   
   <entry>
@@ -352,6 +329,54 @@
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
+  </entry>
+  
+  <entry>
+    <title>{$ post.title $}</title>
+    <link href="{$ (url + post.path) | uriencode $}"/>
+    <id>{$ url + post.path $}</id>
+    <published>{$ post.date.toISOString() $}</published>
+    <updated>{$ post.updated.toISOString() $}</updated>
+    
+    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        {$ short_content $}
+      
+    
+    </summary>
+    
+    
+      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+  </entry>
+  
+  <entry>
+    <title>{$ post.title $}</title>
+    <link href="{$ (url + post.path) | uriencode $}"/>
+    <id>{$ url + post.path $}</id>
+    <published>{$ post.date.toISOString() $}</published>
+    <updated>{$ post.updated.toISOString() $}</updated>
+    
+    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        {$ short_content $}
+      
+    
+    </summary>
+    
+    
+      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
   </entry>
@@ -430,29 +455,6 @@
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
-    
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
-    
-  </entry>
-  
-  <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
-    
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        {$ short_content $}
-      
-    
-    </summary>
-    
     
       <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
