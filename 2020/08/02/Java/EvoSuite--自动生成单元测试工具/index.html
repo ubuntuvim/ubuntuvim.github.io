@@ -11,7 +11,7 @@
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Emberjs,javascript,">
+    <meta name="keywords" content="Java,">
   
 
   
@@ -19,7 +19,7 @@
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
-  <title>Ember.js适配器跨域请求问题 [ Keep Coding ]</title>
+  <title>EvoSuite--自动生成单元测试工具 [ Keep Coding ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -75,19 +75,19 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        Ember.js适配器跨域请求问题
+        EvoSuite--自动生成单元测试工具
       </h1>
       <span>
         
-        <time class="time" datetime="2020-01-18T14:50:36.000Z">
-        2020-01-18
+        <time class="time" datetime="2020-08-02T13:50:15.000Z">
+        2020-08-02
       </time>
         
       </span>
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -99,7 +99,8 @@
     </header>
 
     <div class="post-content">
-      <p>在适配器中重写如下方法可实现跨域。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ajaxOptions: <span class="function"><span class="keyword">function</span>(<span class="params">url, type, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hash = <span class="keyword">this</span>._super(url, type, options);</span><br><span class="line">    hash.dataType = <span class="string">"jsonp"</span>;</span><br><span class="line">    <span class="keyword">return</span> hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+      <p><a href="https://www.evosuite.org/" target="_blank" rel="noopener">EvoSuite</a>是一个非常强大的自动化生成单元测试用例的工具，并且是免费的。提供了IDE插件，可以直接继承到Idea或者是Eclipse上。通过一个菜单就可以生成类对应的但愿测试用例。非常方便，可以极大提高开发的测试用例编写效率。</p>
+<p>生成命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/apache-maven-3.6.1-mavenrep/bin/mvn  compile  evosuite:generate  -Dcores=1  -DmemoryInMB=1024  -DtimeInMinutesPerClass=2  -DspawnManagerPort=64645  -Dcuts=com.ubuntuvim.mybatis.entity.Payment  evosuite:export  -DtargetFolder=src/test/java</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -108,19 +109,14 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/Ember.js/Ember如何整合多说/" rel="next" title="Ember如何整合多说">
-          Ember如何整合多说
+          <a href="/2020/07/26/Spring/FactoryBean接口深入理解/" rel="next" title="FactoryBean接口深入理解">
+          FactoryBean接口深入理解
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/Ember.js/Ember.js插件/" rel="prev" title="Ember.js插件">
-            Ember.js插件
-          </a>
-          <span>〉</span>
-        
       </div>
     </div>
   
@@ -150,7 +146,7 @@
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: 'Ember.js适配器跨域请求问题', // 可选。默认为 location.href
+  id: 'EvoSuite--自动生成单元测试工具', // 可选。默认为 location.href
   owner: 'ubuntuvim',
   repo: 'ubuntuvim.github.io',
   oauth: {
