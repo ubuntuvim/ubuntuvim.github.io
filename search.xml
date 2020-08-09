@@ -143,6 +143,12 @@
       <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
       
       
+        <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+        </tags>
+      
     </entry>
     
     <entry>
@@ -153,6 +159,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -168,6 +176,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -183,6 +193,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -198,6 +210,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -230,8 +244,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -247,8 +259,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -281,10 +291,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -300,10 +306,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -319,6 +321,10 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -364,6 +370,10 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -379,10 +389,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -441,6 +447,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -453,9 +461,13 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -601,13 +613,9 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
-            
         </tags>
       
     </entry>
@@ -620,8 +628,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -1734,6 +1740,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -1882,8 +1890,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2059,6 +2065,10 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -2071,10 +2081,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
