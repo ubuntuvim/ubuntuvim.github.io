@@ -64,6 +64,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -159,8 +161,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -179,8 +179,6 @@
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
-            
         </tags>
       
     </entry>
@@ -193,8 +191,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -213,10 +209,6 @@
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
-            
         </tags>
       
     </entry>
@@ -232,6 +224,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -244,6 +238,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -262,6 +258,8 @@
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -291,9 +289,13 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -306,9 +308,13 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
+            <tag> {$ tag.name $} </tag>
+            
         </tags>
       
     </entry>
@@ -321,13 +327,9 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
-            <tag> {$ tag.name $} </tag>
-            
         </tags>
       
     </entry>
@@ -370,10 +372,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -389,6 +387,10 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -444,8 +446,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -461,10 +461,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -613,6 +609,10 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -628,6 +628,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -1735,8 +1737,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -1873,6 +1873,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2060,10 +2062,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2081,6 +2079,10 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2132,8 +2134,6 @@
       
       
         <tags>
-            
-            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
@@ -2164,6 +2164,8 @@
       
       
         <tags>
+            
+            <tag> {$ tag.name $} </tag>
             
             <tag> {$ tag.name $} </tag>
             
