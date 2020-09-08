@@ -1,506 +1,524 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{$ config.title $}</title>
+  <title>Keep Coding</title>
+  <icon>http://xcoding.tech/icon.png</icon>
+  <subtitle>一个专注一coding的网站。</subtitle>
+  <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
-  <subtitle>{$ config.subtitle $}</subtitle>
-  <link href="{$ feed_url | uriencode $}" rel="self"/>
-  
-  <link href="{$ url | uriencode $}"/>
-  <updated>{$ posts.first().updated.toISOString() $}</updated>
-  <id>{$ url $}</id>
+  <link href="http://xcoding.tech/"/>
+  <updated>2020-09-08T15:33:30.449Z</updated>
+  <id>http://xcoding.tech/</id>
   
   <author>
-    <name>{$ config.author $}</name>
+    <name>ubuntuvim</name>
     
   </author>
   
-  <generator uri="http://hexo.io/">Hexo</generator>
+  <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>Spring事务传播机制</title>
+    <link href="http://xcoding.tech/2020/09/08/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"/>
+    <id>http://xcoding.tech/2020/09/08/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/</id>
+    <published>2020-09-08T15:24:35.168Z</published>
+    <updated>2020-09-08T15:33:30.449Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;Spring事务传播设置有如下类型：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="Transactional" scheme="http://xcoding.tech/tags/Transactional/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>类成员属性、静态变量、静态块、普通块、构造方法的加载顺序</title>
+    <link href="http://xcoding.tech/2020/08/30/Java/%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E3%80%81%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E3%80%81%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/"/>
+    <id>http://xcoding.tech/2020/08/30/Java/%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E3%80%81%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E3%80%81%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/</id>
+    <published>2020-08-30T12:29:30.296Z</published>
+    <updated>2020-09-02T14:36:17.472Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;类成员属性、静态变量、静态块、普通块、构造方法的加载顺序。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>UML类图关系线</title>
+    <link href="http://xcoding.tech/2020/08/30/uml/%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB%E7%BA%BF/"/>
+    <id>http://xcoding.tech/2020/08/30/uml/%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB%E7%BA%BF/</id>
+    <published>2020-08-30T09:52:01.562Z</published>
+    <updated>2020-09-02T14:37:55.157Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h1 id=&quot;类图关系线&quot;&gt;&lt;a href=&quot;#类图关系线&quot; class=&quot;headerlink&quot; title=&quot;类图关系线&quot;&gt;&lt;/a&gt;类图关系线&lt;/h1&gt;&lt;h3 id=&quot;泛化关系（generalization）&quot;&gt;&lt;a</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="UML" scheme="http://xcoding.tech/tags/UML/"/>
+    
+    <category term="类图" scheme="http://xcoding.tech/tags/%E7%B1%BB%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>EvoSuite--自动生成单元测试工具</title>
+    <link href="http://xcoding.tech/2020/08/02/Java/EvoSuite--%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/"/>
+    <id>http://xcoding.tech/2020/08/02/Java/EvoSuite--%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</id>
+    <published>2020-08-02T13:50:15.000Z</published>
+    <updated>2020-08-08T15:30:01.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>FactoryBean接口深入理解</title>
+    <link href="http://xcoding.tech/2020/07/26/Spring/FactoryBean%E6%8E%A5%E5%8F%A3%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/"/>
+    <id>http://xcoding.tech/2020/07/26/Spring/FactoryBean%E6%8E%A5%E5%8F%A3%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/</id>
+    <published>2020-07-26T14:12:29.000Z</published>
+    <updated>2020-07-26T14:32:03.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;Spring提供的FactoryBean接口是一个非常强大而且常用的扩展，可以通过实现接口的&lt;code&gt;getObject()&lt;/code&gt;方法往Spring容器中注册bean。&lt;br&gt;但是这个接口有一些特殊，我们通过这个接口的实现类获取到并不是实现类本身而是&lt;code&gt;g</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>懒加载的几个疑问？？</title>
+    <link href="http://xcoding.tech/2020/07/17/Spring/Spring%E6%87%92%E5%8A%A0%E8%BD%BD%E9%AA%8C%E8%AF%81/"/>
+    <id>http://xcoding.tech/2020/07/17/Spring/Spring%E6%87%92%E5%8A%A0%E8%BD%BD%E9%AA%8C%E8%AF%81/</id>
+    <published>2020-07-17T13:17:01.000Z</published>
+    <updated>2020-07-18T09:46:51.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h2 id=&quot;懒加载的几个疑问？？&quot;&gt;&lt;a href=&quot;#懒加载的几个疑问？？&quot; class=&quot;headerlink&quot;</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>Spring Framework5.x</title>
+    <link href="http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/"/>
+    <id>http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/</id>
+    <published>2020-05-04T08:13:56.000Z</published>
+    <updated>2020-08-30T09:52:10.490Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Spring-Framework5-x&quot;&gt;&lt;a href=&quot;#Spring-Framework5-x&quot; class=&quot;headerlink&quot; title=&quot;Spring Framework5.x&quot;&gt;&lt;/a&gt;Spring Framework5.x&lt;/h1&gt;&lt;h3</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="SpringFramework" scheme="http://xcoding.tech/tags/SpringFramework/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>Java虚拟机</title>
+    <link href="http://xcoding.tech/2020/05/04/JVM/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <id>http://xcoding.tech/2020/05/04/JVM/%E8%99%9A%E6%8B%9F%E6%9C%BA/</id>
+    <published>2020-05-03T16:40:17.000Z</published>
+    <updated>2020-07-18T09:20:51.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;!-- START doctoc generated TOC please keep comment here to allow auto update --&gt;
+&lt;!-- DON&#39;T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="JVM" scheme="http://xcoding.tech/tags/JVM/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>Spring源码学习</title>
+    <link href="http://xcoding.tech/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://xcoding.tech/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</id>
+    <published>2020-04-19T09:44:52.000Z</published>
+    <updated>2020-04-19T15:12:06.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;以配置方式启动Spring容器，容器启动大概过程如下如：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/blog-image/spring/spring1.png&quot;</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>官方FAQ(非常重要)——idea插件开发</title>
+    <link href="http://xcoding.tech/2020/01/21/idea-plugin/%E5%AE%98%E6%96%B9FAQ(%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81)/"/>
+    <id>http://xcoding.tech/2020/01/21/idea-plugin/%E5%AE%98%E6%96%B9FAQ(%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81)/</id>
+    <published>2020-01-20T17:42:24.000Z</published>
+    <updated>2020-01-20T17:51:08.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Plugin-Development-FAQ&quot;&gt;&lt;a href=&quot;#Plugin-Development-FAQ&quot; class=&quot;headerlink&quot; title=&quot;Plugin Development FAQ&quot;&gt;&lt;/a&gt;Plugin Development</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="idea-plugin" scheme="http://xcoding.tech/tags/idea-plugin/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>环境搭建——idea插件开发</title>
+    <link href="http://xcoding.tech/2020/01/19/idea-plugin/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>http://xcoding.tech/2020/01/19/idea-plugin/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</id>
+    <published>2020-01-18T17:13:31.000Z</published>
+    <updated>2020-01-19T17:42:42.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h2 id=&quot;开发工具&quot;&gt;&lt;a href=&quot;#开发工具&quot; class=&quot;headerlink&quot; title=&quot;开发工具&quot;&gt;&lt;/a&gt;开发工具&lt;/h2&gt;&lt;p&gt;idea的插件肯定就是用idea。&lt;br&gt;下载社区版或者专业版都可以，链接：&lt;a</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="idea-plugin" scheme="http://xcoding.tech/tags/idea-plugin/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>Hello World</title>
+    <link href="http://xcoding.tech/2020/01/18/hello-world/"/>
+    <id>http://xcoding.tech/2020/01/18/hello-world/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="test" scheme="http://xcoding.tech/tags/test/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>xxx is not in the sudoers file.This incident will be reported.的解决方法</title>
+    <link href="http://xcoding.tech/2020/01/18/Linux/xxx%20is%20not%20in%20the%20sudoers%20file.This%20incident%20will%20be%20reported.%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://xcoding.tech/2020/01/18/Linux/xxx%20is%20not%20in%20the%20sudoers%20file.This%20incident%20will%20be%20reported.%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;1.切换到root用户下,怎么切换就不用说了吧,不会的自己百度去.&lt;/p&gt;
+&lt;p&gt;2.添加sudo文件的写权限,命令是:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="Linux" scheme="http://xcoding.tech/tags/Linux/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>增加用户并且授root权</title>
+    <link href="http://xcoding.tech/2020/01/18/Linux/%E5%A2%9E%E5%8A%A0%E7%94%A8%E6%88%B7%E5%B9%B6%E4%B8%94%E6%8E%88root%E6%9D%83/"/>
+    <id>http://xcoding.tech/2020/01/18/Linux/%E5%A2%9E%E5%8A%A0%E7%94%A8%E6%88%B7%E5%B9%B6%E4%B8%94%E6%8E%88root%E6%9D%83/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;新建的用户但是没有权限的，需要授权。授权命令如下：&lt;/p&gt;
+&lt;p&gt;root用户登录系统。&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="Linux" scheme="http://xcoding.tech/tags/Linux/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>Mac无法开机</title>
+    <link href="http://xcoding.tech/2020/01/18/Mac/Mac%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/"/>
+    <id>http://xcoding.tech/2020/01/18/Mac/Mac%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;有可能是电脑已经没有电了，充电再开机，或者是充电一会在开机&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果还是无法开机则尝试用组合键开机：option＋R＋command＋P＋电源键，按住几秒后可以开机了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;另外一种按键方法是：</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="Mac" scheme="http://xcoding.tech/tags/Mac/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>mac系统占用很大怎么办？</title>
+    <link href="http://xcoding.tech/2020/01/18/Mac/mac%E7%B3%BB%E7%BB%9F%E5%8D%A0%E7%94%A8%E5%BE%88%E5%A4%A7%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/"/>
+    <id>http://xcoding.tech/2020/01/18/Mac/mac%E7%B3%BB%E7%BB%9F%E5%8D%A0%E7%94%A8%E5%BE%88%E5%A4%A7%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-07-18T09:21:38.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h3 id=&quot;mac系统占用很大怎么办？&quot;&gt;&lt;a href=&quot;#mac系统占用很大怎么办？&quot; class=&quot;headerlink&quot;</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Mac" scheme="http://xcoding.tech/tags/Mac/"/>
+    
+    <category term="MacBook Pro" scheme="http://xcoding.tech/tags/MacBook-Pro/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>环境变量配置错误时临时解救办法</title>
+    <link href="http://xcoding.tech/2020/01/18/Mac/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%97%B6%E4%B8%B4%E6%97%B6%E8%A7%A3%E6%95%91%E5%8A%9E%E6%B3%95/"/>
+    <id>http://xcoding.tech/2020/01/18/Mac/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%97%B6%E4%B8%B4%E6%97%B6%E8%A7%A3%E6%95%91%E5%8A%9E%E6%B3%95/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;如果配置Mac环境变量时候不小心配置错误，使得无法使用系统命令时可以采用下面的方法解救。&lt;/p&gt;
+&lt;p&gt;1，在命令行中输入&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    
+    <category term="Mac" scheme="http://xcoding.tech/tags/Mac/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>创建npm插件</title>
+    <link href="http://xcoding.tech/2020/01/18/NodeJS/%E5%88%9B%E5%BB%BAnpm%E6%8F%92%E4%BB%B6/"/>
+    <id>http://xcoding.tech/2020/01/18/NodeJS/%E5%88%9B%E5%BB%BAnpm%E6%8F%92%E4%BB%B6/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;h6 id=&quot;在github创建一个项目，比如创建名为randomNickname的项目，&quot;&gt;&lt;a href=&quot;#在github创建一个项目，比如创建名为randomNickname的项目，&quot; class=&quot;headerlink&quot;</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="NodeJS" scheme="http://xcoding.tech/tags/NodeJS/"/>
+    
+    <category term="Npm" scheme="http://xcoding.tech/tags/Npm/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>SSL证书问题</title>
+    <link href="http://xcoding.tech/2020/01/18/Ruby/SSL%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/"/>
+    <id>http://xcoding.tech/2020/01/18/Ruby/SSL%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="Ruby" scheme="http://xcoding.tech/tags/Ruby/"/>
+    
+    <category term="SSL" scheme="http://xcoding.tech/tags/SSL/"/>
     
   </entry>
   
   <entry>
-    <title>{$ post.title $}</title>
-    <link href="{$ (url + post.path) | uriencode $}"/>
-    <id>{$ url + post.path $}</id>
-    <published>{$ post.date.toISOString() $}</published>
-    <updated>{$ post.updated.toISOString() $}</updated>
+    <title>express获取参数的方法</title>
+    <link href="http://xcoding.tech/2020/01/18/NodeJS/express%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://xcoding.tech/2020/01/18/NodeJS/express%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95/</id>
+    <published>2020-01-18T14:50:37.000Z</published>
+    <updated>2020-01-18T14:50:37.000Z</updated>
     
-    <content type="html"><![CDATA[{$ post.content | noControlChars | safe $}]]></content>
-    
-    <summary type="html">
     
       
       
-        {$ short_content $}
+        
+        
+    <summary type="html">&lt;p&gt;最近本人在学习开发NodeJs，使用到express框架，对于网上的学习资料甚少，因此本人会经常在开发中做一些总结。&lt;/p&gt;
+&lt;p&gt;express获取参数有三种方法：官网介绍如下&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+        
       
     
-    </summary>
     
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
     
-      <category term="{$ tag.name $}" scheme="{$ (url + tag.path) | uriencode $}"/>
+    <category term="NodeJS" scheme="http://xcoding.tech/tags/NodeJS/"/>
+    
+    <category term="Express" scheme="http://xcoding.tech/tags/Express/"/>
     
   </entry>
   
