@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Template,">
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Template," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Template/">Ember-Template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Template/" rel="tag">Ember-Template</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -104,24 +105,28 @@
 <p>创建一个模板命令<code>ember g template application</code></p>
 <p>由于这个模板在创建项目的时候就已经有了，所以会提示你是否覆盖原来的文件，你可以选择覆盖或者不覆盖都行。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/application.hbs --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Kittens<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">Kittens are the cutest!!</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>：<font color="red">代码中的第一句注释的内容表明了这个文件的位置已经文件名称，后面的代码片段也会采用这种方式标注。如果没有特别的说明第一句代码都是注释文件的路径及其名称。</font></p>
+
+<p><strong>注意</strong>：<font color='red'>代码中的第一句注释的内容表明了这个文件的位置已经文件名称，后面的代码片段也会采用这种方式标注。如果没有特别的说明第一句代码都是注释文件的路径及其名称。</font></p>
 <p>上述就是一个模板，非常简单的模板，只有一个h1和p标签，当你保存这个文件的时候Ember CLI会自动帮你刷新页面，不需要你手动去刷新！此时你的浏览器页面应该会看到如下信息：</p>
 <p><img src="/content/images/2016/03/15.png" alt="run result"></p>
-<p>那么恭喜你，模板定义成功了，至于为什么执行<a href="http://localhost:4200" target="_blank" rel="noopener">http://localhost:4200</a>就直接显示到这里等你慢慢学到<code>controller</code>和<code>route</code>的时候自然会明白，你就当<code>application.hbs</code>是一个默认的首页，这样你应该明白了吧！</p>
+<p>那么恭喜你，模板定义成功了，至于为什么执行<a target="_blank" rel="noopener" href="http://localhost:4200/">http://localhost:4200</a>就直接显示到这里等你慢慢学到<code>controller</code>和<code>route</code>的时候自然会明白，你就当<code>application.hbs</code>是一个默认的首页，这样你应该明白了吧！</p>
 <h3 id="handlbars表达式"><a href="#handlbars表达式" class="headerlink" title="handlbars表达式"></a>handlbars表达式</h3><p>每一个模板都会有一个与之关联的<code>controller</code>类、<code>route</code>类、<code>model</code>类（当然这些类是不是必须有的）。这就是模板能显示表达式的值的原因，你可以在<code>controller</code>类中设置模板中表达式显示的值，就像<code>java web</code>开发中在<code>servlet</code>或者<code>Action</code>调用<code>request.setAttribute()</code>方法设置某个属性一样。比如下面的模板代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/application.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 这个是默认的模板，Ember会根据命名的规则自动找到 controllers/application 对应的模板是templates/application.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"title"</span>&gt;</span>Welcome to Ember<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Ember的属性自动更新：如果属性在controller层改变了，页面会自动刷新显示最新的值，太强大了！！！ --&gt;</span></span><br><span class="line"></span><br><span class="line">Hello, <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>!</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">My email is <span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;&#123;email&#125;&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/application.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 这个是默认的模板，Ember会根据命名的规则自动找到 controllers/application 对应的模板是templates/application.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;title&quot;</span>&gt;</span>Welcome to Ember<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Ember的属性自动更新：如果属性在controller层改变了，页面会自动刷新显示最新的值，太强大了！！！ --&gt;</span></span><br><span class="line"></span><br><span class="line">Hello, <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>!</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">My email is <span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;&#123;email&#125;&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>下面我们创建一个controller。这次我们用Ember CLI的命令创建： ember generate controller application，这句命令表示会创建一个controller并且名称是application，然后我们会得到如下几个文件：</p>
 <ol>
 <li><code>app/controllers/application.js</code>   –<code>controller</code>本身</li>
 <li><code>tests/unit/controllers/application-test.js</code>   –<code>controller</code>对应的单元测试文件</li>
 </ol>
 <p>打开你的文件目录，是不是可以在<code>app/controllers</code>下面看到了！<br>现在为了演示表达式我们在<code>controller</code>里添加一些代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controllers/application.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember from <span class="string">'ember'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Ember会根据命名规则自动找到templates/application.hbs这个模板，</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type</span> &#123;hash&#125; 需要设置的hash对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">export <span class="keyword">default</span> Ember.Controller.extend(&#123;</span><br><span class="line">    <span class="comment">//  设置两个属性</span></span><br><span class="line">    firstName: <span class="string">'chen'</span>,</span><br><span class="line">    lastName: <span class="string">'ubuntuvim'</span>,</span><br><span class="line">    email: <span class="string">'chendequanroob@gmail.com'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/controllers/application.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember from <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Ember会根据命名规则自动找到templates/application.hbs这个模板，</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type</span> &#123;hash&#125; 需要设置的hash对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">export <span class="keyword">default</span> Ember.Controller.extend(&#123;</span><br><span class="line">    <span class="comment">//  设置两个属性</span></span><br><span class="line">    firstName: <span class="string">&#x27;chen&#x27;</span>,</span><br><span class="line">    lastName: <span class="string">&#x27;ubuntuvim&#x27;</span>,</span><br><span class="line">    email: <span class="string">&#x27;chendequanroob@gmail.com&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <p>然后修改显示的模板如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/application.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 这个是默认的模板，Ember会根据命名的规则自动找到 controllers/application 对应的模板是templates/application.hbs --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"title"</span>&gt;</span>Welcome to Ember<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Ember的属性自动更新：如果属性在controller层改变了，页面会自动刷新显示最新的值，太强大了！！！ --&gt;</span></span><br><span class="line">Hello, <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>!</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">My email is <span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;&#123;email&#125;&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/application.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 这个是默认的模板，Ember会根据命名的规则自动找到 controllers/application 对应的模板是templates/application.hbs --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;title&quot;</span>&gt;</span>Welcome to Ember<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Ember的属性自动更新：如果属性在controller层改变了，页面会自动刷新显示最新的值，太强大了！！！ --&gt;</span></span><br><span class="line">Hello, <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>!</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">My email is <span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;&#123;email&#125;&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>保存，然后页面会自动刷新（<code>Ember CLI</code>会自动检测文件是否改变，然后重新编译项目），我们可以看到在<code>controller</code>设置的值，可以直接在模板上显示了。</p>
 <p><img src="/content/images/2016/03/16.png" alt="run result"></p>
-<p>这个就是表达式的绑定，后面你会学习到更多更有趣也更复杂的<code>handlebasr</code>表达式。<br>随着应用程序的规模不断扩大，会有更多的模板和与之关联的控制器。并且有时候一个模板还可以对应这多个控制器。也就是说模板上表达式的值可能有多个<code>controller</code>控制。<br><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+<p>这个就是表达式的绑定，后面你会学习到更多更有趣也更复杂的<code>handlebasr</code>表达式。<br>随着应用程序的规模不断扩大，会有更多的模板和与之关联的控制器。并且有时候一个模板还可以对应这多个控制器。也就是说模板上表达式的值可能有多个<code>controller</code>控制。<br><br><br>博文完整代码放在<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/my_emberjs_code">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
 
     </div>
 
@@ -130,7 +135,7 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/ember-teach/templetes/action helper/" rel="next" title="action helper">
+          <a href="/2020/01/18/ember-teach/templetes/action%20helper/" rel="next" title="action helper">
           action helper
           </a>
         
@@ -138,8 +143,8 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/ember-teach/templetes/handlebars属性绑定/" rel="prev" title="handlebars属性绑定">
-            handlebars属性绑定
+          <a href="/2020/01/18/ember-teach/routing/%E8%B7%AF%E7%94%B1%E9%87%8D%E5%AE%9A%E5%90%91/" rel="prev" title="路由重定向">
+            路由重定向
           </a>
           <span>〉</span>
         
@@ -151,7 +156,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板定义"><span class="toc-text">模板定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#handlbars表达式"><span class="toc-text">handlbars表达式</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%AE%9A%E4%B9%89"><span class="toc-text">模板定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#handlbars%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">handlbars表达式</span></a></li></ol>
   </div>
 
 
@@ -161,7 +166,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

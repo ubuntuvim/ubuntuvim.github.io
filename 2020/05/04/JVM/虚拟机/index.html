@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Java,JVM,">
+    <meta name="keywords" content="Java,JVM," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -95,13 +96,13 @@
       <span id="busuanzi_value_page_pv"></span> 点击
     </span>
       <span class="slash">/</span>
-      <span class="read">阅读耗时 7 分钟</span>
+      <span class="read">阅读耗时 6 分钟</span>
     </header>
 
     <div class="post-content">
       <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-<p><strong>Table of Contents</strong>  <em>generated with <a href="https://github.com/thlorenz/doctoc" target="_blank" rel="noopener">DocToc</a></em></p>
+<p><strong>Table of Contents</strong>  <em>generated with <a target="_blank" rel="noopener" href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
 <ul>
 <li><a href="#jvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84-vs-java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-vs-java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B">JVM内存结构 VS Java内存模型 VS Java对象模型</a><ul>
 <li><a href="#jvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84">JVM内存结构</a><ul>
@@ -178,18 +179,20 @@
 <li><a href="#java-8-%E4%BB%8E%E6%B0%B8%E4%B9%85%E4%BB%A3permgen%E5%88%B0%E5%85%83%E7%A9%BA%E9%97%B4metaspace">Java 8: 从永久代（PermGen）到元空间（Metaspace）</a></li>
 </ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-<h1 id="JVM内存结构-VS-Java内存模型-VS-Java对象模型"><a href="#JVM内存结构-VS-Java内存模型-VS-Java对象模型" class="headerlink" title="JVM内存结构 VS Java内存模型 VS Java对象模型"></a>JVM内存结构 VS Java内存模型 VS Java对象模型</h1><h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p>Java代码是要运行在虚拟机上的，而虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域，这些区域都有各自的用途，其中有些区域随着虚拟机进程的启动而存在。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-5.jpg" alt></p>
-<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>概述：较小的内存空间，为当前线程执行的字节码的行号指示器<br><br>作用：通过改变计数器的值来指定下一条需要执行的字节码指令，来恢复中断前程序运行的位置<br><br>特点：</p>
+
+
+<h1 id="JVM内存结构-VS-Java内存模型-VS-Java对象模型"><a href="#JVM内存结构-VS-Java内存模型-VS-Java对象模型" class="headerlink" title="JVM内存结构 VS Java内存模型 VS Java对象模型"></a>JVM内存结构 VS Java内存模型 VS Java对象模型</h1><h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p>Java代码是要运行在虚拟机上的，而虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域，这些区域都有各自的用途，其中有些区域随着虚拟机进程的启动而存在。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-5.jpg"></p>
+<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>概述：较小的内存空间，为当前线程执行的字节码的行号指示器</br><br>作用：通过改变计数器的值来指定下一条需要执行的字节码指令，来恢复中断前程序运行的位置</br><br>特点：</p>
 <ol>
 <li>线程私有化，每个线程都有独立的程序计数器   </li>
 <li>无内存溢出</li>
 </ol>
-<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>概述：每个方法从调用直到执行的过程，对应着一个栈帧在虚拟机栈的入栈和出栈的过程<br><br>作用：每个方法执行都创建一个“栈帧”来存储局部变量表、操作数栈、动态链接、方法出口等信息<br><br>特点：</p>
+<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>概述：每个方法从调用直到执行的过程，对应着一个栈帧在虚拟机栈的入栈和出栈的过程</br><br>作用：每个方法执行都创建一个“栈帧”来存储局部变量表、操作数栈、动态链接、方法出口等信息</br><br>特点：</p>
 <ol>
 <li>线程私有化   </li>
 <li>生命周期与线程执行结束相同</li>
 </ol>
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>创建时间：JVM启动时创建该区域<br><br>占用空间：Java虚拟机管理内存最大的一块区域<br><br>作用：用于存放对象实例及数组（所有new的对象）<br></p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>创建时间：JVM启动时创建该区域</br><br>占用空间：Java虚拟机管理内存最大的一块区域</br><br>作用：用于存放对象实例及数组（所有new的对象）</br></p>
 <p>特点：</p>
 <ol>
 <li>垃圾收集器作用该区域，回收不使用的对象的内存空间</li>
@@ -198,10 +201,10 @@
 </ol>
 <h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>作用：用于存储类信息、常量、静态变量、是各个线程共享的内存区域</p>
 <h2 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h2><p>Java内存模型是根据英文Java Memory Model（JMM）翻译过来的。其实JMM并不像JVM内存结构一样是真实存在的。他只是一个抽象的概念，JMM是和多线程相关的，这个规范定义了一个线程对共享变量的写入时对另一个线程是可见的。</p>
-<p>在JMM中，我们把多个线程间通信的共享内存称之为主内存，而在并发编程中多个线程都维护了一个自己的本地内存（这是个抽象概念），其中保存的数据是主内存中的数据拷贝。而JMM主要是控制本地内存和主内存之间的数据交互的。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-6.jpg" alt></p>
+<p>在JMM中，我们把多个线程间通信的共享内存称之为主内存，而在并发编程中多个线程都维护了一个自己的本地内存（这是个抽象概念），其中保存的数据是主内存中的数据拷贝。而JMM主要是控制本地内存和主内存之间的数据交互的。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-6.jpg"></p>
 <h2 id="Java对象模型"><a href="#Java对象模型" class="headerlink" title="Java对象模型"></a>Java对象模型</h2><p>Java是一种面向对象的语言，而Java对象在JVM中的存储也是有一定的结构的。而这个关于Java对象自身的存储模型称之为Java对象模型。</p>
 <p>每一个Java类，在被JVM加载的时候，JVM会给这个类创建一个instanceKlass，保存在方法区，用来在JVM层表示该Java类。当我们在Java代码中，使用new创建一个对象的时候，JVM会创建一个instanceOopDesc对象，这个对象中包含了对象头以及实例数据。</p>
-<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-7.jpg" alt></p>
+<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-7.jpg"></p>
 <h2 id="三者区别"><a href="#三者区别" class="headerlink" title="三者区别"></a>三者区别</h2><ol>
 <li>JVM内存结构，和Java虚拟机的运行时区域有关。</li>
 <li>Java内存模型，和Java的并发编程有关。</li>
@@ -277,7 +280,8 @@
 <li>JNI方法中的局部变量或者参数，这两种对象可以作为root</li>
 </ol>
 <p>例子：下述的Something和Apple都可以作为root对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> AClass&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Something;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Apple;</span><br><span class="line">   <span class="string">''</span><span class="string">''</span><span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> AClass&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Something;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Apple;</span><br><span class="line">   <span class="string">&#x27;&#x27;</span><span class="string">&#x27;&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p> Java方法的参数和方法中的局部变量，可以作为root.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Aclass&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Object A)</span></span>&#123;</span><br><span class="line">    ObjectB b = <span class="keyword">new</span> ObjectB; </span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="新生代转移到老年代的触发条件"><a href="#新生代转移到老年代的触发条件" class="headerlink" title="新生代转移到老年代的触发条件"></a>新生代转移到老年代的触发条件</h2><ol>
@@ -287,7 +291,7 @@
 <li>动态年龄判断 ，大于等于某个年龄的对象超过了survivor空间一半 ，大于等于某个年龄的对象直接进入老年代</li>
 </ol>
 <h2 id="G1和CMS的区别"><a href="#G1和CMS的区别" class="headerlink" title="G1和CMS的区别"></a>G1和CMS的区别</h2><ol>
-<li>G1同时回收老年代和年轻代，而CMS只能回收老年代，需要配合一个年轻代收集器。另外G1的分代更多是逻辑上的概念，G1将内存分成多个等大小的region，Eden/ Survivor/Old分别是一部分region的逻辑集合，物理上内存地址并不连续。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-8.jpg" alt></li>
+<li>G1同时回收老年代和年轻代，而CMS只能回收老年代，需要配合一个年轻代收集器。另外G1的分代更多是逻辑上的概念，G1将内存分成多个等大小的region，Eden/ Survivor/Old分别是一部分region的逻辑集合，物理上内存地址并不连续。<br><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-8.jpg"></li>
 <li>CMS在old gc的时候会回收整个Old区，对G1来说没有old gc的概念，而是区分Fully young gc和Mixed gc，前者对应年轻代的垃圾回收，后者混合了年轻代和部分老年代的收集，因此每次收集肯定会回收年轻代，老年代根据内存情况可以不回收或者回收部分或者全部(这种情况应该是可能出现)。</li>
 </ol>
 <h1 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h1><h2 id="双亲委派模型中有哪些方法。用户如何自定义类加载器-。怎么打破双亲委托机制"><a href="#双亲委派模型中有哪些方法。用户如何自定义类加载器-。怎么打破双亲委托机制" class="headerlink" title="双亲委派模型中有哪些方法。用户如何自定义类加载器 。怎么打破双亲委托机制"></a>双亲委派模型中有哪些方法。用户如何自定义类加载器 。怎么打破双亲委托机制</h2><ol>
@@ -383,7 +387,7 @@
 <li>一次性全部将字节码转换为JVM可执行的指令，叫编译</li>
 </ol>
 <h2 id="JIT-编译过程"><a href="#JIT-编译过程" class="headerlink" title="JIT 编译过程"></a>JIT 编译过程</h2><p>当 JIT 编译启用时（默认是启用的），JVM 读入.class 文件解释后，将其发给 JIT 编译器。JIT 编译器将字节码编译成本机机器代码，下图展示了该过程。</p>
-<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-15.png" alt></p>
+<p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/Java-15.png"></p>
 <p>即时编译器是 Java 虚拟机中相对独立的模块，它主要负责接收 Java 字节码，并生成可以直接运行的二进制码。<br>即时编译器与 Java 虚拟机的交互可以分为如下三个方面。</p>
 <ol>
 <li>响应编译请求；</li>
@@ -429,7 +433,8 @@
 <h1 id="栈上分配和TLAB"><a href="#栈上分配和TLAB" class="headerlink" title="栈上分配和TLAB"></a>栈上分配和TLAB</h1><h2 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h2><p>JVM提供了一种叫做栈上分配的概念，针对那些作用域不会逃逸出方法的对象，在分配内存时不在将对象分配在堆内存中，而是将对象属性打散后分配在栈（线程私有的，属于栈内存）上，这样，随着方法的调用结束，栈空间的回收就会随着将栈上分配的打散后的对象回收掉，不再给gc增加额外的无用负担，从而提升应用程序整体的性能</p>
 <h2 id="线程私有分配区TLAB"><a href="#线程私有分配区TLAB" class="headerlink" title="线程私有分配区TLAB"></a>线程私有分配区TLAB</h2><p>对象分配在堆上，而堆是一个全局共享的区域，当多个线程同一时刻操作堆内存分配对象空间时，就需要通过锁机制或者指针碰撞的方式确保不会申请到同一块内存，而这带来的效果就是对象分配效率变差（尽管JVM采用了CAS的形式处理分配失败的情况），但是对于存在竞争激烈的分配场合仍然会导致效率变差。因此，在Hotspot 1.6的实现中引入了TLAB技术。</p>
 <p>TLAB全称ThreadLocalAllocBuffer，是线程的一块私有内存，如果设置了虚拟机参数 -XX:UseTLAB，在线程初始化时，同时也会申请一块指定大小的内存，只给当前线程使用，这样每个线程都单独拥有一个Buffer，如果需要分配内存，就在自己的Buffer上分配，这样就不存在竞争的情况，可以大大提升分配效率。</p>
-<p>TLAB只是让每个线程有私有的分配指针，但底下存对象的内存空间还是给所有线程访问的，只是其它线程无法在这个区域分配而已。当一个TLAB用满（分配指针_top撞上分配极限_end了），就新申请一个TLAB。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ThreadLocalAllocBuffer: public CHeapObj&lt;mtThread&gt; &#123;</span><br><span class="line">  HeapWord* _start;                              <span class="comment">// address of TLAB</span></span><br><span class="line">  HeapWord* _top;                                <span class="comment">// address after last allocation</span></span><br><span class="line">  HeapWord* _pf_top;                             <span class="comment">// allocation prefetch watermark</span></span><br><span class="line">  HeapWord* _end;                                <span class="comment">// allocation end (excluding alignment_reserve)</span></span><br><span class="line">  size_t    _desired_size;                       <span class="comment">// desired size   (including alignment_reserve)</span></span><br><span class="line">  size_t    _refill_waste_limit;                 <span class="comment">// hold onto tlab if free() is larger than this</span></span><br><span class="line">  .....................省略......................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>TLAB只是让每个线程有私有的分配指针，但底下存对象的内存空间还是给所有线程访问的，只是其它线程无法在这个区域分配而已。当一个TLAB用满（分配指针_top撞上分配极限_end了），就新申请一个TLAB。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ThreadLocalAllocBuffer: public CHeapObj&lt;mtThread&gt; &#123;</span><br><span class="line">  HeapWord* _start;                              <span class="comment">// address of TLAB</span></span><br><span class="line">  HeapWord* _top;                                <span class="comment">// address after last allocation</span></span><br><span class="line">  HeapWord* _pf_top;                             <span class="comment">// allocation prefetch watermark</span></span><br><span class="line">  HeapWord* _end;                                <span class="comment">// allocation end (excluding alignment_reserve)</span></span><br><span class="line">  size_t    _desired_size;                       <span class="comment">// desired size   (including alignment_reserve)</span></span><br><span class="line">  size_t    _refill_waste_limit;                 <span class="comment">// hold onto tlab if free() is larger than this</span></span><br><span class="line">  .....................省略......................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>TLAB空间主要有3个指针：_start、_top、_end。_start指针表示TLAB空间的起始内存，_end指针表示TLAB空间的结束地址，通过_start和_end指针，表示线程管理的内存区域，每个线程都会从Eden分配一大块空间（TLAB实际上是一块Eden区中划出的线程私有的堆空间），标识出 Eden 里被这个 TLAB 所管理的区域，卡住eden里的一块空间不让其它线程来这里分配</p>
 <p>当进行对象的内存划分的时候，就会通过移动_top指针分配内存（TLAB，Eden，To，From 区主要采用指针碰撞来分配内存（pointer bumping）），在TLAB空间为对象分配内存需要遵循下面的原则：</p>
 <ol>
@@ -437,8 +442,8 @@
 <li>obj_size + tlab_top &gt;= tlab_end  &amp;&amp;  tlab_free &gt; tlab_refill_waste_limit，对象不在TLAB分配，在Eden区分配。（tlab_free：剩余的内存空间，tlab_refill_waste_limit：允许浪费的内存空间）</li>
 <li>obj_size + tlab_top &gt;= tlab_end  &amp;&amp;  tlab_free &lt; _refill_waste_limit，重新分配一块TLAB空间，在新的TLAB中分配对象</li>
 </ol>
-<h2 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/JVM-2.png" alt></p>
-<h2 id="对象分配流程图"><a href="#对象分配流程图" class="headerlink" title="对象分配流程图"></a>对象分配流程图</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/JVM-1.png" alt></p>
+<h2 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/JVM-2.png"></p>
+<h2 id="对象分配流程图"><a href="#对象分配流程图" class="headerlink" title="对象分配流程图"></a>对象分配流程图</h2><p><img src="https://github.com/zaiyunduan123/Java-Interview/blob/master/image/JVM-1.png"></p>
 <h1 id="Java-8-从永久代（PermGen）到元空间（Metaspace）"><a href="#Java-8-从永久代（PermGen）到元空间（Metaspace）" class="headerlink" title="Java 8: 从永久代（PermGen）到元空间（Metaspace）"></a>Java 8: 从永久代（PermGen）到元空间（Metaspace）</h1><p>在 Java8 中，永久代（PermGen）已经被移除，被一个称为“元空间（Metaspace）”的区域所取代。元空间并不在虚拟机中，而是使用本地内存（Native memory）</p>
 <p>类的元数据信息（metadata）转移到Metaspace的原因是PermGen很难调整。PermGen中类的元数据信息在每次FullGC的时候可能会被收集。而且应该为PermGen分配多大的空间很难确定，因为PermSize的大小依赖于很多因素，比如JVM加载的class的总数，常量池的大小，方法的大小等。</p>
 <p>由于类的元数据可以在本地内存(native memory)之外分配,所以其最大可利用空间是整个系统内存的可用空间。这样，你将不再会遇到OOM错误，溢出的内存会涌入到交换空间。最终用户可以为类元数据指定最大可利用的本地内存空间，JVM也可以增加本地内存空间来满足类元数据信息的存储。</p>
@@ -450,7 +455,7 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/04/19/Spring/Spring源码学习/" rel="next" title="Spring源码学习">
+          <a href="/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" rel="next" title="Spring源码学习">
           Spring源码学习
           </a>
         
@@ -458,7 +463,7 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/05/04/Spring/Spring Framework/" rel="prev" title="Spring Framework5.x">
+          <a href="/2020/05/04/Spring/Spring%20Framework/" rel="prev" title="Spring Framework5.x">
             Spring Framework5.x
           </a>
           <span>〉</span>
@@ -471,7 +476,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM内存结构-VS-Java内存模型-VS-Java对象模型"><span class="toc-text">JVM内存结构 VS Java内存模型 VS Java对象模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存结构"><span class="toc-text">JVM内存结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序计数器"><span class="toc-text">程序计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java虚拟机栈"><span class="toc-text">Java虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堆"><span class="toc-text">堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法区"><span class="toc-text">方法区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java内存模型"><span class="toc-text">Java内存模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java对象模型"><span class="toc-text">Java对象模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三者区别"><span class="toc-text">三者区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾回收"><span class="toc-text">垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GC垃圾收集器"><span class="toc-text">GC垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial垃圾收集器（单线程、复制算法）"><span class="toc-text">Serial垃圾收集器（单线程、复制算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ParNew垃圾收集器（Serial-多线程）"><span class="toc-text">ParNew垃圾收集器（Serial + 多线程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parllel-Scavenge收集器-（多线程、复制算法）"><span class="toc-text">Parllel Scavenge收集器 （多线程、复制算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial-Old收集器（单线程标记整理算法）"><span class="toc-text">Serial Old收集器（单线程标记整理算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Old收集器（多线程标记整理算法）"><span class="toc-text">Parallel Old收集器（多线程标记整理算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS收集器（多线程标记清除算法）"><span class="toc-text">CMS收集器（多线程标记清除算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CMS的缺点"><span class="toc-text">CMS的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CMS的使用场景"><span class="toc-text">CMS的使用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1收集器"><span class="toc-text">G1收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#G1对比CMS的区别"><span class="toc-text">G1对比CMS的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Major-GC和Full-GC的区别是什么？触发条件呢？"><span class="toc-text">Major GC和Full GC的区别是什么？触发条件呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么时候会触发full-gc"><span class="toc-text">什么时候会触发full gc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可以作为root的对象"><span class="toc-text">可以作为root的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新生代转移到老年代的触发条件"><span class="toc-text">新生代转移到老年代的触发条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1和CMS的区别"><span class="toc-text">G1和CMS的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类加载"><span class="toc-text">类加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#双亲委派模型中有哪些方法。用户如何自定义类加载器-。怎么打破双亲委托机制"><span class="toc-text">双亲委派模型中有哪些方法。用户如何自定义类加载器 。怎么打破双亲委托机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内存溢出"><span class="toc-text">内存溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#栈溢出"><span class="toc-text">栈溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决办法"><span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java应用系统运行速度慢的解决方法"><span class="toc-text">java应用系统运行速度慢的解决方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#逃逸分析"><span class="toc-text">逃逸分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#即时编译器的优化方法"><span class="toc-text">即时编译器的优化方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译过程的五个阶段"><span class="toc-text">编译过程的五个阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM、Java编译器和Java解释器"><span class="toc-text">JVM、Java编译器和Java解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JIT-编译过程"><span class="toc-text">JIT 编译过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graal-的实现"><span class="toc-text">Graal 的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GraalVM-中的-Ahead-Of-Time（AOT）"><span class="toc-text">GraalVM 中的 Ahead-Of-Time（AOT）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM的Intrinsics方法"><span class="toc-text">JVM的Intrinsics方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM的invokedynamic方法"><span class="toc-text">JVM的invokedynamic方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法句柄"><span class="toc-text">方法句柄</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#栈上分配和TLAB"><span class="toc-text">栈上分配和TLAB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#栈上分配"><span class="toc-text">栈上分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程私有分配区TLAB"><span class="toc-text">线程私有分配区TLAB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总体流程"><span class="toc-text">总体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象分配流程图"><span class="toc-text">对象分配流程图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-8-从永久代（PermGen）到元空间（Metaspace）"><span class="toc-text">Java 8: 从永久代（PermGen）到元空间（Metaspace）</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84-VS-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-VS-Java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-text">JVM内存结构 VS Java内存模型 VS Java对象模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="toc-text">JVM内存结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-text">程序计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="toc-text">Java虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86"><span class="toc-text">堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-text">方法区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">Java内存模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-text">Java对象模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%80%85%E5%8C%BA%E5%88%AB"><span class="toc-text">三者区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GC%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">GC垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%EF%BC%88%E5%8D%95%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-text">Serial垃圾收集器（单线程、复制算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ParNew%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%EF%BC%88Serial-%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89"><span class="toc-text">ParNew垃圾收集器（Serial + 多线程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parllel-Scavenge%E6%94%B6%E9%9B%86%E5%99%A8-%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-text">Parllel Scavenge收集器 （多线程、复制算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Serial-Old%E6%94%B6%E9%9B%86%E5%99%A8%EF%BC%88%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-text">Serial Old收集器（单线程标记整理算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Old%E6%94%B6%E9%9B%86%E5%99%A8%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-text">Parallel Old收集器（多线程标记整理算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS%E6%94%B6%E9%9B%86%E5%99%A8%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-text">CMS收集器（多线程标记清除算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CMS%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-text">CMS的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CMS%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">CMS的使用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">G1收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#G1%E5%AF%B9%E6%AF%94CMS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">G1对比CMS的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Major-GC%E5%92%8CFull-GC%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%91%A2%EF%BC%9F"><span class="toc-text">Major GC和Full GC的区别是什么？触发条件呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%A7%A6%E5%8F%91full-gc"><span class="toc-text">什么时候会触发full gc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BAroot%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-text">可以作为root的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E7%94%9F%E4%BB%A3%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6"><span class="toc-text">新生代转移到老年代的触发条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1%E5%92%8CCMS%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">G1和CMS的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD"><span class="toc-text">类加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E3%80%82%E7%94%A8%E6%88%B7%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8-%E3%80%82%E6%80%8E%E4%B9%88%E6%89%93%E7%A0%B4%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%89%98%E6%9C%BA%E5%88%B6"><span class="toc-text">双亲委派模型中有哪些方法。用户如何自定义类加载器 。怎么打破双亲委托机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="toc-text">内存溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="toc-text">栈溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">java应用系统运行速度慢的解决方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90"><span class="toc-text">逃逸分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B3%E6%97%B6%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-text">即时编译器的优化方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E7%9A%84%E4%BA%94%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-text">编译过程的五个阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E3%80%81Java%E7%BC%96%E8%AF%91%E5%99%A8%E5%92%8CJava%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">JVM、Java编译器和Java解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JIT-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-text">JIT 编译过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graal-%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">Graal 的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GraalVM-%E4%B8%AD%E7%9A%84-Ahead-Of-Time%EF%BC%88AOT%EF%BC%89"><span class="toc-text">GraalVM 中的 Ahead-Of-Time（AOT）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E7%9A%84Intrinsics%E6%96%B9%E6%B3%95"><span class="toc-text">JVM的Intrinsics方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E7%9A%84invokedynamic%E6%96%B9%E6%B3%95"><span class="toc-text">JVM的invokedynamic方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8F%A5%E6%9F%84"><span class="toc-text">方法句柄</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E4%B8%8A%E5%88%86%E9%85%8D%E5%92%8CTLAB"><span class="toc-text">栈上分配和TLAB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E4%B8%8A%E5%88%86%E9%85%8D"><span class="toc-text">栈上分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89%E5%88%86%E9%85%8D%E5%8C%BATLAB"><span class="toc-text">线程私有分配区TLAB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">总体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">对象分配流程图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-8-%E4%BB%8E%E6%B0%B8%E4%B9%85%E4%BB%A3%EF%BC%88PermGen%EF%BC%89%E5%88%B0%E5%85%83%E7%A9%BA%E9%97%B4%EF%BC%88Metaspace%EF%BC%89"><span class="toc-text">Java 8: 从永久代（PermGen）到元空间（Metaspace）</span></a></li></ol>
   </div>
 
 
@@ -481,7 +486,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

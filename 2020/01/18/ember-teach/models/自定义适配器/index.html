@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Model,">
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Model," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Model/">Ember-Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Model/" rel="tag">Ember-Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -99,18 +100,20 @@
     </header>
 
     <div class="post-content">
-      <p>在<a href="http://emberjs.com" target="_blank" rel="noopener">Ember</a>应用中适配器决定了数据保存到后台的方式，比如URL格式和请求头部。Ember Data默认的适配器是内置的<a href="http://jsonapi.org/" target="_blank" rel="noopener">REST API回调</a>。</p>
+      <p>在<a target="_blank" rel="noopener" href="http://emberjs.com/">Ember</a>应用中适配器决定了数据保存到后台的方式，比如URL格式和请求头部。Ember Data默认的适配器是内置的<a target="_blank" rel="noopener" href="http://jsonapi.org/">REST API回调</a>。</p>
 <p>实际使用中经常会扩展默认的适配器。Ember的立场是应该通过扩展适配器来添加不同的功能，而非添加标识。这样可以使得代码更加容易测试、更加容易理解，同时也降低了可能需要扩展的适配器的代码。</p>
-<p>如果你的后端使用的是Ember约定的规则那么可用使用适配器<code>adapters/application.js</code>。适配器<code>application</code>优先级比默认的适配器高，但是比指定的模型适配器优先级低。模型适配器定义规则是：<code>adapter-modelName.js</code>。比如下面的代码定义了一个模型适配器<code>adapter-post</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/adapters/adapter-post.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  namespace: <span class="string">'api/v1'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>此时适配器的优先级次序为：<code>JSONAPIAdapter</code> &gt; <code>application</code>&gt; 默认内置适配器；</p>
+<p>如果你的后端使用的是Ember约定的规则那么可用使用适配器<code>adapters/application.js</code>。适配器<code>application</code>优先级比默认的适配器高，但是比指定的模型适配器优先级低。模型适配器定义规则是：<code>adapter-modelName.js</code>。比如下面的代码定义了一个模型适配器<code>adapter-post</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/adapters/adapter-post.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  namespace: <span class="string">&#x27;api/v1&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>此时适配器的优先级次序为：<code>JSONAPIAdapter</code> &gt; <code>application </code>&gt; 默认内置适配器；</p>
 <p>Ember内置的是配有如下几种：</p>
 <ol>
-<li><a href="http://emberjs.com/api/data/classes/DS.Adapter.html" target="_blank" rel="noopener">DS.Adapter</a> 这个适配器是最基础的适配器，它不包含任何功能。如果需要创建一个与Ember适配器有根本性区别的适配器可以使从这个适配器入手。</li>
-<li><a href="http://emberjs.com/api/data/classes/DS.JSONAPIAdapter.html" target="_blank" rel="noopener">DS.JSONAPIAdapter</a> 这个适配器是默认适配器，并且是遵循JSON API规范，用于与HTTP服务器之间通过XHR交互JSON数据。</li>
-<li><a href="http://emberjs.com/api/data/classes/DS.RESTAdapter.html" target="_blank" rel="noopener">DS.RESTAdapter</a> 这个适配器与第二个适配器功能一样，并且在Ember Data2.0之前是作为默认的适配器。</li>
+<li><a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.Adapter.html">DS.Adapter</a> 这个适配器是最基础的适配器，它不包含任何功能。如果需要创建一个与Ember适配器有根本性区别的适配器可以使从这个适配器入手。</li>
+<li><a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.JSONAPIAdapter.html">DS.JSONAPIAdapter</a> 这个适配器是默认适配器，并且是遵循JSON API规范，用于与HTTP服务器之间通过XHR交互JSON数据。</li>
+<li><a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.RESTAdapter.html">DS.RESTAdapter</a> 这个适配器与第二个适配器功能一样，并且在Ember Data2.0之前是作为默认的适配器。</li>
 </ol>
 <h2 id="1，自定义JSONAPIAdapter适配器"><a href="#1，自定义JSONAPIAdapter适配器" class="headerlink" title="1，自定义JSONAPIAdapter适配器"></a>1，自定义JSONAPIAdapter适配器</h2><p><code>JSONAPIAdapter</code>适配器通常用于扩展非标准的后台接口。</p>
-<h4 id="1，URL规范"><a href="#1，URL规范" class="headerlink" title="1，URL规范"></a>1，URL规范</h4><p><code>JSONAPIAdapter</code>适配器非常智能，它能够自动确定URL链接是那个模型。比如，如果你需要通过<code>id</code>获取<code>post</code>：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.store.find(<span class="string">'post'</span>, <span class="number">1</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//  处理post</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="1，URL规范"><a href="#1，URL规范" class="headerlink" title="1，URL规范"></a>1，URL规范</h4><p><code>JSONAPIAdapter</code>适配器非常智能，它能够自动确定URL链接是那个模型。比如，如果你需要通过<code>id</code>获取<code>post</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.store.find(<span class="string">&#x27;post&#x27;</span>, <span class="number">1</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//  处理post</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><code>JSONAPIAdapter</code>会自动发送<code>get</code>请求到<code>/post/1</code>。</p>
 <p>下表是Action、请求、URL三者的映射关系（由于本站markdown解析器不支持表格所以直接使用截图替代了）。</p>
 <table>
@@ -121,8 +124,7 @@
 <th>URL</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>find</td>
 <td>get</td>
 <td>/posts/1</td>
@@ -147,31 +149,38 @@
 <td>delete</td>
 <td>/posts/1</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>比如在<code>action</code>中执行<code>find()</code>方法，会发送<code>get</code>请求，<code>JSONAPIAdapter</code>会自动解析成形如<code>/posts/1</code>的URL。</p>
-<h4 id="2，多元化定制"><a href="#2，多元化定制" class="headerlink" title="2，多元化定制"></a>2，多元化定制</h4><p>为了适配复数名字的模型属性名称，可以是使用<a href="https://github.com/stefanpenner/ember-inflector" target="_blank" rel="noopener">Ember Inflector</a>绑定别名。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> inflector = Ember.Inflector.inflector;</span><br><span class="line">inflector.irregular(<span class="string">'formula'</span>, <span class="string">'formulae'</span>);</span><br><span class="line">inflector.uncountable(<span class="string">'advice'</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="2，多元化定制"><a href="#2，多元化定制" class="headerlink" title="2，多元化定制"></a>2，多元化定制</h4><p>为了适配复数名字的模型属性名称，可以是使用<a target="_blank" rel="noopener" href="https://github.com/stefanpenner/ember-inflector">Ember Inflector</a>绑定别名。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> inflector = Ember.Inflector.inflector;</span><br><span class="line">inflector.irregular(<span class="string">&#x27;formula&#x27;</span>, <span class="string">&#x27;formulae&#x27;</span>);</span><br><span class="line">inflector.uncountable(<span class="string">&#x27;advice&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <p>这样绑定之后目的是告诉<code>JSONAPIAdapter</code>。你可以使用<code>/formulae/1</code>代替<code>/formulas/1</code>。但是目前我还没搞清楚这个设置是什么意思？又有什么用？如果读者知道请指教。</p>
-<h4 id="3，断点路径定制"><a href="#3，断点路径定制" class="headerlink" title="3，断点路径定制"></a>3，断点路径定制</h4><p>使用属性<code>namespace</code>可以设置URL的前缀。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  namespace: <span class="string">'api/1'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="3，断点路径定制"><a href="#3，断点路径定制" class="headerlink" title="3，断点路径定制"></a>3，断点路径定制</h4><p>使用属性<code>namespace</code>可以设置URL的前缀。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  namespace: <span class="string">&#x27;api/1&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>请求<code>person</code>会自动转发到<code>/api/1/people/1</code>。</p>
-<h4 id="4，自定义主机"><a href="#4，自定义主机" class="headerlink" title="4，自定义主机"></a>4，自定义主机</h4><p>默认情况下适配器会转到当前域名下。如果你想让URL转到新的域名可以使用属性host设置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  host: <span class="string">'http://api.example.com'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="4，自定义主机"><a href="#4，自定义主机" class="headerlink" title="4，自定义主机"></a>4，自定义主机</h4><p>默认情况下适配器会转到当前域名下。如果你想让URL转到新的域名可以使用属性host设置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  host: <span class="string">&#x27;http://api.example.com&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><strong>注意</strong>：如果你的项目是使用自己的后台数据库这个设置特别重要！！！属性<code>host</code>所指的就是你服务器接口的地址。</p>
 <p>请求<code>person</code>会自动转发到<code>http://api.example.com/people/1</code>。</p>
-<h4 id="5，自定义路径"><a href="#5，自定义路径" class="headerlink" title="5，自定义路径"></a>5，自定义路径</h4><p>默认情况下Ember会尝试去根据复数的模型类名、中划线分隔的模型类名生成URL。如果需要改变这个默认的规则可以使用属性<code>pathForType</code>设置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/adapters/application.js</span></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> ‘ember’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  pathForType: <span class="function"><span class="keyword">function</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Ember.String.underscore(type);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="5，自定义路径"><a href="#5，自定义路径" class="headerlink" title="5，自定义路径"></a>5，自定义路径</h4><p>默认情况下Ember会尝试去根据复数的模型类名、中划线分隔的模型类名生成URL。如果需要改变这个默认的规则可以使用属性<code>pathForType</code>设置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/adapters/application.js</span></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> ‘ember’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  pathForType: <span class="function"><span class="keyword">function</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Ember.String.underscore(type);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>修改默认生成路径规则为下滑线分隔。比如请求<code>person</code>会转向<code>/person/1</code>。请求<code>user-profile</code>会转向<code>/user_profile/1</code>（默认情况转向<code>user-profile/1</code>）。</p>
-<h4 id="6，自定义请求头"><a href="#6，自定义请求头" class="headerlink" title="6，自定义请求头"></a>6，自定义请求头</h4><p>有些请求需要设置请求头信息，比如提供<code>API</code>的<code>key</code>。可以以键值对的方式设置头部信息，Ember Data会为每个请求都加上这个头信息设置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">'ember'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line"><span class="string">'API_KEY'</span>: <span class="string">'secret key'</span>,</span><br><span class="line"><span class="string">'ANOTHER_HEADER'</span>: <span class="string">'some header value'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>更强大地方是你可以在<code>header</code>中使用计算属性，动态设置请求头信息。下面的代码是将一个<code>session</code>对象设置到适配器中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> ‘ember’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  session: Ember.inject.service(‘session’);</span><br><span class="line">  headers: Ember.computed(‘session.authToken’, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">‘API_KEY’: <span class="keyword">this</span>.get(‘session.authToken’),</span><br><span class="line">‘ANOTHER_HEADER’: ‘some header value’  </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>对于<code>session</code>应该非常不陌生，特别是在控制用户登录方面使用非常广泛，另外又一个非常好用的插件，专门用于控制用户登录的，这个插件是<a href="https://github.com/simplabs/ember-simple-auth" target="_blank" rel="noopener">Ember Simple Auth</a>，另外有一篇博文是介绍如何使用这个插件实现用户登录的，请看<a href="http://blog.ddlisting.com/2015/11/20/ember-application-authority-control/" target="_blank" rel="noopener">使用ember-simple-auth实现Ember.js应用的权限控制</a>的介绍。</p>
-<p>你还可以使用<code>volatile()</code>方法设置计算属性为非缓存属性，这样每次发送请求都会重新计算<code>header</code>里的值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/adapters/application.js</span></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> ‘ember’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  <span class="comment">//  ⋯⋯</span></span><br><span class="line">  &#125;).volatile();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="6，自定义请求头"><a href="#6，自定义请求头" class="headerlink" title="6，自定义请求头"></a>6，自定义请求头</h4><p>有些请求需要设置请求头信息，比如提供<code>API</code>的<code>key</code>。可以以键值对的方式设置头部信息，Ember Data会为每个请求都加上这个头信息设置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line"><span class="string">&#x27;API_KEY&#x27;</span>: <span class="string">&#x27;secret key&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;ANOTHER_HEADER&#x27;</span>: <span class="string">&#x27;some header value&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>更强大地方是你可以在<code>header</code>中使用计算属性，动态设置请求头信息。下面的代码是将一个<code>session</code>对象设置到适配器中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app/adapters/application.js</span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> ‘ember’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  session: Ember.inject.service(‘session’);</span><br><span class="line">  headers: Ember.computed(‘session.authToken’, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">‘API_KEY’: <span class="built_in">this</span>.get(‘session.authToken’),</span><br><span class="line">‘ANOTHER_HEADER’: ‘some header value’  </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>对于<code>session</code>应该非常不陌生，特别是在控制用户登录方面使用非常广泛，另外又一个非常好用的插件，专门用于控制用户登录的，这个插件是<a target="_blank" rel="noopener" href="https://github.com/simplabs/ember-simple-auth">Ember Simple Auth</a>，另外有一篇博文是介绍如何使用这个插件实现用户登录的，请看<a target="_blank" rel="noopener" href="http://blog.ddlisting.com/2015/11/20/ember-application-authority-control/">使用ember-simple-auth实现Ember.js应用的权限控制</a>的介绍。</p>
+<p>你还可以使用<code>volatile()</code>方法设置计算属性为非缓存属性，这样每次发送请求都会重新计算<code>header</code>里的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/adapters/application.js</span></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> ‘ember’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.JSONAPIAdapter.extend(&#123;</span><br><span class="line">  <span class="comment">//  ⋯⋯</span></span><br><span class="line">  &#125;).volatile();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <p>更多有关于适配器的信息浏览下面的网址：</p>
 <ul>
-<li><a href="http://emberobserver.com/categories/data" target="_blank" rel="noopener">Ember Observer</a></li>
-<li><a href="https://github.com/search?q=ember+data+adapter&amp;ref=cmdform" target="_blank" rel="noopener">GitHub</a></li>
-<li><a href="http://bower.io/search/?q=ember-data-" target="_blank" rel="noopener">Bower</a></li>
+<li><a target="_blank" rel="noopener" href="http://emberobserver.com/categories/data">Ember Observer</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/search?q=ember+data+adapter&ref=cmdform">GitHub</a></li>
+<li><a target="_blank" rel="noopener" href="http://bower.io/search/?q=ember-data-">Bower</a></li>
 </ul>
 <p>对于适配器主要掌握<code>JSONAPIAdapter</code>足矣，如果你需要个性化定制URL或者请求的域名可以在适配中配置。不过大部分情况下都是使用默认设置。</p>
-<p><br><br>博文完整代码放在<a href="https://github.com/ubuntuvim/my_emberjs_code" target="_blank" rel="noopener">Github</a>（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
-
+<br>
+博文完整代码放在[Github](https://github.com/ubuntuvim/my_emberjs_code)（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个`star`吧。您的肯定对我来说是最大的动力！！
     </div>
 
       
@@ -179,15 +188,15 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/ember-teach/models/新建、更新、删除记录/" rel="next" title="新建、更新、删除记录">
-          新建、更新、删除记录
+          <a href="/2020/01/18/ember-teach/models/%E8%AE%BE%E7%BD%AE%E8%AE%B0%E5%BD%95%E5%88%B0Store/" rel="next" title="设置记录到Store">
+          设置记录到Store
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/ember-teach/models/自定义序列化器/" rel="prev" title="自定义序列化器">
+          <a href="/2020/01/18/ember-teach/models/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8/" rel="prev" title="自定义序列化器">
             自定义序列化器
           </a>
           <span>〉</span>
@@ -200,7 +209,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1，自定义JSONAPIAdapter适配器"><span class="toc-text">1，自定义JSONAPIAdapter适配器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，URL规范"><span class="toc-text">1，URL规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2，多元化定制"><span class="toc-text">2，多元化定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3，断点路径定制"><span class="toc-text">3，断点路径定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4，自定义主机"><span class="toc-text">4，自定义主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5，自定义路径"><span class="toc-text">5，自定义路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6，自定义请求头"><span class="toc-text">6，自定义请求头</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89JSONAPIAdapter%E9%80%82%E9%85%8D%E5%99%A8"><span class="toc-text">1，自定义JSONAPIAdapter适配器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%8CURL%E8%A7%84%E8%8C%83"><span class="toc-text">1，URL规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%8C%E5%A4%9A%E5%85%83%E5%8C%96%E5%AE%9A%E5%88%B6"><span class="toc-text">2，多元化定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B7%AF%E5%BE%84%E5%AE%9A%E5%88%B6"><span class="toc-text">3，断点路径定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E6%9C%BA"><span class="toc-text">4，自定义主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84"><span class="toc-text">5，自定义路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%EF%BC%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-text">6，自定义请求头</span></a></li></ol></li></ol></li></ol>
   </div>
 
 
@@ -210,7 +219,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

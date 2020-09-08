@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Spring,Transactional," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>Spring事务传播机制 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Spring事务传播机制
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-09-08T15:24:35.168Z">
+        2020-09-08
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Transactional/" rel="tag">Transactional</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 5 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>Spring事务传播设置有如下类型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存user，id是唯一的，否则insert会报错</span></span><br><span class="line"><span class="comment"> * REQUIRED ：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。==&gt; 会跟随service层方法回滚事务</span></span><br><span class="line"><span class="comment"> * SUPPORTS ：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。==&gt; 会跟随service层方法回滚事务</span></span><br><span class="line"><span class="comment"> * MANDATORY ：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。==&gt; 会跟随service层方法回滚事务</span></span><br><span class="line"><span class="comment"> * REQUIRES_NEW ：创建一个新的事务，如果当前存在事务，则把当前事务挂起。 ==&gt; 即使service层的方法也加了事务，也无法回滚dao层的事务（内层已经提交了，外层回滚个屁啊）。</span></span><br><span class="line"><span class="comment"> * NOT_SUPPORTED ：以非事务方式运行，如果当前存在事务，则把当前事务挂起。 ==&gt;  即使service层的方法也加了事务，也无法回滚dao层的事务（内层已经提交了，外层回滚个屁啊）。</span></span><br><span class="line"><span class="comment"> * NEVER ：以非事务方式运行，如果当前存在事务，则抛出异常。 ==&gt; service层无事务的方法可以运行，也就是说，他只能被一个父事务调用。否则，他就要抛出异常。</span></span><br><span class="line"><span class="comment"> * NESTED ：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于 REQUIRED</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>上述只是单事务方法的情况，如果存在事务嵌套呢？？比如<code>serviceA.methodA()</code>内部调用了<code>serviceB.methodB()</code>方法，<code>methodA()</code>和<code>methodB()</code>都是有事务的。这种情况下可以根据如下表格对照：</p>
+<table>
+<thead>
+<tr>
+<th><strong>PROPAGATION TYPE</strong></th>
+<th><strong>DESCRIPTION</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PROPAGATION_REQUIRED</strong></td>
+<td>支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。 如果正要执行的事务不在另外一个事务里，那么就起一个新的事务; 比如说，<code>ServiceB.methodB</code>的事务级别定义为PROPAGATION_<code>REQUIRED</code>, 那么由于执行<code>ServiceA.methodA</code>的时候， <code>ServiceA.methodA</code>已经起了事务，这时调用<code>ServiceB.methodB</code>，<code>ServiceB.methodB</code>看到自己已经运行在<code>ServiceA.methodA</code> 的事务内部，就不再起新的事务。而假如<code>ServiceA.methodA</code>运行的时<code>候ServiceB.method</code>B发现自己没有在事务中，他就会为自己新建一个事务。 这样，在<code>ServiceA.methodA</code>或者在<code>ServiceB.methodB</code>内的任何地方出现异常，事务都会被回滚。即使<code>ServiceB.methodB</code>的事务已经被提交，但是<code>ServiceA.methodA</code>在接下来fail要回滚，<code>ServiceB.methodB</code>也要回滚。</td>
+</tr>
+<tr>
+<td><strong>PROPAGATION_SUPPORTS</strong></td>
+<td>支持当前事务，如果当前没有事务，就以非事务方式执行。 如果当前在事务中，即以事务的形式运行，如果当前不在一个事务中，那么就以非事务的形式运行。</td>
+</tr>
+<tr>
+<td><strong>PROPAGATION_MANDATORY</strong></td>
+<td>支持当前事务，如果当前没有事务，就抛出异常。 必须在一个事务中运行，也就是说，他只能被一个父事务调用。否则，他就要抛出异常。</td>
+</tr>
+<tr>
+<td><strong>PROPAGATION_REQUIRES_NEW</strong></td>
+<td>新建事务，如果当前存在事务，把当前事务挂起。 比如我们设计<code>ServiceA.methodA</code>的事务级别为PROPAGATION_<code>REQUIRED</code>，<code>ServiceB.methodB</code>的事务级别为PROPAGATION_<code>REQUIRES_NEW</code>，那么当执行到<code>ServiceB.methodB</code>的时候，<code>ServiceA.methodA</code>所在的事务就会挂起，<code>ServiceB.methodB</code>会起一个新的事务，等待<code>ServiceB.methodB</code>的事务完成以后，他才继续执行。他与PROPAGATION_<code>REQUIRED </code>的事务区别在于事务的回滚程度了。因为<code>ServiceB.methodB</code>是新起一个事务，那么就是存在两个不同的事务。如果<code>ServiceB.methodB</code>已经提交，那么<code>ServiceA.methodA</code>失败回滚，<code>ServiceB.methodB</code>是不会回滚的。如果<code>ServiceB.methodB</code>失败回滚，如果他抛出的异常被<code>ServiceA.methodA</code>捕获，<code>ServiceA.methodA</code>事务仍然可能提交。</td>
+</tr>
+<tr>
+<td><strong>PROPAGATION_NOT_SUPPORTED</strong></td>
+<td>以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。 不支持当前事务。比如<code>ServiceA.methodA</code>的事务级别是PROPAGATION_<code>REQUIRED</code>，而<code>ServiceB.methodB</code>的事务级别是PROPAGATION_<code>NOT_SUPPORTED</code>，那么当执行到<code>ServiceB.methodB</code>时，<code>ServiceA.methodA</code>的事务挂起，而<code>ServiceB.methodB</code>则以非事务的方式运行完，再继续<code>ServiceA.methodA</code>的事务。</td>
+</tr>
+<tr>
+<td><strong>PROPAGATION_NEVER</strong></td>
+<td>以非事务方式执行，如果当前存在事务，则抛出异常。 不能在事务中运行。假设<code>ServiceA.methodA</code>的事务级别是PROPAGATION_<code>REQUIRED</code>，而ServiceB.methodB的事务级别是PROPAGATION_<code>NEVER</code>， 那么<code>ServiceB.methodB</code>就要抛出异常了。</td>
+</tr>
+<tr>
+<td><strong>PROPAGATION_NESTED</strong></td>
+<td>支持当前事务，新增Savepoint点，与当前事务同步提交或回滚。 理解Nested的关键是savepoint。他与PROPAGATION_<code>REQUIRES_NEW</code>的区别是，PROPAGATION_<code>REQUIRES_NEW</code>另起一个事务，将会与他的父事务相互独立，而Nested的事务和他的父事务是相依的，他的提交是要等和他的父事务一块提交的。也就是说，如果父事务最后回滚，他也要回滚的。 而<code>Nested</code>事务的好处也是他有一个savepoint。</td>
+</tr>
+</tbody></table>
+<p>简单示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.mybatis.service;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.UUID;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.Resource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.ubuntuvim.mybatis.dao.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.ubuntuvim.mybatis.entity.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/9/8 下午10:18</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveOneNoTransition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;王五service无事务&quot;</span>+<span class="keyword">new</span> Random().nextInt(<span class="number">10</span>), <span class="string">&quot;M&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional(rollbackFor = Exception.class)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveOneHasTransition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;ubuntuvim，service有事务&quot;</span>+<span class="keyword">new</span> Random().nextInt(<span class="number">10</span>), <span class="string">&quot;M&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUsersNoTransition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String id = UUID.randomUUID().toString();</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;张三service无事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(id, <span class="string">&quot;张三2service无事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;张三3service无事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;张三4service无事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">        <span class="comment">// 这个save的id和第二个相同会导致数据库id主键冲突报错，因为当前方法没有加事务不会回滚前面的save持久化</span></span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(id, <span class="string">&quot;张三5service无事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;张三6service无事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;张三7service无事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 由于此方法上添加了事务，即使在调用的userMapper.save()方法上也添加事务也会回滚。</span></span><br><span class="line"><span class="comment">     * 但是如果dao的save方法的事务传播属性声明为propagation = Propagation.REQUIRES_NEW则无法回滚，在dao层已经提交了事务。service层回滚不了了。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Transactional(rollbackFor = Exception.class)</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUsersHasTransition</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String id = UUID.randomUUID().toString();</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;李四service有事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(id, <span class="string">&quot;李四2service有事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;李四3service有事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;李四4service有事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         @Transactional(rollbackFor = Exception.class)</span></span><br><span class="line"><span class="comment">         这个save的id和第二个相同会导致数据库id主键冲突报错，但是当前方法加了事务会从异常这个回滚前面的save</span></span><br><span class="line"><span class="comment">         最终结果是这个方法内的save都不会持久化</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(id, <span class="string">&quot;张三5service有事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;李四6service有事务&quot;</span>, <span class="string">&quot;M&quot;</span>));</span><br><span class="line">        userMapper.save(<span class="keyword">new</span> User(UUID.randomUUID().toString(), <span class="string">&quot;李四7service有事务&quot;</span>, <span class="string">&quot;F&quot;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>service调用dao的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.mybatis.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.ubuntuvim.mybatis.entity.User;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Insert;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Select;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Propagation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/8/2 20:54</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select(&quot;select * from user t where t.name = #&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function">User <span class="title">getUser</span><span class="params">(User user)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 保存user，id是唯一的，否则insert会报错</span></span><br><span class="line"><span class="comment">     * REQUIRED ：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。==&gt; 会跟随service层方法回滚事务</span></span><br><span class="line"><span class="comment">     * SUPPORTS ：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。==&gt; 会跟随service层方法回滚事务</span></span><br><span class="line"><span class="comment">     * MANDATORY ：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。==&gt; 会跟随service层方法回滚事务</span></span><br><span class="line"><span class="comment">     * REQUIRES_NEW ：创建一个新的事务，如果当前存在事务，则把当前事务挂起。 ==&gt; 即使service层的方法也加了事务，也无法回滚dao层的事务（内层已经提交了，外层回滚个屁啊）。</span></span><br><span class="line"><span class="comment">     * NOT_SUPPORTED ：以非事务方式运行，如果当前存在事务，则把当前事务挂起。 ==&gt;  即使service层的方法也加了事务，也无法回滚dao层的事务（内层已经提交了，外层回滚个屁啊）。</span></span><br><span class="line"><span class="comment">     * NEVER ：以非事务方式运行，如果当前存在事务，则抛出异常。 ==&gt; service层无事务的方法可以运行，也就是说，他只能被一个父事务调用。否则，他就要抛出异常。</span></span><br><span class="line"><span class="comment">     * NESTED ：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于 REQUIRED</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)</span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into user(id, name, sex) value (#&#123;id&#125;, #&#123;name&#125;, #&#123;sex&#125;)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">(User user)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.mybatis.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.Resource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.ubuntuvim.mybatis.MybatisTest;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment">* UserServiceImpl Tester. </span></span><br><span class="line"><span class="comment">* </span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> &lt;Authors name&gt; </span></span><br><span class="line"><span class="comment">* <span class="doctag">@since</span> &lt;pre&gt;9月 8, 2020&lt;/pre&gt; </span></span><br><span class="line"><span class="comment">* <span class="doctag">@version</span> 1.0 </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest(classes = MybatisTest.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImplTest</span> </span>&#123; </span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    UserService userServiceImpl;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSaveUsersNoTransition</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        userServiceImpl.saveUsersNoTransition();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSaveUsersHasTransition</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        userServiceImpl.saveUsersHasTransition();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSaveOneNoTransation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        userServiceImpl.saveOneNoTransition();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSaveOneHasTransation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        userServiceImpl.saveOneHasTransition();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/08/30/Java/%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E3%80%81%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E3%80%81%E6%9E%84%E9%80%A0%E5%99%A8%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/" rel="next" title="类成员属性、静态变量、静态块、普通块、构造方法的加载顺序">
+          类成员属性、静态变量、静态块、普通块、构造方法的加载顺序
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Spring事务传播机制', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

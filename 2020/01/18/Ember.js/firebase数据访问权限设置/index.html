@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Emberjs,javascript,">
+    <meta name="keywords" content="Emberjs,javascript," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -99,7 +100,7 @@
     </header>
 
     <div class="post-content">
-      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//有权限的user才能访问</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;users&quot;: &#123;</span><br><span class="line">      &quot;$uid&quot;: &#123;</span><br><span class="line">        // grants write access to the owner of this user account whose uid must exactly match the key ($uid)</span><br><span class="line">        &quot;.write&quot;: &quot;auth !== null &amp;&amp; auth.uid === $uid&quot;,</span><br><span class="line"></span><br><span class="line">        // grants read access to any user who is logged in with Twitter</span><br><span class="line">        &quot;.read&quot;: &quot;auth !== null&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 任何人都可以访问</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;.read&quot;: true,</span><br><span class="line">    &quot;.write&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;有权限的user才能访问</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;users&quot;: &#123;</span><br><span class="line">      &quot;$uid&quot;: &#123;</span><br><span class="line">        &#x2F;&#x2F; grants write access to the owner of this user account whose uid must exactly match the key ($uid)</span><br><span class="line">        &quot;.write&quot;: &quot;auth !&#x3D;&#x3D; null &amp;&amp; auth.uid &#x3D;&#x3D;&#x3D; $uid&quot;,</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; grants read access to any user who is logged in with Twitter</span><br><span class="line">        &quot;.read&quot;: &quot;auth !&#x3D;&#x3D; null&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 任何人都可以访问</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;.read&quot;: true,</span><br><span class="line">    &quot;.write&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
       
@@ -115,7 +116,7 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/Ember.js/access token生成/" rel="prev" title="access token生成">
+          <a href="/2020/01/18/Ember.js/access%20token%E7%94%9F%E6%88%90/" rel="prev" title="access token生成">
             access token生成
           </a>
           <span>〉</span>
@@ -133,7 +134,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

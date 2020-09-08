@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Emberjs,">
+    <meta name="keywords" content="Emberjs," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/">Emberjs</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -101,17 +102,18 @@
     <div class="post-content">
       <p><strong>独乐乐不如众乐乐。</strong></p>
 <p>你踩的坑很可能后来者也回踩！拯救菜鸟人人有着！！</p>
-<p>本篇为<code>Ember.js</code>开发者汇总常见问题，比如浏览器兼容性问题、组件使用等。大部分内容都摘了于<a href="http://stackoverflow.com/search?q=ember.js" target="_blank" rel="noopener"><code>stackoverflow</code></a>和<a href="http://discuss.emberjs.com/" target="_blank" rel="noopener"><code>emberjs discuss</code></a>。</p>
+<p>本篇为<code>Ember.js</code>开发者汇总常见问题，比如浏览器兼容性问题、组件使用等。大部分内容都摘了于<a target="_blank" rel="noopener" href="http://stackoverflow.com/search?q=ember.js"><code>stackoverflow</code></a>和<a target="_blank" rel="noopener" href="http://discuss.emberjs.com/"><code>emberjs discuss</code></a>。</p>
 <p><strong>1. 浏览器兼容性支持</strong></p>
-<p><a href="http://stackoverflow.com/questions/9873744/ember-js-browser-support" target="_blank" rel="noopener">emberjs browser support</a></p>
+<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/9873744/ember-js-browser-support">emberjs browser support</a></p>
 <p><strong>2. 部署服务器后刷新出现404问题</strong></p>
-<p>如果你的项目使用命令<code>ember build --prod</code>打包后部署到服务器上，进入首页没问题，并且在首页刷新也没问题。但是进入某个子路由后再刷新页面就会出现<code>404</code>错误。但是这个错误在开发环境却没有任何问题。这是由于服务器设置的问题。以nginx为例。只需要修改：<code>nginx/conf/vhosts/default.conf</code>即可<em>配置文件路由要根据自己nginx路径为准</em>。在此配置文件中加入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">        rewrite ^ /index.html break;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location /assets/ &#123;</span><br><span class="line">        # do nothing and let nginx handle this as usual</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>参考网址：<a href="http://discuss.emberjs.com/t/how-to-serve-all-routes-on-a-production-server-exactly/6372/2" target="_blank" rel="noopener">http://discuss.emberjs.com/t/how-to-serve-all-routes-on-a-production-server-exactly/6372/2</a></p>
-<p>还有另外一种更加简单的解决办法：直接在<code>router.js</code>设置<code>location</code>属性为<code>hash</code>即可。更多解释请看官网教程<a href="http://emberjs.com/api/modules/ember-routing.html" target="_blank" rel="noopener">EMBER-ROUTING MODULE</a></p>
+<p>如果你的项目使用命令<code>ember build --prod</code>打包后部署到服务器上，进入首页没问题，并且在首页刷新也没问题。但是进入某个子路由后再刷新页面就会出现<code>404</code>错误。但是这个错误在开发环境却没有任何问题。这是由于服务器设置的问题。以nginx为例。只需要修改：<code>nginx/conf/vhosts/default.conf</code>即可_配置文件路由要根据自己nginx路径为准_。在此配置文件中加入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">        rewrite ^ &#x2F;index.html break;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location &#x2F;assets&#x2F; &#123;</span><br><span class="line">        # do nothing and let nginx handle this as usual</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考网址：<a target="_blank" rel="noopener" href="http://discuss.emberjs.com/t/how-to-serve-all-routes-on-a-production-server-exactly/6372/2">http://discuss.emberjs.com/t/how-to-serve-all-routes-on-a-production-server-exactly/6372/2</a></p>
+<p>还有另外一种更加简单的解决办法：直接在<code>router.js</code>设置<code>location</code>属性为<code>hash</code>即可。更多解释请看官网教程<a target="_blank" rel="noopener" href="http://emberjs.com/api/modules/ember-routing.html">EMBER-ROUTING MODULE</a></p>
 <p><strong>3. 如何修改使用命令<code>ember build --prod</code>打包后的静态文件的名字，每个名字中会自动生成一个hash值一个类似于md5加密后的密文。</strong></p>
 <p><strong>4. 项目安装出错，报错信息为无法访问github</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Error creating new application. Removing generated directory `./super-rentals`</span><br><span class="line">Failed to execute <span class="string">"git ls-remote --tags --heads https://github.com/ember-cli/ember-cli-shims.git"</span>, <span class="built_in">exit</span> code of <span class="comment">#128</span></span><br><span class="line">fatal: unable to access <span class="string">'https://github.com/ember-cli/ember-cli-shims.git/'</span>: Failed to connect to github.com port 443: Connection refus</span><br><span class="line">ed</span><br><span class="line"></span><br><span class="line">Error: Failed to execute <span class="string">"git ls-remote --tags --heads https://github.com/ember-cli/ember-cli-shims.git"</span>, <span class="built_in">exit</span> code of <span class="comment">#128</span></span><br><span class="line">fatal: unable to access <span class="string">'https://github.com/ember-cli/ember-cli-shims.git/'</span>: Failed to connect to github.com port 443: Connection refus</span><br><span class="line">ed</span><br><span class="line"></span><br><span class="line">    at createError (D:\Program Files\nodejs\node_global\node_modules\ember-cli\node_modules\bower\lib\util\createError.js:4:15)</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\Program Files\nodejs\node_global\node_modules\ember-cli\node_modules\bower\lib\util\cmd.js:102:21)</span><br><span class="line">    at emitTwo (events.js:87:13)</span><br><span class="line">    at ChildProcess.emit (events.js:172:7)</span><br><span class="line">    at maybeClose (internal[擦汗]ild_process.js:827:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal[擦汗]ild_process.js:211:5)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Error creating new application. Removing generated directory `./super-rentals`</span><br><span class="line">Failed to execute <span class="string">&quot;git ls-remote --tags --heads https://github.com/ember-cli/ember-cli-shims.git&quot;</span>, <span class="built_in">exit</span> code of <span class="comment">#128</span></span><br><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/ember-cli/ember-cli-shims.git/&#x27;</span>: Failed to connect to github.com port 443: Connection refus</span><br><span class="line">ed</span><br><span class="line"></span><br><span class="line">Error: Failed to execute <span class="string">&quot;git ls-remote --tags --heads https://github.com/ember-cli/ember-cli-shims.git&quot;</span>, <span class="built_in">exit</span> code of <span class="comment">#128</span></span><br><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/ember-cli/ember-cli-shims.git/&#x27;</span>: Failed to connect to github.com port 443: Connection refus</span><br><span class="line">ed</span><br><span class="line"></span><br><span class="line">    at createError (D:\Program Files\nodejs\node_global\node_modules\ember-cli\node_modules\bower\lib\util\createError.js:4:15)</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\Program Files\nodejs\node_global\node_modules\ember-cli\node_modules\bower\lib\util\cmd.js:102:21)</span><br><span class="line">    at emitTwo (events.js:87:13)</span><br><span class="line">    at ChildProcess.emit (events.js:172:7)</span><br><span class="line">    at maybeClose (internal[擦汗]ild_process.js:827:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal[擦汗]ild_process.js:211:5)</span><br></pre></td></tr></table></figure>
 <p>解决办法：直接从github下载缺失的依赖包，比如上述错误是缺少<code>ember-cli-shims</code>，可以尝试直接从<code>https://github.com/ember-cli/ember-cli-shims.git</code>下载，然后复制到<code>bower_components</code>目录之下。</p>
 <p><strong>5. 项目启动出现’import’ is only available in ES6 (use ‘eversion: 6’)错误</strong></p>
 <p>错误详细请看下图：</p>
@@ -122,7 +124,7 @@
 <li>重新安装项目依赖，安装命令：<code>npm install</code>和<code>bower install</code></li>
 </ol>
 <p>然后重启项目即可。</p>
-<p>参考网址：<a href="https://github.com/ember-cli/ember-cli/issues/1418" target="_blank" rel="noopener">https://github.com/ember-cli/ember-cli/issues/1418</a></p>
+<p>参考网址：<a target="_blank" rel="noopener" href="https://github.com/ember-cli/ember-cli/issues/1418">https://github.com/ember-cli/ember-cli/issues/1418</a></p>
 <p><strong>欢迎补充</strong></p>
 
     </div>
@@ -132,15 +134,15 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/ember-teach/The Object Model/枚举（enumerables）/" rel="next" title="枚举（enumerables）">
-          枚举（enumerables）
+          <a href="/2020/01/18/fq/%E5%BC%BA%E5%88%B6%20Google.com%20%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8%20HTTPS%EF%BC%88SSL%EF%BC%89/" rel="next" title="强制 Google.com 域名使用 HTTPS（SSL）">
+          强制 Google.com 域名使用 HTTPS（SSL）
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/ember-teach/ember.js最常用的addon/" rel="prev" title="addon收集">
+          <a href="/2020/01/18/ember-teach/ember.js%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84addon/" rel="prev" title="addon收集">
             addon收集
           </a>
           <span>〉</span>
@@ -158,7 +160,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

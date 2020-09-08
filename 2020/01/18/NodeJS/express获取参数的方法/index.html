@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="NodeJS,Express,">
+    <meta name="keywords" content="NodeJS,Express," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/" rel="tag">NodeJS</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -100,7 +101,8 @@
 
     <div class="post-content">
       <p>最近本人在学习开发NodeJs，使用到express框架，对于网上的学习资料甚少，因此本人会经常在开发中做一些总结。</p>
-<p>express获取参数有三种方法：官网介绍如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Checks route params (req.params), ex: /user/:id</span><br><span class="line">Checks query string params (req.query), ex: ?id=12</span><br><span class="line">Checks urlencoded body params (req.body), ex: id=</span><br></pre></td></tr></table></figure></p>
+<p>express获取参数有三种方法：官网介绍如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Checks route params (req.params), ex: &#x2F;user&#x2F;:id</span><br><span class="line">Checks query string params (req.query), ex: ?id&#x3D;12</span><br><span class="line">Checks urlencoded body params (req.body), ex: id&#x3D;</span><br></pre></td></tr></table></figure>
 <p>1、例如：<code>127.0.0.1:3000/index</code>，这种情况下，我们为了得到<code>index</code>，我们可以通过使用<code>req.params</code>得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；<br>2、例如：<code>127.0.0.1:3000/index?id=12</code>，这种情况下，这种方式是获取客户端get方式传递过来的值，通过使用<code>req.query.id</code>就可以获得，类似于PHP的get方法；</p>
 <p>3、例如：<code>127.0.0.1：300/index</code>，然后post了一个<code>id=2</code>的值，这种方式是获取客户端post过来的数据，可以通过<code>req.body.id</code>获取，类似于PHP的post方法；</p>
 
@@ -111,7 +113,7 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/NodeJS/创建npm插件/" rel="next" title="创建npm插件">
+          <a href="/2020/01/18/NodeJS/%E5%88%9B%E5%BB%BAnpm%E6%8F%92%E4%BB%B6/" rel="next" title="创建npm插件">
           创建npm插件
           </a>
         
@@ -119,8 +121,8 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/hello-world/" rel="prev" title="Hello World">
-            Hello World
+          <a href="/2020/01/18/Mac/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%97%B6%E4%B8%B4%E6%97%B6%E8%A7%A3%E6%95%91%E5%8A%9E%E6%B3%95/" rel="prev" title="环境变量配置错误时临时解救办法">
+            环境变量配置错误时临时解救办法
           </a>
           <span>〉</span>
         
@@ -137,7 +139,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

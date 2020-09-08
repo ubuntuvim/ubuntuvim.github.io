@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Java,Spring,MVC,">
+    <meta name="keywords" content="Java,Spring,MVC," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -99,10 +100,11 @@
     </header>
 
     <div class="post-content">
-      <p>前一篇<a href="https://github.com/ubuntuvim/study-note/blob/master/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%80action%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89.md" target="_blank" rel="noopener">自定义MVC框架之一action配置文件定义</a>定义了Action的配置格式。本篇介绍<code>Action</code>接口的定义，由于是用于学习只是简单定义了几个公共变量和一个业务处理的方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.snails.framework.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String INPUT = <span class="string">"input"</span>;</span><br><span class="line">	<span class="keyword">public</span> String ERROR = <span class="string">"error"</span>;</span><br><span class="line">	<span class="keyword">public</span> String SUCCESS = <span class="string">"success"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 处理业务逻辑方法，每个Action类都需要重写此方法，并返回与配置文件对应的页面配置字符串</span></span><br><span class="line"><span class="comment">	 * 比如返回 'input'：</span></span><br><span class="line"><span class="comment">	 * &lt;result name="input"&gt;index.jsp&lt;/result&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <p>前一篇<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/study-note/blob/master/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%80action%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89.md">自定义MVC框架之一action配置文件定义</a>定义了Action的配置格式。本篇介绍<code>Action</code>接口的定义，由于是用于学习只是简单定义了几个公共变量和一个业务处理的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.snails.framework.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String INPUT = <span class="string">&quot;input&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String ERROR = <span class="string">&quot;error&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String SUCCESS = <span class="string">&quot;success&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理业务逻辑方法，每个Action类都需要重写此方法，并返回与配置文件对应的页面配置字符串</span></span><br><span class="line"><span class="comment">     * 比如返回 &#x27;input&#x27;：</span></span><br><span class="line"><span class="comment">     * &lt;result name=&quot;input&quot;&gt;index.jsp&lt;/result&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>代码很简单，不多说。其他使用框架的所有<code>Action</code>类都要实现此类。</p>
-<p>项目完整代码请看<a href="https://github.com/ubuntuvim/myMVC" target="_blank" rel="noopener">MyMVC</a>，欢迎fork学习，如果你觉得对你有帮助给我点个赞吧，当然也欢迎给我提意见（email:<a href="mailto:1527254027@qq.com" target="_blank" rel="noopener">1527254027@qq.com</a>，<a href="mailto:chendequanroob@gmail.com" target="_blank" rel="noopener">chendequanroob@gmail.com</a>）。</p>
+<p>项目完整代码请看<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/myMVC">MyMVC</a>，欢迎fork学习，如果你觉得对你有帮助给我点个赞吧，当然也欢迎给我提意见（email:<a href="mailto:&#x31;&#53;&#50;&#x37;&#x32;&#53;&#x34;&#48;&#50;&#x37;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#x31;&#53;&#50;&#x37;&#x32;&#53;&#x34;&#48;&#50;&#x37;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a>，chendequanroob@gmail.com）。</p>
 
     </div>
 
@@ -111,7 +113,7 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/自定义MVC框架/自定义MVC框架之二action配置文件定义/" rel="next" title="自定义MVC框架之二action配置文件定义">
+          <a href="/2020/01/18/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%BA%8Caction%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/" rel="next" title="自定义MVC框架之二action配置文件定义">
           自定义MVC框架之二action配置文件定义
           </a>
         
@@ -119,8 +121,8 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/自定义MVC框架/自定义MVC框架之一框架总说明/" rel="prev" title="自定义MVC框架之一框架总说明">
-            自定义MVC框架之一框架总说明
+          <a href="/2020/01/18/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%83%E6%A1%86%E6%9E%B6%E6%8B%A6%E6%88%AA%E5%99%A8ActionServlet%E5%AE%9A%E4%B9%89%E3%80%81%E9%85%8D%E7%BD%AE/" rel="prev" title="自定义MVC框架之七框架拦截器ActionServlet定义、配置">
+            自定义MVC框架之七框架拦截器ActionServlet定义、配置
           </a>
           <span>〉</span>
         
@@ -137,7 +139,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">

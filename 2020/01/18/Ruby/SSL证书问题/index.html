@@ -3,19 +3,19 @@
 <html lang="">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020">
+  <meta name="theme-color" content="#202020"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Ruby,SSL,">
+    <meta name="keywords" content="Ruby,SSL," />
   
 
   
-    <meta name="description" content="一个专注一coding的网站。">
+    <meta name="description" content="一个专注一coding的网站。" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
 </head>
 
 <body>
@@ -87,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSL/">SSL</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/" rel="tag">Ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSL/" rel="tag">SSL</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -99,9 +100,10 @@
     </header>
 
     <div class="post-content">
-      <p>问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B:</span><br></pre></td></tr></table></figure></p>
+      <p>问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby SSL_connect returned&#x3D;1 errno&#x3D;0 state&#x3D;SSLv3 read server certificate B:</span><br></pre></td></tr></table></figure>
 <p>解决办法。</p>
-<p>首先在这里下载证书(<a href="http://curl.haxx.se/ca/cacert.pem)" target="_blank" rel="noopener">http://curl.haxx.se/ca/cacert.pem)</a>, 然后再环境变量里设置<code>SSL_CERT_FILE</code>这个环境变量，变量值为这个文件的路径。</p>
+<p>首先在这里下载证书(<a target="_blank" rel="noopener" href="http://curl.haxx.se/ca/cacert.pem">http://curl.haxx.se/ca/cacert.pem</a>), 然后再环境变量里设置<code>SSL_CERT_FILE</code>这个环境变量，变量值为这个文件的路径。</p>
 
     </div>
 
@@ -110,7 +112,7 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/01/18/design-pattern/Builder模式——设计模式/" rel="next" title="Builder模式——设计模式">
+          <a href="/2020/01/18/design-pattern/Builder%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="Builder模式——设计模式">
           Builder模式——设计模式
           </a>
         
@@ -118,7 +120,7 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/01/18/NodeJS/创建npm插件/" rel="prev" title="创建npm插件">
+          <a href="/2020/01/18/NodeJS/%E5%88%9B%E5%BB%BAnpm%E6%8F%92%E4%BB%B6/" rel="prev" title="创建npm插件">
             创建npm插件
           </a>
           <span>〉</span>
@@ -136,7 +138,7 @@
 
 <div class="copyright">
     <span>本作品采用</span>
-    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
     <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 <div class="share">
