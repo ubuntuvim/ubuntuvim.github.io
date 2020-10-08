@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2020-09-08T15:33:30.449Z</updated>
+  <updated>2020-09-24T14:04:38.595Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring后置处理器</title>
+    <link href="http://xcoding.tech/2020/09/23/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    <id>http://xcoding.tech/2020/09/23/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
+    <published>2020-09-23T14:03:50.185Z</published>
+    <updated>2020-09-24T14:04:38.595Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本篇来总结汇总Spring各种类型后置处理器的使用。&lt;/p&gt;
+&lt;h3 id=&quot;bean定义后置处理器&quot;&gt;&lt;a href=&quot;#bean定义后置处理器&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring事务传播机制</title>
@@ -169,14 +195,14 @@
     <link href="http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/"/>
     <id>http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/</id>
     <published>2020-05-04T08:13:56.000Z</published>
-    <updated>2020-08-30T09:52:10.490Z</updated>
+    <updated>2020-10-08T15:32:07.748Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Spring-Framework5-x&quot;&gt;&lt;a href=&quot;#Spring-Framework5-x&quot; class=&quot;headerlink&quot; title=&quot;Spring Framework5.x&quot;&gt;&lt;/a&gt;Spring Framework5.x&lt;/h1&gt;&lt;h3</summary>
+    <summary type="html">&lt;h1 id=&quot;Spring-Framework5-x&quot;&gt;&lt;a href=&quot;#Spring-Framework5-x&quot; class=&quot;headerlink&quot; title=&quot;Spring Framework5.x&quot;&gt;&lt;/a&gt;Spring Framework5.x&lt;/h1&gt;&lt;h2</summary>
         
       
     
@@ -222,7 +248,7 @@
     <link href="http://xcoding.tech/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
     <id>http://xcoding.tech/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</id>
     <published>2020-04-19T09:44:52.000Z</published>
-    <updated>2020-04-19T15:12:06.000Z</updated>
+    <updated>2020-09-22T13:14:04.132Z</updated>
     
     
       
@@ -230,7 +256,8 @@
         
         
     <summary type="html">&lt;p&gt;以配置方式启动Spring容器，容器启动大概过程如下如：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/blog-image/spring/spring1.png&quot;</summary>
+&lt;p&gt;&lt;img src=&quot;/image/blog-image/spring/spring1.png&quot; alt=&quot;Spring容器启动&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
         
       
     
@@ -492,33 +519,6 @@
     <category term="Ruby" scheme="http://xcoding.tech/tags/Ruby/"/>
     
     <category term="SSL" scheme="http://xcoding.tech/tags/SSL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>express获取参数的方法</title>
-    <link href="http://xcoding.tech/2020/01/18/NodeJS/express%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95/"/>
-    <id>http://xcoding.tech/2020/01/18/NodeJS/express%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-01-18T14:50:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近本人在学习开发NodeJs，使用到express框架，对于网上的学习资料甚少，因此本人会经常在开发中做一些总结。&lt;/p&gt;
-&lt;p&gt;express获取参数有三种方法：官网介绍如下&lt;/p&gt;
-&lt;figure class=&quot;highlight</summary>
-        
-      
-    
-    
-    
-    
-    <category term="NodeJS" scheme="http://xcoding.tech/tags/NodeJS/"/>
-    
-    <category term="Express" scheme="http://xcoding.tech/tags/Express/"/>
     
   </entry>
   
