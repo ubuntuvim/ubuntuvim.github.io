@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2020-09-24T14:04:38.595Z</updated>
+  <updated>2020-10-18T16:21:24.485Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring IoC原理</title>
+    <link href="http://xcoding.tech/2020/10/19/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/"/>
+    <id>http://xcoding.tech/2020/10/19/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/</id>
+    <published>2020-10-18T16:16:49.330Z</published>
+    <updated>2020-10-18T16:21:24.485Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;注意：本篇的源码使用Spring5.0以上版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;BeanDefinition对象&quot;&gt;&lt;a href=&quot;#BeanDefinition对象&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="SpringFramework" scheme="http://xcoding.tech/tags/SpringFramework/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring后置处理器</title>
     <link href="http://xcoding.tech/2020/09/23/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
     <id>http://xcoding.tech/2020/09/23/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
     <published>2020-09-23T14:03:50.185Z</published>
-    <updated>2020-09-24T14:04:38.595Z</updated>
+    <updated>2020-10-10T16:23:36.452Z</updated>
     
     
       
@@ -195,7 +225,7 @@
     <link href="http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/"/>
     <id>http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/</id>
     <published>2020-05-04T08:13:56.000Z</published>
-    <updated>2020-10-08T15:32:07.748Z</updated>
+    <updated>2020-10-18T16:19:22.213Z</updated>
     
     
       
@@ -493,32 +523,6 @@
     <category term="NodeJS" scheme="http://xcoding.tech/tags/NodeJS/"/>
     
     <category term="Npm" scheme="http://xcoding.tech/tags/Npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SSL证书问题</title>
-    <link href="http://xcoding.tech/2020/01/18/Ruby/SSL%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/"/>
-    <id>http://xcoding.tech/2020/01/18/Ruby/SSL%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-01-18T14:50:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;问题：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Ruby" scheme="http://xcoding.tech/tags/Ruby/"/>
-    
-    <category term="SSL" scheme="http://xcoding.tech/tags/SSL/"/>
     
   </entry>
   
