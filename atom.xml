@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2020-10-18T16:21:24.485Z</updated>
+  <updated>2020-10-24T15:08:24.000Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring后置处理器</title>
+    <link href="http://xcoding.tech/2020/10/24/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    <id>http://xcoding.tech/2020/10/24/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
+    <published>2020-10-24T15:08:24.000Z</published>
+    <updated>2020-10-24T15:08:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本篇来总结汇总Spring各种类型后置处理器的使用。&lt;/p&gt;
+&lt;h3 id=&quot;bean定义后置处理器&quot;&gt;&lt;a href=&quot;#bean定义后置处理器&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring IoC原理</title>
-    <link href="http://xcoding.tech/2020/10/19/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/"/>
-    <id>http://xcoding.tech/2020/10/19/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/</id>
-    <published>2020-10-18T16:16:49.330Z</published>
-    <updated>2020-10-18T16:21:24.485Z</updated>
+    <link href="http://xcoding.tech/2020/10/24/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/"/>
+    <id>http://xcoding.tech/2020/10/24/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/</id>
+    <published>2020-10-24T14:52:12.000Z</published>
+    <updated>2020-11-01T07:01:11.000Z</updated>
     
     
       
@@ -43,32 +69,6 @@
     <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
     <category term="SpringFramework" scheme="http://xcoding.tech/tags/SpringFramework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring后置处理器</title>
-    <link href="http://xcoding.tech/2020/09/23/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
-    <id>http://xcoding.tech/2020/09/23/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
-    <published>2020-09-23T14:03:50.185Z</published>
-    <updated>2020-10-10T16:23:36.452Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本篇来总结汇总Spring各种类型后置处理器的使用。&lt;/p&gt;
-&lt;h3 id=&quot;bean定义后置处理器&quot;&gt;&lt;a href=&quot;#bean定义后置处理器&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
   </entry>
   
