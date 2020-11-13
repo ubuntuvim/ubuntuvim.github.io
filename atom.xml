@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2020-11-08T14:21:57.000Z</updated>
+  <updated>2020-11-13T15:36:50.000Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java线程池ThreadPoolExecutor你真的搞懂了吗</title>
+    <link href="http://xcoding.tech/2020/11/13/Java/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97/"/>
+    <id>http://xcoding.tech/2020/11/13/Java/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97/</id>
+    <published>2020-11-13T15:07:45.000Z</published>
+    <updated>2020-11-13T15:36:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;线程池是一个在高并发常见非常常用的技术。但是其中的奥秘你是否有真的了解过。比如线程池中的默认线程数和最大线程数是什么关系？缓存对象又是如何使用的？&lt;/p&gt;
+&lt;p&gt;通过一个简单的示例把线程池整明白了。自定义一个线程池，并且设置一个有界的缓冲队列；&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="多线程" scheme="http://xcoding.tech/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring销毁回调方法</title>
+    <link href="http://xcoding.tech/2020/11/10/Spring/Spring%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83/"/>
+    <id>http://xcoding.tech/2020/11/10/Spring/Spring%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83/</id>
+    <published>2020-11-10T14:32:44.000Z</published>
+    <updated>2020-11-10T15:10:44.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring初始化回调</title>
@@ -468,56 +518,6 @@
 &lt;li&gt;&lt;p&gt;如果还是无法开机则尝试用组合键开机：option＋R＋command＋P＋电源键，按住几秒后可以开机了&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;另外一种按键方法是：</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Mac" scheme="http://xcoding.tech/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac系统占用很大怎么办？</title>
-    <link href="http://xcoding.tech/2020/01/18/Mac/mac%E7%B3%BB%E7%BB%9F%E5%8D%A0%E7%94%A8%E5%BE%88%E5%A4%A7%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/"/>
-    <id>http://xcoding.tech/2020/01/18/Mac/mac%E7%B3%BB%E7%BB%9F%E5%8D%A0%E7%94%A8%E5%BE%88%E5%A4%A7%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-07-18T09:21:38.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;mac系统占用很大怎么办？&quot;&gt;&lt;a href=&quot;#mac系统占用很大怎么办？&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Mac" scheme="http://xcoding.tech/tags/Mac/"/>
-    
-    <category term="MacBook Pro" scheme="http://xcoding.tech/tags/MacBook-Pro/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>环境变量配置错误时临时解救办法</title>
-    <link href="http://xcoding.tech/2020/01/18/Mac/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%97%B6%E4%B8%B4%E6%97%B6%E8%A7%A3%E6%95%91%E5%8A%9E%E6%B3%95/"/>
-    <id>http://xcoding.tech/2020/01/18/Mac/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%97%B6%E4%B8%B4%E6%97%B6%E8%A7%A3%E6%95%91%E5%8A%9E%E6%B3%95/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-01-18T14:50:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如果配置Mac环境变量时候不小心配置错误，使得无法使用系统命令时可以采用下面的方法解救。&lt;/p&gt;
-&lt;p&gt;1，在命令行中输入&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
         
       
     
