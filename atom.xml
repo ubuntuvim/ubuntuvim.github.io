@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2020-11-15T15:41:04.000Z</updated>
+  <updated>2021-01-06T16:27:20.000Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java线程池踩坑记</title>
+    <link href="http://xcoding.tech/2021/01/06/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
+    <id>http://xcoding.tech/2021/01/06/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/</id>
+    <published>2021-01-06T14:19:46.000Z</published>
+    <updated>2021-01-06T16:27:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;备注：本篇基于1.7或者1.6的jdk。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由于为规范使用线程池导致生产环境出现了CPU使用率持续飙高，并且不下降，很诡异的是几十台服务器只有一台机器出现了问题，只能重启服务器解决，最后通过分析dump文件发</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://xcoding.tech/tags/java/"/>
+    
+    <category term="线程池" scheme="http://xcoding.tech/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring内置bean有哪些？</title>
@@ -495,31 +523,6 @@
     <summary type="html">&lt;p&gt;1.切换到root用户下,怎么切换就不用说了吧,不会的自己百度去.&lt;/p&gt;
 &lt;p&gt;2.添加sudo文件的写权限,命令是:&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Linux" scheme="http://xcoding.tech/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>增加用户并且授root权</title>
-    <link href="http://xcoding.tech/2020/01/18/Linux/%E5%A2%9E%E5%8A%A0%E7%94%A8%E6%88%B7%E5%B9%B6%E4%B8%94%E6%8E%88root%E6%9D%83/"/>
-    <id>http://xcoding.tech/2020/01/18/Linux/%E5%A2%9E%E5%8A%A0%E7%94%A8%E6%88%B7%E5%B9%B6%E4%B8%94%E6%8E%88root%E6%9D%83/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-01-18T14:50:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;新建的用户但是没有权限的，需要授权。授权命令如下：&lt;/p&gt;
-&lt;p&gt;root用户登录系统。&lt;/p&gt;
-&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
