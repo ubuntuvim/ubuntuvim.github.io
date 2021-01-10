@@ -19,7 +19,7 @@
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
-  <title>Java线程池踩坑记 [ Keep Coding ]</title>
+  <title>Java线程池踩坑记，HashMap引发的血案 [ Keep Coding ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -76,7 +76,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        Java线程池踩坑记
+        Java线程池踩坑记，HashMap引发的血案
       </h1>
       <span>
         
@@ -145,7 +145,6 @@
 <li><p>如果多个线程同时检测到需要扩容，多个线程在同时进行扩容，都在重新计算元素位置以及复制数据，每个线程都会把新数组重新赋值 给<code>table</code>，同样的后面执行的线程把前面线程的数据覆盖，如果前面执行的线程往数组增加了新元素，那就直接被覆盖导致数据丢失。相比第一点来说第二点是直接整个数组覆盖。数据丢失风险更高。</p>
 </li>
 </ol>
-<p>d</p>
 
     </div>
 
@@ -196,7 +195,7 @@
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: 'Java线程池踩坑记', // 可选。默认为 location.href
+  id: 'Java线程池踩坑记，HashMap引发的血案', // 可选。默认为 location.href
   owner: 'ubuntuvim',
   repo: 'ubuntuvim.github.io',
   oauth: {
