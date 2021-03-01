@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2021-01-06T16:42:35.000Z</updated>
+  <updated>2021-03-01T15:19:23.637Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java面试题</title>
+    <link href="http://xcoding.tech/2021/02/28/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://xcoding.tech/2021/02/28/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <published>2021-02-28T12:20:15.274Z</published>
+    <updated>2021-03-01T15:19:23.637Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Java基础&quot;&gt;&lt;a href=&quot;#Java基础&quot; class=&quot;headerlink&quot; title=&quot;Java基础&quot;&gt;&lt;/a&gt;Java基础&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://xcoding.tech/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DDD学习笔记</title>
+    <link href="http://xcoding.tech/2021/02/25/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://xcoding.tech/2021/02/25/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-02-25T14:08:20.000Z</published>
+    <updated>2021-02-25T14:18:46.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;DDD学习&quot;&gt;&lt;a href=&quot;#DDD学习&quot; class=&quot;headerlink&quot; title=&quot;DDD学习&quot;&gt;&lt;/a&gt;DDD学习&lt;/h1&gt;&lt;h3 id=&quot;Domain-Primitive（DP）的定义&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="DDD" scheme="http://xcoding.tech/tags/DDD/"/>
+    
+  </entry>
   
   <entry>
     <title>Java线程池踩坑记，HashMap引发的血案</title>
@@ -482,54 +531,6 @@
     <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
     
     <category term="idea-plugin" scheme="http://xcoding.tech/tags/idea-plugin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://xcoding.tech/2020/01/18/hello-world/"/>
-    <id>http://xcoding.tech/2020/01/18/hello-world/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-01-18T14:50:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="test" scheme="http://xcoding.tech/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xxx is not in the sudoers file.This incident will be reported.的解决方法</title>
-    <link href="http://xcoding.tech/2020/01/18/Linux/xxx%20is%20not%20in%20the%20sudoers%20file.This%20incident%20will%20be%20reported.%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://xcoding.tech/2020/01/18/Linux/xxx%20is%20not%20in%20the%20sudoers%20file.This%20incident%20will%20be%20reported.%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
-    <published>2020-01-18T14:50:37.000Z</published>
-    <updated>2020-01-18T14:50:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;1.切换到root用户下,怎么切换就不用说了吧,不会的自己百度去.&lt;/p&gt;
-&lt;p&gt;2.添加sudo文件的写权限,命令是:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Linux" scheme="http://xcoding.tech/tags/Linux/"/>
     
   </entry>
   
