@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2021-03-01T15:19:23.637Z</updated>
+  <updated>2021-04-19T07:11:03.623Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -17,19 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>手动加载jar并实例化class</title>
+    <link href="http://xcoding.tech/2021/04/19/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/"/>
+    <id>http://xcoding.tech/2021/04/19/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/</id>
+    <published>2021-04-19T07:02:23.520Z</published>
+    <updated>2021-04-19T07:11:03.623Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在Java项目中加载一个类的方式有很多，通常情况都是通过idea配置好的classPath加载到项目中。如果你想通过编码方式加载一个本地jar文件里面的class，要怎么做呢？&lt;/p&gt;
+&lt;p&gt;实现起来也很简单，Java提供了现成的API，直接通过&lt;code&gt;URLClass</summary>
+        
+      
+    
+    
+    
+    
+    <category term="-java" scheme="http://xcoding.tech/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java面试题</title>
     <link href="http://xcoding.tech/2021/02/28/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <id>http://xcoding.tech/2021/02/28/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
     <published>2021-02-28T12:20:15.274Z</published>
-    <updated>2021-03-01T15:19:23.637Z</updated>
+    <updated>2021-03-18T14:13:02.917Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h3 id=&quot;Java基础&quot;&gt;&lt;a href=&quot;#Java基础&quot; class=&quot;headerlink&quot; title=&quot;Java基础&quot;&gt;&lt;/a&gt;Java基础&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a</summary>
+    <summary type="html">&lt;h3 id=&quot;面试问题汇总&quot;&gt;&lt;a href=&quot;#面试问题汇总&quot; class=&quot;headerlink&quot; title=&quot;面试问题汇总&quot;&gt;&lt;/a&gt;面试问题汇总&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;SpringBoot常用注解？&lt;/p&gt;
+&lt;p&gt;</summary>
         
       
     
@@ -178,7 +203,7 @@
     <link href="http://xcoding.tech/2020/11/08/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83/"/>
     <id>http://xcoding.tech/2020/11/08/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83/</id>
     <published>2020-11-08T09:34:08.000Z</published>
-    <updated>2020-11-08T14:21:57.000Z</updated>
+    <updated>2021-03-13T09:36:16.879Z</updated>
     
     
       
@@ -497,31 +522,6 @@
         
         
     <summary type="html">&lt;h3 id=&quot;Plugin-Development-FAQ&quot;&gt;&lt;a href=&quot;#Plugin-Development-FAQ&quot; class=&quot;headerlink&quot; title=&quot;Plugin Development FAQ&quot;&gt;&lt;/a&gt;Plugin Development</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="idea-plugin" scheme="http://xcoding.tech/tags/idea-plugin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>环境搭建——idea插件开发</title>
-    <link href="http://xcoding.tech/2020/01/19/idea-plugin/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    <id>http://xcoding.tech/2020/01/19/idea-plugin/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</id>
-    <published>2020-01-18T17:13:31.000Z</published>
-    <updated>2020-01-19T17:42:42.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;开发工具&quot;&gt;&lt;a href=&quot;#开发工具&quot; class=&quot;headerlink&quot; title=&quot;开发工具&quot;&gt;&lt;/a&gt;开发工具&lt;/h2&gt;&lt;p&gt;idea的插件肯定就是用idea。&lt;br&gt;下载社区版或者专业版都可以，链接：&lt;a</summary>
         
       
     

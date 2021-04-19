@@ -100,7 +100,27 @@
     </header>
 
     <div class="post-content">
-      <h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><ol>
+      <h3 id="面试问题汇总"><a href="#面试问题汇总" class="headerlink" title="面试问题汇总"></a>面试问题汇总</h3><ol>
+<li><p>SpringBoot常用注解？</p>
+<p> 最主要注解<code>@SpringBootApplication</code>，这个注解其实是包含了<code>ComponentScan</code>、<code>@Configuration</code>、<code>EnableAutoConfiguration</code>三个注解。</p>
+<p> <code>@RestController</code>，<code>@Service</code>、<code>@ResponseBody</code>，<code>@RequestBody</code></p>
+<p> <code>@PathVariable</code>用户获取路径参数，<code>@RequestParam</code>用户获取查询参数。</p>
+<p> <code>@ConfigurationProperties</code>用户读取配置信息并注入到bean的属性上。</p>
+</li>
+<li><p>Oracle索引原理？</p>
+<p> 默认索引类型是B树，Oracle会维护索引列值和rowid值映射关系表。主要分为根、茎、叶三个部分，索引列值放在叶子节点上，茎存放叶子节点相关信息。</p>
+</li>
+<li><p>Springcloud组件有哪些？</p>
+<p> eureka服务注册发现，ribbon客户端负载均衡，hystrix熔断器，zuul（getway）服务网关，config（Apollo）分布式配置。</p>
+</li>
+<li><p>线程池的拒绝策略有哪些？</p>
+<p> AbortPolicy：丢弃任务并抛出拒绝异常RejectExcutionException（默认策略）</p>
+<p> DiscardPolicy：丢弃任务并且不会抛出异常</p>
+<p> DiscardOldestPolicy：丢弃队列最前面的任务，执行后面的任务</p>
+<p> CallerRunsPolicy：有调用线程池处理，也就是当触发拒绝策略时，只要线程池没有关闭，就由提交任务的当前线程处理。</p>
+</li>
+</ol>
+<h3 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h3><ol>
 <li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37356262/article/details/80543218">HashMap的源码，实现原理，JDK8中对HashMap做了怎样的优化</a></p>
 <blockquote>
 <p>JDK8中长度超过8链表转为红黑树，提高查找效率，避免并发情况下覆盖问题。</p>
@@ -218,8 +238,10 @@
 <li><p>什么是内存溢出， 内存泄露？ 他们的区别是什么？</p>
 </li>
 <li><p>引起类加载操作的行为有哪些？</p>
+<p>Class.forName，反射，new，调用静态方法或者静态属性，</p>
 </li>
 <li><p>介绍一下 JVM 提供的常用工具</p>
+<p>jconsole,jstat,jmap,jvisualvm,</p>
 </li>
 <li><p>Full GC 、 Major GC 、Minor GC 之间区别？</p>
 </li>
@@ -230,12 +252,15 @@
 <li><p>说一下强引用、软引用、弱引用、虚引用以及他们之间和 gc 的关系</p>
 </li>
 <li><p>Eden 和 Survivor 的比例分配是什么情况？为什么？</p>
+<p>Eden是8/10，两个survivor分别是1/10，原因：jdk通过统计发现，大部分的对象生命周期都是很短的（大部分都是局部变量），经过一次MinorGC之后通常只剩下10%左右。所以只需要设置10%的survivor。</p>
 </li>
 <li><p>什么是分布式垃圾回收（DGC）？它是如何工作的？</p>
 </li>
 <li><p>串行（serial）收集器和吞吐量（throughput）收集器的区别是什么？</p>
+<p>serial是单线程收集，收集垃圾时会发生STW，导致用户线程被暂停，所以吞吐量很低。</p>
 </li>
 <li><p>在 Java 中，对象什么时候可以被垃圾回收？</p>
+<p>没有任何引用后会被回收。</p>
 </li>
 </ol>
 <h3 id="Java并发"><a href="#Java并发" class="headerlink" title="Java并发"></a>Java并发</h3><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><ol>
@@ -276,6 +301,11 @@
   
       <div class="post-nav-item post-nav-prev">
           
+          <a href="/2021/04/19/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/" rel="prev" title="手动加载jar并实例化class">
+            手动加载jar并实例化class
+          </a>
+          <span>〉</span>
+        
       </div>
     </div>
   
@@ -284,7 +314,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%9F%BA%E7%A1%80"><span class="toc-text">Java基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM%E4%B8%8E%E8%B0%83%E4%BC%98"><span class="toc-text">JVM与调优</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%B9%B6%E5%8F%91"><span class="toc-text">Java并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-text">面试问题汇总</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%9F%BA%E7%A1%80"><span class="toc-text">Java基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM%E4%B8%8E%E8%B0%83%E4%BC%98"><span class="toc-text">JVM与调优</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E5%B9%B6%E5%8F%91"><span class="toc-text">Java并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a></li></ol>
   </div>
 
 
