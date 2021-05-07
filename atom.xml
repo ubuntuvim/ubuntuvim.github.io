@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2021-04-19T07:21:28.238Z</updated>
+  <updated>2021-05-07T15:11:38.452Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,108 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>什么是中台？？</title>
+    <link href="http://xcoding.tech/2021/05/07/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/"/>
+    <id>http://xcoding.tech/2021/05/07/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/</id>
+    <published>2021-05-07T14:37:47.062Z</published>
+    <updated>2021-05-07T15:11:38.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://insights.thoughtworks.cn/what-is-zhongtai/&quot;&gt;白话中台战略1：中台是个什么鬼？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="中台" scheme="http://xcoding.tech/tags/%E4%B8%AD%E5%8F%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>观察者模式</title>
+    <link href="http://xcoding.tech/2021/04/19/Java/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://xcoding.tech/2021/04/19/Java/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-04-19T14:35:43.331Z</published>
+    <updated>2021-04-30T15:13:46.649Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="设计模式" scheme="http://xcoding.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring后置处理器</title>
+    <link href="http://xcoding.tech/2021/04/19/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    <id>http://xcoding.tech/2021/04/19/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
+    <published>2021-04-19T07:24:46.506Z</published>
+    <updated>2021-04-19T07:24:46.506Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本篇来总结汇总Spring各种类型后置处理器的使用。&lt;/p&gt;
+&lt;h3 id=&quot;bean定义后置处理器&quot;&gt;&lt;a href=&quot;#bean定义后置处理器&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://xcoding.tech/2021/04/19/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/"/>
+    <id>http://xcoding.tech/2021/04/19/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/</id>
+    <published>2021-04-19T07:24:46.495Z</published>
+    <updated>2021-04-19T07:24:46.495Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;你知道Spring提供了多少中初始化回调方法吗？？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Spring</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>手动加载jar并实例化class</title>
@@ -226,37 +328,11 @@
   </entry>
   
   <entry>
-    <title>Spring后置处理器</title>
-    <link href="http://xcoding.tech/2020/10/24/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
-    <id>http://xcoding.tech/2020/10/24/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
-    <published>2020-10-24T15:08:24.000Z</published>
-    <updated>2021-01-11T15:04:45.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本篇来总结汇总Spring各种类型后置处理器的使用。&lt;/p&gt;
-&lt;h3 id=&quot;bean定义后置处理器&quot;&gt;&lt;a href=&quot;#bean定义后置处理器&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Spring IoC原理</title>
     <link href="http://xcoding.tech/2020/10/24/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/"/>
     <id>http://xcoding.tech/2020/10/24/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/</id>
     <published>2020-10-24T14:52:12.000Z</published>
-    <updated>2020-11-01T07:01:11.000Z</updated>
+    <updated>2021-04-19T13:17:14.322Z</updated>
     
     
       
@@ -453,84 +529,6 @@
     <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
     <category term="SpringFramework" scheme="http://xcoding.tech/tags/SpringFramework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java虚拟机</title>
-    <link href="http://xcoding.tech/2020/05/04/JVM/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    <id>http://xcoding.tech/2020/05/04/JVM/%E8%99%9A%E6%8B%9F%E6%9C%BA/</id>
-    <published>2020-05-03T16:40:17.000Z</published>
-    <updated>2020-07-18T09:20:51.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;!-- START doctoc generated TOC please keep comment here to allow auto update --&gt;
-&lt;!-- DON&#39;T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="JVM" scheme="http://xcoding.tech/tags/JVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring源码学习</title>
-    <link href="http://xcoding.tech/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://xcoding.tech/2020/04/19/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</id>
-    <published>2020-04-19T09:44:52.000Z</published>
-    <updated>2020-09-22T13:14:04.132Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;以配置方式启动Spring容器，容器启动大概过程如下如：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/blog-image/spring/spring1.png&quot; alt=&quot;Spring容器启动&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>官方FAQ(非常重要)——idea插件开发</title>
-    <link href="http://xcoding.tech/2020/01/21/idea-plugin/%E5%AE%98%E6%96%B9FAQ(%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81)/"/>
-    <id>http://xcoding.tech/2020/01/21/idea-plugin/%E5%AE%98%E6%96%B9FAQ(%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81)/</id>
-    <published>2020-01-20T17:42:24.000Z</published>
-    <updated>2020-01-20T17:51:08.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;Plugin-Development-FAQ&quot;&gt;&lt;a href=&quot;#Plugin-Development-FAQ&quot; class=&quot;headerlink&quot; title=&quot;Plugin Development FAQ&quot;&gt;&lt;/a&gt;Plugin Development</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="idea-plugin" scheme="http://xcoding.tech/tags/idea-plugin/"/>
     
   </entry>
   
