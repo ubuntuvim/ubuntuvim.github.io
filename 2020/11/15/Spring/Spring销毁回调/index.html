@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Spring," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>Spring销毁回调方法 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Spring销毁回调方法
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-11-15T12:24:06.000Z">
+        2020-11-15
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 9 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>接着前篇，有初始化对应着就有销毁。Spring提供了多种方式的销毁回调方法，这些方法在手动关闭容器的时候就会触发。</p>
+<p>销毁回调方式：</p>
+<ol>
+<li>后置处理器<code>DestructionAwareBeanPostProcessor</code>的<code>postProcessBeforeDestruction()</code>方法，此方式是对所有bean有效</li>
+<li>在类方法上使用<code>@PreDestroy</code>注解</li>
+<li>实现接口<code>DisposableBean</code>的<code>destory()</code>方法</li>
+<li>自定义回调方法，<code>@Bean(destroyMethod = &quot;beanDestoryCallbackMethod&quot;)</code></li>
+<li>实现<code>AutoCloseable</code>接口或者<code>Closeable</code>接口的bean（当且仅当此bean没有任何自定义销毁回调，也就是说此bean没有使用前面的2，3，4这三种方式）</li>
+</ol>
+<p>仍然按照前篇的思路，先演示，再提疑问，再读源码。</p>
+<h3 id="演示案例"><a href="#演示案例" class="headerlink" title="演示案例"></a>演示案例</h3><p>自定义一个实现前面四种方式中的后三种方式的bean，实现<code>DisposableBean</code>接口，在bean中使用<code>@PreDestory</code>注解。然后在注入容器的时候使用<code>@Bean</code>注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.spring.createbean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.DisposableBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.AbstractApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.PreDestroy;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 和InitCallbackBean是相互呼应的，有销毁回调对应着就有销毁的回调。</span></span><br><span class="line"><span class="comment"> * 验证各种销毁回调方法的执行顺序：</span></span><br><span class="line"><span class="comment"> * 1. 执行销毁回调DestructionAwareBeanPostProcessor.postProcessBeforeDestruction()方法</span></span><br><span class="line"><span class="comment"> * 2. 执行销毁回调<span class="doctag">@PreDestroy</span>注解的回调方法twoDestroy()</span></span><br><span class="line"><span class="comment"> * 3. 执行销毁回调<span class="doctag">@PreDestroy</span>注解的回调方法oneDestroy()</span></span><br><span class="line"><span class="comment"> * 4. 执行销毁回调DisposableBean.destory()方法</span></span><br><span class="line"><span class="comment"> * 5. 执行销毁回调<span class="doctag">@Bean</span>(destroyMethod = &quot;beanDestoryCallbackMethod&quot;)的方法</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 需要注意的是，这些销毁的回调方法需要手动调用容器的关闭方法才会触发。触发方法如下：</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> AbstractApplicationContext#close()</span></span><br><span class="line"><span class="comment"> * 最终会调用到这个类的方法处理上述回调接口。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> DisposableBeanAdapter#destroy()</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/10/18 下午5:17</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DestoryCallbackBean</span> <span class="keyword">implements</span> <span class="title">DisposableBean</span>, /*<span class="title">Closeable</span>, */<span class="title">AutoCloseable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实现DisposableBean接口的方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调DisposableBean.destory()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义销毁方法：@Bean(destroyMethod = &quot;beanDestoryCallbackMethod&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">beanDestoryCallbackMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调@Bean(destroyMethod = \&quot;beanDestoryCallbackMethod\&quot;)的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果有一个同名销毁方法会不会被读取使用？？不会，因为@Bean只支持无参方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">beanDestoryCallbackMethod</span><span class="params">(Fruit apple)</span> </span>&#123;</span><br><span class="line">        apple.eatable();</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调@Bean(destroyMethod = \&quot;beanDestoryCallbackMethod\&quot;)的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果一个类中有两个方法都使用了<span class="doctag">@PreDestory</span>注解会怎么执行？</span></span><br><span class="line"><span class="comment">     * 都会执行，执行代码：</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> DefaultSingletonBeanRegistry#destroySingletons()</span></span><br><span class="line"><span class="comment">     * 但是如果DispoableBean的destory()方法也使用了<span class="doctag">@PreDestory</span>注解则只会执行一次。</span></span><br><span class="line"><span class="comment">     * 这个和初始化的InitializingBean.afterPropertiesSet()方法类似，只会执行一次。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">twoDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调@PreDestroy注解的回调方法twoDestroy()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">oneDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调@PreDestroy注解的回调方法oneDestroy()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 实现接口AutoCloseable的方法。</span></span><br><span class="line"><span class="comment">     * bean没有实现任何销毁回调，也没有在<span class="doctag">@Bean</span>中自定义任何销毁方法下，当容器执行close事件时此方法会被执行。</span></span><br><span class="line"><span class="comment">     * 比如SimpleDestoryBean类的例子。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调Closeable.close()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行销毁回调shutdown()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有一种默认的回调，就是实现<code>AutoCloseable</code>接口或者<code>Closeable</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.spring.createbean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Closeable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 当前bean既不实现DispoableBean接口，也没有自定义的销毁方法</span></span><br><span class="line"><span class="comment"> * 但是有一个AutoCloseable.close()方法，验证容器关闭时是否会回调AutoCloseable.close()方法。</span></span><br><span class="line"><span class="comment"> * 实现Closeable接口也是同样的效果。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/10/18 下午10:38</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleDestoryBean</span> <span class="keyword">implements</span> <span class="title">Closeable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;既不实现DispoableBean接口，也没有自定义的销毁方法的情况下执行最后默认的AutoCloseable.close方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>再定义一个后置处理器，实现<code>DestructionAwareBeanPostProcessor</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义销毁回调的后置处理器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/10/18 下午5:23</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDestructionAwareBeanPostProcessorImpl</span> <span class="keyword">implements</span> <span class="title">DestructionAwareBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessBeforeDestruction</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;DestoryCallbackBean&quot;</span>.equalsIgnoreCase(beanName))</span><br><span class="line">            System.out.println(<span class="string">&quot;执行销毁回调DestructionAwareBeanPostProcessor.postProcessBeforeDestruction()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">requiresDestruction</span><span class="params">(Object bean)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 返回true，表示需要执行销毁回调方法postProcessBeforeDestruction()</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，通过<code>@Bean</code>注入到容器中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.spring.createbean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/10/17 下午4:46</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(destroyMethod = &quot;beanDestoryCallbackMethod&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DestoryCallbackBean <span class="title">destoryCallbackBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DestoryCallbackBean();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行案例;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.spring.createbean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.RootBeanDefinition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.AbstractApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: ubuntuvim</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: 2020/10/17 下午4:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateBeanTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AbstractApplicationContext applicationContext = <span class="keyword">new</span> AnnotationConfigApplicationContext(Config.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行各种销毁回调</span></span><br><span class="line">        applicationContext.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>applicationContext.close();</code>这句代码非常关键，必须要手动关闭容器才会触发销毁回调的执行</strong>。你可以把这行代码注释掉在运行，注释掉之后不会打印如下的日志。即使是后置处理器接口也不会执行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">执行销毁回调DestructionAwareBeanPostProcessor.postProcessBeforeDestruction()方法</span><br><span class="line">执行销毁回调@PreDestroy注解的回调方法oneDestroy()</span><br><span class="line">执行销毁回调@PreDestroy注解的回调方法twoDestroy()</span><br><span class="line">执行销毁回调DisposableBean.destory()方法</span><br><span class="line">执行销毁回调@Bean(destroyMethod = &quot;beanDestoryCallbackMethod&quot;)的方法</span><br><span class="line">既不实现DispoableBean接口，也没有自定义的销毁方法的情况下执行最后默认的AutoCloseable.close方法</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Spring源码"><a href="#Spring源码" class="headerlink" title="Spring源码"></a>Spring源码</h3><p>接下来，我们从Spring源码入手，看看这些回调是在什么地方执行的。首先在<code>main</code>方法中的<code>close</code>方法上打个断点，然后用debug方式运行<code>main</code>方法。</p>
+<p>进入到<code>close()</code>方法的逻辑里面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">synchronized</span> (<span class="keyword">this</span>.startupShutdownMonitor) &#123;</span><br><span class="line">    doClose();</span><br><span class="line">    <span class="comment">// If we registered a JVM shutdown hook, we don&#x27;t need it anymore now:</span></span><br><span class="line">    <span class="comment">// We&#x27;ve already explicitly closed the context.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.shutdownHook != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        Runtime.getRuntime().removeShutdownHook(<span class="keyword">this</span>.shutdownHook);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (IllegalStateException ex) &#123;</span><br><span class="line">        <span class="comment">// ignore - VM is already shutting down</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照Spring框架的尿性，不用想，具体处理逻辑肯定是在<code>doClose()</code>里面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doClose</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Check whether an actual close attempt is necessary...</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.active.get() &amp;&amp; <span class="keyword">this</span>.closed.compareAndSet(<span class="keyword">false</span>, <span class="keyword">true</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">      logger.debug(<span class="string">&quot;Closing &quot;</span> + <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LiveBeansView.unregisterApplicationContext(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// Publish shutdown event.</span></span><br><span class="line">      <span class="comment">// 发布容器关闭事件，任何监听ContextClosedEvent事件的监听器都可以收到一条消息</span></span><br><span class="line">      publishEvent(<span class="keyword">new</span> ContextClosedEvent(<span class="keyword">this</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">      logger.warn(<span class="string">&quot;Exception thrown from ApplicationListener handling ContextClosedEvent&quot;</span>, ex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Stop all Lifecycle beans, to avoid delays during individual destruction.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.lifecycleProcessor != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.lifecycleProcessor.onClose();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">        logger.warn(<span class="string">&quot;Exception thrown from LifecycleProcessor on context close&quot;</span>, ex);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Destroy all cached singletons in the context&#x27;s BeanFactory.</span></span><br><span class="line">    <span class="comment">// 这个方法里面会执行自定义的销毁方法（@Bean），实现DisposableBean接口的方法，</span></span><br><span class="line">    <span class="comment">// 以及InitDestroyAnnotationBeanPostProcessor#postProcessBeforeDestruction方法</span></span><br><span class="line">    destroyBeans();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Close the state of this context itself.</span></span><br><span class="line">    <span class="comment">// 设置容器上下文状态，</span></span><br><span class="line">    closeBeanFactory();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Let subclasses do some final clean-up if they wish...</span></span><br><span class="line">    <span class="comment">// 留给子类实现的自定义销毁逻辑</span></span><br><span class="line">    onClose();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Reset local application listeners to pre-refresh state.</span></span><br><span class="line">    <span class="comment">// 清理事件监听</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.earlyApplicationListeners != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.applicationListeners.clear();</span><br><span class="line">      <span class="keyword">this</span>.applicationListeners.addAll(<span class="keyword">this</span>.earlyApplicationListeners);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Switch to inactive.</span></span><br><span class="line">    <span class="comment">// 设置容器状态为关闭</span></span><br><span class="line">    <span class="keyword">this</span>.active.set(<span class="keyword">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法做的事情很多，主要有：触发所有bean的销毁回调、发布关闭事件、执行bean的生命周期关闭方法、设置容器的状态为关闭、执行销毁的后置处理器。</p>
+<p>本篇重点关注的是<code>destroyBeans()</code>方法。这个方法里面会执行自定义的销毁方法，<code>@PreDestory</code>注释的方法，后置处理器的<code>postProcessBeforeDestruction()</code>方法。</p>
+<p>进入<code>destoryBeans()</code>方法后，发现这还不是最后的执行逻辑，这个方法又交给<code>DefaultListableBeanFactory</code>的<code>destroySingletons()</code>方法处理。</p>
+<p>进入<code>destorySingletons()</code>方法后，发现还不是最好的执行逻辑，它的实现是调用父类的同名方法，继续进入它父类同名方法。<code>DefaultSingletonBeanRegistry</code>的<code>destroySingletons()</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DefaultSingletonBeanRegistry的destroySingletons()方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroySingletons</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">    logger.trace(<span class="string">&quot;Destroying singletons in &quot;</span> + <span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">synchronized</span> (<span class="keyword">this</span>.singletonObjects) &#123;</span><br><span class="line">    <span class="keyword">this</span>.singletonsCurrentlyInDestruction = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  String[] disposableBeanNames;</span><br><span class="line">  <span class="keyword">synchronized</span> (<span class="keyword">this</span>.disposableBeans) &#123;</span><br><span class="line">    disposableBeanNames = StringUtils.toStringArray(<span class="keyword">this</span>.disposableBeans.keySet());</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遍历所有bean，逐个执行这些bean的销毁方法</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = disposableBeanNames.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    destroySingleton(disposableBeanNames[i]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.containedBeanMap.clear();</span><br><span class="line">  <span class="keyword">this</span>.dependentBeanMap.clear();</span><br><span class="line">  <span class="keyword">this</span>.dependenciesForBeanMap.clear();</span><br><span class="line"></span><br><span class="line">  clearSingletonCache();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最核心的逻辑在for循环里面，遍历所有可销毁的bean数组<code>disposableBeanNames</code>。</p>
+<p>继续一步步进入调用逻辑，按照如下调用顺序就可以找到最后的执行逻辑：</p>
+<blockquote>
+<p>DefaultSingletonBeanRegistry.destroySingletons() -&gt; DefaultSingletonBeanRegistry.destroySingleton() -&gt; DisposableBeanAdapter.destroy()</p>
+</blockquote>
+<p>DisposableBeanAdapter.destory()才是最后的处理逻辑。不得不说这个调用层次实在是太深了！！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!CollectionUtils.isEmpty(<span class="keyword">this</span>.beanPostProcessors)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (DestructionAwareBeanPostProcessor processor : <span class="keyword">this</span>.beanPostProcessors) &#123;</span><br><span class="line">      <span class="comment">/**</span></span><br><span class="line"><span class="comment">                 * 执行后置处理器的销毁回调方法</span></span><br><span class="line"><span class="comment">                 * <span class="doctag">@PreDestroy</span>注释的方法就是在这里执行的。默认实现有</span></span><br><span class="line"><span class="comment">                 * <span class="doctag">@see</span> InitDestroyAnnotationBeanPostProcessor#postProcessBeforeDestruction(Object, String)</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">      processor.postProcessBeforeDestruction(<span class="keyword">this</span>.bean, <span class="keyword">this</span>.beanName);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.invokeDisposableBean) &#123;</span><br><span class="line">    <span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">      logger.trace(<span class="string">&quot;Invoking destroy() on bean with name &#x27;&quot;</span> + <span class="keyword">this</span>.beanName + <span class="string">&quot;&#x27;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 执行DisposableBean接口的destory()方法。</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (System.getSecurityManager() != <span class="keyword">null</span>) &#123;</span><br><span class="line">        AccessController.doPrivileged((PrivilegedExceptionAction&lt;Object&gt;) () -&gt; &#123;</span><br><span class="line">          ((DisposableBean) <span class="keyword">this</span>.bean).destroy();</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;, <span class="keyword">this</span>.acc);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        ((DisposableBean) <span class="keyword">this</span>.bean).destroy();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">      String msg = <span class="string">&quot;Invocation of destroy method failed on bean with name &#x27;&quot;</span> + <span class="keyword">this</span>.beanName + <span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">      <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">        logger.warn(msg, ex);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        logger.warn(msg + <span class="string">&quot;: &quot;</span> + ex);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 1. 执行自定义的销毁方法，比如下面自定义的销毁方法就是beanDestoryCallbackMethod()</span></span><br><span class="line">    <span class="comment">//         @Bean(destroyMethod = &quot;beanDestoryCallbackMethod&quot;)</span></span><br><span class="line">    <span class="comment">// 2. 执行实现Closable接口的close()方法。</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.destroyMethod != <span class="keyword">null</span>) &#123;</span><br><span class="line">    invokeCustomDestroyMethod(<span class="keyword">this</span>.destroyMethod);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.destroyMethodName != <span class="keyword">null</span>) &#123;</span><br><span class="line">    Method methodToInvoke = determineDestroyMethod(<span class="keyword">this</span>.destroyMethodName);</span><br><span class="line">    <span class="keyword">if</span> (methodToInvoke != <span class="keyword">null</span>) &#123;</span><br><span class="line">      invokeCustomDestroyMethod(ClassUtils.getInterfaceMethodIfPossible(methodToInvoke));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>首先遍历后置处理器的<code>postProcessBeforeDestruction()</code>方法，这个方法是对所有bean生效的。</p>
+</li>
+<li><p><code>@PreDestory</code>注解标注的方法也是通过后置处理器执行的。当遍历到<code>InitDestroyAnnotationBeanPostProcessor</code>这个后置处理器的时候，执行的原理和初始化回调是一样的，底层都是通过反射实现。</p>
+</li>
+<li><p>然后是执行单个bean实现的<code>DisposableBean</code>接口的<code>destory()</code>方法，</p>
+</li>
+<li><p>最后是执行在<code>@Bean</code>中自定义的销毁回调方法。</p>
+</li>
+<li><p>执行接口<code>Closable</code>接口的<code>close()</code>方法。</p>
+</li>
+</ol>
+<p>到此，已经把所有的销毁回调的执行都介绍完了。你是否看懂了呢？？</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/10/19/Spring/Spring%20Framework/" rel="next" title="Spring Framework5.x">
+          Spring Framework5.x
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2021/01/07/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/" rel="prev" title="Java线程池踩坑记，HashMap引发的血案">
+            Java线程池踩坑记，HashMap引发的血案
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA%E6%A1%88%E4%BE%8B"><span class="toc-text">演示案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring%E6%BA%90%E7%A0%81"><span class="toc-text">Spring源码</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<div class="post-container">
+    <article class="post">
+      <div id="container"></div>
+    </article>
+</div>
+
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Spring销毁回调方法', // 可选。默认为 location.href
+  owner: 'ubuntuvim',
+  repo: 'ubuntuvim.github.io',
+  oauth: {
+    client_id: '48b3df0bf4ba1743e0a3',
+    client_secret: 'c6c2cec09acb5eecc9d325d56cef187264aa1e16',
+  },
+})
+gitment.render('container')
+</script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>
