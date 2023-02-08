@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>MySQL主从同步配置</title>
+      <link href="/2023/02/08/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/"/>
+      <url>/2023/02/08/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="安装VMS虚拟机-ubuntu-server"><a href="#安装VMS虚拟机-ubuntu-server" class="headerlink" title="安装VMS虚拟机+ubuntu server"></a>安装VMS虚拟机+ubuntu server</h3><p><strong>第一台</strong></p><p>安装：<code>multipass launch --name server8081</code></p><p>运行：<code>multipass shell server8081</code></p><p>IP：192.168.64.2</p><p><strong>第二台</strong></p><p>安装：<code>multipass launch --name server8082</code></p><p>运行：<code>multipass shell server8082</code></p><p>IP：192.168.64.3</p><p><strong>第三台</strong></p><p>安装：<code>mps launch jammy --name server8083 </code></p><p>运行：<code>mps shell server8083</code></p><p>IP：192.168.64.4</p><p>启动/关闭/暂停所有实例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mps start --all</span><br><span class="line">mps stop --all</span><br><span class="line">mps suspend --all</span><br></pre></td></tr></table></figure><p>在虚拟机上安装mysql</p><pre><code>sudo apt updatesudo apt install mysql-serversudo systemctl status mysql/etc/mysql/mysql.cnf/lib/systemd/system/mysql.service/var/log/mysql/error.log</code></pre><p>配置账户</p><pre><code>登录mysql：sudo mysql配置账户：ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;;flush privileges;授权远程访问：登录服务：mysql -u root -puse mysql;update user set host = &#39;%&#39; where user = &#39;root&#39;;ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;flush privileges;修改sudo vim /etc/mysql/mysql.conf.d/mysqld.cnfbind-address配置改为IP地址192.168.64.4flush privileges;</code></pre><p>mysql启动</p><pre><code>sudo systemctl restart mysqlsudo systemctl start mysqlsudo systemctl stop mysql</code></pre><h2 id="主从同步"><a href="#主从同步" class="headerlink" title="主从同步"></a>主从同步</h2><p>server8081设为主库，server8082、server8083为从库；</p><h3 id="主从配置"><a href="#主从配置" class="headerlink" title="主从配置"></a>主从配置</h3><p><a href="https://segmentfault.com/a/1190000022115647">https://segmentfault.com/a/1190000022115647</a></p><p>注意在 从库配置时</p><pre><code>change master to master_host=&#39;192.168.64.2&#39; , master_port=3306, master_user=&#39;root&#39;,master_password=&#39;123456&#39;, master_log_file = &#39;mysql-bin.000002&#39;,master_log_pos= 2066;</code></pre><p>master<em>log</em>pos的值要与主库对应，可以在主库通过命令show master status;查看对应的值是多少。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> MySQL </tag>
+            
+            <tag> 主从同步 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>什么是中台？？</title>
       <link href="/2021/05/07/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/"/>
       <url>/2021/05/07/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/</url>

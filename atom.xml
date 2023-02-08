@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2021-05-07T15:11:38.452Z</updated>
+  <updated>2023-02-08T15:08:35.388Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL主从同步配置</title>
+    <link href="http://xcoding.tech/2023/02/08/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/"/>
+    <id>http://xcoding.tech/2023/02/08/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</id>
+    <published>2023-02-08T15:05:37.334Z</published>
+    <updated>2023-02-08T15:08:35.388Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;安装VMS虚拟机-ubuntu-server&quot;&gt;&lt;a href=&quot;#安装VMS虚拟机-ubuntu-server&quot; class=&quot;headerlink&quot; title=&quot;安装VMS虚拟机+ubuntu server&quot;&gt;&lt;/a&gt;安装VMS虚拟机+ubuntu</summary>
+        
+      
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="MySQL" scheme="http://xcoding.tech/tags/MySQL/"/>
+    
+    <category term="主从同步" scheme="http://xcoding.tech/tags/%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>什么是中台？？</title>
@@ -502,33 +529,6 @@
     <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
     
     <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Framework5.x</title>
-    <link href="http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/"/>
-    <id>http://xcoding.tech/2020/05/04/Spring/Spring%20Framework/</id>
-    <published>2020-05-04T08:13:56.000Z</published>
-    <updated>2020-10-18T16:19:22.213Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Spring-Framework5-x&quot;&gt;&lt;a href=&quot;#Spring-Framework5-x&quot; class=&quot;headerlink&quot; title=&quot;Spring Framework5.x&quot;&gt;&lt;/a&gt;Spring Framework5.x&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
-    
-    <category term="SpringFramework" scheme="http://xcoding.tech/tags/SpringFramework/"/>
     
   </entry>
   
