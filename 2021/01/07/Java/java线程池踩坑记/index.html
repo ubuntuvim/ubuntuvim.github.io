@@ -190,29 +190,25 @@
 <div class="share">
 
 </div>
-<div class="post-container">
-    <article class="post">
-      <div id="container"></div>
-    </article>
-</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
+<div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-
-<script>
-var gitment = new Gitment({
-  id: 'Java线程池踩坑记，HashMap引发的血案', // 可选。默认为 location.href
-  owner: 'ubuntuvim',
-  repo: 'ubuntuvim.github.io',
-  oauth: {
-    client_id: '48b3df0bf4ba1743e0a3',
-    client_secret: '4cf1e76de9e18b9ad0def477c36ab22059b152c8'
-  }
-});
-gitment.render('container');
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: 'Java线程池踩坑记，HashMap引发的血案',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
 </script>
-
 
 
     </div>
