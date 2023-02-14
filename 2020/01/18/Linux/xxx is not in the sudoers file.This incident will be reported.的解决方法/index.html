@@ -161,8 +161,10 @@
     </article>
 </div>
 
+
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script src="/js/gitment.browser.js"></script>
+
 <script>
 var gitment = new Gitment({
   id: 'xxx is not in the sudoers file.This incident will be reported.的解决方法', // 可选。默认为 location.href
@@ -170,10 +172,10 @@ var gitment = new Gitment({
   repo: 'ubuntuvim.github.io',
   oauth: {
     client_id: '48b3df0bf4ba1743e0a3',
-    client_secret: '4cf1e76de9e18b9ad0def477c36ab22059b152c8',
-  },
-})
-gitment.render('container')
+    client_secret: '4cf1e76de9e18b9ad0def477c36ab22059b152c8'
+  }
+});
+gitment.render('container');
 </script>
 
 
@@ -221,6 +223,8 @@ gitment.render('container')
   <!-- scripts list from theme config.yml -->
   
     <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
   
 
 
