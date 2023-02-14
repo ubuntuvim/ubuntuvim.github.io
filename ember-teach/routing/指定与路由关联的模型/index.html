@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Route," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>指定与路由关联的模型 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        指定与路由关联的模型
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Route/" rel="tag">Ember-Route</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 4 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>路由其中一个很重要的职责就是加载适合的<code>model</code>，初始化数据，然后在模板上显示数据。</p>
+<h3 id="1，普通model关联"><a href="#1，普通model关联" class="headerlink" title="1，普通model关联"></a>1，普通model关联</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  ⋯⋯</span></span><br><span class="line"></span><br><span class="line">Router.map(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.route(<span class="string">&#x27;posts&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Router;</span><br></pre></td></tr></table></figure>
+<p>对于<code>posts</code>这个路由如果要加载名为<code>post</code>的<code>model</code>要怎么做呢？代码实现很简单，其实在前面的代码也已经写过了。你只需要重写<code>model</code>回调，在回调中返回获取到的<code>model</code>即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/posts.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// return Ember.$.getJSON(&#x27;https://api.github.com/repos/emberjs/ember.js/pulls&#x27;);</span></span><br><span class="line">        <span class="comment">// 加载post（是一个model）</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.query(<span class="string">&#x27;post&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>model</code>回调可以返回一个<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/">Ember Data</a>记录，或者返回任何的<a target="_blank" rel="noopener" href="http://liubin.org/promises-book/">promise</a>对象（<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/">Ember Data</a>也是<code>promise</code>对象），又或者是返回一个简单的javascript对象、数组都可以。但是需要等待数据加载完成才会渲染模板，所以如果你是使用<code>Ember.$.getJSON(&#39;https://api.github.com/repos/emberjs/ember.js/pulls&#39;);</code>获取远程数据页面上会有一段时间是空白的，其实就是在加载数据，不过这样的用户体验并不好，不过你也不需要担心这个问题，Ember已经提供了解决办法。还记得上一篇的截图的路由表吗？是不是每个路由都有一个<code>xxx_loading</code>路由，这个路由就是在数据加载的时候执行的，有关<code>xxx_loading</code>更多详细的信息在后面的博文介绍。</p>
+<h3 id="2，动态model"><a href="#2，动态model" class="headerlink" title="2，动态model"></a>2，动态model</h3><p>一个<code>route</code>有时候只加载同一个<code>model</code>，比如路由<code>/photos</code>就通常是加载模型<code>photo</code>。如果用户离开或者是重新进入这个路由模型也不会改变。<br>然而，有些情况下路由所加载的<code>model</code>是变化的。比如在一个图片展示的APP中，路由<code>/photos</code>会加载一个<code>photo</code>模型集合并渲染到模板<code>photos</code>上。当用户点击其中一幅图片的时候路由只加载被点击的<code>model</code>数据，当用户点击另外一张图片的时候加载的又是另外一个<code>model</code>并且渲染到模板上，而且这两次加载的<code>model</code>数据是不一样的。</p>
+<p>在这种情形下，访问的URL就包含了很重要的信息，包括路由和模型。</p>
+<p>在Ember应用中可以通过定义动态段实现加载不同的模型。有关动态段的知识在前面的<a target="_blank" rel="noopener" href="http://blog.ddlisting.com/2016/03/22/ember-js-ru-men-zhi-nan-zhi-shi-san-link-to/">Ember.js 入门指南之十三{{link-to}} 助手</a>和<a target="_blank" rel="noopener" href="http://blog.ddlisting.com/2016/03/25/ember-js-ru-men-zhi-nan-zhi-er-shi-lu-you-ding-yi/">Ember.js 入门指南之二十路由定义</a>已经做过介绍。</p>
+<p>一旦在路由中定义了动态段Ember就会从URL中提取动态段的值作为<code>model</code>回调的第一个参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/router.js</span></span><br><span class="line"><span class="comment">// ⋯⋯</span></span><br><span class="line"></span><br><span class="line">Router.map(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.route(<span class="string">&#x27;posts&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.route(<span class="string">&#x27;post&#x27;</span>, &#123; <span class="attr">path</span>: <span class="string">&#x27;/:post_id&#x27;</span>&#125;);</span><br><span class="line">    &#125;); </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Router;</span><br></pre></td></tr></table></figure>
+<p>这段代码定义了一个动态段<code>:post_id</code>，记得动态段是以<code>:</code>”开头。然后在<code>model</code>回调中使用动态段获取数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/posts.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.findRecord(<span class="string">&#x27;post&#x27;</span>, params.post_id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以看到在<code>model</code>回调中也是使用在路由中定义的动态段，并把这个动态段作为参数传递给Ember的方法<code>findRecord</code>，Ember会把URL对应位置上的数据解析到这个动态段上。</p>
+<p><strong>注意</strong>：在<code>model</code>中的动态段只在通过URL访问的时候才会被解析。如果你是通过其他方式（比如使用<code>link-to</code>进入路由）转入路由的，那么路由中<code>model</code>回调方法里的动态不会被解析，所请求的数据会直接从上下文中获取（你可以把上下文想象成ember的缓存）。下面的代码将为你演示这个说法：</p>
+<h4 id="1，首先创建一个model：ember-g-model-post"><a href="#1，首先创建一个model：ember-g-model-post" class="headerlink" title="1，首先创建一个model：ember g model post"></a>1，首先创建一个model：ember g model post</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">    title: DS.attr(<span class="string">&#x27;string&#x27;</span>),</span><br><span class="line">    body: DS.attr(<span class="string">&#x27;string&#x27;</span>),</span><br><span class="line">    timestamp: DS.attr(<span class="string">&#x27;number&#x27;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>定义了3个属性，<code>id</code>属性不需要显示定义，ember会默认加上。</p>
+<h4 id="2，在posts下增加一个子路由"><a href="#2，在posts下增加一个子路由" class="headerlink" title="2，在posts下增加一个子路由"></a>2，在posts下增加一个子路由</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router.map(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.route(<span class="string">&#x27;posts&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.route(<span class="string">&#x27;post&#x27;</span>, &#123; <span class="attr">path</span>: <span class="string">&#x27;/:post_id&#x27;</span>&#125;);</span><br><span class="line">    &#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>然后用<a target="_blank" rel="noopener" href="http://ember-cli.com/user-guide">Ember CLI</a>命令（<code>ember g route posts/post</code>）在创建路由<code>post</code>，同时也会自动创建出子模板<code>post.hbs</code>。创建完成之后会得到如下两个文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.app&#x2F;routes&#x2F;posts&#x2F;post.js</span><br><span class="line">2.app&#x2F;templates&#x2F;posts&#x2F;post.hbs</span><br></pre></td></tr></table></figure>
+<p>修改路由<code>posts.js</code>，在<code>model</code>回调中返回设定的数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/posts.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;id&quot;</span>:<span class="string">&quot;-JzySrmbivaSSFG6WwOk&quot;</span>,</span><br><span class="line">                <span class="string">&quot;body&quot;</span> : <span class="string">&quot;testsssss&quot;</span>,</span><br><span class="line">                <span class="string">&quot;timestamp&quot;</span> : <span class="number">1443083287846</span>,</span><br><span class="line">                <span class="string">&quot;title&quot;</span> : <span class="string">&quot;test&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;id&quot;</span>:<span class="string">&quot;-JzyT-VLEWdF6zY3CefO&quot;</span>,</span><br><span class="line">                <span class="string">&quot;body&quot;</span> : <span class="string">&quot;33333333&quot;</span>,</span><br><span class="line">                <span class="string">&quot;timestamp&quot;</span> : <span class="number">1443083323541</span>,</span><br><span class="line">                <span class="string">&quot;title&quot;</span> : <span class="string">&quot;test33333&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;id&quot;</span>:<span class="string">&quot;-JzyUqbJcT0ct14OizMo&quot;</span> ,</span><br><span class="line">                <span class="string">&quot;body&quot;</span> : <span class="string">&quot;body.....&quot;</span>,</span><br><span class="line">                <span class="string">&quot;timestamp&quot;</span> : <span class="number">1443083808036</span>,</span><br><span class="line">                <span class="string">&quot;title&quot;</span> : <span class="string">&quot;title1231232132&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>修改<code>posts.hbs</code>，遍历显示所有的数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &#123;&#123;#each model as |item|&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            &#123;&#123;#link-to &#x27;posts.post&#x27; item&#125;&#125;&#123;&#123;item.title&#125;&#125;&#123;&#123;/link-to&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span>    </span><br><span class="line">    &#123;&#123;/each&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">&#123;&#123;outlet&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>修改子路由<code>post.js</code>，使得子路由根据动态段返回匹配的数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/routes/posts/post.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;params = &#x27;</span> + params.post_id);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.findRecord(<span class="string">&#x27;post&#x27;</span>, params.post_id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注意打印信息语句<code>console.log()</code>;，然后接着修改子模板<code>post.hbs</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- app/templates/posts/post.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;model.title&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;model.body&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>到此，全部所需的测试数据和代码已经编写完毕。下面执行<a target="_blank" rel="noopener" href="http://localhost:4200/posts">http://localhost:4200/posts</a>，可以看到界面上显示了所有在路由posts的model回调中设置的测试数据。查看页面的HTML代码：</p>
+<p><img src="/content/images/2016/03/60.png" alt="html"></p>
+<p>可以看到每个连接的动态段都被解析成了数据的id属性值。<br>注意：随便点击任意一个，注意看浏览器控制台打印的信息。<br>我点击了以第一个连接，浏览器的URL变为</p>
+<p><img src="/content/images/2016/03/61.png" alt="html"></p>
+<p>看浏览器的控制台是不是并没有打印出<code>params = -JzySrmbivaSSFG6WwOk</code>，在点击其他的连接结果也是一样的，浏览器控制台没有打印出任何信息。</p>
+<p>下面我我们直接在浏览器地址栏上输入：<a target="_blank" rel="noopener" href="http://localhost:4200/posts/-JzyUqbJcT0ct14OizMo">http://localhost:4200/posts/-JzyUqbJcT0ct14OizMo</a>然后按enter执行，注意看浏览器控制台打印的信息！！！此时打印了<code>params = -JzyUqbJcT0ct14OizMo</code>，你可以用同样的方式执行另外两个链接的地址。同样也会打印出<code>params = xxx</code>（<code>xxx</code>为数据的<code>id</code>值）。</p>
+<p>我想这个例子应该能很好的解释了Ember提示用户需要的注意的问题。<br>只有直接用过浏览器访问才会执行包含了动态段的<code>model</code>回调，否则不会执行包含有动态段的回调；如果没有包含动态段的<code>model</code>回调不管是通过URL访问还是通过<code>link-to</code>访问都会执行。你可以在路由<code>posts</code>的<code>model</code>回调中添加一句打印日志的代码，然后通过点击首页上的<code>about</code>和<code>posts</code>切换路由，你可以看到控制台打印出了你在<code>model</code>回调中添加的日志信息。</p>
+<h3 id="3，多模型"><a href="#3，多模型" class="headerlink" title="3，多模型"></a>3，多模型</h3><p>对于在一个<code>mode</code>l回调中同时返回多个模型的情况也是时常存在的。对于这种情况你需要在<code>model</code>回调中修改返回值为<code>Ember.RSVP.hash</code>对象类型。比如下面的代码就是同时返回了两个模型的数据：一个是<code>song</code>，一个是<code>album</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/favorites.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Ember.REVP.hash(&#123;</span><br><span class="line">            songs: <span class="built_in">this</span>.store.find(<span class="string">&#x27;song&#x27;</span>),</span><br><span class="line">            albums: <span class="built_in">this</span>.store.find(<span class="string">&#x27;slbum&#x27;</span>)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>然后在模板<code>favorites.hbs</code>中就可以使用<code>{{#each}}</code>把两个数据集遍历出来。遍历的方式与普通的遍历方式一样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/templates/favorites.hbs --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Song list<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;&#123;#each model.songs as |item|&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Album list<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;&#123;#each model.albums as |item|&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>到此所有路由的<code>model</code>回调的情况介绍完毕，<code>model</code>回调其实就是把模型绑定到路由上。实现数据的初始化，然后把数据渲染到模板上显示。这也是Ember推荐这么做的——就是把操作数据相关的处理放在<code>route</code>而不是放在<code>controller</code>。<br><br><br>博文完整代码放在<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/my_emberjs_code">Github</a>（博文经过多次修改，博文上的代码与github代码可能又出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/ember-teach/routing/%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0/" rel="next" title="查询参数">
+          查询参数
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/ember-teach/models/%E8%AE%BE%E7%BD%AE%E8%AE%B0%E5%BD%95%E5%88%B0Store/" rel="prev" title="设置记录到Store">
+            设置记录到Store
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%BC%8C%E6%99%AE%E9%80%9Amodel%E5%85%B3%E8%81%94"><span class="toc-text">1，普通model关联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%BC%8C%E5%8A%A8%E6%80%81model"><span class="toc-text">2，动态model</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%8C%E9%A6%96%E5%85%88%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAmodel%EF%BC%9Aember-g-model-post"><span class="toc-text">1，首先创建一个model：ember g model post</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%8C%E5%9C%A8posts%E4%B8%8B%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%AD%90%E8%B7%AF%E7%94%B1"><span class="toc-text">2，在posts下增加一个子路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%BC%8C%E5%A4%9A%E6%A8%A1%E5%9E%8B"><span class="toc-text">3，多模型</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '指定与路由关联的模型',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

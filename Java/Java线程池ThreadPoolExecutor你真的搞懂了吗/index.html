@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Java,多线程," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>Java线程池ThreadPoolExecutor你真的搞懂了吗 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        Java线程池ThreadPoolExecutor你真的搞懂了吗
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2021-01-10T06:53:13.000Z">
+        2021-01-10
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 9 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>线程池是一个在高并场景非常常用的技术。但是其中的奥秘你是否有真的了解过。比如线程池中的默认线程数和最大线程数是什么关系？缓存对象又是如何使用的？</p>
+<p>通过一个简单的示例把线程池整明白了。自定义一个线程池，并且设置一个有界的缓冲队列；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.spring.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThreadPoolExecutor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 线程池维护线程的最少数量</span></span><br><span class="line">        <span class="keyword">int</span> corePoolSize = <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 线程池维护线程的最大数量</span></span><br><span class="line">        <span class="keyword">int</span> maximumPoolSize = <span class="number">4</span>;</span><br><span class="line">        <span class="comment">// 线程池维护线程所允许的空闲时间的单位</span></span><br><span class="line">        <span class="comment">// TimeUnit.SECONDS</span></span><br><span class="line">        <span class="comment">// 线程池维护所允许的空闲时间</span></span><br><span class="line">        <span class="keyword">long</span> keepAliveTime = <span class="number">10</span>;</span><br><span class="line">        <span class="comment">// 线程池所使用的缓存队列，当任务达到最大线程数时会把任务放在缓冲队列中，然后有空的线程会逐个执行里面的任务</span></span><br><span class="line">        <span class="keyword">int</span> workQueueSize = <span class="number">47</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 处理任务的优先级为：核心线程corePoolSize、任务队列workQueue、最大线程maximumPoolSize，如果三者都满了</span></span><br><span class="line"><span class="comment">         * 使用handler处理被拒绝的任务</span></span><br><span class="line"><span class="comment">         * corePoolSize -&gt; workQueueSize -&gt; maximumPoolSize</span></span><br><span class="line"><span class="comment">         *  一开始启动，线程池有两个线程可以接收并处理任务，但是任务比较耗时一下子就来了很多任务，导致2个线程无法满足，</span></span><br><span class="line"><span class="comment">         *  然后会把任务放在缓冲队列中，但是如果任务量还在继续增加，并且两个线程消化任务比新增任务还慢。</span></span><br><span class="line"><span class="comment">         *  如果corePoolSize &lt;= maximumPoolSize就会创建新的线程接收任务，创建的最大数量就是maximumPoolSize。</span></span><br><span class="line"><span class="comment">         *  于是就有了4个线程在接收任务（默认的两个+新创建的2个）。</span></span><br><span class="line"><span class="comment">         * 此时基本已经到达了临界点，4个线程在连续不断的处理任务。</span></span><br><span class="line"><span class="comment">         * 如果任务量太大，并且每个任务都处理很耗时（处理完一个就从缓冲队列拿走一个，队列元素数量也就减1）。导致缓冲队列也满了。</span></span><br><span class="line"><span class="comment">         * 这种情况下就会抛出拒绝任务异常java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution（这个是默认的拒绝异常）</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * 验证：</span></span><br><span class="line"><span class="comment">         * 1. 缓冲队列设置比较小，比如workQueueSize=5时，很容易就出现任务拒绝异常</span></span><br><span class="line"><span class="comment">         * 2. 如果直接设置缓冲队列workQueueSize=50，肯定不会有问题。所有任务都可以放到缓冲队列中，等待线程池中的线程来处理即可。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">// 定义一个线程池</span></span><br><span class="line">        ThreadPoolExecutor executor = <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">                corePoolSize,</span><br><span class="line">                maximumPoolSize,</span><br><span class="line">                keepAliveTime,</span><br><span class="line">                TimeUnit.SECONDS,</span><br><span class="line">                <span class="comment">// ArrayBlockingQueue是有界的缓冲队列</span></span><br><span class="line">                <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(workQueueSize));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">50</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;i = &quot;</span> + i);</span><br><span class="line">                <span class="keyword">int</span> task = i;</span><br><span class="line">                executor.execute(() -&gt; &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">&quot;在执行任务：\t&quot;</span> + task);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                System.out.println(<span class="string">&quot;getActiveCount = &quot;</span> + executor.getActiveCount());</span><br><span class="line">                System.out.println(<span class="string">&quot;getTaskCount = &quot;</span> + executor.getTaskCount());</span><br><span class="line">                System.out.println(<span class="string">&quot;getCompletedTaskCount = &quot;</span> + executor.getCompletedTaskCount());</span><br><span class="line">                System.out.println(<span class="string">&quot;getMaximumPoolSize = &quot;</span> + executor.getMaximumPoolSize());</span><br><span class="line">                System.out.println(<span class="string">&quot;workQueueSize = &quot;</span> + executor.getQueue().size());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                System.err.println(<span class="string">&quot;任务队列已经满，任务被拒绝：&quot;</span> + e.getMessage());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        executor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>核心参数：<br><code>corePoolSize</code>，线程池默认存活的线程数，或者说是最小的线程数<br><code>maximumPoolSize</code>，线程池中可以创建的最大线程数，或者说是线程池中线程数上限<br><code>workQueueSize</code>，缓冲队列上限</p>
+<p><strong>处理任务的优先级为：核心线程corePoolSize处理任务、任务队列workQueue、最大线程maximumPoolSize，如果三者都满了使用handler处理被拒绝的任务。</strong></p>
+<p> 一开始启动，线程池有两个线程可以接收并处理任务，但是任务比较耗时一下子就来了很多任务，导致2个线程无法满足，然后会把任务放在缓冲队列中，但是如果任务量还在继续增加，并且两个线程消化任务比新增任务还慢。如果 <code>corePoolSize &lt;= maximumPoolSize</code>就会创建新的线程接收任务，创建的最大数量就是<code>maximumPoolSize</code>。于是就有了4个线程在接收任务（默认的两个+新创建的2个）。<br>此时基本已经到达了临界点，4个线程在连续不断的处理任务。<br>如果任务量太大，并且每个任务都处理很耗时（处理完一个就从缓冲队列拿走一个，队列元素数量也就减1）。导致缓冲队列也满了。<br>这种情况下就会抛出拒绝任务异常<code>java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution</code>（这个是默认的拒绝异常）</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ol>
+<li>缓冲队列设置比较小，比如workQueueSize=5时，很容易就出现任务拒绝异常</li>
+<li>如果直接设置缓冲队列workQueueSize=50，肯定不会有问题。所有任务都可以放到缓冲队列中，等待线程池中的线程来处理即可。</li>
+</ol>
+<p>workQueueSize=5的运行结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line">i = 1</span><br><span class="line">pool-1-thread-1在执行任务：    1</span><br><span class="line">getActiveCount = 1</span><br><span class="line">getTaskCount = 1</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 0</span><br><span class="line">i = 2</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 2</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">pool-1-thread-2在执行任务：    2</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 0</span><br><span class="line">i = 3</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 3</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 1</span><br><span class="line">i = 4</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 4</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 2</span><br><span class="line">i = 5</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 5</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 3</span><br><span class="line">i = 6</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 6</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 4</span><br><span class="line">i = 7</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 7</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 8</span><br><span class="line">getActiveCount = 3</span><br><span class="line">getTaskCount = 8</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 9</span><br><span class="line">pool-1-thread-3在执行任务：    8</span><br><span class="line">pool-1-thread-4在执行任务：    9</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 9</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 10</span><br><span class="line">i = 11</span><br><span class="line">i = 12</span><br><span class="line">i = 13</span><br><span class="line">i = 14</span><br><span class="line">i = 15</span><br><span class="line">i = 16</span><br><span class="line">i = 17</span><br><span class="line">i = 18</span><br><span class="line">i = 19</span><br><span class="line">i = 20</span><br><span class="line">pool-1-thread-1在执行任务：    3</span><br><span class="line">i = 21</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 10</span><br><span class="line">getCompletedTaskCount = 1</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 22</span><br><span class="line">i = 23</span><br><span class="line">pool-1-thread-2在执行任务：    4</span><br><span class="line">i = 24</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 11</span><br><span class="line">getCompletedTaskCount = 2</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 25</span><br><span class="line">i = 26</span><br><span class="line">i = 27</span><br><span class="line">i = 28</span><br><span class="line">i = 29</span><br><span class="line">i = 30</span><br><span class="line">i = 31</span><br><span class="line">i = 32</span><br><span class="line">i = 33</span><br><span class="line">pool-1-thread-4在执行任务：    5</span><br><span class="line">pool-1-thread-3在执行任务：    6</span><br><span class="line">i = 34</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 12</span><br><span class="line">getCompletedTaskCount = 4</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 4</span><br><span class="line">i = 35</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 13</span><br><span class="line">getCompletedTaskCount = 4</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 36</span><br><span class="line">i = 37</span><br><span class="line">i = 38</span><br><span class="line">i = 39</span><br><span class="line">i = 40</span><br><span class="line">i = 41</span><br><span class="line">i = 42</span><br><span class="line">i = 43</span><br><span class="line">pool-1-thread-1在执行任务：    7</span><br><span class="line">getActiveCount = 4</span><br><span class="line">pool-1-thread-2在执行任务：    21</span><br><span class="line">getTaskCount = 14</span><br><span class="line">getCompletedTaskCount = 6</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 4</span><br><span class="line">i = 44</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 15</span><br><span class="line">getCompletedTaskCount = 6</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 45</span><br><span class="line">pool-1-thread-4在执行任务：    24</span><br><span class="line">pool-1-thread-3在执行任务：    34</span><br><span class="line">i = 46</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 16</span><br><span class="line">getCompletedTaskCount = 8</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 4</span><br><span class="line">i = 47</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 17</span><br><span class="line">getCompletedTaskCount = 8</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 48</span><br><span class="line">pool-1-thread-1在执行任务：    35</span><br><span class="line">i = 49</span><br><span class="line">getActiveCount = 4</span><br><span class="line">getTaskCount = 18</span><br><span class="line">getCompletedTaskCount = 9</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 5</span><br><span class="line">i = 50</span><br><span class="line">pool-1-thread-2在执行任务：    43</span><br><span class="line">pool-1-thread-4在执行任务：    44</span><br><span class="line">pool-1-thread-3在执行任务：    46</span><br><span class="line">pool-1-thread-1在执行任务：    47</span><br><span class="line">pool-1-thread-2在执行任务：    49</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL in 5s</span><br><span class="line">35 actionable tasks: 2 executed, 33 up-to-date</span><br><span class="line">任务队列已经满，任务被拒绝：Task com.ubuntuvim.spring.thread.MyThreadPoolExecutor$$Lambda$1/142257191@7229724f rejected from java.util.concurrent.ThreadPoolExecutor@4c873330[Running, pool size = 4, active threads = 4, queued tasks = 5, completed tasks = 0]</span><br><span class="line">任务队列已经满，任务被拒绝：Task com.ubuntuvim.spring.thread.MyThreadPoolExecutor$$Lambda$1/142257191@119d7047 rejected from java.util.concurrent.ThreadPoolExecutor@4c873330[Running, pool size = 4, active threads = 4, queued tasks = 5, completed tasks = 0]</span><br><span class="line">任务队列已经满，任务被拒绝：Task</span><br><span class="line">// ………… 省略部分日志</span><br><span class="line">任务队列已经满，任务被拒绝：Task com.ubuntuvim.spring.thread.MyThreadPoolExecutor$$Lambda$1/142257191@5f184fc6 rejected from java.util.concurrent.ThreadPoolExecutor@4c873330[Running, pool size = 4, active threads = 4, queued tasks = 5, completed tasks = 8]</span><br><span class="line">任务队列已经满，任务被拒绝：Task com.ubuntuvim.spring.thread.MyThreadPoolExecutor$$Lambda$1/142257191@3feba861 rejected from java.util.concurrent.ThreadPoolExecutor@4c873330[Running, pool size = 4, active threads = 4, queued tasks = 5, completed tasks = 9]</span><br><span class="line">下午2:38:53: Task execution finished &#x27;MyThreadPoolExecutor.main()&#x27;.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>从运行结果上看，只有少数几个人能执行成功，其他的任务都被直接拒绝了。</p>
+<p>workQueueSize=50的运行结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Task :<span class="built_in">test</span>-env:MyThreadPoolExecutor.main()</span></span><br><span class="line">i = 1</span><br><span class="line">pool-1-thread-1在执行任务：    1</span><br><span class="line">getActiveCount = 1</span><br><span class="line">getTaskCount = 1</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 0</span><br><span class="line">i = 2</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 2</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">pool-1-thread-2在执行任务：    2</span><br><span class="line">workQueueSize = 0</span><br><span class="line">i = 3</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 3</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 1</span><br><span class="line">i = 4</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 4</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 2</span><br><span class="line">// 省略类似中间日志</span><br><span class="line">i = 47</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 47</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 45</span><br><span class="line">i = 48</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 48</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 46</span><br><span class="line">i = 49</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 49</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 47</span><br><span class="line">i = 50</span><br><span class="line">getActiveCount = 2</span><br><span class="line">getTaskCount = 50</span><br><span class="line">getCompletedTaskCount = 0</span><br><span class="line">getMaximumPoolSize = 4</span><br><span class="line">workQueueSize = 48</span><br><span class="line">pool-1-thread-1在执行任务：    3</span><br><span class="line">pool-1-thread-2在执行任务：    4</span><br><span class="line">pool-1-thread-2在执行任务：    5</span><br><span class="line">pool-1-thread-1在执行任务：    6</span><br><span class="line">pool-1-thread-1在执行任务：    7</span><br><span class="line">pool-1-thread-2在执行任务：    8</span><br><span class="line">pool-1-thread-1在执行任务：    9</span><br><span class="line">// ………… 省略中间的日志</span><br><span class="line">pool-1-thread-2在执行任务：    47</span><br><span class="line">pool-1-thread-1在执行任务：    48</span><br><span class="line">pool-1-thread-2在执行任务：    50</span><br><span class="line">pool-1-thread-1在执行任务：    49</span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL in 56s</span><br><span class="line">35 actionable tasks: 2 executed, 33 up-to-date</span><br><span class="line">下午11:32:38: Task execution finished &#x27;MyThreadPoolExecutor.main()&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>从两次运行日志可以分析出线程池是怎么运行的。</p>
+<ol>
+<li><p>第一种情况，缓冲队列比较小，并且任务数比缓冲队列大的多。</p>
+<p> 此情况缓存队列比较小，并且每个任务都很耗时，导致队列也装不下。然后新开了2个线程，一共4个线程连续处理任务。但是让人处理不完，只能把新增的任务拒绝掉。此时任务还在一直往里添加，4个线程也一直在处理任务。当有任务处理完了，就会又接收新任务。所以从日志可以看出来，并不是在第一次出现拒绝异常就不在接收新任务。</p>
+</li>
+<li><p>第二种情况，直接定义一个比较大缓冲队列，这个队列可以容纳所有的任务</p>
+<p> 首先看前面三次运行日志：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">i &#x3D; 1</span><br><span class="line">pool-1-thread-1在执行任务：    1</span><br><span class="line">getActiveCount &#x3D; 1</span><br><span class="line">getTaskCount &#x3D; 1</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 0</span><br><span class="line">i &#x3D; 2</span><br><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">getTaskCount &#x3D; 2</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">pool-1-thread-2在执行任务：    2</span><br><span class="line">workQueueSize &#x3D; 0</span><br><span class="line">i &#x3D; 3</span><br><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">getTaskCount &#x3D; 3</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<p> <code>i = 1</code>和<code>i = 2</code>的时候，队列是空的。因为此时有两个核心线程，刚好可以接受并处理2个任务。所以不需要缓冲。</p>
+<p> <code>i = 3</code>的时候，由于前面两个任务还没处理完成（因为在任务中手动加了休眠，模拟耗时）。此时也没有空余的线程可以接受任务。所以只能缓存到队列中，此时<code>workQueueSize = 1</code>。</p>
+<p> <code>i = 50</code>的时候，由于队列设置的是50，可以容纳所有的任务。不需要创建新的线程来处理，并且也没有设置任务的超时时间。所以只要等待两个核心线程慢慢处理任务即可。从最后一个日志可以看出来<code>workQueueSize = 48</code>和<code>getActiveCount = 2</code>是符合预期的。一个是队列大小，一个是线程大小。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">getTaskCount &#x3D; 50</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 48</span><br></pre></td></tr></table></figure>
+
+<p>我们再把<code>workQueueSize</code>改成47，预期效果是<code>getActiveCount</code>3，运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">i &#x3D; 1</span><br><span class="line">pool-1-thread-1在执行任务：    1</span><br><span class="line">getActiveCount &#x3D; 1</span><br><span class="line">getTaskCount &#x3D; 1</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 0</span><br><span class="line">i &#x3D; 2</span><br><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">getTaskCount &#x3D; 2</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 0</span><br><span class="line">i &#x3D; 3</span><br><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">pool-1-thread-2在执行任务：    2</span><br><span class="line">getTaskCount &#x3D; 3</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 1</span><br><span class="line">i &#x3D; 4</span><br><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">getTaskCount &#x3D; 4</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 2</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 省略部分类似日志</span><br><span class="line"></span><br><span class="line">i &#x3D; 49</span><br><span class="line">getActiveCount &#x3D; 2</span><br><span class="line">getTaskCount &#x3D; 49</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 47</span><br><span class="line">i &#x3D; 50</span><br><span class="line">getActiveCount &#x3D; 3</span><br><span class="line">getTaskCount &#x3D; 50</span><br><span class="line">getCompletedTaskCount &#x3D; 0</span><br><span class="line">getMaximumPoolSize &#x3D; 4</span><br><span class="line">workQueueSize &#x3D; 47</span><br></pre></td></tr></table></figure>
+
+<p>从运行结果看，是符合预期的。由于队列容纳不下50个任务，只能新开一个线程处理任务，所以<code>getActiveCount = 3</code>，并且三个线程是可以处理完50个任务，所以没有出现任务拒绝的情况。</p>
+<p>最后再回顾一下前面的要点：</p>
+<p>处理任务的优先级为：核心线程<code>corePoolSize</code>处理任务、任务队列<code>workQueue</code>、最大线程<code>maximumPoolSize</code>，如果三者都满了使用handler处理被拒绝的任务。</p>
+<p>也就是说先用默认的线程数处理任务，处理不过来则放在缓冲队列中，任务排队处理。处理不过来则创建新的线程帮忙处理，如果还是处理不完，直接把新增的任务拒绝掉。</p>
+<p>那么是不是只要设置队列足够大就可以了呢？当然不是，队列设置越大占用CPU、内存也越高，一台机器的硬件资源是固定的，整个程序运行期都需要CPU和内存，不能把资源都给了你这一个线程池使用，那么肯定会影响其他程序的运行。</p>
+<p>核心线程<code>corePoolSize</code>处理任务、任务队列<code>workQueue</code>、最大线程<code>maximumPoolSize</code>这三个参数要根据机器硬件和任务耗时的情况做调整。</p>
+<p>如果你的任务运行很快，队列可以适当调整大一些，避免任务被拒绝，最大线程数不用设置太大，和CPU核数一致就差不多了。</p>
+<p>如果你的任务比较耗时，那么最大线程数就可以适当调整大一下，加大任务的并行数量，提高吞吐。</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/" rel="next" title="Spring内置bean有哪些？">
+          Spring内置bean有哪些？
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="DDD学习笔记">
+            DDD学习笔记
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-text">验证</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: 'Java线程池ThreadPoolExecutor你真的搞懂了吗',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

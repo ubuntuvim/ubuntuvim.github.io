@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Testing," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>单元测试基础 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        单元测试基础
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Testing/" rel="tag">Ember-Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 3 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h1 id="单元测试基础"><a href="#单元测试基础" class="headerlink" title="单元测试基础"></a>单元测试基础</h1><p>单元测试一般被用来测试一些小的代码块，并确保它正在做的是什么。与验收测试不同的是，单元测试被限定在小范围内并且不需要Emeber程序运行。  </p>
+<p>与Ember基本对象一样的，创建单元测试也只需要继承<code>Ember.Object</code>即可。然后在代码块内编写具体的测试内容，比如控制器、组件。每个测试就是一个<code>Ember.Object</code>实例对象，你可以设置对象的状态，运行断言。通过下面的例子，让我们一起看看测试如何使用。</p>
+<h2 id="测试计算属性"><a href="#测试计算属性" class="headerlink" title="测试计算属性"></a>测试计算属性</h2><p>创建一个简单的实例，实例内包含一个计算属性<code>computedFoo</code>，此计算属性依赖普通属性<code>foot</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app/models/somt-thing.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Object.extend(&#123;</span><br><span class="line">  foo: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  computedFoo: Ember.compuuted(<span class="string">&#x27;foo&#x27;</span>，<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> foo = <span class="built_in">this</span>.get(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`computed <span class="subst">$&#123;foo&#125;</span>`</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在测试中，我们建立一个实例，然后更新属性<code>foo</code>的值（这个操作会触发计算属性<code>computedFoo</code>，使其自动更新），然后给出一个符合预期的<code>断言</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tests/unit/models/some-thing-test.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;moduleFor， test&#125; <span class="keyword">from</span> <span class="string">&#x27;ember-qunit&#x27;</span>;</span><br><span class="line"></span><br><span class="line">moduleFor(<span class="string">&#x27;model:some-thing&#x27;</span>， <span class="string">&#x27;Unit | some thing&#x27;</span>， &#123;</span><br><span class="line">  unit: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">test(<span class="string">&#x27;should correctly concat foo&#x27;</span>， <span class="function"><span class="keyword">function</span>(<span class="params">assert</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> someThing = <span class="built_in">this</span>.subject();</span><br><span class="line">  somtThing.set(<span class="string">&#x27;foo&#x27;</span>， <span class="string">&#x27;baz&#x27;</span>);  <span class="comment">//设置属性foo的值</span></span><br><span class="line">  assert.equal(someThing.get(<span class="string">&#x27;computedFoo&#x27;</span>), <span class="string">&#x27;computed baz&#x27;</span>);  <span class="comment">//断言，判断计算属性值是否相等于computed baz</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>例子中使用了<code>moduleFor</code>，它是由<code>Ember-Qunit</code>提供的单元测试助手。这些测试助手为我们提供了很多便利，比如<code>subject</code>功能，它可以寻找并实例化测试所用的对象。同时你还可以在<code>subject</code>方法中自定义初始化的内容，这些初始化的内容可以是传递给主体功能的实例变量。比如在单元测试内初始化属性“foo”你可以这样做：<code>this.subject({foo: 'bar'});</code>，那么单元测试在运行时属性<code>foo</code>的值就是<code>bar</code>。</p>
+<h2 id="测试对象方法"><a href="#测试对象方法" class="headerlink" title="测试对象方法"></a>测试对象方法</h2><p>下面让我们来看一下如何测试对象方法的逻辑。在本例中对象内部有一个设置属性（更新属性<code>foo</code>值）值的方法<code>testMethod</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app/models/some-thing.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Object.extend(&#123;</span><br><span class="line">  foo: <span class="string">&#x27;bar&#x27;</span>，</span><br><span class="line">  testMethod() &#123;</span><br><span class="line">    <span class="built_in">this</span>.set(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>要对其进行测试，我们先创建如下实例，然后调用<code>testMethod</code>方法，然后用断言判断方法的调用结果是否是正确的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tests/unit/models/some-thing-test.js</span></span><br><span class="line"></span><br><span class="line">test(<span class="string">&#x27;should update foo on testMethod&#x27;</span>， <span class="function"><span class="keyword">function</span>(<span class="params">assert</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> someThing = <span class="built_in">this</span>.subject();</span><br><span class="line">  someThing.testMethod();</span><br><span class="line">  assert.equal(someThing.get(<span class="string">&#x27;foo&#x27;</span>), <span class="string">&#x27;baz&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果一个对象方法返回的是一个值，你可以很容易的给予断言进行判定是否正确。假设我们的对象拥有一个<code>calc</code>方法，方法的返回值是基于对象内部的状态值。代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app/models/some-thing.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Object.extend(&#123;</span><br><span class="line">  count: <span class="number">0</span>,</span><br><span class="line">  calc() &#123;</span><br><span class="line">    <span class="built_in">this</span>.incrementProperty(<span class="string">&#x27;count&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> count = <span class="built_in">this</span>.get(<span class="string">&#x27;count&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`count: <span class="subst">$&#123;count&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在测试中需要调用<code>calc</code>方法，并且断言其返回值是否正确。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tests/unit/models/some-thing-test.js</span></span><br><span class="line"></span><br><span class="line">test(<span class="string">&#x27;should return incremented count on calc&#x27;</span>， <span class="function"><span class="keyword">function</span>(<span class="params">assert</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> someThing = <span class="built_in">this</span>.subject();</span><br><span class="line">  assert.equal(someThing.calc(), <span class="string">&#x27;count: 1&#x27;</span>);</span><br><span class="line">  assert.equal(someThing.calc(), <span class="string">&#x27;count: 2&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试观察者"><a href="#测试观察者" class="headerlink" title="测试观察者"></a>测试观察者</h2><p>假设我们有一个对象，这个对象拥有一些属性，并且有一个方法在监测着这些属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app/models/some-thing.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Object.extend(&#123;</span><br><span class="line">  foo: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">  other: <span class="string">&#x27;no&#x27;</span>,,</span><br><span class="line">  doSomething: Ember.observer(<span class="string">&#x27;foo&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.set(<span class="string">&#x27;other&#x27;</span>, <span class="string">&#x27;yes&#x27;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>为了测试<code>doSomething</code>方法，我们创建一个<code>SomeThing</code>对象，更新<code>foo</code>属性值，然后进行断言是否达到预期结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tests/unit/models/some-thing-test.js</span></span><br><span class="line"></span><br><span class="line">test(<span class="string">&#x27;should set other prop to yes when foo changes&#x27;</span>， <span class="function"><span class="keyword">function</span>(<span class="params">assert</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> someThing = <span class="built_in">this</span>.subject();</span><br><span class="line">  someThing.set(<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>);</span><br><span class="line">  assert.equal(someThing.get(<span class="string">&#x27;other&#x27;</span>), <span class="string">&#x27;yes&#x27;</span>);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/ember-teach/testing/testingRoutes/" rel="prev" title="路由测试">
+            路由测试
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80"><span class="toc-text">单元测试基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-text">测试计算属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="toc-text">测试对象方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%A7%82%E5%AF%9F%E8%80%85"><span class="toc-text">测试观察者</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '单元测试基础',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

@@ -18,8 +18,8 @@
   
   <entry>
     <title>OOM问题排查</title>
-    <link href="http://xcoding.tech/2023/02/14/Java/OOM%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
-    <id>http://xcoding.tech/2023/02/14/Java/OOM%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</id>
+    <link href="http://xcoding.tech/Java/OOM%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/"/>
+    <id>http://xcoding.tech/Java/OOM%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</id>
     <published>2023-02-13T18:24:03.612Z</published>
     <updated>2023-02-13T18:52:01.345Z</updated>
     
@@ -45,8 +45,8 @@
   
   <entry>
     <title>MySQL主从同步配置</title>
-    <link href="http://xcoding.tech/2023/02/08/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/"/>
-    <id>http://xcoding.tech/2023/02/08/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</id>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</id>
     <published>2023-02-08T15:05:37.334Z</published>
     <updated>2023-02-08T15:08:35.388Z</updated>
     
@@ -72,8 +72,8 @@
   
   <entry>
     <title>什么是中台？？</title>
-    <link href="http://xcoding.tech/2021/05/07/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/"/>
-    <id>http://xcoding.tech/2021/05/07/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/</id>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/</id>
     <published>2021-05-07T15:11:38.000Z</published>
     <updated>2021-05-07T15:11:38.000Z</updated>
     
@@ -99,8 +99,8 @@
   
   <entry>
     <title>观察者模式</title>
-    <link href="http://xcoding.tech/2021/04/30/Java/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://xcoding.tech/2021/04/30/Java/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</id>
+    <link href="http://xcoding.tech/Java/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://xcoding.tech/Java/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-04-30T15:13:46.000Z</published>
     <updated>2021-04-30T15:13:46.000Z</updated>
     
@@ -125,8 +125,8 @@
   
   <entry>
     <title>Spring IoC原理</title>
-    <link href="http://xcoding.tech/2021/04/19/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/"/>
-    <id>http://xcoding.tech/2021/04/19/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/</id>
+    <link href="http://xcoding.tech/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/"/>
+    <id>http://xcoding.tech/Spring/Spring%20IoC%E5%8E%9F%E7%90%86/</id>
     <published>2021-04-19T13:17:14.000Z</published>
     <updated>2021-04-19T13:17:14.000Z</updated>
     
@@ -155,8 +155,8 @@
   
   <entry>
     <title></title>
-    <link href="http://xcoding.tech/2021/04/19/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/"/>
-    <id>http://xcoding.tech/2021/04/19/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/"/>
+    <id>http://xcoding.tech/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97%EF%BC%9F/</id>
     <published>2021-04-19T07:24:46.000Z</published>
     <updated>2021-04-19T07:24:46.000Z</updated>
     
@@ -178,8 +178,8 @@
   
   <entry>
     <title>Spring后置处理器</title>
-    <link href="http://xcoding.tech/2021/04/19/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
-    <id>http://xcoding.tech/2021/04/19/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    <id>http://xcoding.tech/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/</id>
     <published>2021-04-19T07:24:46.000Z</published>
     <updated>2021-04-19T07:24:46.000Z</updated>
     
@@ -204,8 +204,8 @@
   
   <entry>
     <title>手动加载jar并实例化class</title>
-    <link href="http://xcoding.tech/2021/04/19/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/"/>
-    <id>http://xcoding.tech/2021/04/19/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/</id>
+    <link href="http://xcoding.tech/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/"/>
+    <id>http://xcoding.tech/Java/%E6%89%8B%E5%8A%A8%E5%8A%A0%E8%BD%BDjar%E5%B9%B6%E5%AE%9E%E4%BE%8B%E5%8C%96class/</id>
     <published>2021-04-19T07:21:28.000Z</published>
     <updated>2021-04-19T07:21:28.000Z</updated>
     
@@ -228,8 +228,8 @@
   
   <entry>
     <title>程序员的3年之痒改变的不止薪水</title>
-    <link href="http://xcoding.tech/2021/04/01/%E9%B8%A1%E6%B1%A4/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%843%E5%B9%B4%E4%B9%8B%E7%97%92%E6%94%B9%E5%8F%98%E7%9A%84%E4%B8%8D%E6%AD%A2%E8%96%AA%E6%B0%B4/"/>
-    <id>http://xcoding.tech/2021/04/01/%E9%B8%A1%E6%B1%A4/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%843%E5%B9%B4%E4%B9%8B%E7%97%92%E6%94%B9%E5%8F%98%E7%9A%84%E4%B8%8D%E6%AD%A2%E8%96%AA%E6%B0%B4/</id>
+    <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%843%E5%B9%B4%E4%B9%8B%E7%97%92%E6%94%B9%E5%8F%98%E7%9A%84%E4%B8%8D%E6%AD%A2%E8%96%AA%E6%B0%B4/"/>
+    <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%843%E5%B9%B4%E4%B9%8B%E7%97%92%E6%94%B9%E5%8F%98%E7%9A%84%E4%B8%8D%E6%AD%A2%E8%96%AA%E6%B0%B4/</id>
     <published>2021-04-01T14:04:26.000Z</published>
     <updated>2023-02-13T18:45:28.578Z</updated>
     
@@ -254,8 +254,8 @@
   
   <entry>
     <title>Mac无法开机</title>
-    <link href="http://xcoding.tech/2021/04/01/Mac/Mac%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/"/>
-    <id>http://xcoding.tech/2021/04/01/Mac/Mac%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/</id>
+    <link href="http://xcoding.tech/Mac/Mac%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/"/>
+    <id>http://xcoding.tech/Mac/Mac%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA/</id>
     <published>2021-04-01T14:03:33.000Z</published>
     <updated>2023-02-13T18:44:53.018Z</updated>
     
@@ -284,8 +284,8 @@
   
   <entry>
     <title>Java面试题</title>
-    <link href="http://xcoding.tech/2021/03/18/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>http://xcoding.tech/2021/03/18/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
+    <link href="http://xcoding.tech/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://xcoding.tech/Java/Java%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
     <published>2021-03-18T14:13:02.000Z</published>
     <updated>2021-03-18T14:13:02.000Z</updated>
     
@@ -309,8 +309,8 @@
   
   <entry>
     <title>Spring初始化回调</title>
-    <link href="http://xcoding.tech/2021/03/13/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83/"/>
-    <id>http://xcoding.tech/2021/03/13/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83/"/>
+    <id>http://xcoding.tech/Spring/Spring%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83/</id>
     <published>2021-03-13T09:36:16.000Z</published>
     <updated>2021-03-13T09:36:16.000Z</updated>
     
@@ -336,8 +336,8 @@
   
   <entry>
     <title>DDD学习笔记</title>
-    <link href="http://xcoding.tech/2021/02/25/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://xcoding.tech/2021/02/25/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2021-02-25T14:18:46.000Z</published>
     <updated>2021-02-25T14:18:46.000Z</updated>
     
@@ -361,8 +361,8 @@
   
   <entry>
     <title>Java线程池ThreadPoolExecutor你真的搞懂了吗</title>
-    <link href="http://xcoding.tech/2021/01/10/Java/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97/"/>
-    <id>http://xcoding.tech/2021/01/10/Java/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97/</id>
+    <link href="http://xcoding.tech/Java/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97/"/>
+    <id>http://xcoding.tech/Java/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0ThreadPoolExecutor%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%90%9E%E6%87%82%E4%BA%86%E5%90%97/</id>
     <published>2021-01-10T06:53:13.000Z</published>
     <updated>2021-01-10T06:53:13.000Z</updated>
     
@@ -388,8 +388,8 @@
   
   <entry>
     <title>Spring内置bean有哪些？</title>
-    <link href="http://xcoding.tech/2021/01/07/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/"/>
-    <id>http://xcoding.tech/2021/01/07/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/"/>
+    <id>http://xcoding.tech/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/</id>
     <published>2021-01-07T13:08:36.000Z</published>
     <updated>2021-01-07T13:08:36.000Z</updated>
     
@@ -415,8 +415,8 @@
   
   <entry>
     <title>Java线程池踩坑记，HashMap引发的血案</title>
-    <link href="http://xcoding.tech/2021/01/07/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
-    <id>http://xcoding.tech/2021/01/07/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/</id>
+    <link href="http://xcoding.tech/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
+    <id>http://xcoding.tech/Java/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B8%A9%E5%9D%91%E8%AE%B0/</id>
     <published>2021-01-06T16:42:35.000Z</published>
     <updated>2021-01-06T16:42:35.000Z</updated>
     
@@ -443,8 +443,8 @@
   
   <entry>
     <title>Spring销毁回调方法</title>
-    <link href="http://xcoding.tech/2020/11/15/Spring/Spring%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83/"/>
-    <id>http://xcoding.tech/2020/11/15/Spring/Spring%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83/"/>
+    <id>http://xcoding.tech/Spring/Spring%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83/</id>
     <published>2020-11-15T12:24:06.000Z</published>
     <updated>2020-11-15T12:24:06.000Z</updated>
     
@@ -469,8 +469,8 @@
   
   <entry>
     <title>Spring Framework5.x</title>
-    <link href="http://xcoding.tech/2020/10/19/Spring/Spring%20Framework/"/>
-    <id>http://xcoding.tech/2020/10/19/Spring/Spring%20Framework/</id>
+    <link href="http://xcoding.tech/Spring/Spring%20Framework/"/>
+    <id>http://xcoding.tech/Spring/Spring%20Framework/</id>
     <published>2020-10-18T16:19:22.000Z</published>
     <updated>2020-10-18T16:19:22.000Z</updated>
     
@@ -496,8 +496,8 @@
   
   <entry>
     <title>Spring源码学习</title>
-    <link href="http://xcoding.tech/2020/09/22/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://xcoding.tech/2020/09/22/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://xcoding.tech/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</id>
     <published>2020-09-22T13:14:04.000Z</published>
     <updated>2020-09-22T13:14:04.000Z</updated>
     
@@ -523,8 +523,8 @@
   
   <entry>
     <title>Spring事务传播机制</title>
-    <link href="http://xcoding.tech/2020/09/08/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"/>
-    <id>http://xcoding.tech/2020/09/08/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/</id>
+    <link href="http://xcoding.tech/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"/>
+    <id>http://xcoding.tech/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/</id>
     <published>2020-09-08T15:33:30.000Z</published>
     <updated>2020-09-08T15:33:30.000Z</updated>
     

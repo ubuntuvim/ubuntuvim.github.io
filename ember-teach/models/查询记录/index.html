@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Model," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>查询记录 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        查询记录
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Model/" rel="tag">Ember-Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 4 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>store提供了统一的获取数据的接口。包括创建新记录、修改记录、删除记录等，更多有关<a target="_blank" rel="noopener" href="http://devdocs.io/ember/data/classes/ds.store">Store API</a>请点击网址看详细信息。</p>
+<p>为了演示这些方法的使用我们结合firebase，关于firebase与Ember的整合前面的文章已经介绍，就不过多介绍了。<br>做好准备工作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ember g route articles</span><br><span class="line">ember g route articles&#x2F;article</span><br></pre></td></tr></table></figure>
+
+<h2 id="1，查询方法findAll，findRecord，peekAll，peekRecord"><a href="#1，查询方法findAll，findRecord，peekAll，peekRecord" class="headerlink" title="1，查询方法findAll，findRecord，peekAll，peekRecord"></a>1，查询方法findAll，findRecord，peekAll，peekRecord</h2><p>首先配置<code>route</code>，修改子路由增加一个动态段<code>article_id</code>，有关动态的介绍请看<a target="_blank" rel="noopener" href="https://guides.emberjs.com/v2.5.0/routing/defining-your-routes/#toc_dynamic-segments">Dynamic Segments</a>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/router.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  其他代码略写，</span></span><br><span class="line"></span><br><span class="line">Router.map(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.route(<span class="string">&#x27;store-example&#x27;</span>);</span><br><span class="line">  <span class="built_in">this</span>.route(<span class="string">&#x27;articles&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.route(<span class="string">&#x27;article&#x27;</span>, &#123; <span class="attr">path</span>: <span class="string">&#x27;/:article_id&#x27;</span> &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>下面是路由代码，这段代码直接调用Store的find方法，返回所有数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/articles.js</span></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//  返回firebase数据库中的所有article</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.findAll(<span class="string">&#x27;article&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>为了界面看起来舒服点我引入了<a target="_blank" rel="noopener" href="http://www.bootcss.com/">bootstrap</a>框架。引入的方式：<code>bower install bootstrap</code>安装插件。然后修改<code>ember-cli-build.js</code>，在<code>return</code>之前引入bootstrap：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.import(<span class="string">&quot;bower_components/bootstrap/dist/js/bootstrap.js&quot;</span>);</span><br><span class="line">app.import(<span class="string">&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>重启项目使其生效。</p>
+<p>下面是显示数据的模板<code>articles.hbs</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/templates/articles.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-4 col-xs-4&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list-group&quot;</span>&gt;</span></span><br><span class="line">            &#123;&#123;#each model as |item|&#125;&#125;</span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;list-group-item&quot;</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--设置路由，路由的层级与router.js里定义的要一致，model的id属性作为参数 --&gt;</span></span><br><span class="line">                     &#123;&#123;#link-to &#x27;articles.article&#x27; item.id&#125;&#125;</span><br><span class="line">                        &#123;&#123;item.title&#125;&#125;</span><br><span class="line">                    &#123;&#123;/link-to&#125;&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            &#123;&#123;/each&#125;&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-8 col-xs-8&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123;outlet&#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在浏览器运行：<a target="_blank" rel="noopener" href="http://localhost:4200/articles/">http://localhost:4200/articles/</a>。稍等就可以看到显示的数据了，等待时间与你的网速有关。毕竟<a target="_blank" rel="noopener" href="http://www.firebase.com/">firebase</a>不是在国内的！！！如果程序代码没有写错那么你会看到如下图的结果：</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/20012029_00Si.png" alt="articles数据列表"></p>
+<p>但是右侧是空白的，下面点击任何一条数据，可以看到右侧什么都不显示！<br>下面在子模板中增加显示数据的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  app/templates/articles/article.hbs  --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;model.title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">&quot;body&quot;</span>&gt;</span></span><br><span class="line">&#123;&#123;model.body&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在点击左侧的数据，右侧可以显示对应的数据了！但是这个怎么就显示出来了呢？？其实<a target="_blank" rel="noopener" href="http://emberjs.com/">Ember</a>自动根据动态段过滤了，当然你也可以显示使用<code>findRecord</code>方法过滤。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/articles/article.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;params = &#x27;</span> + params.article_id);</span><br><span class="line">        <span class="comment">// &#x27;chendequanroob@gmail.com&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.findRecord(<span class="string">&#x27;article&#x27;</span>, params.article_id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>此时得到的结果与不调用<code>findRecord</code>方法是一致的。为了验证是不是执行了这个方法，我们把动态段<code>params.article_id</code>的值改成一个不存在的值’ ubuntuvim’，可以确保的是在我的firebase数据中不存在<code>id</code>为这个值的数据。此时控制台会出现下面的错误信息，从错误信息可以看出来是因为记录不存在的原因。</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/20012029_G4Il.png" alt="数据不存在错误"></p>
+<p>在上述的例子中，我们使用了<code>findAll()</code>方法和<code>findRecord()</code>方法，还有两个方法与这两个方法是类似的，分别是<code>peekRecord()</code>和<code>peekAll()</code>方法。这两个方法的不同之处是不会发送请求，他们只会在本地缓存中获取数据。</p>
+<p>下面分别修改<code>articles.js</code>和<code>article.js</code>这两个路由。使用<code>peekRecord()</code>和<code>peekAll()</code>方法测试效果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/articles.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//  返回firebase数据库中的所有article</span></span><br><span class="line">        <span class="comment">// return this.store.findAll(&#x27;article&#x27;);</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.peekAll(<span class="string">&#x27;article&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>由于没有发送请求，我也没有把数据存储到本地，所以这个调用什么数据都没有。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/articles/article.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line"></span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// return this.store.findRecord(&#x27;article&#x27;, params.article_id);</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.peekRecord(<span class="string">&#x27;article&#x27;</span>, params.article_id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>由于在父路由中调用<code>findAll</code>获取到数据并已经存储到<code>Store</code>中，所以可以用<code>peekRecord()</code>方法获取到数据。    但是在模型简介这篇文章介绍过<code>Store</code>的特性，当界面获取数据的时候首先会在<code>Store</code>中查询数据是否存在，如果不存在在再发送请求获取，所以感觉<code>peekRecord()</code>和<code>findRecord()</code>方法区别不是很大！</p>
+<h2 id="2，查询多记录方法query"><a href="#2，查询多记录方法query" class="headerlink" title="2，查询多记录方法query()"></a>2，查询多记录方法query()</h2><p>项目中经常会遇到根据某个值查询出一组匹配的数据。此时返回的数据就不是只有一条了，那么Ember有是怎么去实现的呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/routes/articles.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Ember <span class="keyword">from</span> <span class="string">&#x27;ember&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Ember.Route.extend(&#123;</span><br><span class="line">    model: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//  返回firebase数据库中的所有article</span></span><br><span class="line">        <span class="comment">// return this.store.findAll(&#x27;article&#x27;);</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// return this.store.peekAll(&#x27;article&#x27;);</span></span><br><span class="line">    </span><br><span class="line">        <span class="comment">//  使用query方法查询category为Java的数据</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.store.query(<span class="string">&#x27;article&#x27;</span>, &#123; <span class="attr">filter</span>: &#123; <span class="attr">category</span>: <span class="string">&#x27;java&#x27;</span> &#125; &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//  对匹配的数据做处理</span></span><br><span class="line">            <span class="keyword">return</span> item;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>查询<code>category</code>为<code>Java</code>的数据。如果你只想精确查询到某一条数据可以使用<code>queryRecord()</code>方法。如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.store.queryRecord(<span class="string">&#x27;article&#x27;</span>, &#123; <span class="attr">filter</span>: &#123; <span class="attr">id</span>: <span class="string">&#x27; -JzyT-VLEWdF6zY3CefO&#x27;</span> &#125; &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//  对匹配的数据做处理</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>到此，常用的方法介绍完毕，希望通过介绍上述几个方法起到抛砖引玉的效果，有关于<a target="_blank" rel="noopener" href="http://devdocs.io/ember/data/classes/ds.store">DS.Store</a>类的还有很多很多的方法，使用方式都是类似的，更多方法请自己看API文档学习。</p>
+<p>博文完整代码放在<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/my_emberjs_code">Github</a>（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/ember-teach/models/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8/" rel="next" title="自定义序列化器">
+          自定义序列化器
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/ember-teach/models/%E6%96%B0%E5%BB%BA%E3%80%81%E6%9B%B4%E6%96%B0%E3%80%81%E5%88%A0%E9%99%A4%E8%AE%B0%E5%BD%95/" rel="prev" title="新建、更新、删除记录">
+            新建、更新、删除记录
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%BC%8C%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95findAll%EF%BC%8CfindRecord%EF%BC%8CpeekAll%EF%BC%8CpeekRecord"><span class="toc-text">1，查询方法findAll，findRecord，peekAll，peekRecord</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%EF%BC%8C%E6%9F%A5%E8%AF%A2%E5%A4%9A%E8%AE%B0%E5%BD%95%E6%96%B9%E6%B3%95query"><span class="toc-text">2，查询多记录方法query()</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '查询记录',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

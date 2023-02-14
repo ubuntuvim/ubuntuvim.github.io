@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="hexo," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>如何从根本解决hexo不兼容{{}}标签问题 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        如何从根本解决hexo不兼容{{}}标签问题
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 5 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p>如果你的博客是使用github+hexo搭建的，很可能也遇到过由于<code>nunjucks</code>模板标签导致MD文件解析报错的问题，常见问题如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">15:07:29.010 FATAL Something is wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line">Template render error: (unknown path) [Line 37, Column 81]</span><br><span class="line">  expected variable end</span><br><span class="line">    at Object._prettifyError (/Users/ubuntuvim/git/xcoding/node_modules/nunjucks/src/lib.js:36:11)</span><br><span class="line">    at Template.render (/Users/ubuntuvim/git/xcoding/node_modules/nunjucks/src/environment.js:524:21)</span><br><span class="line">    at Environment.renderString (/Users/ubuntuvim/git/xcoding/node_modules/nunjucks/src/environment.js:362:17)</span><br><span class="line">    at Promise (/Users/ubuntuvim/git/xcoding/node_modules/hexo/lib/extend/tag.js:66:9)</span><br><span class="line">    at Promise._execute (/Users/ubuntuvim/git/xcoding/node_modules/bluebird/js/release/debuggability.js:303:9)</span><br><span class="line">    at Promise._resolveFromExecutor (/Users/ubuntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:483:18)</span><br></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Unhandled rejection Template render error: (unknown path) [Line <span class="number">10</span>, Column <span class="number">95</span>]</span><br><span class="line">  unexpected token: #</span><br><span class="line">    at <span class="built_in">Object</span>._prettifyError (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/nunjucks/src/lib.js:<span class="number">36</span>:<span class="number">11</span>)</span><br><span class="line">    at Template.render (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/nunjucks/src/environment.js:<span class="number">524</span>:<span class="number">21</span>)</span><br><span class="line">    at Environment.renderString (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/nunjucks/src/environment.js:<span class="number">362</span>:<span class="number">17</span>)</span><br><span class="line">    at <span class="built_in">Promise</span> (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/hexo/lib/extend/tag.js:<span class="number">66</span>:<span class="number">9</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>._execute (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/debuggability.js:<span class="number">303</span>:<span class="number">9</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>._resolveFromExecutor (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:<span class="number">483</span>:<span class="number">18</span>)</span><br><span class="line">    at <span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:<span class="number">79</span>:<span class="number">10</span>)</span><br><span class="line">    at Tag.render (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/hexo/lib/extend/tag.js:<span class="number">64</span>:<span class="number">10</span>)</span><br><span class="line">    at <span class="built_in">Object</span>.tagFilter [<span class="keyword">as</span> onRenderEnd] (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/hexo/lib/hexo/post.js:<span class="number">230</span>:<span class="number">16</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>.then.then.result (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/hexo/lib/hexo/render.js:<span class="number">65</span>:<span class="number">19</span>)</span><br><span class="line">    at tryCatcher (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/util.js:<span class="number">16</span>:<span class="number">23</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>._settlePromiseFromHandler (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:<span class="number">512</span>:<span class="number">31</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>._settlePromise (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:<span class="number">569</span>:<span class="number">18</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>._settlePromise0 (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:<span class="number">614</span>:<span class="number">10</span>)</span><br><span class="line">    at <span class="built_in">Promise</span>._settlePromises (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/promise.js:<span class="number">693</span>:<span class="number">18</span>)</span><br><span class="line">    at Async._drainQueue (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/<span class="keyword">async</span>.js:<span class="number">133</span>:<span class="number">16</span>)</span><br><span class="line">    at Async._drainQueues (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/<span class="keyword">async</span>.js:<span class="number">143</span>:<span class="number">10</span>)</span><br><span class="line">    at Immediate.Async.drainQueues (<span class="regexp">/Users/u</span>buntuvim/git/xcoding/node_modules/bluebird/js/release/<span class="keyword">async</span>.js:<span class="number">17</span>:<span class="number">14</span>)</span><br><span class="line">    at runCallback (timers.js:<span class="number">651</span>:<span class="number">20</span>)</span><br><span class="line">    at tryOnImmediate (timers.js:<span class="number">624</span>:<span class="number">5</span>)</span><br><span class="line">    at processImmediate [<span class="keyword">as</span> _immediateCallback] (timers.js:<span class="number">596</span>:<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>出现上述原因都是因为你的Markdown文件中有标签与<code>nunjucks</code>模板引擎的标签冲突了，比如<code>{{}}`，`{#`， `{%`，这些标签都是模板引擎的，如果Markdown文件中有这些标签，那么在解析的是就会把Markdown中的标签动态解析了。通常情况下是不允许的。
+
+有关模板引擎nunjucks更多相关信息请转到[https://mozilla.github.io/nunjucks/cn/getting-started.html](https://mozilla.github.io/nunjucks/cn/getting-started.html)
+
+在hoxe的官网上有很多[相关的提问](https://github.com/hexojs/hexo/issues?utf8=%E2%9C%93&q=unexpected+token)，上面也提供了解决方案（本文的方案1），但是都不太好。
+
+
+## 处理方案1
+特别是你执行`hexo g`命令的时候就会提示Markdown文件解析错误。
+网上很多方法都是使用如下标签处理。
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;&#123;name&#125;&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+但是治标不治本啊，如果是用这个标签处理，那么你后续的Markdown文件内容但凡是包含`{{}}</code>或者<code>{{#}}</code>等等这些标签的内容都会解析失败，那么有什么好的处理方案呢？</p>
+<h2 id="处理方案2"><a href="#处理方案2" class="headerlink" title="处理方案2"></a>处理方案2</h2><p>答案是有的，我们可以直接修改<code>nunjucks</code>模板的源代码，找到如下文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules&#x2F;nunjucks&#x2F;src&#x2F;lexer.js</span><br></pre></td></tr></table></figure>
+<p>在文件的开头可以看到如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lib = <span class="built_in">require</span>(<span class="string">&#x27;./lib&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> whitespaceChars = <span class="string">&quot; \n\t\r\xA0&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> delimChars = <span class="string">&#x27;()[]&#123;&#125;%*-+~/#,:|.&lt;&gt;=!&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> intChars = <span class="string">&#x27;0123456789&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> BLOCK_START = <span class="string">&#x27;&#123;%&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> BLOCK_END = <span class="string">&#x27;%&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> VARIABLE_START = <span class="string">&#x27;&#123;$&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> VARIABLE_END = <span class="string">&#x27;$&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> COMMENT_START = <span class="string">&#x27;&#123;@&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> COMMENT_END = <span class="string">&#x27;@&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> TOKEN_STRING = <span class="string">&#x27;string&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>可以直接改了这些渲染标签，比如我的Markdown文件中就是需要显示<code>{{name}}</code>这一类代码。那么你可以这么做：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> VARIABLE_START = <span class="string">&#x27;&#123;$&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> VARIABLE_END = <span class="string">&#x27;$&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>把模板引擎的占位符修改为其他字符之后，这样模板解析的时候就不会跟你的Markdown内容冲突了，而且是对所有Markdown文件都有效的。</p>
+<p>但是需要注意的时候，如果你在项目下执行<code>npm install</code>更新<code>nunjucks</code>模板，那么你修改的<code>node_modules/nunjucks/src/lexer.js</code>会被还原，需要重新修改一遍。<br>但是相对于每个Markdown都修改还是有很大好处的。</p>
+<h2 id="搜索、RSS插件同步修改"><a href="#搜索、RSS插件同步修改" class="headerlink" title="搜索、RSS插件同步修改"></a>搜索、RSS插件同步修改</h2><p>如果你的博客使用<code>hexo-generator-feed</code>或者<code>hexo-generator-search</code>或者是其他依赖于hexo的插件，那么你也需要同步修改这些插件的模板处理标签。<br>比如<code>hexo-generator-search</code>这个插件，通常是用于搜索，比如本站的搜索功能，这些插件也是依赖于<code>nunjucks</code>模板的，所以你也要修改他们的源代码，一搜索插件为例：</p>
+<p>修改如下文件的标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules&#x2F;hexo-generator-search&#x2F;templates&#x2F;search.xml</span><br></pre></td></tr></table></figure>
+
+<p>把文件内容里的<code>{</code>改为<code>{$</code>即可，这个修改是根据你前面的<code>nunjucks</code>修改而定的。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">search</span>&gt;</span> </span><br><span class="line">  &#123;% if posts %&#125;</span><br><span class="line">    &#123;% for post in posts.toArray() %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">entry</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;$ post.title $&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;&#123;$ (url + post.path) | uriencode $&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>&#123;$ (url + post.path) | uriencode $&#125;<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">content</span> <span class="attr">type</span>=<span class="string">&quot;html&quot;</span>&gt;</span>&lt;![CDATA[&#123;$ post.content | noControlChars | safe $&#125;]]&gt;<span class="tag">&lt;/<span class="name">content</span>&gt;</span></span><br><span class="line">      &#123;% if post.categories and post.categories.length&gt;0 %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">categories</span>&gt;</span></span><br><span class="line">          &#123;% for cate in post.categories.toArray() %&#125;</span><br><span class="line">          <span class="tag">&lt;<span class="name">category</span>&gt;</span> &#123;$ cate.name $&#125; <span class="tag">&lt;/<span class="name">category</span>&gt;</span></span><br><span class="line">          &#123;% endfor %&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">categories</span>&gt;</span></span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">      &#123;% if post.tags and post.tags.length&gt;0 %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">tags</span>&gt;</span></span><br><span class="line">            &#123;% for tag in post.tags.toArray() %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tag</span>&gt;</span> &#123;$ tag.name $&#125; <span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">tags</span>&gt;</span></span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  &#123;% if pages %&#125;</span><br><span class="line">    &#123;% for page in pages.toArray() %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">entry</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;$ page.title $&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;&#123;$ (url + page.path) | uriencode $&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>&#123;$ (url + page.path) | uriencode $&#125;<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">content</span> <span class="attr">type</span>=<span class="string">&quot;html&quot;</span>&gt;</span>&lt;![CDATA[&#123;$ page.content | noControlChars | safe $&#125;]]&gt;<span class="tag">&lt;/<span class="name">content</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">search</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其他插件处理方法类似，找到模板解析标签全局修改即可。</p>
+<h2 id="方案3"><a href="#方案3" class="headerlink" title="方案3"></a>方案3</h2><p>提供一个一劳永逸的方案，修改项目的<code>package.json</code>文件，把<code>hexo-generator-feed</code>、<code>hexo-generator-search</code>改为我重新处理过的插件即可。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;xcoding&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.0.1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;hexo&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;3.7.1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="comment">//…… 其他省略</span></span><br><span class="line">    <span class="attr">&quot;hexo-generator-feed-cst&quot;</span>: <span class="string">&quot;^0.1.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;hexo-generator-search-cst&quot;</span>: <span class="string">&quot;^0.1.0&quot;</span>,</span><br><span class="line">    <span class="comment">//…… 其他省略</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改完<code>package.json</code>之后执行命令<code>npm install</code>重新安装依赖。安装完毕后重新启动hexo。这两个插件相关的配置都不需要做任何修改，也不用担心查询更新后被覆盖。</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/junit-jacoco/junit-jacoco%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E6%B5%8B%E8%AF%95/" rel="next" title="junit-jacoco代码覆盖测试">
+          junit-jacoco代码覆盖测试
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/fq/%E5%BC%BA%E5%88%B6%20Google.com%20%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8%20HTTPS%EF%BC%88SSL%EF%BC%89/" rel="prev" title="强制 Google.com 域名使用 HTTPS（SSL）">
+            强制 Google.com 域名使用 HTTPS（SSL）
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99"><span class="toc-text">报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%882"><span class="toc-text">处理方案2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E3%80%81RSS%E6%8F%92%E4%BB%B6%E5%90%8C%E6%AD%A5%E4%BF%AE%E6%94%B9"><span class="toc-text">搜索、RSS插件同步修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%883"><span class="toc-text">方案3</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '如何从根本解决hexo不兼容{{}}标签问题',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

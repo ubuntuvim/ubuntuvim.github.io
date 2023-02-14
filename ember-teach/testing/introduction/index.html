@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Testing," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>测试简介 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        测试简介
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Testing/" rel="tag">Ember-Testing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 1 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>英文原文：<a target="_blank" rel="noopener" href="https://guides.emberjs.com/v2.7.0/testing/">https://guides.emberjs.com/v2.7.0/testing/</a></p>
+<h1 id="测试简介"><a href="#测试简介" class="headerlink" title="测试简介"></a>测试简介</h1><blockquote>
+<p>测试是<code>Ember。js</code>框架开发环节中很重要的一环。</p>
+</blockquote>
+<p>现在假设你正在利用Ember框架开发一个博客系统，这个系统包含<code>user</code>和<code>post</code>模型，有登录及创建博客的操作。最后假设你希望在你的程序里实现自动化测试。</p>
+<h2 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h2><p>你一共需要下面这3种类型的测试:</p>
+<ol>
+<li>验收测试Acceptance</li>
+<li>单元测试Unit</li>
+<li>集成测试Integration</li>
+</ol>
+<h3 id="验收测试-Acceptance-Tests"><a href="#验收测试-Acceptance-Tests" class="headerlink" title="验收测试 Acceptance Tests"></a>验收测试 Acceptance Tests</h3><p>验收测试是用来确保程序流程正确，且各类交互特性符合用户预期的测试。</p>
+<p>验收测试用于确认项目基本功能，保证项目核心功能没有退化，确保该项目的目标得以实现。测试应用的方式和用户与应用程序的交互方式是一致的（比如填写表单，点击按钮）。</p>
+<p>在上述的场景中，可能会做如下的验收测试:</p>
+<ol>
+<li>用户可以通过登录表单登录。</li>
+<li>用户可以创建博客。</li>
+<li>当成功保存一篇博客文章后，程序会返回博客列表给用户。</li>
+<li>访客不能访问管理界面。</li>
+</ol>
+<h3 id="单元测试-Unit-Tests"><a href="#单元测试-Unit-Tests" class="headerlink" title="单元测试 Unit Tests"></a>单元测试 Unit Tests</h3><p>单元测试是针对程序中的最小可测试单元进行的测试，比如一个类或者一个方法。该测试可以编写与程序逻辑相对的语句来测试相关单元</p>
+<p>下面是一些单元测试的具体例子:</p>
+<ol>
+<li>用户姓名是由对应的姓和名组合而成的。</li>
+<li>把博客请求数据正确序列化转换为一个博客模型对象。</li>
+<li>正确格式化博客时间。</li>
+</ol>
+<h3 id="集成测试-Integration-Tests"><a href="#集成测试-Integration-Tests" class="headerlink" title="集成测试 Integration Tests"></a>集成测试 Integration Tests</h3><p>集成测试是处于单元测试和验收测试之间的测试。集成测试目的是验证客户端与全系统交互，所有单元测试，以及微观层面具体代码的算法逻辑是否都能通过。</p>
+<p>集成测试用来验证应用程序各个模块相互关系，比如若干个UI控件之间的行为。也可以用于确认数据和动作在系统不同的部件中被正确的传递和执行，同时在给定假设条件下，可以提供系统各部件配合运行的情况。  </p>
+<p>我们建议对每个组件都进行集成测试，因为组件各个组件以相同的方式运行在系统的上下文中，并且组件之间也有相互影响，包括从模板中渲染组件、接收组件生命周期回调函数。</p>
+<p>集成测试示例如下：</p>
+<ol>
+<li>用户姓名和日期正确的显示在每篇博文上</li>
+<li>禁止用户在标题栏内输入超过50个字符</li>
+<li>当提交一个没有标题的博客时，显示红色提醒并给出需要标题的错误信息</li>
+<li>博客列表滚动到最顶端显示最新博客</li>
+</ol>
+<h2 id="测试框架"><a href="#测试框架" class="headerlink" title="测试框架"></a>测试框架</h2><p>QUnit是本手册的默认测试框架，但是Ember.js也支持其他第三方的测试框架。</p>
+<h3 id="如何运行测试"><a href="#如何运行测试" class="headerlink" title="如何运行测试"></a>如何运行测试</h3><p>在命令行输入<code>ember test</code>来运行测试。也可以通过<code>ember test -server</code>命令，在每次文件改动后，重新运行测试。</p>
+<p>在本地开发项目的时候可以通过访问<code>/tests/index.html</code>来运行你的测试，前提是你需要使用命令<code>ember server</code>运行了你的项目。如果你是使用这种方式有一点需要注意：</p>
+<ul>
+<li>通过<code>ember server</code>运行的测试，是在开发环境下的测试，调用的是开发环境下的参数</li>
+<li>通过<code>ember test --server</code>运行的测试，是在测试环境下的测试，调用的是测试环境下的参数，比如加载的依赖也是不同的。因此我们推荐你使用<code>ebmer test --server</code>来运行测试。</li>
+</ul>
+<h3 id="指定测试"><a href="#指定测试" class="headerlink" title="指定测试"></a>指定测试</h3><p>使用<code>--filter</code>选项来指定运行部分测试。比如:快速运行当前工作的测试使用命令<code>ember test --filter=&quot;dashboard&quot;</code>、运行指定类型的测试使用命令<code>ember test --filter=&quot;integration&quot;</code>、可以使用<code>!</code>来排除验收测试<code>ember test --filter=&quot;!acceptance&quot;</code>。</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/ember-teach/testing/testingComponents/" rel="next" title="组件测试">
+          组件测试
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/ember-teach/testing/acceptanceTests/" rel="prev" title="验收测试">
+            验收测试
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%AE%80%E4%BB%8B"><span class="toc-text">测试简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%B1%BB%E5%9E%8B"><span class="toc-text">测试类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95-Acceptance-Tests"><span class="toc-text">验收测试 Acceptance Tests</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-Unit-Tests"><span class="toc-text">单元测试 Unit Tests</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95-Integration-Tests"><span class="toc-text">集成测试 Integration Tests</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="toc-text">测试框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-text">如何运行测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%B5%8B%E8%AF%95"><span class="toc-text">指定测试</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '测试简介',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>

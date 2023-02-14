@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="Emberjs,Ember-Teach,Ember-Model," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>定义模型 [ Keep Coding ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="/image/favicon.ico">
+    <span class="title">Keep Coding</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        定义模型
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-01-18T14:50:36.000Z">
+        2020-01-18
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Model/" rel="tag">Ember-Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ember-Teach/" rel="tag">Ember-Teach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emberjs/" rel="tag">Emberjs</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 4 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>模型也是一个类，它定义了向用户展示的属性和数据行为。模型的定义非常简单，只需要继承<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.Model.html">DS.Model</a>类即可，或者你也可以直接使用<a target="_blank" rel="noopener" href="http://ember-cli.com/user-guide">Ember CLI</a>命令创建。比如使用命令模型 <code>ember g model person</code>定义了一个模型类<code>person</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/person.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个是个空的模型，没有定义任何属性。有了模型类你就可以使用<code>find</code>方法查找数据了。</p>
+<h2 id="1，定义属性"><a href="#1，定义属性" class="headerlink" title="1，定义属性"></a>1，定义属性</h2><p>上面定义的模型类<code>person</code>还没有任何属性，下面为这个类添加几个属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/person.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">    firstName: DS.attr(),</span><br><span class="line">    lastName: DS.attr(),</span><br><span class="line">    birthday: DS.attr()  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上述代码定义了3个属性，但是还未给属性指定类型，默认都是<code>string</code>类型。这些属性名与你连接的服务器上的数据<code>key</code>是一致的。甚至你还可以在模型中定义<a target="_blank" rel="noopener" href="http://blog.ddlisting.com/2016/03/17/ember-js-ru-men-zhi-nan-ji-suan-shu-xing-compute-properties/">计算属性</a>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/person.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">    firstName: DS.attr(),</span><br><span class="line">    lastName: DS.attr(),</span><br><span class="line">    birthday: DS.attr(),</span><br><span class="line"></span><br><span class="line">    fullName: Ember.computed(<span class="string">&#x27;firstName&#x27;</span>, <span class="string">&#x27;lastName&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.get(<span class="string">&#x27;firstName&#x27;</span>)&#125;</span> <span class="subst">$&#123;<span class="built_in">this</span>.get(<span class="string">&#x27;lastName&#x27;</span>)&#125;</span>`</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这段代码在模型类中定义了一个计算属性<code>fullName</code>。</p>
+<h2 id="2，指定属性类型与默认值"><a href="#2，指定属性类型与默认值" class="headerlink" title="2，指定属性类型与默认值"></a>2，指定属性类型与默认值</h2><p>前面定义的模型类是没有指定属性类型的，默认情况下都是<code>string</code>类型，显然这是不够的，简单的模型属性类型包括：<code>string</code>，<code>number</code>，<code>boolean</code>，<code>date</code>。这几个类型我想不用我解释都应该知道了。</p>
+<p>不仅可以指定属性类型，你还可以指定属性的默认值，在<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_attr">attr()</a>方法的第二个参数指定。比如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/person.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">    username: DS.attr(<span class="string">&#x27;string&#x27;</span>),</span><br><span class="line">    email: DS.attr(<span class="string">&#x27;string&#x27;</span>),</span><br><span class="line">    verified: DS.attr(<span class="string">&#x27;boolean&#x27;</span>, &#123; <span class="attr">defaultValue</span>: <span class="literal">false</span> &#125;),  <span class="comment">//指定默认值是false</span></span><br><span class="line">    <span class="comment">//  使用函数返回值作为默认值</span></span><br><span class="line">    createAt: DS.attr(<span class="string">&#x27;string&#x27;</span>, &#123; defaultValue()&#123; <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(); &#125; &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>正如代码注释所述的，设置默认值的方式包括直接指定或者是使用函数返回值指定。</p>
+<h2 id="3，定义模型的关联关系"><a href="#3，定义模型的关联关系" class="headerlink" title="3，定义模型的关联关系"></a>3，定义模型的关联关系</h2><p><a target="_blank" rel="noopener" href="http://emberjs.com/">Ember</a>的模型也是有类似于数据库的关联关系的。只是相对于复制的数据库<a target="_blank" rel="noopener" href="http://emberjs.com/">Ember</a>的模型就显得简单很多，其中包括一对一，一对多，多对多关联关系。这种关系是与后台的数据库是相统一的。</p>
+<h4 id="1，一对一"><a href="#1，一对一" class="headerlink" title="1，一对一"></a>1，一对一</h4><p>声明一对一关联使用<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_belongsTo">DS.belongsTo</a>设置。比如下面的两个模型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/user.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  profile: DS.belongsTo(‘profile’);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/profile.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  user: DS.belongsTo(‘user’);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2，一对多"><a href="#2，一对多" class="headerlink" title="2，一对多"></a>2，一对多</h4><p>声明一对多关联使用<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_belongsTo">DS.belongsTo</a>（多的一方使用）和<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_hasMany">DS.hasMany</a>（少的一方使用）设置。比如下面的两个模型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/post.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  comments: DS.hasMany(‘comment’);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个模型是一的一方。下面的模型是多的一方；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/comment.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  post: DS.belongsTo(‘post’);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这种设置的方式与Java 的hibernate非常相似。</p>
+<h4 id="3，多对多"><a href="#3，多对多" class="headerlink" title="3，多对多"></a>3，多对多</h4><p>声明一对多关联使用<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_hasMany">DS.hasMany</a>设置。比如下面的两个模型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/post.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  tags: DS.hasMany(‘tag’);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/model/tag.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  post: DS.hasMany(‘post’);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>多对多的关系设置都是使用<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_hasMany">DS.hasMany</a>，但是并不需要“中间表”，这个与数据的多对多有点不同，如果是数据的多对多通常是通过中间表关联。</p>
+<h2 id="4，显式反转"><a href="#4，显式反转" class="headerlink" title="4，显式反转"></a>4，显式反转</h2><p><a target="_blank" rel="noopener" href="https://github.com/emberjs/data">Ember Data</a>会尽力去发现两个模型之间的关联关系，比如前面的一对多关系中，当<code>comment</code>发生变化的时候会自动更新到<code>post</code>，因为每一个<code>comment</code>只对应一个<code>post</code>，可以有<code>comment</code>确定到某个一个<code>post</code>。</p>
+<p>然而，有时候同一个模型中会有多个与此关联模型。这时你可以在反向端用<a target="_blank" rel="noopener" href="http://emberjs.com/api/data/classes/DS.html#method_hasMany">DS.hasMany</a>的<code>inverse</code>选项指定其关联的模型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/model/comment.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> <span class="string">&#x27;ember-data&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  onePost: DS.belongsTo(‘post’),</span><br><span class="line">  twoPost: DS.belongsTo(‘post’),</span><br><span class="line">  redPost: DS.belongsTo(‘post’),</span><br><span class="line">  bluePost: DS.belongsTo(‘post’)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在一个模型中同时与3个<code>post</code>关联了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/post.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  comments: hasMany(‘comment’, &#123; <span class="attr">inverse</span>: ‘redPost’ &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当<code>comment</code>发生变化时自动更新到<code>redPost</code>这个模型。</p>
+<h2 id="5，自反关系"><a href="#5，自反关系" class="headerlink" title="5，自反关系"></a>5，自反关系</h2><h4 id="1，一对多"><a href="#1，一对多" class="headerlink" title="1，一对多"></a>1，一对多</h4><p>当你想定义一个自反关系的模型时（模型本身的一对一关系），你必须要显式使用<code>inverse</code>指定关联的模型。如果没有逆向关系则把<code>inverse</code>值设置为<code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/folder.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  children: DS.hasMany(‘folder’, &#123; <span class="attr">reverse</span>: ‘parent’ &#125;);</span><br><span class="line">  parent: DS.hasMany(‘folder’, &#123; <span class="attr">reverse</span>: ‘children’ &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一个文件夹通常有父文件夹或者子文件夹。此时父文件夹和子文件夹与本身都是同一个类型的模型。此时你需要显式使用<code>inverse</code>属性指定，比如这段代码所示，“children⋯⋯”这行代码意思是这个模型有一个属性<code>children</code>，并且这个属性也是一个<code>folder</code>，模型本身作为父文件夹。同理“parent⋯⋯”这行代码的意思是这个模型有个属性<code>parent</code>，并且这个属性也是一个<code>folder</code>，模型本身是这个属性的子文件夹。比如下图结构：</p>
+<p><img src="http://static.oschina.net/uploads/img/201510/18163815_YOLs.png" alt="结构图"></p>
+<p>这个有点像数据结构中的链表。你可以把<code>children</code>和<code>parent</code>想象成是一个指针。</p>
+<p>如果仅有关联关系没有逆向关系直接把<code>inverse</code>设置为<code>null</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/folder.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  parent: DS.belongsTo(‘folder’, &#123; <span class="attr">inverse</span>: <span class="literal">null</span> &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2，一对一"><a href="#2，一对一" class="headerlink" title="2，一对一"></a>2，一对一</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  app/models/user.js</span></span><br><span class="line"><span class="keyword">import</span> DS <span class="keyword">from</span> ‘ember-data’;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> DS.Model.extend(&#123;</span><br><span class="line">  bestFriend: DS.belongsTo(‘folder’, &#123; <span class="attr">inverse</span>: ‘bestFriend’ &#125;);</span><br><span class="line">&#125;);v</span><br></pre></td></tr></table></figure>
+<p>这个关系与数据库设置设计中双向一对一很类似。</p>
+<h2 id="6，嵌套数据"><a href="#6，嵌套数据" class="headerlink" title="6，嵌套数据"></a>6，嵌套数据</h2><p>有些模型可能会包含深层嵌套的数据对象，如果也是使用上述的关联关系定义那么将是个噩梦！对于这种情况最好是把数据定义成简单对象，虽然增加点冗余数据但是降低了层次。另外一种是把嵌套的数据定义成模型的属性（也是增加冗余但是降低了嵌套层次）。<br><br><br>博文完整代码放在<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/my_emberjs_code">Github</a>（博文经过多次修改，博文上的代码与github代码可能有出入，不过影响不大！），如果你觉得博文对你有点用，请在github项目上给我点个<code>star</code>吧。您的肯定对我来说是最大的动力！！</p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/ember-teach/models/%E6%96%B0%E5%BB%BA%E3%80%81%E6%9B%B4%E6%96%B0%E3%80%81%E5%88%A0%E9%99%A4%E8%AE%B0%E5%BD%95/" rel="next" title="新建、更新、删除记录">
+          新建、更新、删除记录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/ember-teach/models/%E5%85%83%E6%95%B0%E6%8D%AE/" rel="prev" title="元数据">
+            元数据
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="toc-text">1，定义属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%EF%BC%8C%E6%8C%87%E5%AE%9A%E5%B1%9E%E6%80%A7%E7%B1%BB%E5%9E%8B%E4%B8%8E%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">2，指定属性类型与默认值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%EF%BC%8C%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB"><span class="toc-text">3，定义模型的关联关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%8C%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="toc-text">1，一对一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%8C%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="toc-text">2，一对多</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%8C%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="toc-text">3，多对多</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%EF%BC%8C%E6%98%BE%E5%BC%8F%E5%8F%8D%E8%BD%AC"><span class="toc-text">4，显式反转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%EF%BC%8C%E8%87%AA%E5%8F%8D%E5%85%B3%E7%B3%BB"><span class="toc-text">5，自反关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%8C%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="toc-text">1，一对多</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%8C%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="toc-text">2，一对一</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%EF%BC%8C%E5%B5%8C%E5%A5%97%E6%95%B0%E6%8D%AE"><span class="toc-text">6，嵌套数据</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '定义模型',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
+        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/gitment.browser.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>
