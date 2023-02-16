@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#202020"/>
+  <meta name="theme-color" content="#303030"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <script src="/js/busuanzi.pure.mini.js" async></script>
   
@@ -19,7 +19,7 @@
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
-  <title>自定义MVC框架之二action配置文件定义 [ Keep Coding ]</title>
+  <title>自定义MVC框架之二action配置文件定义</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -28,7 +28,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
-<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Keep Coding" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
 </head>
 
 <body>
@@ -36,34 +36,55 @@
     <nav class="home-menu pure-menu pure-menu-horizontal">
   <a class="pure-menu-heading" href="/">
     <img class="avatar" src="/image/favicon.ico">
-    <span class="title">Keep Coding</span>
+
   </a>
 
   <ul class="pure-menu-list clearfix">
-      
-          
-            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
-          
-      
-          
-            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
-          
-      
-          
-            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
-          
-      
-          
-            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
-          
-      
-          
-            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
-          
-      
-          
-            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
-          
+  	<li class="pure-menu-item">
+		<div class="dropdown">
+		    <a href="#" class="dropbtn pure-menu-link">
+				<svg t="1676514030881" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4851" width="48" height="48"><path d="M223.962372 607.897867c-52.980346 0-95.983874-43.003528-95.983874-95.983874s43.003528-95.983874 95.983874-95.983874 95.983874 43.003528 95.983874 95.983874S276.942718 607.897867 223.962372 607.897867z" fill="#ffffff" p-id="4852"></path><path d="M511.913993 607.897867c-52.980346 0-95.983874-43.003528-95.983874-95.983874s43.003528-95.983874 95.983874-95.983874 95.983874 43.003528 95.983874 95.983874S564.894339 607.897867 511.913993 607.897867z" fill="#ffffff" p-id="4853"></path><path d="M800.037628 607.897867c-52.980346 0-95.983874-43.003528-95.983874-95.983874s43.003528-95.983874 95.983874-95.983874 95.983874 43.003528 95.983874 95.983874S852.84596 607.897867 800.037628 607.897867z" fill="#ffffff" p-id="4854"></path></svg>
+			</a>
+		    <div class="dropdown-content">
+		      
+		          
+		            
+						<a href="/search" class="pure-menu-link">
+							搜索
+						</a>
+					
+		          
+		      
+		          
+		            
+						<a href="/tags" class="pure-menu-link">
+							标签
+						</a>
+					
+		          
+		      
+		          
+		            
+						<a href="/archives" class="pure-menu-link">
+							归档
+						</a>
+					
+		          
+		      
+		          
+		            
+						<a href="/about" class="pure-menu-link">
+							关于
+						</a>
+					
+		          
+		      
+		    </div>
+		  </div>
+	</li>
+	
+	
+	  
       
   </ul>
    
@@ -91,12 +112,9 @@
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
       </span>
     </span>
+      
       <span class="slash">/</span>
-      <span class="read">
-      <span id="busuanzi_value_page_pv"></span> 点击
-    </span>
-      <span class="slash">/</span>
-      <span class="read">阅读耗时 1 分钟</span>
+      <span class="read">阅读耗时预计 1 分钟</span>
     </header>
 
     <div class="post-content">
@@ -104,7 +122,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.snails.framework.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String INPUT = <span class="string">&quot;input&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String ERROR = <span class="string">&quot;error&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String SUCCESS = <span class="string">&quot;success&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理业务逻辑方法，每个Action类都需要重写此方法，并返回与配置文件对应的页面配置字符串</span></span><br><span class="line"><span class="comment">     * 比如返回 &#x27;input&#x27;：</span></span><br><span class="line"><span class="comment">     * &lt;result name=&quot;input&quot;&gt;index.jsp&lt;/result&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码很简单，不多说。其他使用框架的所有<code>Action</code>类都要实现此类。</p>
-<p>项目完整代码请看<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/myMVC">MyMVC</a>，欢迎fork学习，如果你觉得对你有帮助给我点个赞吧，当然也欢迎给我提意见（email:<a href="mailto:&#49;&#x35;&#50;&#x37;&#50;&#53;&#52;&#48;&#50;&#55;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#49;&#x35;&#50;&#x37;&#50;&#53;&#52;&#48;&#50;&#55;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a>，chendequanroob@gmail.com）。</p>
+<p>项目完整代码请看<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/myMVC">MyMVC</a>，欢迎fork学习，如果你觉得对你有帮助给我点个赞吧，当然也欢迎给我提意见（email:<a href="mailto:&#49;&#53;&#50;&#55;&#x32;&#53;&#52;&#48;&#x32;&#55;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#x6d;">&#49;&#53;&#50;&#55;&#x32;&#53;&#52;&#48;&#x32;&#55;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#x6d;</a>，chendequanroob@gmail.com）。</p>
 
     </div>
 
@@ -113,16 +131,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%BA%8Caction%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/" rel="next" title="自定义MVC框架之二action配置文件定义">
-          自定义MVC框架之二action配置文件定义
+          <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%83%E6%A1%86%E6%9E%B6%E6%8B%A6%E6%88%AA%E5%99%A8ActionServlet%E5%AE%9A%E4%B9%89%E3%80%81%E9%85%8D%E7%BD%AE/" rel="next" title="自定义MVC框架之七框架拦截器ActionServlet定义、配置">
+          自定义MVC框架之七框架拦截器ActionServlet定义、配置
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%83%E6%A1%86%E6%9E%B6%E6%8B%A6%E6%88%AA%E5%99%A8ActionServlet%E5%AE%9A%E4%B9%89%E3%80%81%E9%85%8D%E7%BD%AE/" rel="prev" title="自定义MVC框架之七框架拦截器ActionServlet定义、配置">
-            自定义MVC框架之七框架拦截器ActionServlet定义、配置
+          <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%80%E6%A1%86%E6%9E%B6%E6%80%BB%E8%AF%B4%E6%98%8E/" rel="prev" title="自定义MVC框架之一框架总说明">
+            自定义MVC框架之一框架总说明
           </a>
           <span>〉</span>
         
@@ -209,8 +227,6 @@
   <!-- scripts list from theme config.yml -->
   
     <script src="/js/zepto.min.js"></script>
-  
-    <script src="/js/gitment.browser.js"></script>
   
 
 
