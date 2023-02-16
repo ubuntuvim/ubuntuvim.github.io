@@ -138,7 +138,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.snails.framework.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String INPUT = <span class="string">&quot;input&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String ERROR = <span class="string">&quot;error&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String SUCCESS = <span class="string">&quot;success&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理业务逻辑方法，每个Action类都需要重写此方法，并返回与配置文件对应的页面配置字符串</span></span><br><span class="line"><span class="comment">     * 比如返回 &#x27;input&#x27;：</span></span><br><span class="line"><span class="comment">     * &lt;result name=&quot;input&quot;&gt;index.jsp&lt;/result&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码很简单，不多说。其他使用框架的所有<code>Action</code>类都要实现此类。</p>
-<p>项目完整代码请看<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/myMVC">MyMVC</a>，欢迎fork学习，如果你觉得对你有帮助给我点个赞吧，当然也欢迎给我提意见（email:<a href="mailto:&#49;&#53;&#50;&#x37;&#50;&#x35;&#x34;&#x30;&#50;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#49;&#53;&#50;&#x37;&#50;&#x35;&#x34;&#x30;&#50;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a>，chendequanroob@gmail.com）。</p>
+<p>项目完整代码请看<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/myMVC">MyMVC</a>，欢迎fork学习，如果你觉得对你有帮助给我点个赞吧，当然也欢迎给我提意见（email:<a href="mailto:&#49;&#53;&#50;&#55;&#x32;&#x35;&#x34;&#x30;&#50;&#x37;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;">&#49;&#53;&#50;&#55;&#x32;&#x35;&#x34;&#x30;&#50;&#x37;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;</a>，chendequanroob@gmail.com）。</p>
 
     </div>
 
@@ -155,8 +155,8 @@
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%80%E6%A1%86%E6%9E%B6%E6%80%BB%E8%AF%B4%E6%98%8E/" rel="prev" title="自定义MVC框架之一框架总说明">
-            自定义MVC框架之一框架总说明
+          <a href="/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%83%E6%A1%86%E6%9E%B6%E6%8B%A6%E6%88%AA%E5%99%A8ActionServlet%E5%AE%9A%E4%B9%89%E3%80%81%E9%85%8D%E7%BD%AE/" rel="prev" title="自定义MVC框架之七框架拦截器ActionServlet定义、配置">
+            自定义MVC框架之七框架拦截器ActionServlet定义、配置
           </a>
           <span>〉</span>
         
@@ -205,13 +205,13 @@
     
 
   </div>
+
+  <a href="#" class="return-top">回到顶部</a>
+  
   <footer class="footer text-center">
     <div id="bottom-inner">
-        <a class="bottom-item" href="http://xcoding.tech/">首页</a> |
-        <a class="bottom-item" href="http://xcoding.tech/" target="_blank">主站</a> |
         <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
-        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
-        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a>
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a>
     </div>
 </footer>
 
@@ -375,5 +375,6 @@
 
 
 
+  
 </body>
 </html>

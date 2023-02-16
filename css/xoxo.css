@@ -98,8 +98,6 @@ footer {
   margin-top: 2rem!important;
   color: #999;
   font-size: 12px;
-  position: relative;
-  z-index: 1024;
 }
 footer .bottom-item {
   margin-left: 5px;
@@ -183,10 +181,13 @@ html,
 body {
   font-size: 18px;
   font-weight: normal;
+  scroll-behavior: smooth;
+  /* 平滑滚动 */
 }
 body {
   color: #303030;
   margin: 0;
+  display: grid;
 }
 .nav-container {
   display: flex;
@@ -301,7 +302,6 @@ body {
   background-color: #f9f9f9 !important;
   min-width: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  margin-top: -2px;
   text-align: center;
 }
 .dropdown-content a {
@@ -453,7 +453,7 @@ body {
   .post-container .toc-container .toc-article {
     display: block;
     position: fixed;
-    margin-left: -15px;
+    margin-left: 15px;
     max-height: calc(100vh - 150px);
     width: 200px;
     top: 25%;
@@ -885,6 +885,38 @@ body {
 }
 .copyright a:hover {
   color: #2196F3;
+}
+body {
+  grid-template-columns: 1fr 0px;
+}
+.return-top {
+  --offset: 50%;
+  /* 控制按钮出现 */
+  position: sticky;
+  bottom: 20px;
+  margin-right: 10px;
+  place-self: end;
+  margin-top: calc(100vh + var(--offset));
+  width: 50px;
+  aspect-ratio: 1;
+  background: #ddd;
+  border-radius: 10px;
+  font-size: 0;
+  color: #fff;
+}
+.return-top:before {
+  content: "";
+  position: absolute;
+  inset: 30%;
+  transform: translateY(20%) rotate(-45deg);
+  border-top: 5px solid #fff;
+  border-right: 5px solid #fff;
+}
+a.return-top:hover {
+  background-color: #999;
+}
+.gt-container {
+  padding: 20px;
 }
 pre,
 code {
