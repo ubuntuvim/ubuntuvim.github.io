@@ -186,7 +186,6 @@ body {
 }
 body {
   color: #303030;
-  line-height: 1.65;
   margin: 0;
 }
 .nav-container {
@@ -293,10 +292,6 @@ body {
   text-align: center;
   text-decoration: none;
 }
-li a:hover,
-.dropdown:hover .dropbtn {
-  background-color: #111;
-}
 .dropdown {
   display: inline-block;
 }
@@ -316,7 +311,7 @@ li a:hover,
   text-decoration: none;
   display: block;
 }
-.dropdown-content a:hover {
+.nav-container .home-menu .dropdown-content a:hover {
   background-color: #f1f1f1 important;
 }
 .dropdown:hover .dropdown-content {
@@ -358,7 +353,7 @@ li a:hover,
   border-top: none;
 }
 .recent-posts .recent-post-item .post-excerpt {
-  color: #999;
+  color: #555;
   font-size: 14px;
 }
 @media screen and (max-width: 576px) {
@@ -373,11 +368,11 @@ li a:hover,
   min-height: 30px;
 }
 .recent-posts .recent-post-item .title {
-  font-size: 12px;
+  line-height: 2rem;
 }
 .recent-posts .recent-post-item .title h2 {
   font-size: 1.2rem;
-  font-weight: normal;
+  display: inline;
 }
 @media screen and (max-width: 576px) {
   .recent-posts .recent-post-item .title h2 {
