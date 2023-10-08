@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2023-02-15T15:09:21.120Z</updated>
+  <updated>2023-10-08T02:48:43.351Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How To Do ？</title>
+    <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/"/>
+    <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/</id>
+    <published>2023-10-08T02:24:37.765Z</published>
+    <updated>2023-10-08T02:48:43.351Z</updated>
+    
+    
+    <summary type="html">普通人怎样改变自己的阶层？</summary>
+    
+    
+    
+    
+    <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+    <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>OOM问题排查</title>
@@ -503,32 +522,6 @@
     <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
     
     <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring事务传播机制</title>
-    <link href="http://xcoding.tech/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"/>
-    <id>http://xcoding.tech/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/</id>
-    <published>2020-09-08T15:33:30.000Z</published>
-    <updated>2020-09-08T15:33:30.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Spring事务传播设置有如下类型：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
-    
-    <category term="Transactional" scheme="http://xcoding.tech/tags/Transactional/"/>
     
   </entry>
   

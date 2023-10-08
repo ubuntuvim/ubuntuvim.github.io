@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#303030"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="/js/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="鸡汤,软文," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>How To Do ？</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+  <!--
+    <img class="avatar" src="/image/logo1.png">
+-->
+    <svg t="1696736567728" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3064" width="40px" height="50px"><path d="M203.8 255.1h619c12.7 0 23 10.4 23 23v391.1c0 12.7-10.4 23-23 23h-619c-12.7 0-23-10.4-23-23V278.1c0-12.7 10.3-23 23-23z" fill="#5B79FB" p-id="3065"></path><path d="M215.3 300.7h596v320h-596z" fill="#FFFFFF" p-id="3066"></path><path d="M499.1 640.6h28.3v28.3h-28.3z" fill="#FF7E71" p-id="3067"></path><path d="M180.8 692.1h665l115.5 49.2h-896z" fill="#5B79FB" p-id="3068"></path><path d="M65.3 741.3h896v12.9c0 9.1-7.5 16.6-16.6 16.6H81.9c-9.1 0-16.6-7.5-16.6-16.6v-12.9z" fill="#5B79FB" p-id="3069"></path><path d="M422.8 750.3h181v11.5h-181z" fill="#FF7E71" p-id="3070"></path><path d="M196.7 696.1h62.2c-3.2 1.9-6.3 3.8-9.4 5.7h-64.4c3.9-1.9 7.8-3.8 11.6-5.7zM310.7 696.1h62.2l-5.1 5.7h-64.5c2.4-1.9 4.9-3.8 7.4-5.7zM424.7 696.1h62.2c-0.2 1.9-0.5 3.8-0.9 5.7h-64.6c1.2-1.9 2.3-3.8 3.3-5.7zM538.8 696.1H601c1.1 1.9 2.3 3.8 3.3 5.7h-64.6c-0.2-1.9-0.6-3.8-0.9-5.7zM652.8 696.1H715c2.6 1.9 5.1 3.8 7.6 5.7h-64.5c-1.7-1.9-3.5-3.8-5.3-5.7zM766.9 696.1h62.2c4 1.9 7.9 3.8 11.8 5.7h-64.6c-3.1-1.9-6.2-3.8-9.4-5.7zM176.7 705.9h66.1c-3.1 1.9-6.3 3.8-9.4 5.7H165c3.8-1.9 7.8-3.8 11.7-5.7zM298 705.9h66.1c-1.7 1.9-3.5 3.8-5.1 5.7h-68.5c2.4-1.9 5-3.8 7.5-5.7zM419.3 705.9h66.2l-0.9 5.7h-68.5c1-1.9 2.1-3.8 3.2-5.7zM540.5 705.9h66.2l3.3 5.7h-68.5c-0.3-1.9-0.6-3.8-1-5.7zM661.9 705.9H728c2.5 1.9 5.1 3.8 7.5 5.7h-68.4c-1.7-1.9-3.5-3.8-5.2-5.7zM783.2 705.9h66.3l11.7 5.7h-68.5c-3.1-1.9-6.3-3.8-9.5-5.7zM156.6 715.8h70.1c-3.2 1.9-6.2 3.8-9.4 5.7H145c3.8-1.9 7.6-3.8 11.6-5.7zM285.1 715.8h70.2c-1.8 1.9-3.4 3.8-5.1 5.7h-72.4c2.4-1.9 4.8-3.8 7.3-5.7zM413.7 715.8h70.2c-0.4 1.9-0.6 3.8-0.9 5.7h-72.5c1.1-1.9 2.1-3.8 3.2-5.7zM542.3 715.8h70.2c1 1.9 2.2 3.8 3.3 5.7h-72.5c-0.3-1.9-0.7-3.8-1-5.7zM670.9 715.8h70.2c2.4 1.9 5 3.8 7.5 5.7h-72.4c-1.8-1.9-3.6-3.8-5.3-5.7zM799.5 715.8h70.2l11.7 5.7h-72.5c-3-1.9-6.3-3.8-9.4-5.7zM136.5 725.6H890c4 1.9 7.8 3.8 11.7 5.7h-777c4.1-1.9 7.9-3.8 11.8-5.7z" fill="#A4BEFF" p-id="3071"></path><path d="M812.4 534.8v86.7H215.3V300.7h234z" fill="#E5ECFF" p-id="3072"></path></svg>
+
+    <span style="font-weight: bold;
+									font-size: 20px;
+									padding-top: 3px;
+									padding-left: 5px;
+									font-family: Chalkduster;
+									color: #056de8;">
+		
+									xcoding.tech
+
+		</span>
+
+    <span class="title"></span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        How To Do ？
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2023-10-08T02:24:37.765Z">
+        2023-10-08
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E6%96%87/" rel="tag">软文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%B8%A1%E6%B1%A4/" rel="tag">鸡汤</a></li></ul>
+      </span>
+    </span>
+      
+      <span class="slash">/</span>
+      <span class="read">阅读耗时预计 1 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>转载：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/66052044/answer/3240187673">https://www.zhihu.com/question/66052044/answer/3240187673</a></p>
+<p>  <strong>穷人想改命跨阶层只有3个路径：</strong></p>
+<ul>
+<li><strong>一是吃别人吃不了的苦，</strong></li>
+<li><strong>二是冒别人不敢冒的风险。</strong></li>
+<li><strong>三是掌握别人掌握不了的生产力</strong></li>
+</ul>
+<p>一个人，如果家里又没啥钱，工作又是一个没有什么上升空间的岗位，相当于事业不行，原生家庭也不行，那哪怕她长得很漂亮，也没什么用。基本上已经可以看出来这是个没前途的人了。改变命运的可能性几乎是0了。</p>
+<p>为什么？</p>
+<p>原因很简单——这涉及到一个穷人要想翻身可以走哪些路径的问题。</p>
+<p>所有稳定的工作包括当公务员都不可能发大财，因为稳定的工作岗位没有什么生产力可言。</p>
+<p>基本上所有的稳定工作都是财富转移性质的工作，比如公务员事业单位国企。也就是，只有不直接创造生产力的岗位，转移他人的生产力，才能保证旱涝保收。</p>
+<p>但是旱涝保收的同时，收入不会太高，因为你的工作不创造直接生产力，那你就没有资格拿更多的钱，虽然看似稳定，本质上是稳定的穷而已。</p>
+<p>这样的工作，无非是可以糊口，吃个饭而已，存钱都很困难。如果家里有钱，帮你解决好车子房子还可以做一做，如果家里本来就没钱，基本上是一辈子挣扎在贫困线附近。连个还个房贷都困难的生活，有什么生活质量可言？</p>
+<p>普通人本来就没有钱，不可能靠资本赚钱。于是只有3条有可能赚钱的路——先进生产力、吃苦和冒险。别人不会编程，你会编程，你的生产力就高，别人工资就是20万，你就是50万。别人会编程，你是算法大神，别人年薪50万，你就是年薪200万</p>
+<p>如果水平更高，就可以拿融资创业，有机会进入资本市场。如果你的水平就是50万的编程水平，就是天赋不够，达不到200万的水平，那你要么用50万维持一个低存款的收入状态，要么胆子大出国、去一个更缺程序员的、甚至是可能在国内违法、但是在当地不违法的行业。比如网赌什么的，你才有机会赚更多钱。</p>
+<p><strong>我经常说财富是对认知的补偿，而不是对勤劳的奖赏！要说努力和吃苦能大赚钱，那些面朝黄土背朝天的农民不早就飞黄腾达了吧。那为什么我们还要脱离底层呢？</strong></p>
+<p>人一旦挣到钱后，就会夜夜灯红酒绿，歌舞升平，身边美女源源不断，奉承的人一直围绕在你身边。你问我会不会高看他们一眼？你问我会不会让他们去消耗我的精力和时间？</p>
+<p>就比如现在的我自己，偶尔写写文章、拍拍抖音，通过专栏和写书每天只需要花两个小时的时间，然后就有人来找我加微信让我带带他们，微信好友大几万人就是这样来的。 什么？ 微信好友多不代表能挣到钱？ 我不反驳，你说的对？ 这么多人是不是流量？ 是不是客户群体？</p>
+<p>天下熙熙皆为利来、天下攘攘皆为利往。古人都告诉我们了。天下事皆为利益，大家出来都是为了搞钱的，都是来利益交换的的，人与人之间的关系都是建立在利益之上，时刻要以利益为中心，不能给你产生利益价值的事、人，赶紧滚得越远越好。我之前就在内部VIP群里讲过，我不跟任何人谈感情，我只讲利益，谈利益能让我们时刻知道哪些能给我们带来钱，哪些是垃圾。</p>
+<p><strong>如果穷人想要改变命运，请谨记以下几点：</strong></p>
+<p><strong>1、永远不要在意别人对你的看法。</strong></p>
+<p>记住是任何人，特别是那些非亲非故的人，有很多人就是打压你，故意地看不起你，看不上你，让你不快乐，或者是喷你，嫉妒你和你，这些全部都是给你的精神内耗添油加醋，所以你如果把这种人当回事，你太在乎他了，你就败给他了，在这个世上除了生死，其他都是屁事，连擦伤都算不上，你永远无法做到让所有人都满足，人心最恶的一面就是见不得你过得比别人好。</p>
+<p><strong>2、 时间是有限的，不要被眼前的事情消耗自己。</strong></p>
+<p>把时间放的长远一点，永远不要因为一件事影响了你，那个叫做精神内耗，人到老了以后，只会后悔自己年轻的时候没有做什么，不会后悔自己做了什么，所以及时行乐，让自己快乐一点，生命才变得更有意义，乐观是什么？乐观就是看透了生活的本质，以后你讨厌他，但是你依然热爱生活，活着本来就很累，开心也是一天不开心也是一天。</p>
+<p><strong>3、 永远不要自卑，也永远不要感觉自己比别人低一等。</strong></p>
+<p>这个人有没有钱，有多少钱，其实跟你都没有关系。有很多人就是他的奴性太强，看到比自己优秀的人甚至一些装逼的人，这个胆子要变得怯懦了，殊不知有很多人都是装出来的屎壳郎外皮光。</p>
+<p><strong>4、永远不要看别人说了什么，要看他做了什么</strong></p>
+<p>康有为提倡一夫一妻制，自己一生却娶了六房老婆；马寅初最先提出计划生育，自己却生了八个小孩。这大概就是顶级专家的知行不合一</p>
+<p><strong>5、平庸的人无人问津，有才的人遭人妒忌。</strong></p>
+<p>“天下惟庸人无咎无誉”。意思就是说只有那些平庸的人，才既不会受到批评，也不会受到表扬。一个平庸之人是没人理的，是无人喝彩的。相反，一个有才的人会受到欢迎，甚至还会受到别人的嫉妒。如若有人来排挤你，那么证明你是一个有才之人，你不是平庸之辈。</p>
+<p><strong>6、遇到比自己厉害的人，要做到不卑不亢。</strong><br>有些人遇到那些位高权重的人，就会不自觉地变得卑微起来。完全没有必要，大家都是人，有什么好怕的呢。如果你越是把自己看得很低，别人也就越看不起你。相反，你有自信些，无所畏惧一些，别人才会高看你。</p>
+<p><strong>7、钱，一定不是拿一辈子去赚的，而是抓住机会，2-3年赚很多人一辈子都赚不到的钱。</strong></p>
+<p>如果你认为，你目前是最赚钱的时候，请告诉你自己不要休息好吗？因为下次这样机会，你也许都不知道要等到什么时候，错过了，可能都不会再有了。</p>
+<p><strong>8、在没有利益是非的前提下，不与任何人争执。</strong></p>
+<p>见到孩子夸聪明，见到老人夸年轻，见到女的夸漂亮，见到穷的夸本分，见到奸诈的夸灵活。你的批评如果唤起不了他的改变，那不如说句好话，结个善缘。</p>
+<p><strong>9、逢人不必吐真言，孤独才是人生的常态。</strong></p>
+<p>到了中年，你才会明白，那些看似牢不可破的关系，在利益面前都脆弱的不堪一击。</p>
+<p><strong>10、不同频的人，不要再接触，你越狠不下心来，你就越会被带跑偏。</strong></p>
+<p>如果你现在混的不好，那么一定要脱离自己目前的圈层。眼睛只往上看，只往比你圈层更高的地方看齐，记住，永远不要低头和平视，因为这样会让你安于现状和退步。相信我，你这样做，只会让你远离颈椎病，不不不，只会让你正视差距，从而才会有目标的努力和拉进差距。 </p>
+<p><strong>11、复盘。我每天晚上一定会去复盘，包括每个月也会做一个定期复盘。</strong></p>
+<p>如果你连复盘，这种超级小的事都不去做的话，你基本上就告别每天进步一点点了。其实进步这件事，并不是一下就进步很多的，而是慢慢进步，最后才会有一个大的进步的。</p>
+<p><strong>12、时间成本才是最大的成本。</strong></p>
+<p>能花钱找人学习，就找人学习 能花钱找人解决问题，一定不要自己去解决你不擅长的问题，自己去解决不擅长的问题这是非常愚蠢的行为，创业赚钱的人，都不会是全能的。</p>
+<p><strong>13、明白一切事物因缘而生，开始接受变幻无常。</strong></p>
+<p>越是历经沧桑的人，越明白人最无力的抵抗，只来自老天。不管是天灾还是人祸，冥冥之中都少不了他的手笔，说白了，万物皆为刍狗。能平静对待世事变迁，心如明镜又似水过无痕。明白人生起伏祸福相依，三十年河东三十河西，除了生老病死，没有真正能击倒自己的事儿。</p>
+<p><strong>14、弱者都是活在美丽的假象里</strong></p>
+<p>小鸡在还不能自己生存时，母鸡就会强行的把他们赶走，这时小鸡只要靠近母鸡，母鸡就会凶狠的啄它们，一点情面都不会留！但正因为这样，小鸡才迫不得已，学会了自我生存的能力！</p>
+<p>社会上，你无法成为狼，即使拥有快乐也只是短暂的假象，因为你现在拥有的一切事物，最终会因为你是羊，而被另一群狼占有。大自然的进化的方式，就是不断的留下强大的，淘汰弱小的，这一切，残酷而又美丽！</p>
+<p><strong>15、真正的强者都是无情的。</strong></p>
+<p>所谓对敌人的仁慈，就是对自己的残忍，在历史上卧薪尝胆的故事就是最好的案例。吴王夫差的一念之仁，让身为阶下囚的越王勾践有了韬光养晦的机会，最终搞得自己亡国丧命。</p>
+<p>当夫差反过来向勾践苦苦求饶的时候，你猜猜看，勾践有没有让他多活一会儿？你的竞争对手根本不会想着和你双赢，他只会借着所谓的交情来使你相信双赢的假象，最后他一个人赢。</p>
+<p>所以你看世界一流的商业选手，他们都是全面性的打压竞争对手，他们会把对手打的落花流水，连头都抬不起来，根本不会让对手有喘气的机会！</p>
+<p><strong>16、不卑不亢，有分寸。与村夫交谈不离谦恭之态，和王侯散步不露谄媚之颜。</strong></p>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/Java/OOM%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" rel="next" title="OOM问题排查">
+          OOM问题排查
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: 'How To Do ？',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+
+  <a href="#" class="return-top">回到顶部</a>
+  
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a>
+    </div>
+</footer>
+
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+  
+</body>
+</html>
