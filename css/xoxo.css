@@ -216,14 +216,14 @@ body {
   margin-right: auto;
 
   border-bottom-style: solid;
-border-bottom-width: 1px;
-border-bottom-color: #f7f1f1;
+  border-bottom-width: 1px;
+  border-bottom-color: #f7f1f1;
 
 }
 @media screen and (max-width: 615px) {
   .nav-container .home-menu {
     -ms-flex-pack: center;
-        justify-content: center;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -240,7 +240,7 @@ border-bottom-color: #f7f1f1;
       align-items: center;
   -ms-flex-pack: center;
       justify-content: center;
-  padding-top: 15px;
+/*  padding-top: 15px;*/
 }
 @media screen and (max-width: 615px) {
   .nav-container .home-menu .pure-menu-heading {
@@ -1037,4 +1037,53 @@ code {
 }
 #container {
   border-top: 0.5px solid #eee;
+}
+
+
+
+/*  --------- 回到顶部按钮 --------*/
+
+body {
+/*  用于抵消按钮出现之后页面底部的留白空间*/
+  grid-template-columns: 1fr 0px; 
+}
+.return-top {
+/*  --offset: 50%; /* 控制按钮出现 */*/
+  
+  display: block;
+
+  float: right;
+
+  position: sticky;
+  bottom: 20px;      
+  margin-right: 10px; 
+  place-self: end;
+/*  margin-top: calc(100vh + var(--offset));*/
+
+ /* scroll-padding-top: calc(100px + var(--offset));
+  scroll-padding-bottom: 100px;*/
+  
+  width: 50px;
+  aspect-ratio: 1;
+  background: #ddd;
+  border-radius: 10px;
+  font-size: 0;
+  color: #fff;
+}
+.return-top:before {
+  content: "";
+  position: absolute;
+  inset: 30%;
+  transform: translateY(20%) rotate(-45deg);
+  border-top: 5px solid #fff;
+  border-right: 5px solid #fff;  
+}
+ 
+a.return-top:hover {
+    background-color: #999;
+}
+
+
+.gt-container {
+  padding: 20px;
 }
