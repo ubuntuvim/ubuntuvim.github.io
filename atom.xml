@@ -6,7 +6,7 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   
   <link href="http://xcoding.tech/"/>
-  <updated>2023-10-08T02:48:43.351Z</updated>
+  <updated>2023-10-08T09:10:26.865Z</updated>
   <id>http://xcoding.tech/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Know Why ？</title>
+    <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/KnowWhy/"/>
+    <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/KnowWhy/</id>
+    <published>2023-10-08T09:06:29.300Z</published>
+    <updated>2023-10-08T09:10:26.865Z</updated>
+    
+    
+    <summary type="html">知其所以然</summary>
+    
+    
+    
+    
+    <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+    <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
+    
+    <category term="认知" scheme="http://xcoding.tech/tags/%E8%AE%A4%E7%9F%A5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How To Do ？</title>
     <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/"/>
     <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/</id>
     <published>2023-10-08T02:24:37.765Z</published>
-    <updated>2023-10-08T02:48:43.351Z</updated>
+    <updated>2023-10-08T09:09:41.135Z</updated>
     
     
     <summary type="html">普通人怎样改变自己的阶层？</summary>
@@ -32,6 +53,8 @@
     <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
     
     <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
+    
+    <category term="认知" scheme="http://xcoding.tech/tags/%E8%AE%A4%E7%9F%A5/"/>
     
   </entry>
   
@@ -495,33 +518,6 @@
     <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
     <category term="SpringFramework" scheme="http://xcoding.tech/tags/SpringFramework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring源码学习</title>
-    <link href="http://xcoding.tech/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://xcoding.tech/Spring/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</id>
-    <published>2020-09-22T13:14:04.000Z</published>
-    <updated>2020-09-22T13:14:04.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;以配置方式启动Spring容器，容器启动大概过程如下如：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/image/blog-image/spring/spring1.png&quot; alt=&quot;Spring容器启动&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
-    
-    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
     
   </entry>
   
