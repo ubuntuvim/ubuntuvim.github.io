@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title></title>
+  <icon>http://xcoding.tech/icon.png</icon>
+  <subtitle>一个专注一coding的网站。</subtitle>
+  <link href="http://xcoding.tech/atom.xml" rel="self"/>
+  
+  <link href="http://xcoding.tech/"/>
+  <updated>2026-09-20T08:08:20.195Z</updated>
+  <id>http://xcoding.tech/</id>
+  
+  <author>
+    <name>ubuntuvim</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>离岸人民币走势与A股走势相关性分析</title>
+    <link href="http://xcoding.tech/stock-exchange/%E7%A6%BB%E5%B2%B8%E4%BA%BA%E6%B0%91%E5%B8%81%E8%B5%B0%E5%8A%BF%E4%B8%8EA%E8%82%A1%E8%B5%B0%E5%8A%BF%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90/"/>
+    <id>http://xcoding.tech/stock-exchange/%E7%A6%BB%E5%B2%B8%E4%BA%BA%E6%B0%91%E5%B8%81%E8%B5%B0%E5%8A%BF%E4%B8%8EA%E8%82%A1%E8%B5%B0%E5%8A%BF%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90/</id>
+    <published>2026-09-20T08:07:59.576Z</published>
+    <updated>2026-09-20T08:08:20.195Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;问：截图是离岸人民币走势图，其中有5条从上往下的红线，请分析红线的区间的走势与A股的走势相关性&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="A股" scheme="http://xcoding.tech/tags/A%E8%82%A1/"/>
+    
+    <category term="离岸人民币" scheme="http://xcoding.tech/tags/%E7%A6%BB%E5%B2%B8%E4%BA%BA%E6%B0%91%E5%B8%81/"/>
+    
+    <category term="汇率" scheme="http://xcoding.tech/tags/%E6%B1%87%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程序员的3年之痒改变的不止薪水</title>
+    <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%843%E5%B9%B4%E4%B9%8B%E7%97%92%E6%94%B9%E5%8F%98%E7%9A%84%E4%B8%8D%E6%AD%A2%E8%96%AA%E6%B0%B4/"/>
+    <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%843%E5%B9%B4%E4%B9%8B%E7%97%92%E6%94%B9%E5%8F%98%E7%9A%84%E4%B8%8D%E6%AD%A2%E8%96%AA%E6%B0%B4/</id>
+    <published>2026-09-20T07:59:45.250Z</published>
+    <updated>2026-09-20T07:59:45.250Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;转载：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+    <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How To Do ？</title>
+    <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/"/>
+    <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/</id>
+    <published>2026-09-20T07:59:45.250Z</published>
+    <updated>2026-09-20T07:59:45.250Z</updated>
+    
+    
+    <summary type="html">普通人怎样改变自己的阶层？</summary>
+    
+    
+    
+    
+    <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+    <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之四ActionMapping定义</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E5%9B%9BActionMapping%E5%AE%9A%E4%B9%89/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E5%9B%9BActionMapping%E5%AE%9A%E4%B9%89/</id>
+    <published>2026-09-20T07:59:45.249Z</published>
+    <updated>2026-09-20T07:59:45.249Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;有了Action配置之后，我们需要定义一个与配置匹配的javabean。主要是方便数据保存。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之四ActionMapping定义</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%BA%94%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E5%99%A8ActionMappingManager%E5%AE%9A%E4%B9%89/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%BA%94%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E5%99%A8ActionMappingManager%E5%AE%9A%E4%B9%89/</id>
+    <published>2026-09-20T07:59:45.248Z</published>
+    <updated>2026-09-20T07:59:45.248Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;数据（Action配置文件）有了，对应的数据存储类（ActionMapping）也有了。毫无疑问，接下来就是数据的解析了。使用&lt;code&gt;dom4j&lt;/code&gt;解析&lt;code&gt;xml&lt;/code&gt;文件。&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之四ActionMapping定义</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E5%85%AB%E4%BD%BF%E7%94%A8%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E5%85%AB%E4%BD%BF%E7%94%A8%E6%A1%86%E6%9E%B6%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86/</id>
+    <published>2026-09-20T07:59:45.248Z</published>
+    <updated>2026-09-20T07:59:45.248Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;到此框架已经开发完成，此时你可以启动项目，验证项目是否有错误，特别是配置的文件的路径问题。&lt;br&gt;
+如果项目成功启动并且没有报任何错误，说明框架开发是没问题的，下面就是验证框架是否达到要求。我们使用登录这个非常常见的例子验证。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建三个JSP文件，</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之四ActionMapping定义</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E5%85%ADActionManager%E5%AE%9A%E4%B9%89/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E5%85%ADActionManager%E5%AE%9A%E4%B9%89/</id>
+    <published>2026-09-20T07:59:45.248Z</published>
+    <updated>2026-09-20T07:59:45.249Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本类主要用于根据类名反射得到类实例。类的名字根据解析得到的Action配置得到，得到Action配置中的&lt;code&gt;class&lt;/code&gt;属性值后就可以使用反射获取类实例了。&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之二action配置文件定义</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%BA%8Caction%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%BA%8Caction%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%9A%E4%B9%89/</id>
+    <published>2026-09-20T07:59:45.247Z</published>
+    <updated>2026-09-20T07:59:45.247Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;为了减少Java代码中的校验我们先定义&lt;code&gt;Action配置&lt;/code&gt;的文件的校验文件（&lt;code&gt;snails-actions-validate.xsd&lt;/code&gt;），文件路径请看&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之七框架拦截器ActionServlet定义、配置</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%83%E6%A1%86%E6%9E%B6%E6%8B%A6%E6%88%AA%E5%99%A8ActionServlet%E5%AE%9A%E4%B9%89%E3%80%81%E9%85%8D%E7%BD%AE/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%83%E6%A1%86%E6%9E%B6%E6%8B%A6%E6%88%AA%E5%99%A8ActionServlet%E5%AE%9A%E4%B9%89%E3%80%81%E9%85%8D%E7%BD%AE/</id>
+    <published>2026-09-20T07:59:45.246Z</published>
+    <updated>2026-09-20T07:59:45.246Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;到本篇为止，全部的准备工作都已经做好了，万事俱备只欠东风。本类的作用就类似于&lt;code&gt;struts&lt;/code&gt;框架的入口文件，我们需要在&lt;code&gt;web.xml&lt;/code&gt;配置，指定那些请求会进入到框架中，框架会根据请求的内容截取到&lt;code&gt;Action&lt;/cod</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之二action配置文件定义</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%89Action%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%89Action%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89/</id>
+    <published>2026-09-20T07:59:45.246Z</published>
+    <updated>2026-09-20T07:59:45.247Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;前一篇&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>架构漫谈学习笔记</title>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2026-09-20T07:59:45.245Z</published>
+    <updated>2026-09-20T07:59:45.245Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;摘抄出处：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义MVC框架之一框架总说明</title>
+    <link href="http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%80%E6%A1%86%E6%9E%B6%E6%80%BB%E8%AF%B4%E6%98%8E/"/>
+    <id>http://xcoding.tech/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6/%E8%87%AA%E5%AE%9A%E4%B9%89MVC%E6%A1%86%E6%9E%B6%E4%B9%8B%E4%B8%80%E6%A1%86%E6%9E%B6%E6%80%BB%E8%AF%B4%E6%98%8E/</id>
+    <published>2026-09-20T07:59:45.245Z</published>
+    <updated>2026-09-20T07:59:45.246Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本系列文章将为你介绍一个简单的自定义的MVC框架，主要是用于学习，框架模拟struts实现。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;项目结构如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="MVC" scheme="http://xcoding.tech/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么是中台？？</title>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/</id>
+    <published>2026-09-20T07:59:45.244Z</published>
+    <updated>2026-09-20T07:59:45.244Z</updated>
+    
+    
+    <summary type="html">中台可以总结为一种思想，一种体系。其可以快速聚合后台的数据与能力，通过平台的快速开发、分析、服务编排等，提供前台更多的创新能力、是错能力。中台的本质是对后台系统功能和数据解耦、重构与复用。</summary>
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="中台" scheme="http://xcoding.tech/tags/%E4%B8%AD%E5%8F%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>架构漫谈</title>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/</id>
+    <published>2026-09-20T07:59:45.244Z</published>
+    <updated>2026-09-20T07:59:45.244Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;文章来源InfoQ。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;目录&quot;&gt;目录&lt;/h2&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DDD学习笔记</title>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2026-09-20T07:59:45.243Z</published>
+    <updated>2026-09-20T07:59:45.243Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;DDD学习&lt;/h1&gt;
+&lt;h3 id=&quot;Domain-Primitive（DP）的定义&quot;&gt;Domain Primitive（DP）的定义&lt;/h3&gt;
+&lt;p&gt;它是一个在特定的领域里，拥有精准定义的、可自我验证的、拥有行为的Value</summary>
+        
+      
+    
+    
+    
+    
+    <category term="DDD" scheme="http://xcoding.tech/tags/DDD/"/>
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL主从同步配置</title>
+    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/"/>
+    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE/</id>
+    <published>2026-09-20T07:59:45.243Z</published>
+    <updated>2026-09-20T07:59:45.243Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;安装VMS虚拟机-ubuntu-server&quot;&gt;安装VMS虚拟机+ubuntu server&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;第一台&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;安装：&lt;code&gt;multipass launch --name</summary>
+        
+      
+    
+    
+    
+    
+    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="MySQL" scheme="http://xcoding.tech/tags/MySQL/"/>
+    
+    <category term="主从同步" scheme="http://xcoding.tech/tags/%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UML类图关系线</title>
+    <link href="http://xcoding.tech/uml/%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB%E7%BA%BF/"/>
+    <id>http://xcoding.tech/uml/%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB%E7%BA%BF/</id>
+    <published>2026-09-20T07:59:45.241Z</published>
+    <updated>2026-09-20T07:59:45.241Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;类图关系线&lt;/h1&gt;
+&lt;h3 id=&quot;泛化关系（generalization）&quot;&gt;泛化关系（generalization）&lt;/h3&gt;
+&lt;p&gt;泛化关系使用带空心箭头的实线表示，比如汽车与SUV就是泛化关系；&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="UML" scheme="http://xcoding.tech/tags/UML/"/>
+    
+    <category term="类图" scheme="http://xcoding.tech/tags/%E7%B1%BB%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring-junit-jacoco代码覆盖测试</title>
+    <link href="http://xcoding.tech/junit-jacoco/spring-junit-jacoco%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E6%B5%8B%E8%AF%95/"/>
+    <id>http://xcoding.tech/junit-jacoco/spring-junit-jacoco%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E6%B5%8B%E8%AF%95/</id>
+    <published>2026-09-20T07:59:45.240Z</published>
+    <updated>2026-09-20T07:59:45.240Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;接着上一篇&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://xcoding.tech/tags/Java/"/>
+    
+    <category term="Spring" scheme="http://xcoding.tech/tags/Spring/"/>
+    
+    <category term="Junit" scheme="http://xcoding.tech/tags/Junit/"/>
+    
+    <category term="Jacoco" scheme="http://xcoding.tech/tags/Jacoco/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://xcoding.tech/hello-world/"/>
+    <id>http://xcoding.tech/hello-world/</id>
+    <published>2026-09-20T07:59:45.232Z</published>
+    <updated>2026-09-20T07:59:45.232Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="test" scheme="http://xcoding.tech/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强制 Google.com 域名使用 HTTPS（SSL）</title>
+    <link href="http://xcoding.tech/fq/%E5%BC%BA%E5%88%B6%20Google.com%20%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8%20HTTPS%EF%BC%88SSL%EF%BC%89/"/>
+    <id>http://xcoding.tech/fq/%E5%BC%BA%E5%88%B6%20Google.com%20%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8%20HTTPS%EF%BC%88SSL%EF%BC%89/</id>
+    <published>2026-09-20T07:59:45.232Z</published>
+    <updated>2026-09-20T07:59:45.232Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="翻墙" scheme="http://xcoding.tech/tags/%E7%BF%BB%E5%A2%99/"/>
+    
+  </entry>
+  
+</feed>
