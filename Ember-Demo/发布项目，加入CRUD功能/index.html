@@ -1359,14 +1359,14 @@ Ember会自动根据URL的格式解析得到。并且可以在路由类中获取
     </div>
 </footer>
 
-
-  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
-    }
-  </script>
-
+{% if theme.mermaid.enable %}
+<script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
+</script>
+{% endif %}
 
 <script>
 (function(){
