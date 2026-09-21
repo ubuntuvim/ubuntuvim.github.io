@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#303030"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
     <meta name="keywords" content="Java,Spring,Gradle," />
@@ -21,1097 +20,24 @@
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
   <title>spring-gradle-代码覆盖测试</title>
   
-    <!-- stylesheets list from config.yml -->
+    <!-- stylesheets list from hexo-theme/xoxo/config.yml -->
     
       <link rel="stylesheet" href="/css/pure-min.css">
     
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
-  <link rel="stylesheet" href="/css/xoxo.css">
-  <style>
   
-.text-center {
-  text-align: center !important;
-}
-* {
-  box-sizing: border-box;
-}
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-blockquote,
-body,
-fieldset,
-figure,
-menu,
-pre,
-ol,
-ul,
-dd,
-dl {
-  margin: 0;
-  padding: 0;
-  word-wrap: break-word;
-}
-ol,
-ul,
-dd,
-dl {
-  padding-left: 2rem;
-}
-h1 {
-  font-size: 1.5rem;
-}
-h2 {
-  font-size: 1.5rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-h4,
-h5,
-h6 {
-  font-size: 1rem;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0.5rem 0;
-  line-height: 1.5rem;
-  font-weight: 500;
-}
-b,
-optgroup,
-strong {
-  font-weight: 600;
-}
-a {
-  color: inherit;
-}
-p {
-  margin: 0.75rem 0;
-}
-a:link,
-a:visited,
-a:hover,
-a:active {
-  outline: none;
-  text-decoration: none;
-}
-.pr {
-  position: absolute !important;
-  right: 0;
-}
-.float-r {
-  float: right;
-}
-em {
-  color: #FF5722;
-  font-weight: bold;
-  font-style: normal;
-}
-footer {
-  width: 60%;
-  max-width: 840px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #fff;
-  border-top: 0.5px solid #eee;
-  padding-bottom: 1rem!important;
-  padding-top: 1rem!important;
-  margin-top: 2rem!important;
-  color: #999;
-  font-size: 12px;
-/*  position: relative;*/
-/*  z-index: 1024;*/
-}
-footer .bottom-item {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-footer .bottom-item:hover {
-  color: #2196F3;
-}
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
-}
-.clearfix:after {
-  clear: both;
-}
-/* 设置滚动条的样式 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-/* 滚动槽 */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-}
-/* 滚动条滑块 */
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
-}
-::-moz-selection {
-  background: #64B5F6;
-  color: #fff;
-}
-::selection {
-  background: #64B5F6;
-  color: #fff;
-}
-.tag-button {
-  font-size: 14px;
-  line-height: 20px;
-  display: inline-block;
-  height: 20px;
-  margin: 3px;
-  padding: 0 10px;
-  color: #555;
-  border-radius: 3px;
-  background: #f6f6f6;
-  min-width: 30px;
-  text-align: center;
-}
-.tag-button a {
-  color: #555;
-}
-.tag-button:hover {
-  color: #555;
-  background: #efefef;
-}
-.post-page {
-  background-color: #fff;
-  max-width: 880px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-}
-@media screen and (min-width: 576px) {
-  .post-page {
-    padding: 10px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .post-page {
-    padding: 10px 50px;
-  }
-}
-html,
-body {
-  font-size: 16px;
-  font-weight: 300;
-}
-body {
-  color: #202020;
-  line-height: 1.8rem;
-  margin: 0;
-}
-.nav-container {
-  display: -ms-flexbox;
-  /* display: flex; */
-  position: fixed;
-  z-index: 100;
-  -ms-flex-align: center;
-  /* align-items: center; */
-  width: 100%;
-  /* background-color: #161b22 !important; */
-  /* color: #fff !important; */
-}
-.nav-container .home-menu {
-  height: 50px;
-  padding: 7px 5px 20px;
-  background-color: #FFF;
-  color: #000;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  overflow-y: scroll;
-/*  max-width: 1000px;*/
-  margin-left: auto;
-  margin-right: auto;
+  
+    <!-- scripts list from hexo-theme/xoxo/config.yml -->
+    
+      <script src="/js/zepto.min.js" async></script>
+    
+      <script src="/js/xoxo.js" async></script>
+    
+  
 
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #f7f1f1;
-
-}
-@media screen and (max-width: 615px) {
-  .nav-container .home-menu {
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .nav-container .home-menu {
-/*    max-width: 880px;*/
-  }
-}
-.nav-container .home-menu .pure-menu-heading {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-/*  padding-top: 15px;*/
-}
-@media screen and (max-width: 615px) {
-  .nav-container .home-menu .pure-menu-heading {
-    display: none!important;
-  }
-}
-.nav-container .home-menu .pure-menu-heading .avatar {
-  width: 40px;
-  height: 40px;
-/*  background: #efefef;*/
-  border-radius: 20px;
-  border-style: none;
-  display: inline-block;
-  vertical-align: middle;
-}
-.nav-container .home-menu .pure-menu-heading .title {
-  color: #202020;
-  margin-left: 10px;
-  display: inline-block;
-  vertical-align: middle;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 40px;
-}
-.nav-container .home-menu .pure-menu-list {
-  display: -ms-flexbox;
-  display: flex;
-}
-.nav-container .home-menu .pure-menu-list .toc-menu {
-  display: none;
-}
-@media screen and (min-width: 1280px) {
-  .nav-container .home-menu .pure-menu-list .toc-menu {
-    display: initial;
-  }
-}
-.nav-container .home-menu .pure-menu-list .menu-icon {
-  width: 18px;
-  height: 18px;
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-children {
-  border: 1px solid #999;
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link {
-  padding: 4px 15px;
-  color: inherit;
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link:after {
-  content: ' ';
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link:focus {
-/*  background-color: #fff;*/
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link:hover {
-  font-size: 18px;
-/*  background-color: #efefef;*/
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-item.actived {
-  color: #2196F3;
-}
-.slash {
-  color: #999;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.container {
-  padding-top: 60px;
-  margin: 0 auto;
-  max-width: 1000px;
-  min-height: calc(100vh - 120px);
-  width: 100%;
-}
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 880px;
-  }
-}
-.recent-posts {
-  margin: 0 auto;
-  max-width: 800px;
-}
-@media (max-width: 576px) {
-  .recent-posts {
-    padding: 10px 50px;
-  }
-}
-.recent-posts .recent-post-item {
-  margin: 15px auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: none;
-}
-.recent-posts .recent-post-item .post-excerpt {
-  color: #999;
-  font-size: 14px;
-}
-@media screen and (max-width: 576px) {
-  .recent-posts .recent-post-item .post-excerpt {
-    display: none;
-  }
-}
-.recent-posts .recent-post-item .post-meta {
-  font-size: 12px;
-  position: relative;
-  padding-right: 60px;
-  min-height: 30px;
-}
-.recent-posts .recent-post-item .title {
-  font-size: 12px;
-}
-.recent-posts .recent-post-item .title h2 {
-  font-size: 1.2rem;
-  font-weight: normal;
-}
-@media screen and (max-width: 576px) {
-  .recent-posts .recent-post-item .title h2 {
-    font-size: 1rem;
-  }
-}
-.recent-posts .recent-post-item .title:hover {
-  color: #2196F3;
-}
-.recent-posts .recent-post-item .more {
-  margin-top: -5px;
-  font-size: 14px!important;
-}
-.recent-posts .recent-post-item .more:hover {
-  color: #2196F3;
-}
-.recent-posts .recent-post-item .index-tag-list {
-  display: inline;
-  padding: 0;
-}
-.recent-posts .recent-post-item .index-tag-list .index-tag-list-item {
-  margin-right: 5px;
-  color: #999;
-  padding: 2px 5px;
-  background-color: #f6f6f6;
-  border-radius: 2px;
-  display: inline;
-  list-style: none;
-}
-.recent-posts .recent-post-item .index-tag-list .index-tag-list-item:hover {
-  background-color: #efefef;
-}
-.recent-posts .recent-post-item .time {
-  color: #999;
-}
-.page-nav {
-  margin: 10px 0 0;
-  padding: 10px 0 10px;
-}
-.page-nav .page-number {
-  font-size: 14px;
-  display: inline-block;
-  position: relative;
-  margin: 0 5px;
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
-}
-.page-nav .page-number.current {
-  color: #fff;
-  background: #ccc;
-  border-radius: 14px;
-}
-.page-nav .page-number.current:hover {
-  color: #fff;
-}
-.page-nav .page-number:hover {
-  color: #2196F3;
-  border-radius: 14px;
-  border: 1px dashed #efefef;
-}
-.page-nav a:hover {
-  color: #2196F3;
-}
-.post-container {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-}
-.post-container .toc-container .toc-article {
-  display: none;
-}
-.post-container .toc-container .toc-article a:hover {
-  color: #2196F3;
-}
-@media screen and (min-width: 1260px) {
-  .post-container .toc-container .toc-article {
-    display: block;
-    position: fixed;
-    margin-left: -15px;
-    max-height: calc(100vh - 150px);
-    width: 200px;
-    top: 25%;
-    font-size: 12px;
-    padding: 10px;
-    overflow-y: auto;
-    overflow-x: auto;
-    border-radius: 4px;
-    background-color: #F6F6F6;
-  }
-}
-@media screen and (max-width: 1260px) {
-  .post-container .toc-container .toc-article {
-    display: none!important;
-  }
-}
-.post-container .toc-container .toc-article ol,
-.post-container .toc-container .toc-article ul {
-  list-style: none;
-  padding-left: 0;
-}
-.post-container .toc-container .toc-article ol ol,
-.post-container .toc-container .toc-article ul ol,
-.post-container .toc-container .toc-article ol ul,
-.post-container .toc-container .toc-article ul ul {
-  padding-left: 1rem;
-}
-.post-container .toc-container .toc-article .toc .toc-item {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 180px;
-}
-.post-container .toc-container .toc-article .toc .toc-item.toc-level-4 {
-  color: #444;
-}
-.post-container .toc-container .toc-article .toc .toc-item.toc-level-5 {
-  color: #555;
-}
-.post-container .toc-container .toc-article .toc .toc-item.toc-level-6 {
-  color: #666;
-}
-.post {
-  background-color: #fff;
-  max-width: 880px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-}
-@media screen and (min-width: 576px) {
-  .post {
-    padding: 10px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .post {
-    padding: 10px 50px;
-  }
-}
-.post .post-header {
-  text-align: center;
-  margin: 10px 0 30px;
-}
-.post .post-header .title {
-  margin-bottom: 1rem;
-  line-height: 2rem;
-}
-.post .post-header .time {
-  color: #999;
-  font-size: 14px;
-}
-.post .post-header .read {
-  font-size: 14px;
-  color: #999;
-}
-.post .post-meta {
-  display: inline-block;
-}
-.post .post-meta .post-tags {
-  text-align: center;
-}
-.post .post-meta .post-tags .article-tag-list-item {
-  font-size: 14px;
-  line-height: 20px;
-  display: inline-block;
-  height: 20px;
-  margin: 3px;
-  padding: 0 10px;
-  color: #555;
-  border-radius: 3px;
-  background: #f6f6f6;
-  min-width: 30px;
-  text-align: center;
-}
-.post .post-meta .post-tags .article-tag-list-item a {
-  color: #555;
-}
-.post .post-meta .post-tags .article-tag-list-item:hover {
-  color: #555;
-  background: #efefef;
-}
-.post .post-meta .post-tags .article-tag-list {
-  padding-left: 0rem;
-}
-.post hr {
-  width: 100%;
-}
-.post blockquote {
-  padding: 1rem;
-  margin: 1rem 0;
-  padding-left: 20px;
-  border: 1px solid #eee;
-  border-left: 4px solid #ccc;
-  color: #555;
-}
-.post blockquote p {
-  margin: 0;
-}
-.post table {
-  max-width: 100%;
-}
-.post img {
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-  max-width: 100%;
-  max-height: 1024px;
-}
-.post .post-content h2,
-.post .post-content h3,
-.post .post-content h4,
-.post .post-content h5,
-.post .post-content h6 {
-  padding-top: 70px;
-  margin-top: -56px;
-}
-.post .post-content table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 21px;
-  border: 1px solid #ddd;
-}
-.post .post-content table tr {
-  border-top: 1px solid #cccccc;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-}
-.post .post-content table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-.post .post-content table th {
-  font-weight: bold;
-  border: 1px solid #cccccc;
-  text-align: left;
-  margin: 0;
-  padding: 6px 13px;
-  background-color: #f6f8fa;
-}
-.post .post-content table td {
-  border: 1px solid #cccccc;
-  text-align: left;
-  margin: 0;
-  padding: 6px 13px;
-}
-.post .post-content table th:first-child,
-.post .post-content table td:first-child {
-  margin-top: 0;
-}
-.post .post-content table th:last-child,
-.post .post-content table td:last-child {
-  margin-bottom: 0;
-}
-.post .post-content .note {
-  position: relative;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #eee;
-  border-left-width: 5px;
-}
-.post .post-content .note p {
-  margin: 0;
-}
-.post .post-content .note.primary {
-  border-left-color: #6f42c1;
-}
-.post .post-content .note.info {
-  border-left-color: #428bca;
-}
-.post .post-content .note.success {
-  border-left-color: #5cb85c;
-}
-.post .post-content .note.warning {
-  border-left-color: #f0ad4e;
-}
-.post .post-content .note.danger {
-  border-left-color: #d9534f;
-}
-.post .post-content a {
-  color: #2196F3;
-}
-.page {
-  max-width: 880px;
-  border: none;
-  box-shadow: none;
-}
-.page hr {
-  width: 10%;
-}
-.page li {
-  padding: .25rem 0;
-}
-.page ul {
-  padding-left: 0px;
-}
-.page .tag-list .tag-list-item {
-  line-height: 20px;
-  display: inline-block;
-  height: 20px;
-  margin: 3px;
-  padding: 0 10px;
-  color: #555;
-  border-radius: 3px;
-  background: #f6f6f6;
-  min-width: 30px;
-  font-size: 14px;
-  text-align: center;
-  line-height: 30px;
-  height: 30px;
-  color: #2196F3;
-}
-.page .tag-list .tag-list-item a {
-  color: #555;
-}
-.page .tag-list .tag-list-item:hover {
-  color: #555;
-  background: #efefef;
-}
-.page .tag-list .tag-list-item .tag-list-link {
-  font-weight: 500;
-  margin-right: 5px;
-}
-.page .tag-list .tag-list-item:hover {
-  color: #2196F3;
-}
-.tag-page {
-  background-color: #fff;
-  max-width: 880px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-  border: none !important;
-  box-shadow: none !important;
-}
-@media screen and (min-width: 576px) {
-  .tag-page {
-    padding: 10px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .tag-page {
-    padding: 10px 50px;
-  }
-}
-.tag-page .tag-item {
-  padding: .5rem 0;
-}
-.tag-page .tag-item time {
-  color: #999;
-  font-size: 14px;
-  float: right;
-}
-@media screen and (max-width: 576px) {
-  .tag-page .tag-item time {
-    display: block;
-    float: none;
-  }
-}
-.tag-page .tag-item a:hover {
-  color: #2196F3;
-}
-.post-nav {
-  background-color: #fff;
-  display: block;
-  font-size: 0;
-  margin-top: 100px;
-  /* max-width: 850px; */
-  /* padding: 0 10px; */
-  position: relative;
-  font-weight: normal;
-}
-.post-nav .post-nav-item {
-  display: inline-block;
-  -ms-flex: 1;
-      flex: 1;
-  font-size: 14px;
-  padding: 10px 0;
-  position: relative;
-  vertical-align: top;
-  width: 49.5%;
-}
-.post-nav .post-nav-item:hover {
-  color: #2196F3;
-}
-.post-nav .post-nav-item span {
-  display: inline-block;
-  position: absolute;
-}
-.post-nav .post-nav-item a {
-  margin-left: 20px;
-  display: inline-block;
-}
-.post-nav .post-nav-prev {
-  text-align: right;
-}
-.post-nav .post-nav-prev a {
-  margin-right: 20px;
-}
-.post-nav .post-nav-prev span {
-  right: 0;
-}
-@media screen and (max-width: 576px) {
-  .post-nav {
-    display: none;
-  }
-}
-.category-list {
-  list-style: upper-alpha;
-}
-.category-list ol,
-.category-list ul {
-  list-style: lower-alpha;
-  padding-left: 1rem;
-}
-.category-list .category-list-link {
-  color: #202020 !important;
-}
-.category-list .category-list-link:hover {
-  color: #2196F3;
-}
-.category-list .category-list-count {
-  padding-left: 1rem;
-  color: #2196F3;
-}
-.disqus-comments {
-  background-color: #fff;
-  display: block;
-  margin: 0 auto;
-  width: 830px;
-  padding: 0 15px;
-}
-@media (max-width: 880px) {
-  .disqus-comments {
-    display: none!important;
-  }
-}
-.search-content .pure-input {
-  border-radius: 2px !important;
-}
-.search-content .pure-input:focus {
-  border-color: #2196F3 !important;
-}
-.search-content .search-result {
-  color: #999;
-}
-.search-result-list {
-  margin-top: 10px;
-}
-.search-result-list a.search-result-title {
-  color: #202020;
-  font-weight: normal;
-  font-size: 1.2rem;
-}
-.search-result-list a.search-result-title:hover {
-  color: #2196F3;
-}
-.search-result-list .search-keyword {
-  color: #FF5722;
-  font-weight: bold;
-}
-.archives .archive-year-wrap {
-  font-size: 1.3rem;
-  line-height: 1.3rem;
-}
-@media screen and (min-width: 476px) {
-  .archives .archive-year-wrap {
-    margin-left: -1rem;
-  }
-}
-.archives .archive {
-  border-left: 1.4px dashed #ccc;
-  position: relative;
-  padding: .5rem 0;
-  padding-left: 1rem!important;
-}
-.archives .archive:before {
-  position: absolute;
-  top: 1rem;
-  left: -6px;
-  z-index: 1;
-  display: block;
-  content: "";
-  background-color: #2196F3;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-.archives .archive .title {
-  margin: 0;
-  font-weight: normal;
-}
-.archives .archive .date {
-  color: #999;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 1.0rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-}
-.archives .archive a:hover {
-  color: #2196F3;
-}
-.copyright {
-  margin: 15px 30px;
-  font-size: 12px;
-  text-align: center;
-}
-.copyright a {
-  text-decoration: underline;
-}
-.copyright a:hover {
-  color: #2196F3;
-}
-pre,
-code {
-  background-color: #f6f6f6;
-  font-family: "Source Code Pro", "courier new", "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
-}
-pre {
-  padding: 10px;
-}
-pre code {
-  padding: 10px;
-}
-code {
-  padding: 2px 4px;
-  font-size: 0.8rem;
-}
-.highlight {
-  display: block;
-  overflow-x: auto;
-  color: #555;
-  font-size: 14px;
-  border-radius: 2px;
-  background-color: #f6f6f6;
-  overflow-y: hidden;
-  margin: 20px 0;
-}
-.highlight table {
-  margin: 0 !important;
-  width: auto !important;
-  border: none !important;
-}
-.highlight table tr {
-  border: none !important;
-}
-.highlight table td {
-  border: none !important;
-  padding: 0 !important;
-}
-.highlight .line {
-  height: 20px;
-  line-height: 20px;
-}
-.highlight .gutter pre {
-  padding: 10px;
-  color: #869194;
-  background-color: #eff2f3;
-  text-align: center;
-  overflow: hidden;
-}
-.highlight .code {
-  font-size: 0.8rem;
-}
-.highlight .code pre {
-  padding: 10px;
-}
-.highlight .comment,
-.highlight .meta {
-  color: #b3b3b3;
-}
-.highlight .string,
-.highlight .value,
-.highlight .variable,
-.highlight .template-variable,
-.highlight .strong,
-.highlight .emphasis,
-.highlight .quote,
-.highlight .inheritance,
-.highlight .ruby .symbol,
-.highlight .xml .cdata {
-  color: #1abc9c;
-}
-.highlight .keyword,
-.highlight .selector-tag,
-.highlight .type,
-.highlight .javascript .function {
-  color: #e96900;
-}
-.highlight .preprocessor,
-.highlight .built_in,
-.highlight .params,
-.highlight .constant,
-.highlight .symbol,
-.highlight .bullet,
-.highlight .attribute,
-.highlight .css .hexcolor {
-  color: #1abc9c;
-}
-.highlight .number,
-.highlight .literal {
-  color: #ae81ff;
-}
-.highlight .section,
-.highlight .header,
-.highlight .name,
-.highlight .function,
-.highlight .python .decorator,
-.highlight .python .title,
-.highlight .ruby .function .title,
-.highlight .ruby .title .keyword,
-.highlight .perl .sub,
-.highlight .javascript .title,
-.highlight .coffeescript .title {
-  color: #525252;
-}
-.highlight .tag,
-.highlight .regexp {
-  color: #2973b7;
-}
-.highlight .title,
-.highlight .attr,
-.highlight .selector-id,
-.highlight .selector-class,
-.highlight .selector-attr,
-.highlight .selector-pseudo,
-.highlight .ruby .constant,
-.highlight .xml .tag .title,
-.highlight .xml .pi,
-.highlight .xml .doctype,
-.highlight .html .doctype,
-.highlight .css .id,
-.highlight .css .pseudo,
-.highlight .class,
-.highlight .ruby .class .title {
-  color: #2973b7;
-}
-.highlight .css .code .attribute {
-  color: #e96900;
-}
-.highlight .css .class {
-  color: #525252;
-}
-.highlight .tag .attribute {
-  color: #e96900;
-}
-.highlight .addition {
-  color: #55a532;
-  background-color: #eaffea;
-}
-.highlight .deletion {
-  color: #bd2c00;
-  background-color: #ffecec;
-}
-.highlight .link {
-  text-decoration: underline;
-}
-.highlight .function .keyword {
-  color: #0092db;
-}
-.highlight .function .params {
-  color: #525252;
-}
-.highlight .function .title {
-  color: #525252;
-}
-
-/*# sourceMappingURL=xoxo.css.map */
-/*.nav-container {
-  background: #efefef;
-}*/
-.toc-container {
-  z-index: 1000;
-}
-#container {
-  border-top: 0.5px solid #eee;
-}
-
-
-
-/*  --------- 回到顶部按钮 --------*/
-
-body {
-/*  用于抵消按钮出现之后页面底部的留白空间*/
-  grid-template-columns: 1fr 0px; 
-}
-.return-top {
-  display: block;
-  float: right;
-  position: sticky;
-  bottom: 20px;      
-  margin-right: 10px; 
-  place-self: end;
-  width: 50px;
-  aspect-ratio: 1;
-  background: #ddd;
-  border-radius: 10px;
-  font-size: 0;
-  color: #fff;
-}
-.return-top:before {
-  content: "";
-  position: absolute;
-  inset: 30%;
-  transform: translateY(20%) rotate(-45deg);
-  border-top: 5px solid #fff;
-  border-right: 5px solid #fff;  
-}
- 
-a.return-top:hover {
-    background-color: #999;
-}
-
-
-.gt-container {
-  padding: 20px;
-}
-
-  </style>
-<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
 </head>
 
 <body>
@@ -1121,11 +47,10 @@ a.return-top:hover {
   <!--
     <img class="avatar" src="/image/logo1.png">
 -->
-    <svg t="1696736567728" style="padding-top: 12px;" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3064" width="40px" height="50px"><path d="M203.8 255.1h619c12.7 0 23 10.4 23 23v391.1c0 12.7-10.4 23-23 23h-619c-12.7 0-23-10.4-23-23V278.1c0-12.7 10.3-23 23-23z" fill="#5B79FB" p-id="3065"></path><path d="M215.3 300.7h596v320h-596z" fill="#FFFFFF" p-id="3066"></path><path d="M499.1 640.6h28.3v28.3h-28.3z" fill="#FF7E71" p-id="3067"></path><path d="M180.8 692.1h665l115.5 49.2h-896z" fill="#5B79FB" p-id="3068"></path><path d="M65.3 741.3h896v12.9c0 9.1-7.5 16.6-16.6 16.6H81.9c-9.1 0-16.6-7.5-16.6-16.6v-12.9z" fill="#5B79FB" p-id="3069"></path><path d="M422.8 750.3h181v11.5h-181z" fill="#FF7E71" p-id="3070"></path><path d="M196.7 696.1h62.2c-3.2 1.9-6.3 3.8-9.4 5.7h-64.4c3.9-1.9 7.8-3.8 11.6-5.7zM310.7 696.1h62.2l-5.1 5.7h-64.5c2.4-1.9 4.9-3.8 7.4-5.7zM424.7 696.1h62.2c-0.2 1.9-0.5 3.8-0.9 5.7h-64.6c1.2-1.9 2.3-3.8 3.3-5.7zM538.8 696.1H601c1.1 1.9 2.3 3.8 3.3 5.7h-64.6c-0.2-1.9-0.6-3.8-0.9-5.7zM652.8 696.1H715c2.6 1.9 5.1 3.8 7.6 5.7h-64.5c-1.7-1.9-3.5-3.8-5.3-5.7zM766.9 696.1h62.2c4 1.9 7.9 3.8 11.8 5.7h-64.6c-3.1-1.9-6.2-3.8-9.4-5.7zM176.7 705.9h66.1c-3.1 1.9-6.3 3.8-9.4 5.7H165c3.8-1.9 7.8-3.8 11.7-5.7zM298 705.9h66.1c-1.7 1.9-3.5 3.8-5.1 5.7h-68.5c2.4-1.9 5-3.8 7.5-5.7zM419.3 705.9h66.2l-0.9 5.7h-68.5c1-1.9 2.1-3.8 3.2-5.7zM540.5 705.9h66.2l3.3 5.7h-68.5c-0.3-1.9-0.6-3.8-1-5.7zM661.9 705.9H728c2.5 1.9 5.1 3.8 7.5 5.7h-68.4c-1.7-1.9-3.5-3.8-5.2-5.7zM783.2 705.9h66.3l11.7 5.7h-68.5c-3.1-1.9-6.3-3.8-9.5-5.7zM156.6 715.8h70.1c-3.2 1.9-6.2 3.8-9.4 5.7H145c3.8-1.9 7.6-3.8 11.6-5.7zM285.1 715.8h70.2c-1.8 1.9-3.4 3.8-5.1 5.7h-72.4c2.4-1.9 4.8-3.8 7.3-5.7zM413.7 715.8h70.2c-0.4 1.9-0.6 3.8-0.9 5.7h-72.5c1.1-1.9 2.1-3.8 3.2-5.7zM542.3 715.8h70.2c1 1.9 2.2 3.8 3.3 5.7h-72.5c-0.3-1.9-0.7-3.8-1-5.7zM670.9 715.8h70.2c2.4 1.9 5 3.8 7.5 5.7h-72.4c-1.8-1.9-3.6-3.8-5.3-5.7zM799.5 715.8h70.2l11.7 5.7h-72.5c-3-1.9-6.3-3.8-9.4-5.7zM136.5 725.6H890c4 1.9 7.8 3.8 11.7 5.7h-777c4.1-1.9 7.9-3.8 11.8-5.7z" fill="#A4BEFF" p-id="3071"></path><path d="M812.4 534.8v86.7H215.3V300.7h234z" fill="#E5ECFF" p-id="3072"></path></svg>
+    <svg t="1696736567728" style="" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3064" width="40px" height="50px"><path d="M203.8 255.1h619c12.7 0 23 10.4 23 23v391.1c0 12.7-10.4 23-23 23h-619c-12.7 0-23-10.4-23-23V278.1c0-12.7 10.3-23 23-23z" fill="#5B79FB" p-id="3065"></path><path d="M215.3 300.7h596v320h-596z" fill="#FFFFFF" p-id="3066"></path><path d="M499.1 640.6h28.3v28.3h-28.3z" fill="#FF7E71" p-id="3067"></path><path d="M180.8 692.1h665l115.5 49.2h-896z" fill="#5B79FB" p-id="3068"></path><path d="M65.3 741.3h896v12.9c0 9.1-7.5 16.6-16.6 16.6H81.9c-9.1 0-16.6-7.5-16.6-16.6v-12.9z" fill="#5B79FB" p-id="3069"></path><path d="M422.8 750.3h181v11.5h-181z" fill="#FF7E71" p-id="3070"></path><path d="M196.7 696.1h62.2c-3.2 1.9-6.3 3.8-9.4 5.7h-64.4c3.9-1.9 7.8-3.8 11.6-5.7zM310.7 696.1h62.2l-5.1 5.7h-64.5c2.4-1.9 4.9-3.8 7.4-5.7zM424.7 696.1h62.2c-0.2 1.9-0.5 3.8-0.9 5.7h-64.6c1.2-1.9 2.3-3.8 3.3-5.7zM538.8 696.1H601c1.1 1.9 2.3 3.8 3.3 5.7h-64.6c-0.2-1.9-0.6-3.8-0.9-5.7zM652.8 696.1H715c2.6 1.9 5.1 3.8 7.6 5.7h-64.5c-1.7-1.9-3.5-3.8-5.3-5.7zM766.9 696.1h62.2c4 1.9 7.9 3.8 11.8 5.7h-64.6c-3.1-1.9-6.2-3.8-9.4-5.7zM176.7 705.9h66.1c-3.1 1.9-6.3 3.8-9.4 5.7H165c3.8-1.9 7.8-3.8 11.7-5.7zM298 705.9h66.1c-1.7 1.9-3.5 3.8-5.1 5.7h-68.5c2.4-1.9 5-3.8 7.5-5.7zM419.3 705.9h66.2l-0.9 5.7h-68.5c1-1.9 2.1-3.8 3.2-5.7zM540.5 705.9h66.2l3.3 5.7h-68.5c-0.3-1.9-0.6-3.8-1-5.7zM661.9 705.9H728c2.5 1.9 5.1 3.8 7.5 5.7h-68.4c-1.7-1.9-3.5-3.8-5.2-5.7zM783.2 705.9h66.3l11.7 5.7h-68.5c-3.1-1.9-6.3-3.8-9.5-5.7zM156.6 715.8h70.1c-3.2 1.9-6.2 3.8-9.4 5.7H145c3.8-1.9 7.6-3.8 11.6-5.7zM285.1 715.8h70.2c-1.8 1.9-3.4 3.8-5.1 5.7h-72.4c2.4-1.9 4.8-3.8 7.3-5.7zM413.7 715.8h70.2c-0.4 1.9-0.6 3.8-0.9 5.7h-72.5c1.1-1.9 2.1-3.8 3.2-5.7zM542.3 715.8h70.2c1 1.9 2.2 3.8 3.3 5.7h-72.5c-0.3-1.9-0.7-3.8-1-5.7zM670.9 715.8h70.2c2.4 1.9 5 3.8 7.5 5.7h-72.4c-1.8-1.9-3.6-3.8-5.3-5.7zM799.5 715.8h70.2l11.7 5.7h-72.5c-3-1.9-6.3-3.8-9.4-5.7zM136.5 725.6H890c4 1.9 7.8 3.8 11.7 5.7h-777c4.1-1.9 7.9-3.8 11.8-5.7z" fill="#A4BEFF" p-id="3071"></path><path d="M812.4 534.8v86.7H215.3V300.7h234z" fill="#E5ECFF" p-id="3072"></path></svg>
 
     <span style="font-weight: bold;
 									font-size: 20px;
-									padding-top: 12px;
 									padding-left: 5px;
 									font-family: Chalkduster;
 									color: #056de8;">
@@ -1191,7 +116,7 @@ a.return-top:hover {
     </span>
       
       <span class="slash">/</span>
-      <span class="read">阅读耗时预计 2 分钟</span>
+      <span class="read">阅读耗时预计 6 分钟</span>
     </header>
 
     <div class="post-content">
@@ -1201,45 +126,42 @@ a.return-top:hover {
 <li><a href="http://xcoding.tech/2018/12/09/junit-jacoco/spring-junit-jacoco%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E6%B5%8B%E8%AF%95/">spring-junit-jacoco代码覆盖测试</a></li>
 </ul>
 <p>接着上一篇《spring-junit-jacoco代码覆盖测试》，本篇介绍一下如何gradle单元测试、代码覆盖率。</p>
-<h3 id="准备">准备</h3>
-<ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
 <li>gradle。请自行安装好gradle</li>
 </ul>
-<h3 id="使用maven转为gradle项目">使用maven转为gradle项目</h3>
-<p>在项目根目录下执行如下命令把maven项目转为gradle项目。</p>
+<h3 id="使用maven转为gradle项目"><a href="#使用maven转为gradle项目" class="headerlink" title="使用maven转为gradle项目"></a>使用maven转为gradle项目</h3><p>在项目根目录下执行如下命令把maven项目转为gradle项目。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle init --type pom</span><br></pre></td></tr></table></figure>
+
 <p>命令执行完毕之后刷新项目可以看到项目目录下已经有gradle的配置<code>build.gradle</code>、<code>settings.gradle</code>等配置。</p>
 <p>修改<code>settings.gradle</code>里面的项目名称，改为<code>coverage-spring-gradle</code>。如果不改为和项目同名字使用gradle编译的时候会报错。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">org.eclipse.buildship.core.UnsupportedConfigurationException: Project at &#x27;/Users/ubuntuvim/codes/java_keeping/coverage-spring-gradle&#x27; can&#x27;t be named &#x27;coverage-spring-gradle33&#x27; because it&#x27;s located directly under the workspace root. If such a project is renamed, Eclipse would move the container directory. To resolve this problem, move the project out of the workspace root or configure it to have the name &#x27;coverage-spring-gradle&#x27;.</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.DefaultWorkspaceOperations.validateProjectName(DefaultWorkspaceOperations.java:183)</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.ProjectNameUpdater.checkProjectName(ProjectNameUpdater.java:107)</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.ProjectNameUpdater.updateProjectName(ProjectNameUpdater.java:44)</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeOpenWorkspaceProject(SynchronizeGradleBuildOperation.java:208)</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeWorkspaceProject(SynchronizeGradleBuildOperation.java:186)</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeGradleProjectWithWorkspaceProject(SynchronizeGradleBuildOperation.java:176)</span><br><span class="line">	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.access$000(SynchronizeGradleBuildOperation.java:99)</span><br><span class="line">	at org.eclip</span><br></pre></td></tr></table></figure>
-<h4 id="删除maven依赖文件">删除maven依赖文件</h4>
-<p>使用gradle之后就不需要maven的文件了，删除<code>master-lib</code>,<code>coverage.xml</code>,<code>compile.xml</code>,<code>jacocolib</code>。</p>
-<p>项目右键 --&gt; gradle --&gt; refresh gradle project。之后项目结构如下图：</p>
+
+<h4 id="删除maven依赖文件"><a href="#删除maven依赖文件" class="headerlink" title="删除maven依赖文件"></a>删除maven依赖文件</h4><p>使用gradle之后就不需要maven的文件了，删除<code>master-lib</code>,<code>coverage.xml</code>,<code>compile.xml</code>,<code>jacocolib</code>。</p>
+<p>项目右键 –&gt; gradle –&gt; refresh gradle project。之后项目结构如下图：</p>
 <p><img src="/image/blog-image/java/junit-coverage/9.png" alt="报告"></p>
-<h3 id="运行生成单元测试报告">运行生成单元测试报告</h3>
-<p>打开gradle视图</p>
+<h3 id="运行生成单元测试报告"><a href="#运行生成单元测试报告" class="headerlink" title="运行生成单元测试报告"></a>运行生成单元测试报告</h3><p>打开gradle视图</p>
 <p><img src="/image/blog-image/java/junit-coverage/10.png" alt="报告"></p>
 <p>可以看到gradle已经提供了很多任务，直接运行即可，我们不需要像使用Ant一样自己编写一大堆的脚本。</p>
 <p><img src="/image/blog-image/java/junit-coverage/11.png" alt="build任务"></p>
 <p>直接运行<code>build</code> -&gt; <code>build</code>这个任务。稍等执行完毕之后，刷新项目，打开项目目录下<code>build</code>目录，展开之后可以看到一个index.html。这个文件就是单元测试报告。</p>
 <p><img src="/image/blog-image/java/junit-coverage/12.png" alt="build任务"></p>
 <p>生成一个单元测试报告就是这么简单，什么脚本都不需要写了，gradle已经帮你做好。</p>
-<h3 id="生成覆盖率报告">生成覆盖率报告</h3>
-<p>要构建一个覆盖率报告也是非常简单的。仍然是使用gradle提供好的插件，修改<code>build.gradle</code>，在文件中增加覆盖率插件。</p>
-<h4 id="增加覆盖率插件">增加覆盖率插件</h4>
-<p>首先引入jacoco插件。在<code>build.gradle</code>第三行增加：</p>
+<h3 id="生成覆盖率报告"><a href="#生成覆盖率报告" class="headerlink" title="生成覆盖率报告"></a>生成覆盖率报告</h3><p>要构建一个覆盖率报告也是非常简单的。仍然是使用gradle提供好的插件，修改<code>build.gradle</code>，在文件中增加覆盖率插件。</p>
+<h4 id="增加覆盖率插件"><a href="#增加覆盖率插件" class="headerlink" title="增加覆盖率插件"></a>增加覆盖率插件</h4><p>首先引入jacoco插件。在<code>build.gradle</code>第三行增加：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="attr">plugin:</span> <span class="string">&#x27;jacoco&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p>在这个文件末尾增加如下配置：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// jacoco任务配置</span></span><br><span class="line">jacoco &#123;</span><br><span class="line">	<span class="comment">// 设置覆盖率报告目录</span></span><br><span class="line">	reportsDir = file(<span class="string">&quot;$buildDir/coverage-report&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">jacocoTestReport &#123;</span><br><span class="line">   reports &#123;</span><br><span class="line">      xml.enabled = <span class="literal">true</span></span><br><span class="line">      html.enabled = <span class="literal">true</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="生成覆盖率报告-2">生成覆盖率报告</h4>
-<p>进入项目根目录，直接如下命令即可生成覆盖率报告。</p>
+
+<h4 id="生成覆盖率报告-1"><a href="#生成覆盖率报告-1" class="headerlink" title="生成覆盖率报告"></a>生成覆盖率报告</h4><p>进入项目根目录，直接如下命令即可生成覆盖率报告。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle clean test jacocoTestReport</span><br></pre></td></tr></table></figure>
+
 <p>执行过程需要下载一下依赖jar，稍等几分钟之后刷新项目，一步步展开<code>build</code>目录。</p>
 <p><img src="/image/blog-image/java/junit-coverage/13.png" alt="报告文件"></p>
 <p>打开<code>index.html</code>可以看到详细报告内容。</p>
 <p><img src="/image/blog-image/java/junit-coverage/14.png" alt="覆盖率报告"></p>
 <p>使用gradle是在简单很多，根本不需要你编写一大堆的脚本。非常爽。</p>
-<h3 id="项目源码">项目源码</h3>
-<p><a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/coverage/tree/coverage-spring-gradle">https://github.com/ubuntuvim/coverage/tree/coverage-spring-gradle</a></p>
+<h3 id="项目源码"><a href="#项目源码" class="headerlink" title="项目源码"></a>项目源码</h3><p><a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/coverage/tree/coverage-spring-gradle">https://github.com/ubuntuvim/coverage/tree/coverage-spring-gradle</a></p>
 
     </div>
 
@@ -1248,16 +170,16 @@ a.return-top:hover {
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/ember-teach/testing/introduction/" rel="next" title="测试简介">
-          测试简介
+          <a href="/design-pattern/Builder%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="Builder模式——设计模式">
+          Builder模式——设计模式
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/junit-jacoco/junit-jacoco%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E6%B5%8B%E8%AF%95/" rel="prev" title="junit-jacoco代码覆盖测试">
-            junit-jacoco代码覆盖测试
+          <a href="/idea-plugin/%E5%AE%98%E6%96%B9FAQ(%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81)/" rel="prev" title="官方FAQ(非常重要)——idea插件开发">
+            官方FAQ(非常重要)——idea插件开发
           </a>
           <span>〉</span>
         
@@ -1269,7 +191,7 @@ a.return-top:hover {
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8maven%E8%BD%AC%E4%B8%BAgradle%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用maven转为gradle项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4maven%E4%BE%9D%E8%B5%96%E6%96%87%E4%BB%B6"><span class="toc-text">删除maven依赖文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%94%9F%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A"><span class="toc-text">运行生成单元测试报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E5%91%8A"><span class="toc-text">生成覆盖率报告</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E8%A6%86%E7%9B%96%E7%8E%87%E6%8F%92%E4%BB%B6"><span class="toc-text">增加覆盖率插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E5%91%8A-2"><span class="toc-text">生成覆盖率报告</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81"><span class="toc-text">项目源码</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8maven%E8%BD%AC%E4%B8%BAgradle%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用maven转为gradle项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4maven%E4%BE%9D%E8%B5%96%E6%96%87%E4%BB%B6"><span class="toc-text">删除maven依赖文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%94%9F%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A"><span class="toc-text">运行生成单元测试报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E5%91%8A"><span class="toc-text">生成覆盖率报告</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E8%A6%86%E7%9B%96%E7%8E%87%E6%8F%92%E4%BB%B6"><span class="toc-text">增加覆盖率插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E5%91%8A-1"><span class="toc-text">生成覆盖率报告</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81"><span class="toc-text">项目源码</span></a></li></ol>
   </div>
 
 
@@ -1349,6 +271,8 @@ a.return-top:hover {
   <!-- scripts list from theme config.yml -->
   
     <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/xoxo.js"></script>
   
 
 

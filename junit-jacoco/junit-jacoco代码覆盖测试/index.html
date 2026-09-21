@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#303030"/>
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <script src="/js/busuanzi.pure.mini.js" async></script>
   
   
     <meta name="keywords" content="Java,Junit,Jacoco," />
@@ -21,1097 +20,24 @@
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
   <title>junit-jacoco代码覆盖测试</title>
   
-    <!-- stylesheets list from config.yml -->
+    <!-- stylesheets list from hexo-theme/xoxo/config.yml -->
     
       <link rel="stylesheet" href="/css/pure-min.css">
     
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
-  <link rel="stylesheet" href="/css/xoxo.css">
-  <style>
   
-.text-center {
-  text-align: center !important;
-}
-* {
-  box-sizing: border-box;
-}
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-blockquote,
-body,
-fieldset,
-figure,
-menu,
-pre,
-ol,
-ul,
-dd,
-dl {
-  margin: 0;
-  padding: 0;
-  word-wrap: break-word;
-}
-ol,
-ul,
-dd,
-dl {
-  padding-left: 2rem;
-}
-h1 {
-  font-size: 1.5rem;
-}
-h2 {
-  font-size: 1.5rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-h4,
-h5,
-h6 {
-  font-size: 1rem;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0.5rem 0;
-  line-height: 1.5rem;
-  font-weight: 500;
-}
-b,
-optgroup,
-strong {
-  font-weight: 600;
-}
-a {
-  color: inherit;
-}
-p {
-  margin: 0.75rem 0;
-}
-a:link,
-a:visited,
-a:hover,
-a:active {
-  outline: none;
-  text-decoration: none;
-}
-.pr {
-  position: absolute !important;
-  right: 0;
-}
-.float-r {
-  float: right;
-}
-em {
-  color: #FF5722;
-  font-weight: bold;
-  font-style: normal;
-}
-footer {
-  width: 60%;
-  max-width: 840px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #fff;
-  border-top: 0.5px solid #eee;
-  padding-bottom: 1rem!important;
-  padding-top: 1rem!important;
-  margin-top: 2rem!important;
-  color: #999;
-  font-size: 12px;
-/*  position: relative;*/
-/*  z-index: 1024;*/
-}
-footer .bottom-item {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-footer .bottom-item:hover {
-  color: #2196F3;
-}
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
-}
-.clearfix:after {
-  clear: both;
-}
-/* 设置滚动条的样式 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-/* 滚动槽 */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-}
-/* 滚动条滑块 */
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
-}
-::-moz-selection {
-  background: #64B5F6;
-  color: #fff;
-}
-::selection {
-  background: #64B5F6;
-  color: #fff;
-}
-.tag-button {
-  font-size: 14px;
-  line-height: 20px;
-  display: inline-block;
-  height: 20px;
-  margin: 3px;
-  padding: 0 10px;
-  color: #555;
-  border-radius: 3px;
-  background: #f6f6f6;
-  min-width: 30px;
-  text-align: center;
-}
-.tag-button a {
-  color: #555;
-}
-.tag-button:hover {
-  color: #555;
-  background: #efefef;
-}
-.post-page {
-  background-color: #fff;
-  max-width: 880px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-}
-@media screen and (min-width: 576px) {
-  .post-page {
-    padding: 10px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .post-page {
-    padding: 10px 50px;
-  }
-}
-html,
-body {
-  font-size: 16px;
-  font-weight: 300;
-}
-body {
-  color: #202020;
-  line-height: 1.8rem;
-  margin: 0;
-}
-.nav-container {
-  display: -ms-flexbox;
-  /* display: flex; */
-  position: fixed;
-  z-index: 100;
-  -ms-flex-align: center;
-  /* align-items: center; */
-  width: 100%;
-  /* background-color: #161b22 !important; */
-  /* color: #fff !important; */
-}
-.nav-container .home-menu {
-  height: 50px;
-  padding: 7px 5px 20px;
-  background-color: #FFF;
-  color: #000;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  overflow-y: scroll;
-/*  max-width: 1000px;*/
-  margin-left: auto;
-  margin-right: auto;
+  
+    <!-- scripts list from hexo-theme/xoxo/config.yml -->
+    
+      <script src="/js/zepto.min.js" async></script>
+    
+      <script src="/js/xoxo.js" async></script>
+    
+  
 
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #f7f1f1;
-
-}
-@media screen and (max-width: 615px) {
-  .nav-container .home-menu {
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .nav-container .home-menu {
-/*    max-width: 880px;*/
-  }
-}
-.nav-container .home-menu .pure-menu-heading {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-/*  padding-top: 15px;*/
-}
-@media screen and (max-width: 615px) {
-  .nav-container .home-menu .pure-menu-heading {
-    display: none!important;
-  }
-}
-.nav-container .home-menu .pure-menu-heading .avatar {
-  width: 40px;
-  height: 40px;
-/*  background: #efefef;*/
-  border-radius: 20px;
-  border-style: none;
-  display: inline-block;
-  vertical-align: middle;
-}
-.nav-container .home-menu .pure-menu-heading .title {
-  color: #202020;
-  margin-left: 10px;
-  display: inline-block;
-  vertical-align: middle;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 40px;
-}
-.nav-container .home-menu .pure-menu-list {
-  display: -ms-flexbox;
-  display: flex;
-}
-.nav-container .home-menu .pure-menu-list .toc-menu {
-  display: none;
-}
-@media screen and (min-width: 1280px) {
-  .nav-container .home-menu .pure-menu-list .toc-menu {
-    display: initial;
-  }
-}
-.nav-container .home-menu .pure-menu-list .menu-icon {
-  width: 18px;
-  height: 18px;
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-children {
-  border: 1px solid #999;
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link {
-  padding: 4px 15px;
-  color: inherit;
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link:after {
-  content: ' ';
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link:focus {
-/*  background-color: #fff;*/
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-link:hover {
-  font-size: 18px;
-/*  background-color: #efefef;*/
-}
-.nav-container .home-menu .pure-menu-list .pure-menu-item.actived {
-  color: #2196F3;
-}
-.slash {
-  color: #999;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.container {
-  padding-top: 60px;
-  margin: 0 auto;
-  max-width: 1000px;
-  min-height: calc(100vh - 120px);
-  width: 100%;
-}
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 880px;
-  }
-}
-.recent-posts {
-  margin: 0 auto;
-  max-width: 800px;
-}
-@media (max-width: 576px) {
-  .recent-posts {
-    padding: 10px 50px;
-  }
-}
-.recent-posts .recent-post-item {
-  margin: 15px auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: none;
-}
-.recent-posts .recent-post-item .post-excerpt {
-  color: #999;
-  font-size: 14px;
-}
-@media screen and (max-width: 576px) {
-  .recent-posts .recent-post-item .post-excerpt {
-    display: none;
-  }
-}
-.recent-posts .recent-post-item .post-meta {
-  font-size: 12px;
-  position: relative;
-  padding-right: 60px;
-  min-height: 30px;
-}
-.recent-posts .recent-post-item .title {
-  font-size: 12px;
-}
-.recent-posts .recent-post-item .title h2 {
-  font-size: 1.2rem;
-  font-weight: normal;
-}
-@media screen and (max-width: 576px) {
-  .recent-posts .recent-post-item .title h2 {
-    font-size: 1rem;
-  }
-}
-.recent-posts .recent-post-item .title:hover {
-  color: #2196F3;
-}
-.recent-posts .recent-post-item .more {
-  margin-top: -5px;
-  font-size: 14px!important;
-}
-.recent-posts .recent-post-item .more:hover {
-  color: #2196F3;
-}
-.recent-posts .recent-post-item .index-tag-list {
-  display: inline;
-  padding: 0;
-}
-.recent-posts .recent-post-item .index-tag-list .index-tag-list-item {
-  margin-right: 5px;
-  color: #999;
-  padding: 2px 5px;
-  background-color: #f6f6f6;
-  border-radius: 2px;
-  display: inline;
-  list-style: none;
-}
-.recent-posts .recent-post-item .index-tag-list .index-tag-list-item:hover {
-  background-color: #efefef;
-}
-.recent-posts .recent-post-item .time {
-  color: #999;
-}
-.page-nav {
-  margin: 10px 0 0;
-  padding: 10px 0 10px;
-}
-.page-nav .page-number {
-  font-size: 14px;
-  display: inline-block;
-  position: relative;
-  margin: 0 5px;
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
-}
-.page-nav .page-number.current {
-  color: #fff;
-  background: #ccc;
-  border-radius: 14px;
-}
-.page-nav .page-number.current:hover {
-  color: #fff;
-}
-.page-nav .page-number:hover {
-  color: #2196F3;
-  border-radius: 14px;
-  border: 1px dashed #efefef;
-}
-.page-nav a:hover {
-  color: #2196F3;
-}
-.post-container {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-}
-.post-container .toc-container .toc-article {
-  display: none;
-}
-.post-container .toc-container .toc-article a:hover {
-  color: #2196F3;
-}
-@media screen and (min-width: 1260px) {
-  .post-container .toc-container .toc-article {
-    display: block;
-    position: fixed;
-    margin-left: -15px;
-    max-height: calc(100vh - 150px);
-    width: 200px;
-    top: 25%;
-    font-size: 12px;
-    padding: 10px;
-    overflow-y: auto;
-    overflow-x: auto;
-    border-radius: 4px;
-    background-color: #F6F6F6;
-  }
-}
-@media screen and (max-width: 1260px) {
-  .post-container .toc-container .toc-article {
-    display: none!important;
-  }
-}
-.post-container .toc-container .toc-article ol,
-.post-container .toc-container .toc-article ul {
-  list-style: none;
-  padding-left: 0;
-}
-.post-container .toc-container .toc-article ol ol,
-.post-container .toc-container .toc-article ul ol,
-.post-container .toc-container .toc-article ol ul,
-.post-container .toc-container .toc-article ul ul {
-  padding-left: 1rem;
-}
-.post-container .toc-container .toc-article .toc .toc-item {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 180px;
-}
-.post-container .toc-container .toc-article .toc .toc-item.toc-level-4 {
-  color: #444;
-}
-.post-container .toc-container .toc-article .toc .toc-item.toc-level-5 {
-  color: #555;
-}
-.post-container .toc-container .toc-article .toc .toc-item.toc-level-6 {
-  color: #666;
-}
-.post {
-  background-color: #fff;
-  max-width: 880px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-}
-@media screen and (min-width: 576px) {
-  .post {
-    padding: 10px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .post {
-    padding: 10px 50px;
-  }
-}
-.post .post-header {
-  text-align: center;
-  margin: 10px 0 30px;
-}
-.post .post-header .title {
-  margin-bottom: 1rem;
-  line-height: 2rem;
-}
-.post .post-header .time {
-  color: #999;
-  font-size: 14px;
-}
-.post .post-header .read {
-  font-size: 14px;
-  color: #999;
-}
-.post .post-meta {
-  display: inline-block;
-}
-.post .post-meta .post-tags {
-  text-align: center;
-}
-.post .post-meta .post-tags .article-tag-list-item {
-  font-size: 14px;
-  line-height: 20px;
-  display: inline-block;
-  height: 20px;
-  margin: 3px;
-  padding: 0 10px;
-  color: #555;
-  border-radius: 3px;
-  background: #f6f6f6;
-  min-width: 30px;
-  text-align: center;
-}
-.post .post-meta .post-tags .article-tag-list-item a {
-  color: #555;
-}
-.post .post-meta .post-tags .article-tag-list-item:hover {
-  color: #555;
-  background: #efefef;
-}
-.post .post-meta .post-tags .article-tag-list {
-  padding-left: 0rem;
-}
-.post hr {
-  width: 100%;
-}
-.post blockquote {
-  padding: 1rem;
-  margin: 1rem 0;
-  padding-left: 20px;
-  border: 1px solid #eee;
-  border-left: 4px solid #ccc;
-  color: #555;
-}
-.post blockquote p {
-  margin: 0;
-}
-.post table {
-  max-width: 100%;
-}
-.post img {
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-  max-width: 100%;
-  max-height: 1024px;
-}
-.post .post-content h2,
-.post .post-content h3,
-.post .post-content h4,
-.post .post-content h5,
-.post .post-content h6 {
-  padding-top: 70px;
-  margin-top: -56px;
-}
-.post .post-content table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 21px;
-  border: 1px solid #ddd;
-}
-.post .post-content table tr {
-  border-top: 1px solid #cccccc;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-}
-.post .post-content table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-.post .post-content table th {
-  font-weight: bold;
-  border: 1px solid #cccccc;
-  text-align: left;
-  margin: 0;
-  padding: 6px 13px;
-  background-color: #f6f8fa;
-}
-.post .post-content table td {
-  border: 1px solid #cccccc;
-  text-align: left;
-  margin: 0;
-  padding: 6px 13px;
-}
-.post .post-content table th:first-child,
-.post .post-content table td:first-child {
-  margin-top: 0;
-}
-.post .post-content table th:last-child,
-.post .post-content table td:last-child {
-  margin-bottom: 0;
-}
-.post .post-content .note {
-  position: relative;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #eee;
-  border-left-width: 5px;
-}
-.post .post-content .note p {
-  margin: 0;
-}
-.post .post-content .note.primary {
-  border-left-color: #6f42c1;
-}
-.post .post-content .note.info {
-  border-left-color: #428bca;
-}
-.post .post-content .note.success {
-  border-left-color: #5cb85c;
-}
-.post .post-content .note.warning {
-  border-left-color: #f0ad4e;
-}
-.post .post-content .note.danger {
-  border-left-color: #d9534f;
-}
-.post .post-content a {
-  color: #2196F3;
-}
-.page {
-  max-width: 880px;
-  border: none;
-  box-shadow: none;
-}
-.page hr {
-  width: 10%;
-}
-.page li {
-  padding: .25rem 0;
-}
-.page ul {
-  padding-left: 0px;
-}
-.page .tag-list .tag-list-item {
-  line-height: 20px;
-  display: inline-block;
-  height: 20px;
-  margin: 3px;
-  padding: 0 10px;
-  color: #555;
-  border-radius: 3px;
-  background: #f6f6f6;
-  min-width: 30px;
-  font-size: 14px;
-  text-align: center;
-  line-height: 30px;
-  height: 30px;
-  color: #2196F3;
-}
-.page .tag-list .tag-list-item a {
-  color: #555;
-}
-.page .tag-list .tag-list-item:hover {
-  color: #555;
-  background: #efefef;
-}
-.page .tag-list .tag-list-item .tag-list-link {
-  font-weight: 500;
-  margin-right: 5px;
-}
-.page .tag-list .tag-list-item:hover {
-  color: #2196F3;
-}
-.tag-page {
-  background-color: #fff;
-  max-width: 880px;
-  width: 100%;
-  padding: 10px;
-  position: relative;
-  border: none !important;
-  box-shadow: none !important;
-}
-@media screen and (min-width: 576px) {
-  .tag-page {
-    padding: 10px 50px;
-  }
-}
-@media (max-width: 576px) {
-  .tag-page {
-    padding: 10px 50px;
-  }
-}
-.tag-page .tag-item {
-  padding: .5rem 0;
-}
-.tag-page .tag-item time {
-  color: #999;
-  font-size: 14px;
-  float: right;
-}
-@media screen and (max-width: 576px) {
-  .tag-page .tag-item time {
-    display: block;
-    float: none;
-  }
-}
-.tag-page .tag-item a:hover {
-  color: #2196F3;
-}
-.post-nav {
-  background-color: #fff;
-  display: block;
-  font-size: 0;
-  margin-top: 100px;
-  /* max-width: 850px; */
-  /* padding: 0 10px; */
-  position: relative;
-  font-weight: normal;
-}
-.post-nav .post-nav-item {
-  display: inline-block;
-  -ms-flex: 1;
-      flex: 1;
-  font-size: 14px;
-  padding: 10px 0;
-  position: relative;
-  vertical-align: top;
-  width: 49.5%;
-}
-.post-nav .post-nav-item:hover {
-  color: #2196F3;
-}
-.post-nav .post-nav-item span {
-  display: inline-block;
-  position: absolute;
-}
-.post-nav .post-nav-item a {
-  margin-left: 20px;
-  display: inline-block;
-}
-.post-nav .post-nav-prev {
-  text-align: right;
-}
-.post-nav .post-nav-prev a {
-  margin-right: 20px;
-}
-.post-nav .post-nav-prev span {
-  right: 0;
-}
-@media screen and (max-width: 576px) {
-  .post-nav {
-    display: none;
-  }
-}
-.category-list {
-  list-style: upper-alpha;
-}
-.category-list ol,
-.category-list ul {
-  list-style: lower-alpha;
-  padding-left: 1rem;
-}
-.category-list .category-list-link {
-  color: #202020 !important;
-}
-.category-list .category-list-link:hover {
-  color: #2196F3;
-}
-.category-list .category-list-count {
-  padding-left: 1rem;
-  color: #2196F3;
-}
-.disqus-comments {
-  background-color: #fff;
-  display: block;
-  margin: 0 auto;
-  width: 830px;
-  padding: 0 15px;
-}
-@media (max-width: 880px) {
-  .disqus-comments {
-    display: none!important;
-  }
-}
-.search-content .pure-input {
-  border-radius: 2px !important;
-}
-.search-content .pure-input:focus {
-  border-color: #2196F3 !important;
-}
-.search-content .search-result {
-  color: #999;
-}
-.search-result-list {
-  margin-top: 10px;
-}
-.search-result-list a.search-result-title {
-  color: #202020;
-  font-weight: normal;
-  font-size: 1.2rem;
-}
-.search-result-list a.search-result-title:hover {
-  color: #2196F3;
-}
-.search-result-list .search-keyword {
-  color: #FF5722;
-  font-weight: bold;
-}
-.archives .archive-year-wrap {
-  font-size: 1.3rem;
-  line-height: 1.3rem;
-}
-@media screen and (min-width: 476px) {
-  .archives .archive-year-wrap {
-    margin-left: -1rem;
-  }
-}
-.archives .archive {
-  border-left: 1.4px dashed #ccc;
-  position: relative;
-  padding: .5rem 0;
-  padding-left: 1rem!important;
-}
-.archives .archive:before {
-  position: absolute;
-  top: 1rem;
-  left: -6px;
-  z-index: 1;
-  display: block;
-  content: "";
-  background-color: #2196F3;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-.archives .archive .title {
-  margin: 0;
-  font-weight: normal;
-}
-.archives .archive .date {
-  color: #999;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 1.0rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-}
-.archives .archive a:hover {
-  color: #2196F3;
-}
-.copyright {
-  margin: 15px 30px;
-  font-size: 12px;
-  text-align: center;
-}
-.copyright a {
-  text-decoration: underline;
-}
-.copyright a:hover {
-  color: #2196F3;
-}
-pre,
-code {
-  background-color: #f6f6f6;
-  font-family: "Source Code Pro", "courier new", "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
-}
-pre {
-  padding: 10px;
-}
-pre code {
-  padding: 10px;
-}
-code {
-  padding: 2px 4px;
-  font-size: 0.8rem;
-}
-.highlight {
-  display: block;
-  overflow-x: auto;
-  color: #555;
-  font-size: 14px;
-  border-radius: 2px;
-  background-color: #f6f6f6;
-  overflow-y: hidden;
-  margin: 20px 0;
-}
-.highlight table {
-  margin: 0 !important;
-  width: auto !important;
-  border: none !important;
-}
-.highlight table tr {
-  border: none !important;
-}
-.highlight table td {
-  border: none !important;
-  padding: 0 !important;
-}
-.highlight .line {
-  height: 20px;
-  line-height: 20px;
-}
-.highlight .gutter pre {
-  padding: 10px;
-  color: #869194;
-  background-color: #eff2f3;
-  text-align: center;
-  overflow: hidden;
-}
-.highlight .code {
-  font-size: 0.8rem;
-}
-.highlight .code pre {
-  padding: 10px;
-}
-.highlight .comment,
-.highlight .meta {
-  color: #b3b3b3;
-}
-.highlight .string,
-.highlight .value,
-.highlight .variable,
-.highlight .template-variable,
-.highlight .strong,
-.highlight .emphasis,
-.highlight .quote,
-.highlight .inheritance,
-.highlight .ruby .symbol,
-.highlight .xml .cdata {
-  color: #1abc9c;
-}
-.highlight .keyword,
-.highlight .selector-tag,
-.highlight .type,
-.highlight .javascript .function {
-  color: #e96900;
-}
-.highlight .preprocessor,
-.highlight .built_in,
-.highlight .params,
-.highlight .constant,
-.highlight .symbol,
-.highlight .bullet,
-.highlight .attribute,
-.highlight .css .hexcolor {
-  color: #1abc9c;
-}
-.highlight .number,
-.highlight .literal {
-  color: #ae81ff;
-}
-.highlight .section,
-.highlight .header,
-.highlight .name,
-.highlight .function,
-.highlight .python .decorator,
-.highlight .python .title,
-.highlight .ruby .function .title,
-.highlight .ruby .title .keyword,
-.highlight .perl .sub,
-.highlight .javascript .title,
-.highlight .coffeescript .title {
-  color: #525252;
-}
-.highlight .tag,
-.highlight .regexp {
-  color: #2973b7;
-}
-.highlight .title,
-.highlight .attr,
-.highlight .selector-id,
-.highlight .selector-class,
-.highlight .selector-attr,
-.highlight .selector-pseudo,
-.highlight .ruby .constant,
-.highlight .xml .tag .title,
-.highlight .xml .pi,
-.highlight .xml .doctype,
-.highlight .html .doctype,
-.highlight .css .id,
-.highlight .css .pseudo,
-.highlight .class,
-.highlight .ruby .class .title {
-  color: #2973b7;
-}
-.highlight .css .code .attribute {
-  color: #e96900;
-}
-.highlight .css .class {
-  color: #525252;
-}
-.highlight .tag .attribute {
-  color: #e96900;
-}
-.highlight .addition {
-  color: #55a532;
-  background-color: #eaffea;
-}
-.highlight .deletion {
-  color: #bd2c00;
-  background-color: #ffecec;
-}
-.highlight .link {
-  text-decoration: underline;
-}
-.highlight .function .keyword {
-  color: #0092db;
-}
-.highlight .function .params {
-  color: #525252;
-}
-.highlight .function .title {
-  color: #525252;
-}
-
-/*# sourceMappingURL=xoxo.css.map */
-/*.nav-container {
-  background: #efefef;
-}*/
-.toc-container {
-  z-index: 1000;
-}
-#container {
-  border-top: 0.5px solid #eee;
-}
-
-
-
-/*  --------- 回到顶部按钮 --------*/
-
-body {
-/*  用于抵消按钮出现之后页面底部的留白空间*/
-  grid-template-columns: 1fr 0px; 
-}
-.return-top {
-  display: block;
-  float: right;
-  position: sticky;
-  bottom: 20px;      
-  margin-right: 10px; 
-  place-self: end;
-  width: 50px;
-  aspect-ratio: 1;
-  background: #ddd;
-  border-radius: 10px;
-  font-size: 0;
-  color: #fff;
-}
-.return-top:before {
-  content: "";
-  position: absolute;
-  inset: 30%;
-  transform: translateY(20%) rotate(-45deg);
-  border-top: 5px solid #fff;
-  border-right: 5px solid #fff;  
-}
- 
-a.return-top:hover {
-    background-color: #999;
-}
-
-
-.gt-container {
-  padding: 20px;
-}
-
-  </style>
-<meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
 </head>
 
 <body>
@@ -1121,11 +47,10 @@ a.return-top:hover {
   <!--
     <img class="avatar" src="/image/logo1.png">
 -->
-    <svg t="1696736567728" style="padding-top: 12px;" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3064" width="40px" height="50px"><path d="M203.8 255.1h619c12.7 0 23 10.4 23 23v391.1c0 12.7-10.4 23-23 23h-619c-12.7 0-23-10.4-23-23V278.1c0-12.7 10.3-23 23-23z" fill="#5B79FB" p-id="3065"></path><path d="M215.3 300.7h596v320h-596z" fill="#FFFFFF" p-id="3066"></path><path d="M499.1 640.6h28.3v28.3h-28.3z" fill="#FF7E71" p-id="3067"></path><path d="M180.8 692.1h665l115.5 49.2h-896z" fill="#5B79FB" p-id="3068"></path><path d="M65.3 741.3h896v12.9c0 9.1-7.5 16.6-16.6 16.6H81.9c-9.1 0-16.6-7.5-16.6-16.6v-12.9z" fill="#5B79FB" p-id="3069"></path><path d="M422.8 750.3h181v11.5h-181z" fill="#FF7E71" p-id="3070"></path><path d="M196.7 696.1h62.2c-3.2 1.9-6.3 3.8-9.4 5.7h-64.4c3.9-1.9 7.8-3.8 11.6-5.7zM310.7 696.1h62.2l-5.1 5.7h-64.5c2.4-1.9 4.9-3.8 7.4-5.7zM424.7 696.1h62.2c-0.2 1.9-0.5 3.8-0.9 5.7h-64.6c1.2-1.9 2.3-3.8 3.3-5.7zM538.8 696.1H601c1.1 1.9 2.3 3.8 3.3 5.7h-64.6c-0.2-1.9-0.6-3.8-0.9-5.7zM652.8 696.1H715c2.6 1.9 5.1 3.8 7.6 5.7h-64.5c-1.7-1.9-3.5-3.8-5.3-5.7zM766.9 696.1h62.2c4 1.9 7.9 3.8 11.8 5.7h-64.6c-3.1-1.9-6.2-3.8-9.4-5.7zM176.7 705.9h66.1c-3.1 1.9-6.3 3.8-9.4 5.7H165c3.8-1.9 7.8-3.8 11.7-5.7zM298 705.9h66.1c-1.7 1.9-3.5 3.8-5.1 5.7h-68.5c2.4-1.9 5-3.8 7.5-5.7zM419.3 705.9h66.2l-0.9 5.7h-68.5c1-1.9 2.1-3.8 3.2-5.7zM540.5 705.9h66.2l3.3 5.7h-68.5c-0.3-1.9-0.6-3.8-1-5.7zM661.9 705.9H728c2.5 1.9 5.1 3.8 7.5 5.7h-68.4c-1.7-1.9-3.5-3.8-5.2-5.7zM783.2 705.9h66.3l11.7 5.7h-68.5c-3.1-1.9-6.3-3.8-9.5-5.7zM156.6 715.8h70.1c-3.2 1.9-6.2 3.8-9.4 5.7H145c3.8-1.9 7.6-3.8 11.6-5.7zM285.1 715.8h70.2c-1.8 1.9-3.4 3.8-5.1 5.7h-72.4c2.4-1.9 4.8-3.8 7.3-5.7zM413.7 715.8h70.2c-0.4 1.9-0.6 3.8-0.9 5.7h-72.5c1.1-1.9 2.1-3.8 3.2-5.7zM542.3 715.8h70.2c1 1.9 2.2 3.8 3.3 5.7h-72.5c-0.3-1.9-0.7-3.8-1-5.7zM670.9 715.8h70.2c2.4 1.9 5 3.8 7.5 5.7h-72.4c-1.8-1.9-3.6-3.8-5.3-5.7zM799.5 715.8h70.2l11.7 5.7h-72.5c-3-1.9-6.3-3.8-9.4-5.7zM136.5 725.6H890c4 1.9 7.8 3.8 11.7 5.7h-777c4.1-1.9 7.9-3.8 11.8-5.7z" fill="#A4BEFF" p-id="3071"></path><path d="M812.4 534.8v86.7H215.3V300.7h234z" fill="#E5ECFF" p-id="3072"></path></svg>
+    <svg t="1696736567728" style="" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3064" width="40px" height="50px"><path d="M203.8 255.1h619c12.7 0 23 10.4 23 23v391.1c0 12.7-10.4 23-23 23h-619c-12.7 0-23-10.4-23-23V278.1c0-12.7 10.3-23 23-23z" fill="#5B79FB" p-id="3065"></path><path d="M215.3 300.7h596v320h-596z" fill="#FFFFFF" p-id="3066"></path><path d="M499.1 640.6h28.3v28.3h-28.3z" fill="#FF7E71" p-id="3067"></path><path d="M180.8 692.1h665l115.5 49.2h-896z" fill="#5B79FB" p-id="3068"></path><path d="M65.3 741.3h896v12.9c0 9.1-7.5 16.6-16.6 16.6H81.9c-9.1 0-16.6-7.5-16.6-16.6v-12.9z" fill="#5B79FB" p-id="3069"></path><path d="M422.8 750.3h181v11.5h-181z" fill="#FF7E71" p-id="3070"></path><path d="M196.7 696.1h62.2c-3.2 1.9-6.3 3.8-9.4 5.7h-64.4c3.9-1.9 7.8-3.8 11.6-5.7zM310.7 696.1h62.2l-5.1 5.7h-64.5c2.4-1.9 4.9-3.8 7.4-5.7zM424.7 696.1h62.2c-0.2 1.9-0.5 3.8-0.9 5.7h-64.6c1.2-1.9 2.3-3.8 3.3-5.7zM538.8 696.1H601c1.1 1.9 2.3 3.8 3.3 5.7h-64.6c-0.2-1.9-0.6-3.8-0.9-5.7zM652.8 696.1H715c2.6 1.9 5.1 3.8 7.6 5.7h-64.5c-1.7-1.9-3.5-3.8-5.3-5.7zM766.9 696.1h62.2c4 1.9 7.9 3.8 11.8 5.7h-64.6c-3.1-1.9-6.2-3.8-9.4-5.7zM176.7 705.9h66.1c-3.1 1.9-6.3 3.8-9.4 5.7H165c3.8-1.9 7.8-3.8 11.7-5.7zM298 705.9h66.1c-1.7 1.9-3.5 3.8-5.1 5.7h-68.5c2.4-1.9 5-3.8 7.5-5.7zM419.3 705.9h66.2l-0.9 5.7h-68.5c1-1.9 2.1-3.8 3.2-5.7zM540.5 705.9h66.2l3.3 5.7h-68.5c-0.3-1.9-0.6-3.8-1-5.7zM661.9 705.9H728c2.5 1.9 5.1 3.8 7.5 5.7h-68.4c-1.7-1.9-3.5-3.8-5.2-5.7zM783.2 705.9h66.3l11.7 5.7h-68.5c-3.1-1.9-6.3-3.8-9.5-5.7zM156.6 715.8h70.1c-3.2 1.9-6.2 3.8-9.4 5.7H145c3.8-1.9 7.6-3.8 11.6-5.7zM285.1 715.8h70.2c-1.8 1.9-3.4 3.8-5.1 5.7h-72.4c2.4-1.9 4.8-3.8 7.3-5.7zM413.7 715.8h70.2c-0.4 1.9-0.6 3.8-0.9 5.7h-72.5c1.1-1.9 2.1-3.8 3.2-5.7zM542.3 715.8h70.2c1 1.9 2.2 3.8 3.3 5.7h-72.5c-0.3-1.9-0.7-3.8-1-5.7zM670.9 715.8h70.2c2.4 1.9 5 3.8 7.5 5.7h-72.4c-1.8-1.9-3.6-3.8-5.3-5.7zM799.5 715.8h70.2l11.7 5.7h-72.5c-3-1.9-6.3-3.8-9.4-5.7zM136.5 725.6H890c4 1.9 7.8 3.8 11.7 5.7h-777c4.1-1.9 7.9-3.8 11.8-5.7z" fill="#A4BEFF" p-id="3071"></path><path d="M812.4 534.8v86.7H215.3V300.7h234z" fill="#E5ECFF" p-id="3072"></path></svg>
 
     <span style="font-weight: bold;
 									font-size: 20px;
-									padding-top: 12px;
 									padding-left: 5px;
 									font-family: Chalkduster;
 									color: #056de8;">
@@ -1191,48 +116,41 @@ a.return-top:hover {
     </span>
       
       <span class="slash">/</span>
-      <span class="read">阅读耗时预计 8 分钟</span>
+      <span class="read">阅读耗时预计 16 分钟</span>
     </header>
 
     <div class="post-content">
-      <h3 id="准备工作">准备工作</h3>
-<h4 id="所需软件、jar">所需软件、jar</h4>
-<ul>
-<li>Junit，单元测试依赖<a target="_blank" rel="noopener" href="http://junit.org">Junit</a></li>
+      <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="所需软件、jar"><a href="#所需软件、jar" class="headerlink" title="所需软件、jar"></a>所需软件、jar</h4><ul>
+<li>Junit，单元测试依赖<a target="_blank" rel="noopener" href="http://junit.org/">Junit</a></li>
 <li>jacoco，用于检测覆盖率，官方网站<a target="_blank" rel="noopener" href="https://www.jacoco.org/jacoco/">https://www.jacoco.org/jacoco/</a>，下载jar包</li>
 <li>eclipse，在elipse上安装覆盖率运行的插件<a target="_blank" rel="noopener" href="https://www.jacoco.org/installation.html">EclEmma</a>，在eclipse的 应用商店直接搜索<code>EclEmma</code>，第一个就是。安装成功之后在java类右键有一个选项是<code>Coverage As</code>。</li>
 </ul>
-<h3 id="创建java项目">创建java项目</h3>
-<p><img src="/image/blog-image/18120601.png" alt="项目结构"></p>
+<h3 id="创建java项目"><a href="#创建java项目" class="headerlink" title="创建java项目"></a>创建java项目</h3><p><img src="/image/blog-image/18120601.png" alt="项目结构"></p>
 <p><code>src/java</code>和<code>test/java</code>都是资源目录。</p>
-<h3 id="增加依赖jar">增加依赖jar</h3>
-<p>在项目根目录下新建目录<code>jacocolib</code>。复制从Junit、jacoco官网下载的jar文件。文件如下：</p>
+<h3 id="增加依赖jar"><a href="#增加依赖jar" class="headerlink" title="增加依赖jar"></a>增加依赖jar</h3><p>在项目根目录下新建目录<code>jacocolib</code>。复制从Junit、jacoco官网下载的jar文件。文件如下：</p>
 <ul>
 <li>hamcrest-core-1.3.jar</li>
 <li>jacocoant.jar</li>
 <li>junit-4.12.jar</li>
 </ul>
 <p>这些jar可以直接从我的项目中下载，地址<a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/coverage/tree/master/jacocolib">https://github.com/ubuntuvim/coverage/tree/master/jacocolib</a></p>
-<h3 id="编写简单的java代码">编写简单的java代码</h3>
-<p>如下是我的业务代码，一些简单的判断。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.coverage;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 覆盖率</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> ubuntuvim</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Coverage</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">normal</span><span class="params">(<span class="keyword">int</span> type)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;one&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;other&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">exceptMethod</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">		p = (p + <span class="number">10</span>) / p;</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">throwExcept</span><span class="params">(<span class="keyword">int</span> p)</span> <span class="keyword">throws</span> MyException </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			p = (p + <span class="number">10</span>) / p;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> MyException(<span class="string">&quot;0不能做分母。&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编写简单的java代码"><a href="#编写简单的java代码" class="headerlink" title="编写简单的java代码"></a>编写简单的java代码</h3><p>如下是我的业务代码，一些简单的判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.coverage;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 覆盖率</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> ubuntuvim</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Coverage</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="type">String</span> <span class="title function_">normal</span><span class="params">(<span class="type">int</span> type)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;one&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;other&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">exceptMethod</span><span class="params">(<span class="type">int</span> p)</span> &#123;</span><br><span class="line">		p = (p + <span class="number">10</span>) / p;</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">throwExcept</span><span class="params">(<span class="type">int</span> p)</span> <span class="keyword">throws</span> MyException &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			p = (p + <span class="number">10</span>) / p;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyException</span>(<span class="string">&quot;0不能做分母。&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>自定义的异常类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.coverage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.coverage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="type">public</span> <span class="title function_">MyException</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>代码没什么好说的了，非常简单。关键看单元测试方法。</p>
-<h3 id="编写单元测试">编写单元测试</h3>
-<p>下面的单元测试是针对<code>Coverage.java</code>类中三个方法<code>normal</code>、<code>exceptionMethod</code>和<code>throwException</code>的单元测试。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.coverage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.rules.ExpectedException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoverageTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Rule</span></span><br><span class="line">	<span class="keyword">public</span> ExpectedException thrown = ExpectedException.none();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Coverage c = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Before</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		c = <span class="keyword">new</span> Coverage();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试type为1的情况</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNormalOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String s = c.normal(<span class="number">1</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;one&quot;</span>, s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试type为2的情况</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testNormalOther</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String s = c.normal(<span class="number">2</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;other&quot;</span>, s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试正常的情况 （try语句块里的代码）</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testExceptMethodP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = c.exceptMethod(<span class="number">10</span>);</span><br><span class="line">		assertEquals(<span class="number">2</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 测试出现异常的情况（catch语句块里的代码）</span></span><br><span class="line">	<span class="meta">@Test(expected = ArithmeticException.class)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testExceptMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		c.exceptMethod(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试正常的情况</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThrowExceptP</span><span class="params">()</span> <span class="keyword">throws</span> MyException </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = c.throwExcept(<span class="number">10</span>);</span><br><span class="line">		assertEquals(<span class="number">2</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试出现异常的情况</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThrowExcept</span><span class="params">()</span> <span class="keyword">throws</span> MyException </span>&#123;</span><br><span class="line">		<span class="comment">// 出现异常的情况会返回MyException异常</span></span><br><span class="line">		thrown.expect(MyException.class);</span><br><span class="line">		thrown.expectMessage(<span class="string">&quot;0不能做分母。&quot;</span>);</span><br><span class="line">		c.throwExcept(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有关Junit的使用请自行学习。<br>
-为了达到100%覆盖，需要对<code>normal</code>、<code>exceptionMethod</code>和<code>throwException</code>这三个方法中每一种情况都编写单元测试方法。具体请看上述代码。</p>
-<p>单元测试代码编写好之后可以先运行。在<code>CoverageTest.java</code>上右键 -&gt; 选择<code>Coverage As</code> -&gt; 选择<code>Junit Test</code>。<br>
-执行完毕之后会有如下截图结果：</p>
+<h3 id="编写单元测试"><a href="#编写单元测试" class="headerlink" title="编写单元测试"></a>编写单元测试</h3><p>下面的单元测试是针对<code>Coverage.java</code>类中三个方法<code>normal</code>、<code>exceptionMethod</code>和<code>throwException</code>的单元测试。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ubuntuvim.coverage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.rules.ExpectedException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CoverageTest</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Rule</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">ExpectedException</span> <span class="variable">thrown</span> <span class="operator">=</span> ExpectedException.none();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="type">Coverage</span> <span class="variable">c</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Before</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">setUp</span><span class="params">()</span> &#123;</span><br><span class="line">		c = <span class="keyword">new</span> <span class="title class_">Coverage</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试type为1的情况</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">testNormalOne</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> c.normal(<span class="number">1</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;one&quot;</span>, s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试type为2的情况</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">testNormalOther</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> c.normal(<span class="number">2</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;other&quot;</span>, s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试正常的情况 （try语句块里的代码）</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">testExceptMethodP</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> c.exceptMethod(<span class="number">10</span>);</span><br><span class="line">		assertEquals(<span class="number">2</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 测试出现异常的情况（catch语句块里的代码）</span></span><br><span class="line">	<span class="meta">@Test(expected = ArithmeticException.class)</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">testExceptMethod</span><span class="params">()</span> &#123;</span><br><span class="line">		c.exceptMethod(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试正常的情况</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">testThrowExceptP</span><span class="params">()</span> <span class="keyword">throws</span> MyException &#123;</span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> c.throwExcept(<span class="number">10</span>);</span><br><span class="line">		assertEquals(<span class="number">2</span>, i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span>  <span class="comment">// 测试出现异常的情况</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">void</span> <span class="title function_">testThrowExcept</span><span class="params">()</span> <span class="keyword">throws</span> MyException &#123;</span><br><span class="line">		<span class="comment">// 出现异常的情况会返回MyException异常</span></span><br><span class="line">		thrown.expect(MyException.class);</span><br><span class="line">		thrown.expectMessage(<span class="string">&quot;0不能做分母。&quot;</span>);</span><br><span class="line">		c.throwExcept(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有关Junit的使用请自行学习。<br>为了达到100%覆盖，需要对<code>normal</code>、<code>exceptionMethod</code>和<code>throwException</code>这三个方法中每一种情况都编写单元测试方法。具体请看上述代码。</p>
+<p>单元测试代码编写好之后可以先运行。在<code>CoverageTest.java</code>上右键 -&gt; 选择<code>Coverage As</code> -&gt; 选择<code>Junit Test</code>。<br>执行完毕之后会有如下截图结果：</p>
 <p><img src="/image/blog-image/18120602.png" alt="运行结果"></p>
 <p>打开Coverage视图，可以看到我们的代码达到了100%的覆盖率。也就是说我们的代码中所有分子都已经被测试通过。</p>
 <p><img src="/image/blog-image/18120603.png" alt="运行结果2"></p>
-<h3 id="自动执行单元测试">自动执行单元测试</h3>
-<p>上述右键使用<code>Coverage As</code>运行一个测试类，如果有多个测试的情况要如何处理呢？可以借助于<a target="_blank" rel="noopener" href="https://ant.apache.org/">ant</a>。使用ant自动编译java代码。</p>
+<h3 id="自动执行单元测试"><a href="#自动执行单元测试" class="headerlink" title="自动执行单元测试"></a>自动执行单元测试</h3><p>上述右键使用<code>Coverage As</code>运行一个测试类，如果有多个测试的情况要如何处理呢？可以借助于<a target="_blank" rel="noopener" href="https://ant.apache.org/">ant</a>。使用ant自动编译java代码。</p>
 <p>在项目根目录下创建<code>build.xml</code>，文件内容如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project name=&quot;AntTestReporting&quot; basedir=&quot;.&quot; default=&quot;compile&quot;&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- general --&gt;</span><br><span class="line">    &lt;property name=&quot;DEBUG&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;VERBOSE&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;TARGET&quot; value=&quot;1.8&quot; /&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- folder --&gt;</span><br><span class="line">    &lt;property name=&quot;build.dir&quot; value=&quot;build&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;src.dir&quot; value=&quot;src/java&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;src.classess.dir&quot; value=&quot;$&#123;build.dir&#125;/classess&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;test.dir&quot; value=&quot;test/java&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;test.classess.dir&quot; value=&quot;$&#123;build.dir&#125;/test-classess&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;third-party-lib&quot; value=&quot;jacocolib&quot; /&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- classpath --&gt;</span><br><span class="line">    &lt;path id=&quot;classpath&quot;&gt;</span><br><span class="line">        &lt;fileset dir=&quot;$&#123;third-party-lib&#125;&quot;&gt;</span><br><span class="line">            &lt;include name=&quot;**/*.jar&quot; /&gt;</span><br><span class="line">        &lt;/fileset&gt;</span><br><span class="line">    &lt;/path&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- targets --&gt;</span><br><span class="line">    &lt;target name=&quot;clean&quot;&gt;</span><br><span class="line">        &lt;delete dir=&quot;$&#123;build.dir&#125;&quot; /&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line">    &lt;target name=&quot;init&quot;&gt;</span><br><span class="line">        &lt;mkdir dir=&quot;$&#123;build.dir&#125;&quot; /&gt;</span><br><span class="line">        &lt;mkdir dir=&quot;$&#123;src.classess.dir&#125;&quot; /&gt;</span><br><span class="line">        &lt;mkdir dir=&quot;$&#123;test.classess.dir&#125;&quot; /&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;target name=&quot;compile&quot; depends=&quot;clean, init&quot;&gt;</span><br><span class="line">        &lt;!-- Create the time stamp --&gt;</span><br><span class="line">        &lt;tstamp&gt;</span><br><span class="line">            &lt;format property=&quot;lastUpdated&quot; pattern=&quot;yyyy-MM-dd HH:mm:ss&quot; /&gt;</span><br><span class="line">        &lt;/tstamp&gt;</span><br><span class="line"> </span><br><span class="line"> 		&lt;!-- 编译java代码 --&gt;</span><br><span class="line">        &lt;javac target=&quot;$&#123;TARGET&#125;&quot; debug=&quot;$&#123;DEBUG&#125;&quot; verbose=&quot;$&#123;VERBOSE&#125;&quot; classpathref=&quot;classpath&quot;</span><br><span class="line">        	optimize=&quot;true&quot; destdir=&quot;$&#123;src.classess.dir&#125;&quot; srcdir=&quot;$&#123;src.dir&#125;&quot;&gt;</span><br><span class="line">        &lt;/javac&gt;</span><br><span class="line">        &lt;echo&gt;======== java代码编译完毕 ========&lt;/echo&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;path id=&quot;classpath.src.dir&quot;&gt;</span><br><span class="line">	        &lt;pathelement location=&quot;$&#123;src.classess.dir&#125;&quot; /&gt;</span><br><span class="line">	        &lt;!-- 引入第三方jar --&gt;</span><br><span class="line">	        &lt;fileset dir=&quot;$&#123;third-party-lib&#125;&quot;&gt;</span><br><span class="line">	            &lt;include name=&quot;**/*.jar&quot; /&gt;</span><br><span class="line">	        &lt;/fileset&gt;</span><br><span class="line">	    &lt;/path&gt;</span><br><span class="line"> 		&lt;!-- 编译test代码 --&gt;</span><br><span class="line">        &lt;javac target=&quot;$&#123;TARGET&#125;&quot; debug=&quot;$&#123;DEBUG&#125;&quot; verbose=&quot;$&#123;VERBOSE&#125;&quot;</span><br><span class="line">        	optimize=&quot;true&quot; destdir=&quot;$&#123;test.classess.dir&#125;&quot; srcdir=&quot;$&#123;test.dir&#125;&quot;&gt;</span><br><span class="line">        	&lt;!-- test代码依赖src的代码和第三方jar --&gt;</span><br><span class="line">        	&lt;classpath refid=&quot;classpath.src.dir&quot; /&gt;</span><br><span class="line">        &lt;/javac&gt;</span><br><span class="line"> 		&lt;echo&gt;======== test代码编译完毕 ========&lt;/echo&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
 <p>这个脚本主要做了两件事：</p>
 <ul>
 <li>编译<code>src/java</code>目录下面的java代码到目录<code>build/classess</code>下。</li>
@@ -1240,30 +158,26 @@ a.return-top:hover {
 </ul>
 <p>在这个文件上右键 -&gt; <code>Run As</code> -&gt; <code>Ant Build</code>。执行完毕后，刷新项目。可以看到在项目根目录下自动创建了一个名为<code>build</code>的目录。展开之后可以看到项目的所有class文件。</p>
 <p><img src="/image/blog-image/18120604.png" alt="编译结果1"></p>
-<h3 id="自动生成覆盖率报告">自动生成覆盖率报告</h3>
-<p>编译之后得到你的业务代码class文件和单元测试的class文件。那么如何批量运行这些class呢？<br>
-同样的也是使用Ant。</p>
+<h3 id="自动生成覆盖率报告"><a href="#自动生成覆盖率报告" class="headerlink" title="自动生成覆盖率报告"></a>自动生成覆盖率报告</h3><p>编译之后得到你的业务代码class文件和单元测试的class文件。那么如何批量运行这些class呢？<br>同样的也是使用Ant。</p>
 <p>在项目根目录下创建<code>build-test.xml</code>，文件内容如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project name=&quot;AntTestReporting-test&quot; basedir=&quot;.&quot; default=&quot;all-test&quot; xmlns:jacoco=&quot;antlib:org.jacoco.ant&quot;&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;import file=&quot;build.xml&quot; /&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- Java Code Coverage --&gt;</span><br><span class="line">    &lt;taskdef uri=&quot;antlib:org.jacoco.ant&quot; resource=&quot;org/jacoco/ant/antlib.xml&quot;&gt;</span><br><span class="line">        &lt;classpath path=&quot;jacocolib/jacocoant.jar&quot; /&gt;</span><br><span class="line">    &lt;/taskdef&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;property name=&quot;reports.dir&quot; value=&quot;$&#123;basedir&#125;/reports&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;test.data.dir&quot; value=&quot;$&#123;reports.dir&#125;/testResults&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;coverage.reports.dir&quot; value=&quot;$&#123;reports.dir&#125;/coverage&quot; /&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;property name=&quot;xms&quot; value=&quot;-Xms256m&quot; /&gt;</span><br><span class="line">    &lt;property name=&quot;xmx&quot; value=&quot;-Xmx1024m&quot; /&gt;</span><br><span class="line">    &lt;!-- &lt;property name=&quot;log4j.config&quot; value=&quot;-Dlog4j.configuration=file:/$&#123;base.dir&#125;/test/log4j-test.properties&quot; /&gt; --&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- test代码类路径，包括src代码、测试代码本身、jacoco jar --&gt;    </span><br><span class="line"> 	&lt;path id=&quot;classpath.test.dir&quot;&gt;</span><br><span class="line"> 		&lt;!-- 测试代码依赖src代码，需要作为test代码的运行classpath --&gt;</span><br><span class="line">        &lt;path refid=&quot;classpath.src.dir&quot;/&gt;</span><br><span class="line">        &lt;pathelement location=&quot;$&#123;test.classess.dir&#125;&quot; /&gt;</span><br><span class="line">    &lt;/path&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;target name=&quot;init-report-dir&quot;&gt;</span><br><span class="line">    	&lt;delete dir=&quot;$&#123;test.data.dir&#125;&quot; /&gt;</span><br><span class="line">    	&lt;delete dir=&quot;$&#123;coverage.reports.dir&#125;&quot; /&gt;</span><br><span class="line">    	&lt;delete dir=&quot;$&#123;reports.dir&#125;&quot; /&gt;</span><br><span class="line">    	</span><br><span class="line">    	&lt;mkdir dir=&quot;$&#123;reports.dir&#125;&quot; /&gt;</span><br><span class="line">    	&lt;mkdir dir=&quot;$&#123;test.data.dir&#125;&quot; /&gt;</span><br><span class="line">    	&lt;mkdir dir=&quot;$&#123;coverage.reports.dir&#125;&quot; /&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line">	    </span><br><span class="line">    &lt;target name=&quot;test&quot; depends=&quot;init-report-dir, compile&quot;&gt;</span><br><span class="line">        &lt;echo&gt;========= 运行所有test类 =========&lt;/echo&gt;</span><br><span class="line">        &lt;jacoco:coverage destfile=&quot;$&#123;test.data.dir&#125;/jacoco.exec&quot;&gt;</span><br><span class="line">            &lt;junit printsummary=&quot;true&quot; haltonfailure=&quot;false&quot; fork=&quot;yes&quot; forkmode=&quot;once&quot;&gt;</span><br><span class="line">                &lt;jvmarg value=&quot;$&#123;xms&#125;&quot; /&gt;</span><br><span class="line">                &lt;jvmarg value=&quot;$&#123;xmx&#125;&quot; /&gt;</span><br><span class="line">                &lt;classpath refid=&quot;classpath.test.dir&quot; /&gt;</span><br><span class="line">                &lt;formatter type=&quot;xml&quot; /&gt;</span><br><span class="line">                &lt;!-- 执行 *Test类 --&gt;</span><br><span class="line">                &lt;batchtest todir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">                    &lt;fileset dir=&quot;$&#123;test.classess.dir&#125;&quot;&gt;</span><br><span class="line">                        &lt;!-- Exclude inner classes --&gt;</span><br><span class="line">                        &lt;exclude name=&quot;**/*$*.class&quot; /&gt;</span><br><span class="line">                        &lt;include name=&quot;**/*Test.class&quot; /&gt;</span><br><span class="line">                    &lt;/fileset&gt;</span><br><span class="line">                &lt;/batchtest&gt;</span><br><span class="line">            &lt;/junit&gt;</span><br><span class="line">        &lt;/jacoco:coverage&gt;</span><br><span class="line"> </span><br><span class="line">        &lt;!-- Generate HTML report</span><br><span class="line">            - junit-noframes.html -&gt; Single page HTML-report</span><br><span class="line">            - index.html -&gt; HTML-report using frames (several files, but more comfortable to read)--&gt;</span><br><span class="line">        &lt;echo&gt;========= 生成Junit报告 =========&lt;/echo&gt;</span><br><span class="line">        &lt;junitreport todir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">            &lt;fileset dir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">                &lt;include name=&quot;TEST-*.xml&quot; /&gt;</span><br><span class="line">            &lt;/fileset&gt;</span><br><span class="line">        &lt;/junitreport&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">        &lt;!-- Generate Code Coverage report</span><br><span class="line">            See: http://www.eclemma.org/jacoco/trunk/doc/ant.html --&gt;</span><br><span class="line">        &lt;echo&gt;========= 生成覆盖率报告 =========&lt;/echo&gt;    </span><br><span class="line">        &lt;jacoco:report&gt;</span><br><span class="line">            &lt;executiondata&gt;</span><br><span class="line">                &lt;file file=&quot;$&#123;test.data.dir&#125;/jacoco.exec&quot; /&gt;</span><br><span class="line">            &lt;/executiondata&gt;</span><br><span class="line"> </span><br><span class="line">            &lt;structure name=&quot;AntTestReporting&quot;&gt;</span><br><span class="line">                &lt;classfiles&gt;</span><br><span class="line">                    &lt;fileset dir=&quot;$&#123;src.classess.dir&#125;&quot;&gt;</span><br><span class="line">                        &lt;include name=&quot;**/*.class&quot; /&gt;</span><br><span class="line">                        &lt;!-- 生成的报告中排除test类 --&gt;</span><br><span class="line">                        &lt;!-- &lt;exclude name=&quot;**/*Test*.class&quot; /&gt; --&gt;</span><br><span class="line">                        &lt;!-- Exclude inner classes --&gt;</span><br><span class="line">                        &lt;exclude name=&quot;**/*$*.class&quot; /&gt;</span><br><span class="line">                    &lt;/fileset&gt;</span><br><span class="line">                &lt;/classfiles&gt;</span><br><span class="line">            &lt;/structure&gt;</span><br><span class="line"> </span><br><span class="line">            &lt;html destdir=&quot;$&#123;coverage.reports.dir&#125;&quot; /&gt;</span><br><span class="line">        &lt;/jacoco:report&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;target name=&quot;all-test&quot; depends=&quot;test&quot; /&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
 <p>这个脚本主要做如下三件事：</p>
-<h4 id="1-运行所有test类">1. 运行所有test类</h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;jacoco:coverage destfile=&quot;$&#123;test.data.dir&#125;/jacoco.exec&quot;&gt;</span><br><span class="line">    &lt;junit printsummary=&quot;true&quot; haltonfailure=&quot;false&quot; fork=&quot;yes&quot; forkmode=&quot;once&quot;&gt;</span><br><span class="line">        &lt;jvmarg value=&quot;$&#123;xms&#125;&quot; /&gt;</span><br><span class="line">        &lt;jvmarg value=&quot;$&#123;xmx&#125;&quot; /&gt;</span><br><span class="line">        &lt;classpath refid=&quot;classpath.test.dir&quot; /&gt;</span><br><span class="line">        &lt;formatter type=&quot;xml&quot; /&gt;</span><br><span class="line">        &lt;!-- 执行 build/test-classess下面的所有class --&gt;</span><br><span class="line">        &lt;batchtest todir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">            &lt;fileset dir=&quot;$&#123;test.classess.dir&#125;&quot;&gt;</span><br><span class="line">                &lt;include name=&quot;**/*Test.class&quot; /&gt;</span><br><span class="line">            &lt;/fileset&gt;</span><br><span class="line">        &lt;/batchtest&gt;</span><br><span class="line">    &lt;/junit&gt;</span><br><span class="line">&lt;/jacoco:coverage&gt;</span><br></pre></td></tr></table></figure>
-<p>这段代码就是用于执行Junit方法的，有关Junit标签详细使用说明请移步<a target="_blank" rel="noopener" href="https://ant.apache.org/manual/">https://ant.apache.org/manual/</a>。<br>
-通过标签<code>batchtest</code>指定了执行的范围，<code>dir</code>属性指定运行的class文件放在<code>build/test-classess</code>。这个目录下有可能有其他的文件所以使用<code>include</code>标签指定只执行名字后缀是<code>Test</code>的class文件。<br>
-这段脚本执行完毕之后会在<code>reports/testResults</code>得到一个exec文件。这些文件和目录也是脚本自动创建的。</p>
-<h4 id="2-生成Junit报告">2. 生成Junit报告</h4>
-<p>经过第一点的脚本之后，根据执行结果生成Junit报告。报告保存在<code>reports/testResults</code>。这部分是可选的，如果你不想要Junit报告可以删除这段脚本。删除之后再执行在<code>reports/testResults</code>目录下面就不会有<code>TESTS-TestSuites.xml</code>。</p>
+<h4 id="1-运行所有test类"><a href="#1-运行所有test类" class="headerlink" title="1. 运行所有test类"></a>1. 运行所有test类</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;jacoco:coverage destfile=&quot;$&#123;test.data.dir&#125;/jacoco.exec&quot;&gt;</span><br><span class="line">    &lt;junit printsummary=&quot;true&quot; haltonfailure=&quot;false&quot; fork=&quot;yes&quot; forkmode=&quot;once&quot;&gt;</span><br><span class="line">        &lt;jvmarg value=&quot;$&#123;xms&#125;&quot; /&gt;</span><br><span class="line">        &lt;jvmarg value=&quot;$&#123;xmx&#125;&quot; /&gt;</span><br><span class="line">        &lt;classpath refid=&quot;classpath.test.dir&quot; /&gt;</span><br><span class="line">        &lt;formatter type=&quot;xml&quot; /&gt;</span><br><span class="line">        &lt;!-- 执行 build/test-classess下面的所有class --&gt;</span><br><span class="line">        &lt;batchtest todir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">            &lt;fileset dir=&quot;$&#123;test.classess.dir&#125;&quot;&gt;</span><br><span class="line">                &lt;include name=&quot;**/*Test.class&quot; /&gt;</span><br><span class="line">            &lt;/fileset&gt;</span><br><span class="line">        &lt;/batchtest&gt;</span><br><span class="line">    &lt;/junit&gt;</span><br><span class="line">&lt;/jacoco:coverage&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码就是用于执行Junit方法的，有关Junit标签详细使用说明请移步<a target="_blank" rel="noopener" href="https://ant.apache.org/manual/">https://ant.apache.org/manual/</a>。<br>通过标签<code>batchtest</code>指定了执行的范围，<code>dir</code>属性指定运行的class文件放在<code>build/test-classess</code>。这个目录下有可能有其他的文件所以使用<code>include</code>标签指定只执行名字后缀是<code>Test</code>的class文件。<br>这段脚本执行完毕之后会在<code>reports/testResults</code>得到一个exec文件。这些文件和目录也是脚本自动创建的。</p>
+<h4 id="2-生成Junit报告"><a href="#2-生成Junit报告" class="headerlink" title="2. 生成Junit报告"></a>2. 生成Junit报告</h4><p>经过第一点的脚本之后，根据执行结果生成Junit报告。报告保存在<code>reports/testResults</code>。这部分是可选的，如果你不想要Junit报告可以删除这段脚本。删除之后再执行在<code>reports/testResults</code>目录下面就不会有<code>TESTS-TestSuites.xml</code>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;junitreport todir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">    &lt;fileset dir=&quot;$&#123;test.data.dir&#125;&quot;&gt;</span><br><span class="line">        &lt;include name=&quot;TEST-*.xml&quot; /&gt;</span><br><span class="line">    &lt;/fileset&gt;</span><br><span class="line">&lt;/junitreport&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="3-生成覆盖率报告">3. 生成覆盖率报告</h4>
-<p>经过前面两步之后，可以根据前面两步的结果生成覆盖率的报告。报告所依赖的数据就是<code>&lt;file file=&quot;$&#123;test.data.dir&#125;/jacoco.exec&quot; /&gt;</code>。</p>
+
+<h4 id="3-生成覆盖率报告"><a href="#3-生成覆盖率报告" class="headerlink" title="3. 生成覆盖率报告"></a>3. 生成覆盖率报告</h4><p>经过前面两步之后，可以根据前面两步的结果生成覆盖率的报告。报告所依赖的数据就是<code>&lt;file file=&quot;${test.data.dir}/jacoco.exec&quot; /&gt;</code>。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;jacoco:report&gt;</span><br><span class="line">    &lt;executiondata&gt;</span><br><span class="line">        &lt;file file=&quot;$&#123;test.data.dir&#125;/jacoco.exec&quot; /&gt;</span><br><span class="line">    &lt;/executiondata&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;structure name=&quot;AntTestReporting&quot;&gt;</span><br><span class="line">        &lt;classfiles&gt;</span><br><span class="line">            &lt;fileset dir=&quot;$&#123;src.classess.dir&#125;&quot;&gt;</span><br><span class="line">                &lt;include name=&quot;**/*.class&quot; /&gt;</span><br><span class="line">                &lt;!-- 生成的报告中排除test类 --&gt;</span><br><span class="line">                &lt;!-- &lt;exclude name=&quot;**/*Test*.class&quot; /&gt; --&gt;</span><br><span class="line">                &lt;!-- Exclude inner classes --&gt;</span><br><span class="line">                &lt;exclude name=&quot;**/*$*.class&quot; /&gt;</span><br><span class="line">            &lt;/fileset&gt;</span><br><span class="line">        &lt;/classfiles&gt;</span><br><span class="line">    &lt;/structure&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;html destdir=&quot;$&#123;coverage.reports.dir&#125;&quot; /&gt;</span><br><span class="line">&lt;/jacoco:report&gt;</span><br></pre></td></tr></table></figure>
+
 <p>最终，整个脚本执行完毕之后，在项目根目录下可以看到如下截图内容：</p>
 <p><img src="/image/blog-image/18120605.png" alt="覆盖率报告"></p>
 <p>用浏览器打开<code>index.html</code>，在这里文件中可以看到项目所有代码的覆盖率情况。</p>
 <p><img src="/image/blog-image/18120606.png" alt="覆盖率报告2"></p>
 <p>报告单结果和你直接使用<code>Coverage As</code>运行的结果是一致的。如果别人需要项目的结果你就可以把<code>reports</code>目录发给他了，这个就是项目的单元覆盖率结果。</p>
-<h3 id="项目源码">项目源码</h3>
-<p><a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/coverage">https://github.com/ubuntuvim/coverage</a></p>
+<h3 id="项目源码"><a href="#项目源码" class="headerlink" title="项目源码"></a>项目源码</h3><p><a target="_blank" rel="noopener" href="https://github.com/ubuntuvim/coverage">https://github.com/ubuntuvim/coverage</a></p>
 <p>后续版本会继承spring，针对spring或者是springMVC项目又是如何做的呢？？</p>
 
     </div>
@@ -1273,16 +187,16 @@ a.return-top:hover {
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/junit-jacoco/spring-gradle-%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E6%B5%8B%E8%AF%95/" rel="next" title="spring-gradle-代码覆盖测试">
-          spring-gradle-代码覆盖测试
+          <a href="/fq/%E5%BC%BA%E5%88%B6%20Google.com%20%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8%20HTTPS%EF%BC%88SSL%EF%BC%89/" rel="next" title="强制 Google.com 域名使用 HTTPS（SSL）">
+          强制 Google.com 域名使用 HTTPS（SSL）
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/idea-plugin/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" rel="prev" title="环境搭建——idea插件开发">
-            环境搭建——idea插件开发
+          <a href="/hexo/%E5%A6%82%E4%BD%95%E4%BB%8E%E6%A0%B9%E6%9C%AC%E8%A7%A3%E5%86%B3hexo%E4%B8%8D%E5%85%BC%E5%AE%B9%7B%7B%7D%7D%E6%A0%87%E7%AD%BE%E9%97%AE%E9%A2%98/" rel="prev" title="如何从根本解决hexo不兼容{{}}标签问题">
+            如何从根本解决hexo不兼容{{}}标签问题
           </a>
           <span>〉</span>
         
@@ -1374,6 +288,8 @@ a.return-top:hover {
   <!-- scripts list from theme config.yml -->
   
     <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/xoxo.js"></script>
   
 
 
