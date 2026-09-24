@@ -10,7 +10,23 @@
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, ubuntuvim</rights>
   <subtitle>一个专注一coding的网站。</subtitle>
-  <updated>2026-09-20T10:52:36.528Z</updated>
+  <updated>2026-09-24T06:31:49.840Z</updated>
+  <entry>
+    <author>
+      <name>ubuntuvim</name>
+    </author>
+    <category term="A股" scheme="http://xcoding.tech/tags/A%E8%82%A1/"/>
+    <category term="交易系统" scheme="http://xcoding.tech/tags/%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/"/>
+    <category term="修心" scheme="http://xcoding.tech/tags/%E4%BF%AE%E5%BF%83/"/>
+    <id>http://xcoding.tech/stock-exchange/%E7%9F%AD%E7%BA%BF%E4%BA%A4%E6%98%93%E4%BD%93%E7%B3%BB%E4%B8%8E%E5%BF%83%E6%B3%95/</id>
+    <link href="http://xcoding.tech/stock-exchange/%E7%9F%AD%E7%BA%BF%E4%BA%A4%E6%98%93%E4%BD%93%E7%B3%BB%E4%B8%8E%E5%BF%83%E6%B3%95/"/>
+    <published>2026-09-24T06:31:49.706Z</published>
+    <summary>
+      <![CDATA[<h2 id="核心交易逻辑"><a href="#核心交易逻辑" class="headerlink" title="核心交易逻辑"></a>核心交易逻辑</h2><h3 id="情绪周期判断"><a href="#情绪周期判断" class="headerlink"]]>
+    </summary>
+    <title>短线交易体系与心法</title>
+    <updated>2026-09-24T06:31:49.840Z</updated>
+  </entry>
   <entry>
     <author>
       <name>ubuntuvim</name>
@@ -309,20 +325,6 @@
       <![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a>]]>
     </summary>
     <title>Hello World</title>
-    <updated>2026-09-20T07:59:45.232Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>ubuntuvim</name>
-    </author>
-    <category term="hexo" scheme="http://xcoding.tech/tags/hexo/"/>
-    <id>http://xcoding.tech/hexo/%E5%A6%82%E4%BD%95%E4%BB%8E%E6%A0%B9%E6%9C%AC%E8%A7%A3%E5%86%B3hexo%E4%B8%8D%E5%85%BC%E5%AE%B9%7B%7B%7D%7D%E6%A0%87%E7%AD%BE%E9%97%AE%E9%A2%98/</id>
-    <link href="http://xcoding.tech/hexo/%E5%A6%82%E4%BD%95%E4%BB%8E%E6%A0%B9%E6%9C%AC%E8%A7%A3%E5%86%B3hexo%E4%B8%8D%E5%85%BC%E5%AE%B9%7B%7B%7D%7D%E6%A0%87%E7%AD%BE%E9%97%AE%E9%A2%98/"/>
-    <published>2026-09-20T07:59:45.232Z</published>
-    <summary>
-      <![CDATA[<h2 id="报错"><a href="#报错" class="headerlink"]]>
-    </summary>
-    <title>如何从根本解决hexo不兼容{{}}标签问题</title>
     <updated>2026-09-20T07:59:45.232Z</updated>
   </entry>
 </feed>
