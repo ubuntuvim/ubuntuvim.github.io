@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  
+    <meta name="keywords" content="A股,交易系统," />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>龙头，补涨，切换</title>
+  
+    <!-- stylesheets list from hexo-theme/xoxo/config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+  
+  
+    <!-- scripts list from hexo-theme/xoxo/config.yml -->
+    
+      <script src="/js/zepto.min.js" async></script>
+    
+      <script src="/js/xoxo.js" async></script>
+    
+  
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const returnTopBtn = document.querySelector('.return-top');
+    const navPostTitle = document.getElementById('nav-post-title');
+    const postHeaderTitle = document.getElementById('post-title') || document.querySelector('.post .post-header .title') || document.querySelector('#post .title');
+
+    // 点击导航栏标题平滑滚动回到顶部
+    if (navPostTitle) {
+      navPostTitle.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    function handleScroll() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+      // 1. 回到顶部按钮逻辑
+      if (returnTopBtn) {
+        if (scrollY > window.innerHeight) {
+          returnTopBtn.classList.add('show');
+        } else {
+          returnTopBtn.classList.remove('show');
+        }
+      }
+
+      // 2. 博客文章标题在 nav bar 中间的吸顶显示逻辑
+      if (navPostTitle && postHeaderTitle) {
+        const rect = postHeaderTitle.getBoundingClientRect();
+        // 导航栏高度约为 50px，当原标题下边缘滚过导航栏时显示
+        if (rect.bottom <= 50) {
+          navPostTitle.classList.add('show');
+        } else {
+          navPostTitle.classList.remove('show');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // 初始化时检测一次，防止刷新页面时处于已有滚动位置
+    handleScroll();
+  });
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+  <!--
+    <img class="avatar" src="/image/logo1.png">
+-->
+    <svg t="1791884667760" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6465" width="32" height="32"><path d="M953.03 425.66L547.41 115.43c-27.85-21.31-66.66-20.79-93.93 1.24L70.5 426.03c-16.68 13.47-7.16 40.42 14.28 40.42h76.52v390.26c0 37.27 30.22 67.49 67.49 67.49h569.25c37.27 0 67.49-30.22 67.49-67.49V466.45h73.69c21.74 0 31.08-27.58 13.81-40.79zM294.44 810.77c0 10.76-8.72 19.48-19.48 19.48h-36.05c-10.76 0-19.47-8.72-19.47-19.48V699.72c0-10.75 8.71-19.47 19.47-19.47h36.05c10.76 0 19.48 8.72 19.48 19.47v111.05z m0-187.5c0 10.76-8.72 19.48-19.48 19.48h-36.05c-10.76 0-19.47-8.72-19.47-19.48V512.22c0-10.75 8.71-19.47 19.47-19.47h36.05c10.76 0 19.48 8.72 19.48 19.47v111.05z m187.5 187.84c0 10.57-8.57 19.14-19.14 19.14h-74.23c-10.57 0-19.13-8.57-19.13-19.14V661.88c0-10.57 8.56-19.13 19.13-19.13h74.23c10.57 0 19.14 8.56 19.14 19.13v149.23z m150-6.25c0 14.02-11.37 25.39-25.39 25.39h-61.73c-14.02 0-25.38-11.37-25.38-25.39V593.13c0-14.02 11.36-25.38 25.38-25.38h61.73c14.02 0 25.39 11.36 25.39 25.38v211.73z m150 13.94c0 6.32-5.13 11.45-11.45 11.45h-89.61c-6.32 0-11.44-5.13-11.44-11.45v-89.6c0-6.33 5.12-11.45 11.44-11.45h89.61c6.32 0 11.45 5.12 11.45 11.45v89.6z" p-id="6466" fill="#000"></path></svg>
+
+    <span style="font-size: 18px;
+									padding-left: 5px; padding-top: 3px;">
+									xcoding.tech
+		</span>
+
+    <span class="title"></span>
+  </a>
+
+  
+    <div class="nav-post-title" id="nav-post-title" title="龙头，补涨，切换">
+      龙头，补涨，切换
+    </div>
+  
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title" id="post-title">
+        龙头，补涨，切换
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2026-10-13T15:45:01.593Z">
+        2026-10-13
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/A%E8%82%A1/" rel="tag">A股</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/" rel="tag">交易系统</a></li></ul>
+      </span>
+    </span>
+      
+      <span class="slash">/</span>
+      <span class="read">阅读耗时预计 10 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p><strong>“龙头、补涨、切换”是短线情绪周期的三个核心环节，本质上是一轮赚钱效应的启动、扩散、衰竭与重启。</strong> 理解了这三个词，就能看懂绝大多数连板行情的节奏。</p>
+<h2 id="一、龙头：情绪的起点与空间锚"><a href="#一、龙头：情绪的起点与空间锚" class="headerlink" title="一、龙头：情绪的起点与空间锚"></a>一、龙头：情绪的起点与空间锚</h2><p><strong>龙头不是“涨得最多的票”，而是第一个把高度打出来、带动同属性板块跟风、并且具备唯一辨识度的票。</strong><br>特征：</p>
+<ul>
+<li>领涨：它先于板块启动，不是板块涨了它才跟。</li>
+<li>带动性：它一涨，同题材&#x2F;同属性的小弟纷纷跟风；它一跌，板块垮。</li>
+<li>唯一性：同一时期市场公认的总龙头通常只有1–2只，不会有一堆龙头。</li>
+<li>空间感：它打开的高度决定了后面补涨票的天花板。比如龙头9板，补涨通常做到6–7板就算成功。</li>
+</ul>
+<p><strong>实战意义</strong>：</p>
+<ul>
+<li>龙头在的时候，做同属性跟风&#x2F;补涨最安全（龙头提供溢价庇护）；</li>
+<li>龙头断板&#x2F;特停&#x2F;跌停，是整个情绪周期可能结束的信号；</li>
+<li>龙头首次分歧（放量烂板&#x2F;断板）不一定死，但第二次分歧基本确认顶部。</li>
+</ul>
+<h2 id="二、补涨：情绪的扩散与惯性"><a href="#二、补涨：情绪的扩散与惯性" class="headerlink" title="二、补涨：情绪的扩散与惯性"></a>二、补涨：情绪的扩散与惯性</h2><p>补涨是龙头打出高度和赚钱效应后，踏空资金在同属性内找低位票模仿龙头走势的行为。<br>本质：</p>
+<ul>
+<li>龙头把空间打开了，但很多人买不到（一字板）或不敢买（高位怕跌）；</li>
+<li>于是资金去找同属性、位置低、盘子小的票，做“复制龙头”的预期；</li>
+<li>补涨的生命周期通常比龙头短，高度一般为龙头的2&#x2F;3左右，且断板后很少反包。</li>
+</ul>
+<p>补涨的几种常见形态：</p>
+<ul>
+<li>同题材低位首板&#x2F;二板：龙头5板以上，同题材低位启动，最标准的补涨。</li>
+<li>同属性扩散：龙头是“上海国资+传媒”，补涨挖“上海国资+其他”、“传媒+其他”。</li>
+<li>名字&#x2F;代码&#x2F;地域玄学：龙头叫“新华XX”，补涨挖“XX传媒”“华字辈”——这种最弱，通常一日游。</li>
+</ul>
+<p>补涨的买点：</p>
+<ul>
+<li>龙头确认强势（封死涨停&#x2F;继续一字）后，当天或次日做低位首板；</li>
+<li>1进2弱转强确认；</li>
+<li>不做已经加速到3板以上的补涨（性价比低、风险大）。</li>
+</ul>
+<p>补涨的卖点：</p>
+<ul>
+<li>龙头断板&#x2F;跌停当天，补涨必须走，不要留恋；</li>
+<li>补涨自身断板当天走，不期待反包；</li>
+<li>补涨出现“跟风不跟涨”（龙头涨它不涨）时提前走。</li>
+</ul>
+<p>三、切换：情绪的衰竭与新周期的诞生</p>
+<p>切换是指旧龙头倒下后，资金不再做同属性的补涨，而是转向新题材&#x2F;新属性&#x2F;新方向。</p>
+<p>切换发生的时机：</p>
+<ul>
+<li>龙头高位放量断板&#x2F;跌停，且无法回封；</li>
+<li>同属性补涨大面积溃败（批量跌停、炸板率高）；</li>
+<li>市场出现新题材&#x2F;新政策&#x2F;新消息，且与旧周期无关；</li>
+<li>指数大跌后企稳，资金寻找共振反弹的新方向。</li>
+</ul>
+<p>切换的两种典型模式：</p>
+<ol>
+<li>高低切：同一个大题材内部，从高位龙头切换到低位新票（本质还是补涨，不算真正切换）。严格意义上的切换是彻底换题材。</li>
+<li>题材切：旧周期（传媒&#x2F;重组）结束后，新周期（固态电池&#x2F;机器人&#x2F;芯片等）启动。这是真正的切换。</li>
+</ol>
+<p>切换阶段的特征：</p>
+<ul>
+<li>旧龙头跌停，旧题材集体退潮；</li>
+<li>新题材的首板&#x2F;二板开始出现，但数量少、分歧大；</li>
+<li>市场情绪混沌，连板高度压缩到2–3板；</li>
+<li>此时做错成本极高，做对了就是下一波龙头。</li>
+</ul>
+<p>切换的买点：</p>
+<ul>
+<li>旧龙头确认死亡（跌停封死&#x2F;连续大跌）后，不再做任何旧属性票；</li>
+<li>新题材首板出现时轻仓试错；</li>
+<li>新题材走出2板以上、形成梯队时加仓确认；</li>
+<li>最好等新龙头打出3板以上辨识度再重仓。</li>
+</ul>
+<h2 id="四、三者的关系：一个完整的情绪周期"><a href="#四、三者的关系：一个完整的情绪周期" class="headerlink" title="四、三者的关系：一个完整的情绪周期"></a>四、三者的关系：一个完整的情绪周期</h2><p>我们用新华传媒例子来假设一下：</p>
+<ol>
+<li>龙头阶段：新华传媒从首板一路走到8板、9板，带动传媒&#x2F;上海国资&#x2F;重组属性上涨。此时所有同属性票都在吃溢价，做补涨最舒服。</li>
+<li>补涨阶段：新华传媒9板如果特停，踏空资金挖掘同属性的低位票（上海国资传媒、财联社对标、AI语料等），做1进2或首板。补涨票的高度受限于龙头（通常做到6–7板就差不多了）。</li>
+<li>切换阶段：新华传媒复牌后高位震荡&#x2F;下跌，同属性补涨也陆续断板亏钱。资金发现传媒线赚不到钱了，开始寻找新方向——可能是固态电池、机器人、或者其他突发政策题材。此时旧周期结束，新周期酝酿。</li>
+<li>新龙头诞生：新题材中出现一只票走出3板、5板，带动新板块跟风，新一轮“龙头→补涨→切换”循环开始。</li>
+</ol>
+<h2 id="五、实战中怎么用"><a href="#五、实战中怎么用" class="headerlink" title="五、实战中怎么用"></a>五、实战中怎么用</h2><p>阶段：做什么，不做什么。<br>龙头主升：龙头分歧低吸、同属性低位补涨，不做空龙头、不做杂毛跟风。<br>龙头高位震荡&#x2F;特停：低位补涨（首板&#x2F;1进2），不追高中位、不赌龙头反包。<br>龙头见顶&#x2F;补涨退潮：空仓&#x2F;轻仓试错新题材首板，不做旧属性任何票。<br>新周期启动：新龙头试错、新题材首板，不恋旧、不做老周期反抽。</p>
+<p>六、一句话总结</p>
+<ul>
+<li>龙头：第一个把高度打出来的票，是所有情绪的基础。</li>
+<li>补涨：龙头打高度后，资金在同属性低位找替代品，吃惯性溢价。</li>
+<li>切换：龙头倒下、旧周期结束，资金转向新方向，开启下一轮循环。</li>
+</ul>
+
+    </div>
+
+      
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/stock-exchange/%E6%8C%81%E4%BB%93%E5%90%8E%E6%80%8E%E4%B9%88%E5%81%9A%E9%A2%84%E6%9C%9F%E7%AE%A1%E7%90%86%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%9F%AD%E7%BA%BF%E5%AE%9E%E6%88%98%E6%A1%86%E6%9E%B6/" rel="next" title="持仓后怎么做预期管理：一个短线实战框架">
+          持仓后怎么做预期管理：一个短线实战框架
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%BE%99%E5%A4%B4%EF%BC%9A%E6%83%85%E7%BB%AA%E7%9A%84%E8%B5%B7%E7%82%B9%E4%B8%8E%E7%A9%BA%E9%97%B4%E9%94%9A"><span class="toc-text">一、龙头：情绪的起点与空间锚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A1%A5%E6%B6%A8%EF%BC%9A%E6%83%85%E7%BB%AA%E7%9A%84%E6%89%A9%E6%95%A3%E4%B8%8E%E6%83%AF%E6%80%A7"><span class="toc-text">二、补涨：情绪的扩散与惯性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%89%E8%80%85%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84%E6%83%85%E7%BB%AA%E5%91%A8%E6%9C%9F"><span class="toc-text">四、三者的关系：一个完整的情绪周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%AD%E6%80%8E%E4%B9%88%E7%94%A8"><span class="toc-text">五、实战中怎么用</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+
+
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "48b3df0bf4ba1743e0a3",
+    clientSecret: "4cf1e76de9e18b9ad0def477c36ab22059b152c8",
+    repo: "ubuntuvim.github.io", // 博客仓库地址
+    owner: "ubuntuvim", // github 用户名
+    admin: ["ubuntuvim"], // github 用户名
+    perPage: 20,
+    id: location.pathname.slice(0, 50), // 查找 issus 的条件，后面将对 id 有针对逻辑
+    title: '龙头，补涨，切换',
+    body: "🚀 " + location.href + "\n\n欢迎通过 issues 留言 ，互相交流学习😊", // 初始化后，issues 的内容
+  });
+  gitalk.render("gitalk-container");
+</script>
+
+
+    </div>
+
+    
+
+  </div>
+
+  <a href="#" class="return-top">回到顶部</a>
+  
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a>
+    </div>
+</footer>
+
+
+<script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
+</script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/xoxo.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+  
+</body>
+</html>
