@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  
+    <meta name="keywords" content="java,JVM,code,program,架构,工程师" />
+  
+
+  
+    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+  <title>Search</title>
+  
+    <!-- stylesheets list from hexo-theme/xoxo/config.yml -->
+    
+      <link rel="stylesheet" href="/css/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+  
+  
+    <!-- scripts list from hexo-theme/xoxo/config.yml -->
+    
+      <script src="/js/zepto.min.js" async></script>
+    
+      <script src="/js/xoxo.js" async></script>
+    
+  
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const returnTopBtn = document.querySelector('.return-top');
+  
+  window.addEventListener('scroll', function() {
+    // window.innerHeight 代表浏览器窗口一页的高度
+    // window.scrollY 代表页面向下滑动了多少距离
+    if (window.scrollY > window.innerHeight) {
+      // 滚动超过一页，添加 show 类名显示按钮
+      returnTopBtn.classList.add('show');
+    } else {
+      // 滚动不足一页，移除 show 类名隐藏按钮
+      returnTopBtn.classList.remove('show');
+    }
+  });
+});
+  </script>
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+  <!--
+    <img class="avatar" src="/image/logo1.png">
+-->
+    <svg t="1791884667760" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6465" width="32" height="32"><path d="M953.03 425.66L547.41 115.43c-27.85-21.31-66.66-20.79-93.93 1.24L70.5 426.03c-16.68 13.47-7.16 40.42 14.28 40.42h76.52v390.26c0 37.27 30.22 67.49 67.49 67.49h569.25c37.27 0 67.49-30.22 67.49-67.49V466.45h73.69c21.74 0 31.08-27.58 13.81-40.79zM294.44 810.77c0 10.76-8.72 19.48-19.48 19.48h-36.05c-10.76 0-19.47-8.72-19.47-19.48V699.72c0-10.75 8.71-19.47 19.47-19.47h36.05c10.76 0 19.48 8.72 19.48 19.47v111.05z m0-187.5c0 10.76-8.72 19.48-19.48 19.48h-36.05c-10.76 0-19.47-8.72-19.47-19.48V512.22c0-10.75 8.71-19.47 19.47-19.47h36.05c10.76 0 19.48 8.72 19.48 19.47v111.05z m187.5 187.84c0 10.57-8.57 19.14-19.14 19.14h-74.23c-10.57 0-19.13-8.57-19.13-19.14V661.88c0-10.57 8.56-19.13 19.13-19.13h74.23c10.57 0 19.14 8.56 19.14 19.13v149.23z m150-6.25c0 14.02-11.37 25.39-25.39 25.39h-61.73c-14.02 0-25.38-11.37-25.38-25.39V593.13c0-14.02 11.36-25.38 25.38-25.38h61.73c14.02 0 25.39 11.36 25.39 25.38v211.73z m150 13.94c0 6.32-5.13 11.45-11.45 11.45h-89.61c-6.32 0-11.44-5.13-11.44-11.45v-89.6c0-6.33 5.12-11.45 11.44-11.45h89.61c6.32 0 11.45 5.12 11.45 11.45v89.6z" p-id="6466" fill="#000"></path></svg>
+
+
+    <span style="font-size: 18px;
+									padding-left: 5px; padding-top: 3px; color:#999;">
+									xcoding.tech
+		</span>
+
+    <span class="title"></span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item actived"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/atom.xml" class="pure-menu-link">订阅</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <article class="post page" id="page">
+  <header class="post-header text-center">
+  </header>
+  <div class="post-content">
+    
+        
+    <div class="search-content">
+      <form class="pure-form">
+        <input type="text" 
+          id="local-search-input" 
+          name="q" 
+          results="0" 
+          autocomplete="off"
+          placeholder="请输入您要找的内容..." 
+          class="pure-input pure-input-1" />
+      </form>
+      <div id="local-search-result"></div>
+    </div>
+
+      
+  </div>
+</article>
+    </div>
+
+    
+
+  </div>
+
+  <a href="#" class="return-top">回到顶部</a>
+  
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://github.com/ubuntuvim" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a>
+    </div>
+</footer>
+
+
+<script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
+</script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/zepto.min.js"></script>
+  
+    <script src="/js/xoxo.js"></script>
+  
+
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  <script src="/js/zepto.min.js"></script>
+  <script>
+    // A local search script with the help of [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
+    // Copyright (C) 2015 
+    // Joseph Pan <http://github.com/wzpan>
+    // Shuhao Mao <http://github.com/maoshuhao>
+    // This library is free software; you can redistribute it and/or modify
+    // it under the terms of the GNU Lesser General Public License as
+    // published by the Free Software Foundation; either version 2.1 of the
+    // License, or (at your option) any later version.
+    // 
+    // This library is distributed in the hope that it will be useful, but
+    // WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    // Lesser General Public License for more details.
+    // 
+    // You should have received a copy of the GNU Lesser General Public
+    // License along with this library; if not, write to the Free Software
+    // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+    // 02110-1301 USA
+    // 
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        success: function(xmlResponse) {
+          // get the contents from search data
+          var datas = $("entry", xmlResponse).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          if (!$input) return;
+          var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function() {
+              var str = '<ul class=\"search-result-list\">';
+              var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+              $resultContent.innerHTML = "";
+              if (this.value.trim().length <= 0) {
+                return;
+              }
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = true;
+                var content_index = [];
+                if (!data.title || data.title.trim() === '') {
+                  data.title = "Untitled";
+                }
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                var data_url = data.url;
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty contents
+                if (data_content !== '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if (index_title < 0 && index_content < 0) {
+                      isMatch = false;
+                    } else {
+                      if (index_content < 0) {
+                        index_content = 0;
+                      }
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                      // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                    }
+                  });
+                } else {
+                  isMatch = false;
+                }
+                // show search results
+                if (isMatch) {
+                  str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g, "");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (start == 0) {
+                      end = 100;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    var match_content = content.substr(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword) {
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                    });
+                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                  }
+                  str += "</li>";
+                }
+              });
+              str += "</ul>";
+              $resultContent.innerHTML = str;
+            });
+          }
+        });
+      };
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+    
+  
+
+
+
+  
+</body>
+</html>
