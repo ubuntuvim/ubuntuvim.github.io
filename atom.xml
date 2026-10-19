@@ -9,8 +9,38 @@
   <link href="http://xcoding.tech/" rel="alternate"/>
   <link href="http://xcoding.tech/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, ubuntuvim</rights>
-  <subtitle>一个专注一coding的网站。</subtitle>
-  <updated>2026-10-13T06:24:38.871Z</updated>
+  <subtitle>想到什么就写什么，内容不限！</subtitle>
+  <updated>2026-10-19T10:54:33.101Z</updated>
+  <entry>
+    <author>
+      <name>ubuntuvim</name>
+    </author>
+    <category term="A股" scheme="http://xcoding.tech/tags/A%E8%82%A1/"/>
+    <category term="交易系统" scheme="http://xcoding.tech/tags/%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://xcoding.tech/stock-exchange/%E7%9F%AD%E7%BA%BF%E8%8A%82%E7%82%B9%E5%92%8C%E5%BC%B1%E8%BD%AC%E5%BC%BA%E6%97%B6%E6%9C%BA/</id>
+    <link href="http://xcoding.tech/stock-exchange/%E7%9F%AD%E7%BA%BF%E8%8A%82%E7%82%B9%E5%92%8C%E5%BC%B1%E8%BD%AC%E5%BC%BA%E6%97%B6%E6%9C%BA/"/>
+    <published>2026-10-19T10:39:58.804Z</published>
+    <summary>
+      <![CDATA[<p>股短线节点，指的是市场情绪周期运行中，那些标志状态改变、资金共识发生转折的关键时刻。它是一个“时机窗口”，是情绪从冰点到高潮、从分歧到一致的切换点。</p>
+<p>核心心法：<em>弱转强不是去“抄底”弱势股，而是去“确认”强势股在短暂休息后的再次启动。]]>
+    </summary>
+    <title>短线节点和弱转强时机</title>
+    <updated>2026-10-19T10:54:33.101Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>ubuntuvim</name>
+    </author>
+    <category term="认知" scheme="http://xcoding.tech/tags/%E8%AE%A4%E7%9F%A5/"/>
+    <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
+    <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
+    <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/KnowWhy/</id>
+    <link href="http://xcoding.tech/%E9%B8%A1%E6%B1%A4/KnowWhy/"/>
+    <published>2026-10-14T01:08:22.350Z</published>
+    <summary>知其所以然</summary>
+    <title>Know Why ？</title>
+    <updated>2026-10-14T01:08:22.350Z</updated>
+  </entry>
   <entry>
     <author>
       <name>ubuntuvim</name>
@@ -111,6 +141,7 @@
     <author>
       <name>ubuntuvim</name>
     </author>
+    <category term="认知" scheme="http://xcoding.tech/tags/%E8%AE%A4%E7%9F%A5/"/>
     <category term="鸡汤" scheme="http://xcoding.tech/tags/%E9%B8%A1%E6%B1%A4/"/>
     <category term="软文" scheme="http://xcoding.tech/tags/%E8%BD%AF%E6%96%87/"/>
     <id>http://xcoding.tech/%E9%B8%A1%E6%B1%A4/HowToDo/</id>
@@ -118,7 +149,7 @@
     <published>2026-09-20T07:59:45.250Z</published>
     <summary>普通人怎样改变自己的阶层？</summary>
     <title>How To Do ？</title>
-    <updated>2026-09-20T07:59:45.250Z</updated>
+    <updated>2026-10-14T01:08:22.343Z</updated>
   </entry>
   <entry>
     <author>
@@ -289,22 +320,6 @@
       <name>ubuntuvim</name>
     </author>
     <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
-    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/</id>
-    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E6%9E%B6%E6%9E%84%E6%BC%AB%E8%B0%88/"/>
-    <published>2026-09-20T07:59:45.244Z</published>
-    <summary>
-      <![CDATA[<p><strong>文章来源InfoQ。</strong></p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol start="0">
-<li><a]]>
-    </summary>
-    <title>架构漫谈</title>
-    <updated>2026-09-20T07:59:45.244Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>ubuntuvim</name>
-    </author>
-    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
     <category term="中台" scheme="http://xcoding.tech/tags/%E4%B8%AD%E5%8F%B0/"/>
     <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/</id>
     <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E5%8F%B0/"/>
@@ -312,20 +327,5 @@
     <summary>中台可以总结为一种思想，一种体系。其可以快速聚合后台的数据与能力，通过平台的快速开发、分析、服务编排等，提供前台更多的创新能力、是错能力。中台的本质是对后台系统功能和数据解耦、重构与复用。</summary>
     <title>什么是中台？？</title>
     <updated>2026-09-20T07:59:45.244Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>ubuntuvim</name>
-    </author>
-    <category term="DDD" scheme="http://xcoding.tech/tags/DDD/"/>
-    <category term="架构" scheme="http://xcoding.tech/tags/%E6%9E%B6%E6%9E%84/"/>
-    <id>http://xcoding.tech/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <link href="http://xcoding.tech/%E6%9E%B6%E6%9E%84/DDD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <published>2026-09-20T07:59:45.243Z</published>
-    <summary>
-      <![CDATA[<h1 id="DDD学习"><a href="#DDD学习" class="headerlink" title="DDD学习"></a>DDD学习</h1><h3 id="Domain-Primitive（DP）的定义"><a]]>
-    </summary>
-    <title>DDD学习笔记</title>
-    <updated>2026-09-20T07:59:45.243Z</updated>
   </entry>
 </feed>

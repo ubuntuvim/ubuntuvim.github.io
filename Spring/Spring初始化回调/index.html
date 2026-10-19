@@ -13,7 +13,7 @@
   
 
   
-    <meta name="description" content="一个专注一coding的网站。提供丰富编程知识，包括Spring、Java、EmberJS、SpringBoot等等技术。" />
+    <meta name="description" content="记录生活、记录做事、记录感悟、记录成功、记录失败" />
   
   
   <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
@@ -38,20 +38,45 @@
 
   <script>
   document.addEventListener("DOMContentLoaded", function() {
-  const returnTopBtn = document.querySelector('.return-top');
-  
-  window.addEventListener('scroll', function() {
-    // window.innerHeight 代表浏览器窗口一页的高度
-    // window.scrollY 代表页面向下滑动了多少距离
-    if (window.scrollY > window.innerHeight) {
-      // 滚动超过一页，添加 show 类名显示按钮
-      returnTopBtn.classList.add('show');
-    } else {
-      // 滚动不足一页，移除 show 类名隐藏按钮
-      returnTopBtn.classList.remove('show');
+    const returnTopBtn = document.querySelector('.return-top');
+    const navPostTitle = document.getElementById('nav-post-title');
+    const postHeaderTitle = document.getElementById('post-title') || document.querySelector('.post .post-header .title') || document.querySelector('#post .title');
+
+    // 点击导航栏标题平滑滚动回到顶部
+    if (navPostTitle) {
+      navPostTitle.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
+
+    function handleScroll() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+      // 1. 回到顶部按钮逻辑
+      if (returnTopBtn) {
+        if (scrollY > window.innerHeight) {
+          returnTopBtn.classList.add('show');
+        } else {
+          returnTopBtn.classList.remove('show');
+        }
+      }
+
+      // 2. 博客文章标题在 nav bar 中间的吸顶显示逻辑
+      if (navPostTitle && postHeaderTitle) {
+        const rect = postHeaderTitle.getBoundingClientRect();
+        // 导航栏高度约为 50px，当原标题下边缘滚过导航栏时显示
+        if (rect.bottom <= 50) {
+          navPostTitle.classList.add('show');
+        } else {
+          navPostTitle.classList.remove('show');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // 初始化时检测一次，防止刷新页面时处于已有滚动位置
+    handleScroll();
   });
-});
   </script>
 <meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
 </head>
@@ -65,14 +90,19 @@
 -->
     <svg t="1791884667760" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6465" width="32" height="32"><path d="M953.03 425.66L547.41 115.43c-27.85-21.31-66.66-20.79-93.93 1.24L70.5 426.03c-16.68 13.47-7.16 40.42 14.28 40.42h76.52v390.26c0 37.27 30.22 67.49 67.49 67.49h569.25c37.27 0 67.49-30.22 67.49-67.49V466.45h73.69c21.74 0 31.08-27.58 13.81-40.79zM294.44 810.77c0 10.76-8.72 19.48-19.48 19.48h-36.05c-10.76 0-19.47-8.72-19.47-19.48V699.72c0-10.75 8.71-19.47 19.47-19.47h36.05c10.76 0 19.48 8.72 19.48 19.47v111.05z m0-187.5c0 10.76-8.72 19.48-19.48 19.48h-36.05c-10.76 0-19.47-8.72-19.47-19.48V512.22c0-10.75 8.71-19.47 19.47-19.47h36.05c10.76 0 19.48 8.72 19.48 19.47v111.05z m187.5 187.84c0 10.57-8.57 19.14-19.14 19.14h-74.23c-10.57 0-19.13-8.57-19.13-19.14V661.88c0-10.57 8.56-19.13 19.13-19.13h74.23c10.57 0 19.14 8.56 19.14 19.13v149.23z m150-6.25c0 14.02-11.37 25.39-25.39 25.39h-61.73c-14.02 0-25.38-11.37-25.38-25.39V593.13c0-14.02 11.36-25.38 25.38-25.38h61.73c14.02 0 25.39 11.36 25.39 25.38v211.73z m150 13.94c0 6.32-5.13 11.45-11.45 11.45h-89.61c-6.32 0-11.44-5.13-11.44-11.45v-89.6c0-6.33 5.12-11.45 11.44-11.45h89.61c6.32 0 11.45 5.12 11.45 11.45v89.6z" p-id="6466" fill="#000"></path></svg>
 
-
     <span style="font-size: 18px;
-									padding-left: 5px; padding-top: 3px; color:#999;">
+									padding-left: 5px; padding-top: 3px;">
 									xcoding.tech
 		</span>
 
     <span class="title"></span>
   </a>
+
+  
+    <div class="nav-post-title" id="nav-post-title" title="Spring初始化回调">
+      Spring初始化回调
+    </div>
+  
 
   <ul class="pure-menu-list clearfix">
       
@@ -110,7 +140,7 @@
       <div class="post-container">
   <article class="post" id="post">
     <header class="post-header text-center">
-      <h1 class="title">
+      <h1 class="title" id="post-title">
         Spring初始化回调
       </h1>
       <span>
@@ -208,16 +238,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/" rel="next" title="Spring内置bean有哪些？">
-          Spring内置bean有哪些？
+          <a href="/Spring/Spring%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" rel="next" title="Spring事务传播机制">
+          Spring事务传播机制
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/Spring/Spring%E5%90%8E%E7%BD%AE%E5%A4%84%E7%90%86%E5%99%A8/" rel="prev" title="Spring后置处理器">
-            Spring后置处理器
+          <a href="/Spring/Spring%E5%86%85%E7%BD%AEbean%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/" rel="prev" title="Spring内置bean有哪些？">
+            Spring内置bean有哪些？
           </a>
           <span>〉</span>
         
